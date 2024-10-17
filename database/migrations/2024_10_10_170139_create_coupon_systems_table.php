@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->enum('type', ['Percentage', 'Amount'])->nullable();
             $table->string('coupon_code');
-            $table->decimal('value')->default();
+            $table->decimal('value')->default(0.00);
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->enum('status', ['Active', 'Inactive'])->default('Active');

@@ -9,5 +9,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Store extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $fillable = ['type', 'coupon_code', 'value', 'start_date', 'end_date', 'status'];
+    protected $fillable = ['product_name', 'short_description', 'description', 'product_thumb', 'video_preview', 'price', 'total_stock', 'total_sale', 'discount', 'tags', 'status'];
+
+    public function getPhotoThumbAttribute($value)
+    {
+        return !empty($value) ? config('app.url') . "/" . $value : null;
+    }
+
+    public function getVideoPreviewAttribute($value)
+    {
+        return !empty($value) ? config('app.url') . "/" . $value : null;
+    }
 }

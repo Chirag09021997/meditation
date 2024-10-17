@@ -11,18 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('stores', function (Blueprint $table) {
+        Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->string('product_name');
-            $table->text('short_description')->nullable();
+            $table->string('name');
+            $table->string('thumb_image')->nullable();
+            $table->string('short_description')->nullable();
             $table->text('description')->nullable();
-            $table->string('product_thumb')->nullable();
-            $table->string('video_preview')->nullable();
-            $table->decimal('price', 10, 2);
-            $table->decimal('discount', 5, 2)->default(0);
-            $table->integer('total_stock')->default(0);
-            $table->integer('total_sale')->default(0);
-            $table->string('tags')->nullable();
+            $table->dateTime('starting_date')->nullable();
+            $table->string('location')->nullable();
+            $table->enum('is_paid', ['On', 'Off'])->default('Off');
+            $table->decimal('fees', 10, 2)->default(0.00);
+            $table->integer('total_joining')->default(0);
             $table->enum('status', ['Active', 'Inactive'])->default('Active');
             $table->timestamps();
             $table->softDeletes();
@@ -34,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('stores');
+        Schema::dropIfExists('events');
     }
 };

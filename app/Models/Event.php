@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Blog extends Model
+class Event extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $fillable = ['name', 'short_description', 'description', 'thumb_image', 'total_view', 'status'];
+    protected $fillable = ['name', 'thumb_image', 'short_description', 'description', 'starting_date', 'location', 'is_paid', 'fees', 'status'];
 
     public function getThumbImageAttribute($value)
     {

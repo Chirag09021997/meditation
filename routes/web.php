@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Web\BlogController;
+use App\Http\Controllers\Web\CouponSystemController;
 use App\Http\Controllers\Web\CustomerController;
 use App\Http\Controllers\Web\MeditationAudioController;
 use App\Http\Controllers\Web\MeditationTypeController;
@@ -55,6 +57,14 @@ Route::middleware('auth')->group(function () {
     Route::get('workshop/data', [WorkShopController::class, 'getData'])->name('workshop.data');
     Route::post('workshop/status/{workshop}', [WorkShopController::class, 'changeStatus'])->name('workshop.changeStatus');
     Route::resource('workshop', WorkShopController::class);
+
+    Route::get('blog/data', [BlogController::class, 'getData'])->name('blog.data');
+    Route::post('blog/status/{blog}', [BlogController::class, 'changeStatus'])->name('blog.changeStatus');
+    Route::resource('blog', BlogController::class);
+
+    Route::get('coupon-system/data', [CouponSystemController::class, 'getData'])->name('coupon-system.data');
+    Route::post('coupon-system/status/{coupon_system}', [CouponSystemController::class, 'changeStatus'])->name('coupon-system.changeStatus');
+    Route::resource('coupon-system', CouponSystemController::class);
 });
 
 require __DIR__ . '/auth.php';
