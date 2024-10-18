@@ -92,7 +92,7 @@ class PremiumPlanController extends Controller
 
     public function getData()
     {
-        $premiumPlans = PremiumPlan::select(['id', 'name', 'short_description', 'description', 'total_amount', 'discount', 'total_user', 'total_payable_amount',  'status']);
+        $premiumPlans = PremiumPlan::select(['id', 'name', 'total_amount', 'discount', 'total_user', 'total_payable_amount',  'status']);
 
         return DataTables::of($premiumPlans)
             ->addColumn('action', function ($data) {

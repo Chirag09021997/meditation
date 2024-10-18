@@ -124,7 +124,7 @@ class MeditationAudioController extends Controller
 
     public function getData()
     {
-        $meditationAudio = MeditationAudio::select(['id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view', 'status']);
+        $meditationAudio = MeditationAudio::select(['id', 'name', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view', 'status']);
 
         return DataTables::of($meditationAudio)
             ->addColumn('action', function ($data) {

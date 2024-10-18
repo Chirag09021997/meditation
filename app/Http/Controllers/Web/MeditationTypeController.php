@@ -91,7 +91,7 @@ class MeditationTypeController extends Controller
 
     public function getData()
     {
-        $meditationType = MeditationType::select(['id', 'name', 'short_description', 'description', 'thumb_image', 'status']);
+        $meditationType = MeditationType::select(['id', 'name', 'thumb_image', 'status']);
 
         return DataTables::of($meditationType)
             ->addColumn('action', function ($data) {

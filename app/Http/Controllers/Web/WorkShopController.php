@@ -119,7 +119,7 @@ class WorkShopController extends Controller
 
     public function getData()
     {
-        $WorkShop = WorkShop::select(['id', 'name', 'short_description', 'description', 'thumb_image',  'video_url', 'premium_type', 'total_view', 'status']);
+        $WorkShop = WorkShop::select(['id', 'name', 'thumb_image',  'video_url', 'premium_type', 'total_view', 'status']);
 
         return DataTables::of($WorkShop)
             ->addColumn('action', function ($data) {

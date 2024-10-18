@@ -17,4 +17,9 @@ class ProductPhoto extends Model
     {
         return !empty($value) ? config('app.url') . "/" . $value : null;
     }
+
+    public function store()
+    {
+        $this->belongsTo(Store::class, 'store_id');
+    }
 }

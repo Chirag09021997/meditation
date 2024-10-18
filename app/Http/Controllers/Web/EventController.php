@@ -3,19 +3,19 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\Models\Blog;
-use App\Http\Requests\StoreBlogRequest;
-use App\Http\Requests\UpdateBlogRequest;
+use App\Models\Event;
+use App\Http\Requests\StoreEventRequest;
+use App\Http\Requests\UpdateEventRequest;
 use Yajra\DataTables\Facades\DataTables;
 
-class BlogController extends Controller
+class EventController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('blog.index');
+        return view('event.index');
     }
 
     /**
@@ -23,86 +23,86 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('blog.create');
+        return view('event.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreBlogRequest $request)
+    public function store(StoreEventRequest $request)
     {
         $validated = $request->validated();
         if ($request->hasFile('thumb_image')) {
             $image = $request->file('thumb_image');
             $fileName = time() . '_' . str_replace(' ', '_', $image->getClientOriginalName());
-            $filePath = $image->storeAs('public/uploads/blog', $fileName);
+            $filePath = $image->storeAs('public/uploads/event', $fileName);
             $validated['thumb_image'] = str_replace('public/', 'storage/', $filePath);
         }
-        Blog::create($validated);
-        return redirect()->route('blog.index')->with('success', 'Blog created successfully.');
+        Event::create($validated);
+        return redirect()->route('event.index')->with('success', 'Event created successfully');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Blog $blog)
+    public function show(Event $event)
     {
-        return view('blog.show', compact('blog'));
+        return view('event.show', compact('event'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Blog $blog)
+    public function edit(Event $event)
     {
-        return view('blog.edit', compact('blog'));
+        return view('event.edit', compact('event'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBlogRequest $request, Blog $blog)
+    public function update(UpdateEventRequest $request, Event $event)
     {
         $validated = $request->validated();
         if ($request->hasFile('thumb_image')) {
-            if ($blog->thumb_image != null) {
-                $imagePath = storage_path(str_replace(config('app.url') . '/storage', 'app/public', $blog->thumb_image));
+            if ($event->thumb_image != null) {
+                $imagePath = storage_path(str_replace(config('app.url') . '/storage', 'app/public', $event->thumb_image));
                 if (file_exists($imagePath)) {
                     unlink($imagePath);
                 }
             }
             $image = $request->file('thumb_image');
             $fileName = time() . '_' . str_replace(' ', '_', $image->getClientOriginalName());
-            $filePath = $image->storeAs('public/uploads/blog', $fileName);
+            $filePath = $image->storeAs('public/uploads/event', $fileName);
             $validated['thumb_image'] = str_replace('public/', 'storage/', $filePath);
         }
-        $blog->update($validated);
-        return redirect()->route('blog.index')->with('success', 'Blog updated successfully');
+        $event->update($validated);
+        return redirect()->route('event.index')->with('success', 'Event updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Blog $blog)
+    public function destroy(Event $event)
     {
-        $blog->delete();
+        $event->delete();
         echo 1;
     }
 
     public function getData()
     {
-        $blog = Blog::select(['id', 'name', 'thumb_image', 'total_view', 'status']);
+        $event = Event::select(['id', 'name', 'thumb_image', 'starting_date', 'location', 'is_paid', 'fees', 'status']);
 
-        return DataTables::of($blog)
+        return DataTables::of($event)
             ->addColumn('action', function ($data) {
-                $viewLink = '<a href="' . route('blog.show', $data->id) . '" title="View" class="text-blue-800 cursor-pointer"><i class="far fa-eye"></i></a>';
-                $updateLink = '<a href="' . route('blog.edit', $data->id) . '" title="Update" class="text-green-600 cursor-pointer px-2"><i class="far fa-edit"></i></a>';
-                $deleteLink = '<a data-value="' . route('blog.destroy', $data->id) . '" title="Delete" class="delete_row text-red-600 cursor-pointer"><i class="far fa-trash-alt"></i></a>';
+                $viewLink = '<a href="' . route('event.show', $data->id) . '" title="View" class="text-blue-800 cursor-pointer"><i class="far fa-eye"></i></a>';
+                $updateLink = '<a href="' . route('event.edit', $data->id) . '" title="Update" class="text-green-600 cursor-pointer px-2"><i class="far fa-edit"></i></a>';
+                $deleteLink = '<a data-value="' . route('event.destroy', $data->id) . '" title="Delete" class="delete_row text-red-600 cursor-pointer"><i class="far fa-trash-alt"></i></a>';
                 return "<div class='flex justify-center'> $viewLink  $updateLink  $deleteLink </div>";
             })
             ->editColumn('status', function ($data) {
                 $checked = ($data->status == 'Active') ? 'checked' : '';
-                return '<input type="checkbox" data-url="' . route('blog.changeStatus', $data->id) . '" ' . $checked . ' class="changeStatus">';
+                return '<input type="checkbox" data-url="' . route('event.changeStatus', $data->id) . '" ' . $checked . ' class="changeStatus">';
             })
             ->editColumn('thumb_image', function ($data) {
                 return '<img src="' . $data->thumb_image . '" alt="' . $data->name . '" class="w-8" />';
@@ -112,10 +112,10 @@ class BlogController extends Controller
             ->toJson();
     }
 
-    public function changeStatus(Blog $blog)
+    public function changeStatus(Event $event)
     {
-        $blog->status = ($blog->status == 'Active') ? 'Inactive' : 'Active';
-        $blog->save();
+        $event->status = ($event->status == 'Active') ? 'Inactive' : 'Active';
+        $event->save();
         echo  1;
     }
 }

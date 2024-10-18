@@ -4,10 +4,12 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Web\BlogController;
 use App\Http\Controllers\Web\CouponSystemController;
 use App\Http\Controllers\Web\CustomerController;
+use App\Http\Controllers\Web\EventController;
 use App\Http\Controllers\Web\MeditationAudioController;
 use App\Http\Controllers\Web\MeditationTypeController;
 use App\Http\Controllers\Web\MusicController;
 use App\Http\Controllers\Web\PremiumPlanController;
+use App\Http\Controllers\Web\StoreController;
 use App\Http\Controllers\Web\WorkShopController;
 use Illuminate\Support\Facades\Route;
 
@@ -65,6 +67,15 @@ Route::middleware('auth')->group(function () {
     Route::get('coupon-system/data', [CouponSystemController::class, 'getData'])->name('coupon-system.data');
     Route::post('coupon-system/status/{coupon_system}', [CouponSystemController::class, 'changeStatus'])->name('coupon-system.changeStatus');
     Route::resource('coupon-system', CouponSystemController::class);
+
+    Route::get('event/data', [EventController::class, 'getData'])->name('event.data');
+    Route::post('event/status/{event}', [EventController::class, 'changeStatus'])->name('event.changeStatus');
+    Route::resource('event', EventController::class);
+
+    Route::get('store/data', [StoreController::class, 'getData'])->name('store.data');
+    Route::post('store/status/{store}', [StoreController::class, 'changeStatus'])->name('store.changeStatus');
+    Route::delete('store/product-photo', [StoreController::class, 'deleteProductPhoto'])->name('store.productPhoto');
+    Route::resource('store', StoreController::class);
 });
 
 require __DIR__ . '/auth.php';
