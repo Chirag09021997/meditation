@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\APIController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('customers', [APIController::class, 'CustomerList']);
+Route::get('premium-plans', [APIController::class, 'PremiumPlansList']);
+Route::get('meditation-type', [APIController::class, 'MeditationTypeList']);
+Route::get('meditation-audio', [APIController::class, 'MeditationAudioList']);
+Route::get('music', [APIController::class, 'MusicList']);
+Route::get('workshop', [APIController::class, 'WorkShopList']);
+Route::get('blogs', [APIController::class, 'BlogList']);
+Route::get('coupon-system', [APIController::class, 'CouponSystemList']);
+Route::get('events', [APIController::class, 'EventList']);
+Route::get('stores', [APIController::class, 'StoreList']);
