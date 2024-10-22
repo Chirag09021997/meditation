@@ -100,6 +100,6 @@ class APIController extends Controller
             'meditation_audio' => $meditationAudio,
             'music' => $music,
             'workshop' => $workshop,
-        ], "Get Store List SuccessFully.");
+        ], "Get Home List SuccessFully.");
     }
 }

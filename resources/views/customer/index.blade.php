@@ -13,6 +13,7 @@
                         <th>#</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Profile</th>
                         <th>Country</th>
                     </tr>
                 </thead>
@@ -46,6 +47,10 @@
                         name: 'email'
                     },
                     {
+                        data: 'profile',
+                        name: 'profile'
+                    },
+                    {
                         data: 'country_name',
                         name: 'country_name'
                     }
@@ -61,7 +66,7 @@
             const url = $(this).data('value');
             swal({
                     title: "Are you sure?",
-                    text: "You will not be able to recover this imaginary file!",
+                    text: "You will not be able to recover this record!",
                     type: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#EF5350",
@@ -94,7 +99,7 @@
                     } else {
                         swal({
                             title: "Cancelled",
-                            text: "Your imaginary file is safe :)",
+                            text: "Your record is safe!",
                             confirmButtonColor: "#2196F3",
                             type: "error"
                         });

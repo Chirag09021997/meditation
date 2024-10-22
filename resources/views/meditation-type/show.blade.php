@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-head-lable>
+    <x-head-lable backhref="{{ route('meditation-audio.index') }}">
         {{ __('Meditation Type Show') }}
     </x-head-lable>
 

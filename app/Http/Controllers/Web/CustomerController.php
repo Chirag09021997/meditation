@@ -92,7 +92,7 @@ class CustomerController extends Controller
 
     public function getData()
     {
-        $customers = Customer::select(['id', 'name', 'country_name', 'mobile_no', 'email', 'business_category', 'dob']);
+        $customers = Customer::select(['id', 'profile', 'name', 'country_name', 'mobile_no', 'email', 'business_category', 'dob']);
         return DataTables::of($customers)
             ->addColumn('action', function ($data) {
                 $viewLink = $updateLink = $deleteLink = '';
@@ -101,7 +101,10 @@ class CustomerController extends Controller
                 $deleteLink = '<a data-value = "' . route('customer.destroy', $data->id)  . '" title="Delete" class="delete_row text-red-600 cursor-pointer"><i class="far fa-trash-alt"></i></a>';
                 return "<div class='flex justify-center'> $viewLink  $updateLink  $deleteLink </div>";
             })
-            ->rawColumns(['action'])
+            ->editColumn('profile', function ($data) {
+                return '<img src="' . $data->profile . '" alt="" class="w-8 mx-auto" />';
+            })
+            ->rawColumns(['action', 'profile'])
             ->addIndexColumn()
             ->toJson();
     }

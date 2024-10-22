@@ -29,7 +29,7 @@ class StoreEventRequest extends FormRequest
             'starting_date' => 'nullable|date_format:Y-m-d H:i:s',
             'location' => 'nullable|string|max:255',
             'is_paid' => 'required|in:On,Off',
-            'fees' => 'required_if:is_paid,On|numeric|min:0',
+            'fees' => 'nullable|required_if:is_paid,On|numeric|min:0',
             'total_joining' => 'required|integer|min:0',
         ];
     }

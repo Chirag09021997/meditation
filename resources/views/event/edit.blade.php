@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-head-lable>
+    <x-head-lable backhref="{{ route('event.index') }}">
         {{ __('Event Edit') }}
     </x-head-lable>
 

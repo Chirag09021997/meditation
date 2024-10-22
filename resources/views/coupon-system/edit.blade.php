@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-head-lable>
+    <x-head-lable backhref="{{ route('coupon-system.index') }}">
         {{ __('Coupon System Edit') }}
     </x-head-lable>
 

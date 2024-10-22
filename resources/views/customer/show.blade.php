@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-head-lable>
+    <x-head-lable backhref="{{ route('customer.index') }}">
         {{ __('Customers Show') }}
     </x-head-lable>
 

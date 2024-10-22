@@ -38,6 +38,9 @@ class EventController extends Controller
             $filePath = $image->storeAs('public/uploads/event', $fileName);
             $validated['thumb_image'] = str_replace('public/', 'storage/', $filePath);
         }
+        if ($validated['fees'] == null) {
+            unset($validated['fees']);
+        }
         Event::create($validated);
         return redirect()->route('event.index')->with('success', 'Event created successfully');
     }
@@ -76,6 +79,9 @@ class EventController extends Controller
             $filePath = $image->storeAs('public/uploads/event', $fileName);
             $validated['thumb_image'] = str_replace('public/', 'storage/', $filePath);
         }
+        if ($validated['fees'] == null || $validated['is_paid'] == 'Off') {
+            $validated['fees'] = 0.00;
+        }
         $event->update($validated);
         return redirect()->route('event.index')->with('success', 'Event updated successfully');
     }
@@ -105,7 +111,7 @@ class EventController extends Controller
                 return '<input type="checkbox" data-url="' . route('event.changeStatus', $data->id) . '" ' . $checked . ' class="changeStatus">';
             })
             ->editColumn('thumb_image', function ($data) {
-                return '<img src="' . $data->thumb_image . '" alt="' . $data->name . '" class="w-8" />';
+                return '<img src="' . $data->thumb_image . '" alt="" class="w-8 mx-auto" />';
             })
             ->rawColumns(['action', 'status', 'thumb_image'])
             ->addIndexColumn()

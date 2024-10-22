@@ -60,7 +60,7 @@
             <div class="mt-4">
                 <x-input-label for="dob" :value="__('DOB')" />
                 <x-text-input id="dob" class="block mt-1 w-full" type="date" name="dob"
-                    placeholder="Enter dob" :value="old('dob')" />
+                    placeholder="Enter dob" :value="old('dob')" min="1900-01-01" />
                 <x-input-error :messages="$errors->get('dob')" class="mt-2" />
             </div>
 

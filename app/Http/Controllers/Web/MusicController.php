@@ -124,7 +124,7 @@ class MusicController extends Controller
                 return '<input type="checkbox" data-url="' . route('music.changeStatus', $data->id) . '" ' . $checked . ' class="changeStatus">';
             })
             ->editColumn('audio_thumb', function ($data) {
-                return '<img src="' . $data->audio_thumb . '" alt="' . $data->name . '" class="w-8" />';
+                return '<img src="' . $data->audio_thumb . '" alt="" class="w-8 mx-auto" />';
             })
             ->editColumn('premium_type', function ($data) {
                 return $data->premium_type == 0 ? false : true;

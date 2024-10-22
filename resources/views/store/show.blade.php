@@ -1,6 +1,6 @@
 <x-app-layout>
-    <x-head-lable>
-        {{ __('Music Show') }}
+    <x-head-lable backhref="{{ route('store.index') }}">
+        {{ __('Store Show') }}
     </x-head-lable>
 
     <div class="border-4 border-white rounded-lg p-2 sm:p-4">

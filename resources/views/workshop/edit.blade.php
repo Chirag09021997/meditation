@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-head-lable>
+    <x-head-lable backhref="{{ route('workshop.index') }}">
         {{ __('Work Shop Edit') }}
     </x-head-lable>
 

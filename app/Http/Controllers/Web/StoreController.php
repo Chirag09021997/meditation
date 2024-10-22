@@ -130,7 +130,7 @@ class StoreController extends Controller
                 return '<input type="checkbox" data-url="' . route('store.changeStatus', $data->id) . '" ' . $checked . ' class="changeStatus">';
             })
             ->editColumn('product_thumb', function ($data) {
-                return '<img src="' . $data->product_thumb . '" alt="' . $data->name . '" class="w-8" />';
+                return '<img src="' . $data->product_thumb . '" alt="" class="w-8 mx-auto" />';
             })
             ->rawColumns(['action', 'status', 'product_thumb'])
             ->addIndexColumn()

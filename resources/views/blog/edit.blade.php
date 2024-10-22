@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-head-lable>
+    <x-head-lable backhref="{{ route('blog.index') }}">
         {{ __('Blog Edit') }}
     </x-head-lable>
 

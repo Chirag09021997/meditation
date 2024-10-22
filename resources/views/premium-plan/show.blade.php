@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-head-lable>
+    <x-head-lable backhref="{{ route('premium-plan.index') }}">
         {{ __('PremiumPlan Show') }}
     </x-head-lable>
 

@@ -105,7 +105,7 @@ class BlogController extends Controller
                 return '<input type="checkbox" data-url="' . route('blog.changeStatus', $data->id) . '" ' . $checked . ' class="changeStatus">';
             })
             ->editColumn('thumb_image', function ($data) {
-                return '<img src="' . $data->thumb_image . '" alt="' . $data->name . '" class="w-8" />';
+                return '<img src="' . $data->thumb_image . '" alt="" class="w-8 mx-auto" />';
             })
             ->rawColumns(['action', 'status', 'thumb_image'])
             ->addIndexColumn()

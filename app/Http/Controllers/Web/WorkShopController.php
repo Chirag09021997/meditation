@@ -44,6 +44,9 @@ class WorkShopController extends Controller
             $filePath = $video->storeAs('public/uploads/workshop', $fileName);
             $validated['video_url'] = config('app.url') . "/" . str_replace('public/', 'storage/', $filePath);
         }
+        if ($validated['second'] == null) {
+            unset($validated['second']);
+        }
         WorkShop::create($validated);
         return redirect()->route('workshop.index')->with('success', 'Workshop created successfully');
     }
@@ -104,6 +107,9 @@ class WorkShopController extends Controller
         } else {
             unset($validated['video_url']);
         }
+        if ($validated['second'] == null) {
+            unset($validated['second']);
+        }
         $workshop->update($validated);
         return redirect()->route('workshop.index')->with('success', 'Workshop updated successfully');
     }
@@ -133,7 +139,7 @@ class WorkShopController extends Controller
                 return '<input type="checkbox" data-url="' . route('workshop.changeStatus', $data->id) . '" ' . $checked . ' class="changeStatus">';
             })
             ->editColumn('thumb_image', function ($data) {
-                return '<img src="' . $data->thumb_image . '" alt="' . $data->name . '" class="w-8" />';
+                return '<img src="' . $data->thumb_image . '" alt="" class="w-8 mx-auto" />';
             })
             ->editColumn('premium_type', function ($data) {
                 return $data->premium_type == 0 ? false : true;

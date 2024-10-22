@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-head-lable>
+    <x-head-lable  backhref="{{ route('music.index') }}">
         {{ __('Music Edit') }}
     </x-head-lable>
 

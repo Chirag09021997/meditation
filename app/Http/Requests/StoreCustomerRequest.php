@@ -24,11 +24,11 @@ class StoreCustomerRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:customers,email',
-            'mobile_no' => 'nullable|string|max:15',
+            'mobile_no' => 'nullable|string|max:15|unique:customers,mobile_no',
             'country_name' => 'nullable|string|max:255',
             'business_category' => 'nullable|string|max:255',
             'profile' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048', // 2MB max file size
-            'dob' => 'nullable|date|before:today',
+            'dob' => 'nullable|date|before:today|date_format:Y-m-d|after_or_equal:1900-01-01',
         ];
     }
 }

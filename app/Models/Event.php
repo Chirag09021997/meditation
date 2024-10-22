@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Event extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $fillable = ['name', 'thumb_image', 'short_description', 'description', 'starting_date', 'location', 'is_paid', 'fees', 'status'];
+    protected $fillable = ['name', 'thumb_image', 'short_description', 'description', 'starting_date', 'location', 'total_joining', 'is_paid', 'fees', 'status'];
 
     public function getThumbImageAttribute($value)
     {

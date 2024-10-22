@@ -26,7 +26,12 @@ class UpdateCustomerRequest extends FormRequest
             'name' => 'required|string|max:255',
             'profile' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // 2MB max file size
             'country_name' => 'required|string|max:255',
-            'mobile_no' => 'required|string|max:15',
+            'mobile_no' => [
+                'nullable',
+                'string',
+                'max:15',
+                Rule::unique('customers')->ignore($this->customer),
+            ],
             'email' => [
                 'required',
                 'email',
