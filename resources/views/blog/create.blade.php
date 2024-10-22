@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-head-lable>
+    <x-head-lable backhref="{{ route('blog.index') }}">
         {{ __('Blog Create') }}
     </x-head-lable>
     <form method="POST" action="{{ route('blog.store') }}" enctype="multipart/form-data"

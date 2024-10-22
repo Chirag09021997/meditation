@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-head-lable>
+    <x-head-lable backhref="{{ route('coupon-system.index') }}">
         {{ __('Coupon System Create') }}
     </x-head-lable>
     <form method="POST" action="{{ route('coupon-system.store') }}" enctype="multipart/form-data"

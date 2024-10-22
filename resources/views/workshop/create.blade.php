@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-head-lable>
+    <x-head-lable backhref="{{ route('workshop.index') }}">
         {{ __('Work Shop Create') }}
     </x-head-lable>
     <form method="POST" action="{{ route('workshop.store') }}" enctype="multipart/form-data"

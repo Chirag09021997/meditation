@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-head-lable>
+    <x-head-lable backhref="{{ route('music.index') }}">
         {{ __('Music Create') }}
     </x-head-lable>
     <form method="POST" action="{{ route('music.store') }}" enctype="multipart/form-data"

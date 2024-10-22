@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-head-lable>
+    <x-head-lable backhref="{{ route('meditation-audio.index') }}">
         {{ __('Meditation Audio Create') }}
     </x-head-lable>
     <form method="POST" action="{{ route('meditation-audio.store') }}" enctype="multipart/form-data"

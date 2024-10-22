@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-head-lable>
+    <x-head-lable backhref="{{ route('meditation-type.index') }}">
         {{ __('Meditation Type Create') }}
     </x-head-lable>
 
