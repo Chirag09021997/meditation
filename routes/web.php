@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Web\BlogController;
 use App\Http\Controllers\Web\CouponSystemController;
@@ -24,9 +25,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// fronted routes
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/schedule', [HomeController::class, 'schedule'])->name('schedule');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/about-2', [HomeController::class, 'aboutSec'])->name('about-2');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
