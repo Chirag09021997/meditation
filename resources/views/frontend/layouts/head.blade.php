@@ -11,7 +11,7 @@
  {{-- <!-- SITE TITLE --> --}}
  <title>Dhyana - Yoga Studio & Meditation HTML Template</title>
  {{-- <!-- Favicon Icon --> --}}
- <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png">
+ <link rel="shortcut icon" type="image/x-icon" href="assets/images/logox32.png">
  {{-- <!-- Animation CSS --> --}}
  <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">
  {{-- <!-- Latest Bootstrap min CSS --> --}}
@@ -23,7 +23,7 @@
  {{-- <!-- Icon Font CSS --> --}}
  <link rel="stylesheet" href="{{ asset('assets/css/ionicons.min.css') }}">
  {{-- <!-- FontAwesome CSS --> --}}
- {{-- <link rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}"> --}}
+ <link rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}">
  {{-- <!-- Flaticon Font CSS --> --}}
  <link rel="stylesheet" href="{{ asset('assets/css/flaticon.css') }}">
  {{-- <!-- Themify Font CSS --> --}}
@@ -41,10 +41,12 @@
  <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
  <link rel="stylesheet" id="layoutstyle" href="{{ asset('assets/color/theme-default.css') }}">
 
- <script>
+ <!-- Font Awesome CSS -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ {{-- <script>
      var sc_project = 11981757;
      var sc_invisible = 1;
      var sc_security = "35d2687e";
      var sc_https = 1;
- </script>
+ </script> --}}
  {{-- <script src="https://www.statcounter.com/counter/counter.js" async></script> --}}

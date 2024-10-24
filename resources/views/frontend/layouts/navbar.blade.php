@@ -2,9 +2,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg">
             <a class="navbar-brand" href="{{ route('home') }}">
-                <img class="logo_light" src="assets/images/logo_white.png" alt="logo" />
-                <img class="logo_dark" src="assets/images/logo_dark.png" alt="logo" />
-                <img class="logo_default" src="assets/images/logo_dark.png" alt="logo" />
+                <img class="logo_dark" src="assets/images/tejas_logo.png" alt="logo" width="195" height="55" />
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span
@@ -255,8 +253,7 @@
                 </ul>
             </div>
             <ul class="navbar-nav attr-nav align-items-center">
-                <li><a href="javascript:void(0);" class="nav-link search_trigger"><i
-                            class="ion-ios-search-strong"></i></a>
+                <li><a href="javascript:void(0);" class="nav-link search_trigger"><i class="fa fa-search"></i></a>
                     <div class="search-overlay">
                         <div class="search_wrap">
                             <form>
@@ -264,18 +261,18 @@
                                     <input type="text" placeholder="Search" class="form-control"
                                         id="search_input">
                                 </div>
-                                <button type="submit" class="search_icon"><i class="fas fa-search"></i></button>
+                                <button type="submit" class="search_icon"><i class="fa fa-search"></i></button>
                             </form>
                         </div>
                     </div>
                 </li>
                 <li class="dropdown cart_wrap">
-                    <a class="nav-link" href="#" data-toggle="dropdown"><i class="ion-android-cart"></i><span
+                    <a class="nav-link" href="#" data-toggle="dropdown"><i class="fa-solid fa-cart-shopping"></i><span
                             class="cart_count">2</span></a>
                     <div class="cart_box dropdown-menu dropdown-menu-right">
                         <ul class="cart_list">
                             <li>
-                                <a href="#" class="item_remove"><i class="ion-close"></i></a>
+                                <a href="#" class="item_remove"><i class="fa fa-times"></i></a>
                                 <a href="#"><img src="assets/images/cart_thamb1.jpg" alt="cart_thumb1">yoga
                                     mat For Exercises</a>
                                 <span class="cart_quantity"> 1 x <span class="cart_amount"> <span
@@ -283,7 +280,7 @@
                                 </span>
                             </li>
                             <li>
-                                <a href="#" class="item_remove"><i class="ion-close"></i></a>
+                                <a href="#" class="item_remove"><i class="fa fa-times"></i></a>
                                 <a href="#"><img src="assets/images/cart_thamb2.jpg" alt="cart_thumb2">Running
                                     Shoes</a>
                                 <span class="cart_quantity"> 1 x <span class="cart_amount"> <span

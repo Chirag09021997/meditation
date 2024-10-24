@@ -152,9 +152,9 @@
             </div>
             <div class="carousel_nav">
                 <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev"><i
-                        class="ion-chevron-left"></i></a>
+                        class="fa-solid fa-angle-left"></i></a>
                 <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next"><i
-                        class="ion-chevron-right"></i></a>
+                        class="fa-solid fa-angle-right"></i></a>
             </div>
         </div>
     </section>

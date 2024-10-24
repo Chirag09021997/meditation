@@ -3808,7 +3808,7 @@ footer {
 }
 
 .links_style2 li a::before {
-    content: "\f3d1";
+    /* content: "\f3d1"; */
     font-family: "Ionicons";
     font-size: 18px;
     vertical-align: middle;

@@ -136,8 +136,9 @@ class APIController extends Controller
         if ($validator->fails()) {
             return $this->sendError('Validation Error.', $validator->errors()->all(), 200);
         }
+        $validatedData = $validator->validated();
         if ($request->hasFile('profile')) {
-            if ($customer->profile != null) {
+            if ($customer && $customer?->profile != null) {
                 $basePath = str_replace(config('app.url') . '/storage', 'app/public', $customer->profile);
                 $imagePath = storage_path($basePath);
                 if (file_exists($imagePath)) {
@@ -147,9 +148,9 @@ class APIController extends Controller
             $image = $request->file('profile');
             $fileName = time() . '_' . str_replace(' ', '_', $image->getClientOriginalName());
             $filePath = $image->storeAs('public/uploads/customer', $fileName);
-            $validator['profile'] = str_replace('public/', 'storage/', $filePath);
+            $validatedData['profile'] = str_replace('public/', 'storage/', $filePath);
         }
-        $customer = Customer::updateOrCreate(['email' => $request->email], $validator);
+        $customer = Customer::updateOrCreate(['email' => $request->email], $validatedData);
         return $this->sendResponse($customer, "Customer update successFully.");
     }
 }

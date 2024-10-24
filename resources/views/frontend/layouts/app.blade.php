@@ -9,7 +9,7 @@
     {{-- <!-- LOADER --> --}}
     <div id="preloader">
         <div class="loading_wrap">
-            <img src="assets/images/loading_logo.png" alt="logo" />
+            <img src="assets/images/logo.png" alt="logo" />
         </div>
     </div>
     {{-- <!-- END LOADER --> --}}

@@ -43,7 +43,7 @@
                                 <div class="post_content">
                                     <h6><a href="#">Lorem ipsum dolor sit amet nullam consectetur adipiscing
                                             elit.</a></h6>
-                                    <span class="post_date"><i class="ion-android-time"></i>April 14, 2018</span>
+                                    <span class="post_date"><i class="fa-regular fa-clock"></i>April 14, 2018</span>
                                 </div>
                             </div>
                         </li>
@@ -52,7 +52,7 @@
                                 <div class="post_content">
                                     <h6><a href="#">Lorem ipsum dolor sit amet nullam consectetur adipiscing
                                             elit.</a></h6>
-                                    <span class="post_date"><i class="ion-android-time"></i>April 14, 2018</span>
+                                    <span class="post_date"><i class="fa-regular fa-clock"></i>April 14, 2018</span>
                                 </div>
                             </div>
                         </li>
@@ -65,7 +65,7 @@
                             <input type="text" class="form-control rounded-0" required=""
                                 placeholder="Enter Email Address">
                             <button type="submit" title="Subscribe" class="btn btn-default rounded-0" name="submit"
-                                value="Submit"><i class="ion-paper-airplane"></i></button>
+                                value="Submit"><i class="fa fa-paper-plane"></i></button>
                         </form>
                     </div>
                     <h5 class="widget_title">Stay Connected</h5>
@@ -108,7 +108,7 @@
 </footer>
 {{-- <!-- END FOOTER --> --}}
 
-<a href="#" class="scrollup" style="display: none;"><i class="ion-ios-arrow-up"></i></a>
+<a href="#" class="scrollup" style="display: none;"><i class="fa-solid fa-up-long"></i></a>
 
 {{-- <!-- Latest jQuery --> --}}
 <script src="{{ asset('assets/js/jquery-1.12.4.min.js') }}"></script>
@@ -144,4 +144,3 @@
 <script src="{{ asset('assets/js/js.cookie.js') }}"></script>
 {{-- <!-- scripts js --> --}}
 <script src="{{ asset('assets/js/scripts.js') }}"></script>
-
