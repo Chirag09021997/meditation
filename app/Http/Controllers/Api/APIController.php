@@ -149,7 +149,7 @@ class APIController extends Controller
             $filePath = $image->storeAs('public/uploads/customer', $fileName);
             $validator['profile'] = str_replace('public/', 'storage/', $filePath);
         }
-        Customer::updateOrCreate(['email' => $request->email], $validator);
-        return $this->sendResponse($request->all(), "Customer update successFully.");
+        $customer = Customer::updateOrCreate(['email' => $request->email], $validator);
+        return $this->sendResponse($customer, "Customer update successFully.");
     }
 }
