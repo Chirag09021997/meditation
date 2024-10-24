@@ -15,6 +15,8 @@ use App\Models\Store;
 use App\Models\WorkShop;
 use Faker\Provider\Medical;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class APIController extends Controller
 {
@@ -101,5 +103,53 @@ class APIController extends Controller
             'music' => $music,
             'workshop' => $workshop,
         ], "Get Home List SuccessFully.");
+    }
+
+    public function customerUpdate(Request $request)
+    {
+        $customer = Customer::where('email', $request->email)->first();
+        $rules =  [
+            'name' => 'required|string|max:255',
+            'country_name' => 'required|string|max:255',
+            'profile' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // 2MB max file size
+            'business_category' => 'nullable|string|max:255',
+            'dob' => 'required|date|before:today',
+        ];
+        if ($customer) {
+            $rules['mobile_no'] =  [
+                'nullable',
+                'string',
+                'max:15',
+                Rule::unique('customers')->ignore($customer->id),
+            ];
+            $rules['email'] = [
+                'required',
+                'email',
+                Rule::unique('customers')->ignore($customer->id),
+            ];
+        } else {
+            $rules['email'] = 'required|email|unique:customers,email';
+            $rules['mobile_no'] =  'nullable|string|max:15|unique:customers,mobile_no';
+        }
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return $this->sendError('Validation Error.', $validator->errors()->all(), 200);
+        }
+        if ($request->hasFile('profile')) {
+            if ($customer->profile != null) {
+                $basePath = str_replace(config('app.url') . '/storage', 'app/public', $customer->profile);
+                $imagePath = storage_path($basePath);
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
+                }
+            }
+            $image = $request->file('profile');
+            $fileName = time() . '_' . str_replace(' ', '_', $image->getClientOriginalName());
+            $filePath = $image->storeAs('public/uploads/customer', $fileName);
+            $validator['profile'] = str_replace('public/', 'storage/', $filePath);
+        }
+        Customer::updateOrCreate(['email' => $request->email], $validator);
+        return $this->sendResponse($request->all(), "Customer update successFully.");
     }
 }

@@ -30,3 +30,4 @@ Route::get('coupon-system', [APIController::class, 'CouponSystemList']);
 Route::get('events', [APIController::class, 'EventList']);
 Route::get('stores', [APIController::class, 'StoreList']);
 Route::get('home', [APIController::class, 'Home']);
+Route::post('customer', [APIController::class, 'customerUpdate']);

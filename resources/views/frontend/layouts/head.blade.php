@@ -40,12 +40,11 @@
  <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
  <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
  <link rel="stylesheet" id="layoutstyle" href="{{ asset('assets/color/theme-default.css') }}">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"></script>
- {{-- <script>
+
+ <script>
      var sc_project = 11981757;
      var sc_invisible = 1;
      var sc_security = "35d2687e";
      var sc_https = 1;
- </script> --}}
+ </script>
  {{-- <script src="https://www.statcounter.com/counter/counter.js" async></script> --}}
