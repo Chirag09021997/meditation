@@ -102,7 +102,7 @@
     </div>
     <div class="shape_img">
         <div class="ol_shape10">
-            <img src="assets/images/shape10.png" alt="shape36" />
+            <img src="{{ asset('assets/images/shape10.png') }}" alt="shape36" />
         </div>
     </div>
 </footer>

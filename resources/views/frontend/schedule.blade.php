@@ -2,7 +2,7 @@
 @section('content')
     {{-- <!-- START SECTION BREADCRUMB --> --}}
     <section class="breadcrumb_section page-title-light background_bg bg_fixed overlay_bg_blue_70"
-        data-img-src="assets/images/breadcrumb_bg2.jpg">
+        data-img-src="{{ asset('assets/images/breadcrumb_bg2.jpg') }}">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-sm-12 text-center">

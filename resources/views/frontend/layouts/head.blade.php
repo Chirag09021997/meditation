@@ -11,7 +11,7 @@
  {{-- <!-- SITE TITLE --> --}}
  <title>Dhyana - Yoga Studio & Meditation HTML Template</title>
  {{-- <!-- Favicon Icon --> --}}
- <link rel="shortcut icon" type="image/x-icon" href="assets/images/logox32.png">
+ <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/logox32.png') }}">
  {{-- <!-- Animation CSS --> --}}
  <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">
  {{-- <!-- Latest Bootstrap min CSS --> --}}

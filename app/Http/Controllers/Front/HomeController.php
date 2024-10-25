@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -22,8 +23,18 @@ class HomeController extends Controller
         return view('frontend.about');
     }
 
-    public function aboutSec()
+    public function eventsList()
     {
-        return view('frontend.about-2');
+        return view('frontend.events-list');
+    }
+
+    public function eventSingle(string $id)
+    {
+        return view('frontend.event-detail');
+    }
+
+    public function contact()
+    {
+        return view('frontend.contact');
     }
 }

@@ -29,7 +29,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/schedule', [HomeController::class, 'schedule'])->name('schedule');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
-Route::get('/about-2', [HomeController::class, 'aboutSec'])->name('about-2');
+Route::get('/events', [HomeController::class, 'eventsList'])->name('events');
+Route::get('/events/{id}', [HomeController::class, 'eventSingle'])->name('events.single');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

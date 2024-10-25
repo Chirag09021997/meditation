@@ -12,7 +12,7 @@
                                     <div class="banner_img text-center">
                                         <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
                                             <img data-parallax='{"y": -30, "smoothness": 20}'
-                                                src="assets/images/banner_img1.png" alt="image" />
+                                                src="{{ asset('assets/images/banner_img1.png') }}" alt="image" />
                                         </div>
                                         <div class="circle_bg1">
                                             <span></span>
@@ -46,12 +46,12 @@
                     <div class="banner_shape">
                         <div class="shape1">
                             <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                                <img src="assets/images/slider_pattern1.png" alt="image" />
+                                <img src="{{ asset('assets/images/slider_pattern1.png') }}" alt="image" />
                             </div>
                         </div>
                         <div class="shape2">
                             <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                                <img src="assets/images/slider_pattern2.png" alt="image" />
+                                <img src="{{ asset('assets/images/slider_pattern2.png') }}" alt="image" />
                             </div>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                                         <div class="animation border_img" data-animation="fadeInRight"
                                             data-animation-delay="0.5s">
                                             <img data-parallax='{"y": -30, "smoothness": 20}'
-                                                src="assets/images/banner_img2.png" alt="image" />
+                                                src="{{ asset('assets/images/banner_img2.png') }}" alt="image" />
                                         </div>
                                     </div>
                                 </div>
@@ -90,12 +90,12 @@
                     <div class="banner_shape">
                         <div class="shape3">
                             <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                                <img src="assets/images/slider_pattern3.png" alt="image" />
+                                <img src="{{ asset('assets/images/slider_pattern3.png') }}" alt="image" />
                             </div>
                         </div>
                         <div class="shape4">
                             <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                                <img src="assets/images/slider_pattern4.png" alt="image" />
+                                <img src="{{ asset('assets/images/slider_pattern4.png') }}" alt="image" />
                             </div>
                         </div>
                     </div>
@@ -108,7 +108,7 @@
                                     <div class="banner_img3 text-center">
                                         <div class="animation" data-animation="fadeInRight" data-animation-delay="0.5s">
                                             <img data-parallax='{"y": -30, "smoothness": 20}'
-                                                src="assets/images/banner_img3.png" alt="image" />
+                                                src="{{ asset('assets/images/banner_img3.png') }}" alt="image" />
                                         </div>
                                     </div>
                                 </div>
@@ -132,18 +132,18 @@
                     <div class="banner_shape">
                         <div class="shape5">
                             <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                                <img src="assets/images/slider_pattern5.png" alt="image" />
+                                <img src="{{ asset('assets/images/slider_pattern5.png') }}" alt="image" />
                             </div>
                         </div>
                         <div class="shape6">
                             <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                                <img data-parallax='{"y": 30, "smoothness": 20}' src="assets/images/slider_pattern6.png"
+                                <img data-parallax='{"y": 30, "smoothness": 20}' src="{{ asset('assets/images/slider_pattern6.png') }}"
                                     alt="image" />
                             </div>
                         </div>
                         <div class="shape7">
                             <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                                <img data-parallax='{"y": -30, "smoothness": 20}' src="assets/images/slider_pattern7.png"
+                                <img data-parallax='{"y": -30, "smoothness": 20}' src="{{ asset('assets/images/slider_pattern7.png') }}"
                                     alt="image" />
                             </div>
                         </div>
@@ -180,7 +180,7 @@
                     <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
                         data-animation-delay="0.2s">
                         <div class="box_icon">
-                            <img src="assets/images/strong-body.png" width="35" height="35" alt="strong-body">
+                            <img src="{{ asset('assets/images/strong-body.png') }}" width="35" height="35" alt="strong-body">
                         </div>
                         <div class="intro_desc">
                             <h5>Strong Body life</h5>
@@ -193,7 +193,7 @@
                     <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
                         data-animation-delay="0.3s">
                         <div class="box_icon">
-                            <img src="assets/images/flexibility.png" width="35" height="35" alt="flexibility">
+                            <img src="{{ asset('assets/images/flexibility.png') }}" width="35" height="35" alt="flexibility">
                         </div>
                         <div class="intro_desc">
                             <h5>increased flexibility</h5>
@@ -206,7 +206,7 @@
                     <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
                         data-animation-delay="0.4s">
                         <div class="box_icon">
-                            <img src="assets/images/healthy-lifestyle.png" width="35" height="35" alt="healthy-lifestyle">
+                            <img src="{{ asset('assets/images/healthy-lifestyle.png') }}" width="35" height="35" alt="healthy-lifestyle">
                         </div>
                         <div class="intro_desc">
                             <h5>healthy lifestyle</h5>
@@ -219,7 +219,7 @@
                     <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
                         data-animation-delay="0.2s">
                         <div class="box_icon">
-                            <img src="assets/images/blood-flow.png" width="35" height="35" alt="blood-flow">
+                            <img src="{{ asset('assets/images/blood-flow.png') }}" width="35" height="35" alt="blood-flow">
                         </div>
                         <div class="intro_desc">
                             <h5>Increases blood flow </h5>
@@ -232,7 +232,7 @@
                     <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
                         data-animation-delay="0.3s">
                         <div class="box_icon">
-                            <img src="assets/images/drops-blood.png" width="35" height="35" alt="drops-blood">
+                            <img src="{{ asset('assets/images/drops-blood.png') }}" width="35" height="35" alt="drops-blood">
                         </div>
                         <div class="intro_desc">
                             <h5>Drops blood pressure</h5>
@@ -245,7 +245,7 @@
                     <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
                         data-animation-delay="0.4s">
                         <div class="box_icon">
-                            <img src="assets/images/adrenal-gland.png" width="35" height="35" alt="adrenal-gland">
+                            <img src="{{ asset('assets/images/adrenal-gland.png') }}" width="35" height="35" alt="adrenal-gland">
                         </div>
                         <div class="intro_desc">
                             <h5>Regulates adrenal gland</h5>
@@ -276,7 +276,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="about_img animation" data-animation="fadeInUp" data-animation-delay="0.2s">
-                        <img data-parallax='{"y": -30, "smoothness": 20}' src="assets/images/about_img.png"
+                        <img data-parallax='{"y": -30, "smoothness": 20}' src="{{ asset('assets/images/about_img.png') }}"
                             alt="about_img" />
                     </div>
                 </div>
@@ -285,22 +285,22 @@
         <div class="shape_img">
             <div class="ol_shape1">
                 <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <img src="assets/images/shape1.png" alt="image" />
+                    <img src="{{ asset('assets/images/shape1.png') }}" alt="image" />
                 </div>
             </div>
             <div class="ol_shape2">
                 <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <img src="assets/images/shape2.png" alt="image" />
+                    <img src="{{ asset('assets/images/shape2.png') }}" alt="image" />
                 </div>
             </div>
             <div class="ol_shape3">
                 <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <img src="assets/images/shape3.png" alt="image" />
+                    <img src="{{ asset('assets/images/shape3.png') }}" alt="image" />
                 </div>
             </div>
             <div class="ol_shape4">
                 <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <img src="assets/images/shape4.png" alt="image" />
+                    <img src="{{ asset('assets/images/shape4.png') }}" alt="image" />
                 </div>
             </div>
         </div>
@@ -326,14 +326,14 @@
                 <div class="col-lg-4 col-sm-6">
                     <div class="classes_box box_shadow1 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
                         <div class="classes_img">
-                            <img src="assets/images/classes_img1.jpg" alt="image" />
+                            <img src="{{ asset('assets/images/classes_img1.jpg') }}" alt="image" />
                             <div class="link_container">
                                 <a href="#"><i class="fa-solid fa-plus"></i></a>
                             </div>
                         </div>
                         <div class="classes_info">
                             <div class="classes_teacher">
-                                <img src="assets/images/cl_teacher_img1.jpg" alt="image" />
+                                <img src="{{ asset('assets/images/cl_teacher_img1.jpg') }}" alt="image" />
                                 <span>Maria</span>
                             </div>
                             <div class="classes_title">
@@ -341,8 +341,8 @@
                                 <h4><a href="#">Yoga For Beginners</a></h4>
                             </div>
                             <ul class="classes_schedule">
-                                <li><i class="ion-calendar"></i>Mon, Thu, Fri</li>
-                                <li><i class="ion-android-alarm-clock"></i>9:00 - 11:00</li>
+                                <li><i class="far fa-calendar"></i>Mon, Thu, Fri</li>
+                                <li><i class="far fa-clock"></i>9:00 - 11:00</li>
                             </ul>
                         </div>
                     </div>
@@ -350,14 +350,14 @@
                 <div class="col-lg-4 col-sm-6">
                     <div class="classes_box box_shadow1 animation" data-animation="fadeInUp" data-animation-delay="0.3s">
                         <div class="classes_img">
-                            <img src="assets/images/classes_img2.jpg" alt="image" />
+                            <img src="{{ asset('assets/images/classes_img2.jpg') }}" alt="image" />
                             <div class="link_container">
                                 <a href="#"><i class="fa-solid fa-plus"></i></a>
                             </div>
                         </div>
                         <div class="classes_info">
                             <div class="classes_teacher">
-                                <img src="assets/images/cl_teacher_img2.jpg" alt="image" />
+                                <img src="{{ asset('assets/images/cl_teacher_img2.jpg') }}" alt="image" />
                                 <span>Elena</span>
                             </div>
                             <div class="classes_title">
@@ -365,8 +365,8 @@
                                 <h4><a href="#">Balance Body & Mind</a></h4>
                             </div>
                             <ul class="classes_schedule">
-                                <li><i class="ion-calendar"></i>Tue, Wed, Sat</li>
-                                <li><i class="ion-android-alarm-clock"></i>9:00 - 11:00</li>
+                                <li><i class="far fa-calendar"></i>Tue, Wed, Sat</li>
+                                <li><i class="far fa-clock"></i>9:00 - 11:00</li>
                             </ul>
                         </div>
                     </div>
@@ -374,14 +374,14 @@
                 <div class="col-lg-4 col-sm-6">
                     <div class="classes_box box_shadow1 animation" data-animation="fadeInUp" data-animation-delay="0.4s">
                         <div class="classes_img">
-                            <img src="assets/images/classes_img3.jpg" alt="image" />
+                            <img src="{{ asset('assets/images/classes_img3.jpg') }}" alt="image" />
                             <div class="link_container">
                                 <a href="#"><i class="fa-solid fa-plus"></i></a>
                             </div>
                         </div>
                         <div class="classes_info">
                             <div class="classes_teacher">
-                                <img src="assets/images/cl_teacher_img3.jpg" alt="image" />
+                                <img src="{{ asset('assets/images/cl_teacher_img3.jpg') }}" alt="image" />
                                 <span>Regina</span>
                             </div>
                             <div class="classes_title">
@@ -389,8 +389,8 @@
                                 <h4><a href="#">Increased Flexibility</a></h4>
                             </div>
                             <ul class="classes_schedule">
-                                <li><i class="ion-calendar"></i>Mon, Thu, Fri</li>
-                                <li><i class="ion-android-alarm-clock"></i>11:00 - 12:00</li>
+                                <li><i class="far fa-calendar"></i>Mon, Thu, Fri</li>
+                                <li><i class="far fa-clock"></i>11:00 - 12:00</li>
                             </ul>
                         </div>
                     </div>
@@ -398,14 +398,14 @@
                 <div class="col-lg-4 col-sm-6">
                     <div class="classes_box box_shadow1 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
                         <div class="classes_img">
-                            <img src="assets/images/classes_img4.jpg" alt="image" />
+                            <img src="{{ asset('assets/images/classes_img4.jpg') }}" alt="image" />
                             <div class="link_container">
                                 <a href="#"><i class="fa-solid fa-plus"></i></a>
                             </div>
                         </div>
                         <div class="classes_info">
                             <div class="classes_teacher">
-                                <img src="assets/images/cl_teacher_img4.jpg" alt="image" />
+                                <img src="{{ asset('assets/images/cl_teacher_img4.jpg') }}" alt="image" />
                                 <span>Dayna</span>
                             </div>
                             <div class="classes_title">
@@ -413,8 +413,8 @@
                                 <h4><a href="#">Improves Body Posture</a></h4>
                             </div>
                             <ul class="classes_schedule">
-                                <li><i class="ion-calendar"></i>Tue, Wed, Fri</li>
-                                <li><i class="ion-android-alarm-clock"></i>12:00 - 01:00</li>
+                                <li><i class="far fa-calendar"></i>Tue, Wed, Fri</li>
+                                <li><i class="far fa-clock"></i>12:00 - 01:00</li>
                             </ul>
                         </div>
                     </div>
@@ -422,14 +422,14 @@
                 <div class="col-lg-4 col-sm-6">
                     <div class="classes_box box_shadow1 animation" data-animation="fadeInUp" data-animation-delay="0.3s">
                         <div class="classes_img">
-                            <img src="assets/images/classes_img5.jpg" alt="image" />
+                            <img src="{{ asset('assets/images/classes_img5.jpg') }}" alt="image" />
                             <div class="link_container">
                                 <a href="#"><i class="fa-solid fa-plus"></i></a>
                             </div>
                         </div>
                         <div class="classes_info">
                             <div class="classes_teacher">
-                                <img src="assets/images/cl_teacher_img1.jpg" alt="image" />
+                                <img src="{{ asset('assets/images/cl_teacher_img1.jpg') }}" alt="image" />
                                 <span>Maria</span>
                             </div>
                             <div class="classes_title">
@@ -437,8 +437,8 @@
                                 <h4><a href="#">Better Energy Flow</a></h4>
                             </div>
                             <ul class="classes_schedule">
-                                <li><i class="ion-calendar"></i>Mon, Thu, Fri</li>
-                                <li><i class="ion-android-alarm-clock"></i>11:00 - 12:00</li>
+                                <li><i class="far fa-calendar"></i>Mon, Thu, Fri</li>
+                                <li><i class="far fa-clock"></i>11:00 - 12:00</li>
                             </ul>
                         </div>
                     </div>
@@ -446,14 +446,14 @@
                 <div class="col-lg-4 col-sm-6">
                     <div class="classes_box box_shadow1 animation" data-animation="fadeInUp" data-animation-delay="0.4s">
                         <div class="classes_img">
-                            <img src="assets/images/classes_img6.jpg" alt="image" />
+                            <img src="{{ asset('assets/images/classes_img6.jpg') }}" alt="image" />
                             <div class="link_container">
                                 <a href="#"><i class="fa-solid fa-plus"></i></a>
                             </div>
                         </div>
                         <div class="classes_info">
                             <div class="classes_teacher">
-                                <img src="assets/images/cl_teacher_img2.jpg" alt="image" />
+                                <img src="{{ asset('assets/images/cl_teacher_img2.jpg') }}" alt="image" />
                                 <span>Elena</span>
                             </div>
                             <div class="classes_title">
@@ -461,8 +461,8 @@
                                 <h4><a href="#">Increased body awareness</a></h4>
                             </div>
                             <ul class="classes_schedule">
-                                <li><i class="ion-calendar"></i>Mon, Thu, Fri</li>
-                                <li><i class="ion-android-alarm-clock"></i>9:00 - 11:00</li>
+                                <li><i class="far fa-calendar"></i>Mon, Thu, Fri</li>
+                                <li><i class="far fa-clock"></i>9:00 - 11:00</li>
                             </ul>
                         </div>
                     </div>
@@ -489,17 +489,17 @@
         <div class="shape_img">
             <div class="ol_shape5">
                 <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <img src="assets/images/shape5.png" alt="image" />
+                    <img src="{{ asset('assets/images/shape5.png') }}" alt="image" />
                 </div>
             </div>
             <div class="ol_shape6">
                 <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <img src="assets/images/shape6.png" alt="image" />
+                    <img src="{{ asset('assets/images/shape6.png') }}" alt="image" />
                 </div>
             </div>
             <div class="ol_shape7">
                 <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <img data-parallax='{"x": 20, "smoothness": 20}' src="assets/images/shape7.png" alt="image" />
+                    <img data-parallax='{"x": 20, "smoothness": 20}' src="{{ asset('assets/images/shape7.png') }}" alt="image" />
                 </div>
             </div>
         </div>
@@ -955,12 +955,12 @@
         <div class="shape_img">
             <div class="ol_shape8">
                 <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <img src="assets/images/shape8.png" alt="image" />
+                    <img src="{{ asset('assets/images/shape8.png') }}" alt="image" />
                 </div>
             </div>
             <div class="ol_shape9">
                 <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <img src="assets/images/shape9.png" alt="image" />
+                    <img src="{{ asset('assets/images/shape9.png') }}" alt="image" />
                 </div>
             </div>
         </div>
@@ -990,7 +990,7 @@
                         <div class="testimonial_box">
                             <div class="testi_meta">
                                 <div class="testimonial_img">
-                                    <img src="assets/images/client_img1.jpg" alt="client">
+                                    <img src="{{ asset('assets/images/client_img1.jpg') }}" alt="client">
                                 </div>
                                 <div class="testi_user">
                                     <h5>Merry Walter</h5>
@@ -1005,7 +1005,7 @@
                         <div class="testimonial_box">
                             <div class="testi_meta">
                                 <div class="testimonial_img">
-                                    <img src="assets/images/client_img2.jpg" alt="client">
+                                    <img src="{{ asset('assets/images/client_img2.jpg') }}" alt="client">
                                 </div>
                                 <div class="testi_user">
                                     <h5>Elena Mark</h5>
@@ -1020,7 +1020,7 @@
                         <div class="testimonial_box">
                             <div class="testi_meta">
                                 <div class="testimonial_img">
-                                    <img src="assets/images/client_img3.jpg" alt="client">
+                                    <img src="{{ asset('assets/images/client_img3.jpg') }}" alt="client">
                                 </div>
                                 <div class="testi_user">
                                     <h5>Calvin William</h5>
@@ -1035,7 +1035,7 @@
                         <div class="testimonial_box">
                             <div class="testi_meta">
                                 <div class="testimonial_img">
-                                    <img src="assets/images/client_img4.jpg" alt="client">
+                                    <img src="{{ asset('assets/images/client_img4.jpg') }}" alt="client">
                                 </div>
                                 <div class="testi_user">
                                     <h5>Maria Wolter</h5>
@@ -1073,7 +1073,7 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.2s">
                         <div class="team_img">
-                            <img src="assets/images/team1.jpg" alt="team1">
+                            <img src="{{ asset('assets/images/team1.jpg') }}" alt="team1">
                             <ul class="list_none social_icons social_style1 rounded_social">
                                 <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                                 <li><a href="#"><i class="fab fa-twitter"></i></a></li>
@@ -1092,7 +1092,7 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.3s">
                         <div class="team_img">
-                            <img src="assets/images/team2.jpg" alt="team2">
+                            <img src="{{ asset('assets/images/team2.jpg') }}" alt="team2">
                             <ul class="list_none social_icons social_style1 rounded_social">
                                 <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                                 <li><a href="#"><i class="fab fa-twitter"></i></a></li>
@@ -1111,7 +1111,7 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.4s">
                         <div class="team_img">
-                            <img src="assets/images/team3.jpg" alt="team3">
+                            <img src="{{ asset('assets/images/team3.jpg') }}" alt="team3">
                             <ul class="list_none social_icons social_style1 rounded_social">
                                 <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                                 <li><a href="#"><i class="fab fa-twitter"></i></a></li>
@@ -1130,7 +1130,7 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.5s">
                         <div class="team_img">
-                            <img src="assets/images/team4.jpg" alt="team4">
+                            <img src="{{ asset('assets/images/team4.jpg') }}" alt="team4">
                             <ul class="list_none social_icons social_style1 rounded_social">
                                 <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                                 <li><a href="#"><i class="fab fa-twitter"></i></a></li>
@@ -1171,13 +1171,13 @@
                     <div class="blog_post box_shadow4 animation" data-animation="fadeInUp" data-animation-delay="0.3s">
                         <div class="blog_img">
                             <a href="#">
-                                <img src="assets/images/blog_small_img1.jpg" alt="blog_small_img1">
+                                <img src="{{ asset('assets/images/blog_small_img1.jpg') }}" alt="blog_small_img1">
                             </a>
                         </div>
                         <div class="blog_content">
                             <h5 class="blog_title"><a href="#">Varius Phasellus blandit massa enim</a></h5>
                             <ul class="list_none blog_meta">
-                                <li><a href="#"><img src="assets/images/cl_teacher_img1.jpg"
+                                <li><a href="#"><img src="{{ asset('assets/images/cl_teacher_img1.jpg') }}"
                                             alt="image"><span>Dayna</span></a></li>
                                 <li><a href="#"><i class="far fa-calendar"></i>Mar 23, 2018</a></li>
                                 <li><a href="#"><i class="far fa-comments"></i>4</a></li>
@@ -1192,13 +1192,13 @@
                     <div class="blog_post box_shadow4 animation" data-animation="fadeInUp" data-animation-delay="0.4s">
                         <div class="blog_img">
                             <a href="#">
-                                <img src="assets/images/blog_small_img2.jpg" alt="blog_small_img2">
+                                <img src="{{ asset('assets/images/blog_small_img2.jpg" alt="blog_small_img2') }}">
                             </a>
                         </div>
                         <div class="blog_content">
                             <h5 class="blog_title"><a href="#">Varius Phasellus blandit massa enim</a></h5>
                             <ul class="list_none blog_meta">
-                                <li><a href="#"><img src="assets/images/cl_teacher_img3.jpg"
+                                <li><a href="#"><img src="{{ asset('assets/images/cl_teacher_img3.jpg') }}"
                                             alt="image"><span>Dayna</span></a></li>
                                 <li><a href="#"><i class="far fa-calendar"></i>Mar 23, 2018</a></li>
                                 <li><a href="#"><i class="far fa-comments"></i>4</a></li>
@@ -1213,13 +1213,13 @@
                     <div class="blog_post box_shadow4 animation" data-animation="fadeInUp" data-animation-delay="0.5s">
                         <div class="blog_img">
                             <a href="#">
-                                <img src="assets/images/blog_small_img3.jpg" alt="blog_small_img3">
+                                <img src="{{ asset('assets/images/blog_small_img3.jpg') }}" alt="blog_small_img3">
                             </a>
                         </div>
                         <div class="blog_content">
                             <h5 class="blog_title"><a href="#">Varius Phasellus blandit massa enim</a></h5>
                             <ul class="list_none blog_meta">
-                                <li><a href="#"><img src="assets/images/cl_teacher_img4.jpg"
+                                <li><a href="#"><img src="{{ asset('assets/images/cl_teacher_img4.jpg') }}"
                                             alt="image"><span>Dayna</span></a></li>
                                 <li><a href="#"><i class="far fa-calendar"></i>Mar 23, 2018</a></li>
                                 <li><a href="#"><i class="far fa-comments"></i>4</a></li>

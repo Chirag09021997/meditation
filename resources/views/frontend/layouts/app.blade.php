@@ -9,7 +9,7 @@
     {{-- <!-- LOADER --> --}}
     <div id="preloader">
         <div class="loading_wrap">
-            <img src="assets/images/logo.png" alt="logo" />
+            <img src="{{ asset('assets/images/logo.png') }}" alt="logo" />
         </div>
     </div>
     {{-- <!-- END LOADER --> --}}

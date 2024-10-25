@@ -18,23 +18,6 @@
                 </div>
             </div>
         </div>
-        <div class="shape_img">
-            <div class="ol_shape11">
-                <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <img src="assets/images/shape11.png" alt="image">
-                </div>
-            </div>
-            <div class="ol_shape12">
-                <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <img src="assets/images/shape12.png" alt="image">
-                </div>
-            </div>
-            <div class="ol_shape13">
-                <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <img src="assets/images/shape7.png" alt="image">
-                </div>
-            </div>
-        </div>
     </section>
     {{-- <!-- END SECTION BREADCRUMB --> --}}
 
@@ -44,9 +27,9 @@
             <div class="row align-items-center">
                 <div class="col-md-6 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
                     <div class="video_box overlay_bg_30 mb-3 mb-sm-4 mb-md-0">
-                        <img src="assets/images/about_video.jpg" alt="about_img11">
+                        <img src="{{ asset('assets/images/about_video.jpg') }}" alt="about_img11">
                         <a href="https://www.youtube.com/watch?v=7e90gBu4pas" class="video_popup video_play"><span
-                                class="ripple"><i class="ion-play"></i></span></a>
+                                class="ripple"><i class="fa-solid fa-play"></i></span></a>
                     </div>
                 </div>
                 <div class="col-md-6 animation" data-animation="fadeInUp" data-animation-delay="0.3s">
@@ -85,7 +68,8 @@
                     <div class="icon_box box_shadow4 icon_box_style2 animation" data-animation="fadeInRight"
                         data-animation-delay="0.2s">
                         <div class="box_icon">
-                            <i class="flaticon-strong-body"></i>
+                            <img src="{{ asset('assets/images/strong-body.png') }}" width="35" height="35"
+                                alt="strong-body">
                         </div>
                         <div class="intro_desc">
                             <h5>Strong Body life</h5>
@@ -96,7 +80,8 @@
                     <div class="icon_box box_shadow4 icon_box_style2 animation" data-animation="fadeInRight"
                         data-animation-delay="0.3s">
                         <div class="box_icon">
-                            <i class="flaticon-flexibility"></i>
+                            <img src="{{ asset('assets/images/flexibility.png') }}" width="35" height="35"
+                                alt="flexibility">
                         </div>
                         <div class="intro_desc">
                             <h5>increased flexibility</h5>
@@ -109,7 +94,8 @@
                     <div class="icon_box box_shadow4 icon_box_style2 animation" data-animation="fadeInLeft"
                         data-animation-delay="0.2s">
                         <div class="box_icon">
-                            <i class="flaticon-healthy-lifestyle"></i>
+                            <img src="{{ asset('assets/images/healthy-lifestyle.png') }}" width="35" height="35"
+                                alt="healthy-lifestyle">
                         </div>
                         <div class="intro_desc">
                             <h5>healthy lifestyle</h5>
@@ -120,7 +106,8 @@
                     <div class="icon_box box_shadow4 icon_box_style2 animation" data-animation="fadeInLeft"
                         data-animation-delay="0.3s">
                         <div class="box_icon">
-                            <i class="flaticon-drops-blood"></i>
+                            <img src="{{ asset('assets/images/drops-blood.png') }}" width="35" height="35"
+                                alt="drops-blood">
                         </div>
                         <div class="intro_desc">
                             <h5>Drops blood pressure</h5>
@@ -131,7 +118,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="text-center benifits_bg animation" data-animation="fadeInUp" data-animation-delay="0.2s">
-                        <img src="assets/images/benifits_img.png" alt="benifits_img" />
+                        <img src="{{ asset('assets/images/benifits_img.png') }}" alt="benifits_img" />
                     </div>
                 </div>
             </div>
@@ -163,7 +150,7 @@
                         <div class="testimonial_box">
                             <div class="testi_meta">
                                 <div class="testimonial_img">
-                                    <img src="assets/images/client_img1.jpg" alt="client">
+                                    <img src="{{ asset('assets/images/client_img1.jpg') }}" alt="client">
                                 </div>
                                 <div class="testi_user">
                                     <h5>Merry Walter</h5>
@@ -178,7 +165,7 @@
                         <div class="testimonial_box">
                             <div class="testi_meta">
                                 <div class="testimonial_img">
-                                    <img src="assets/images/client_img2.jpg" alt="client">
+                                    <img src="{{ asset('assets/images/client_img2.jpg') }}" alt="client">
                                 </div>
                                 <div class="testi_user">
                                     <h5>Elena Mark</h5>
@@ -193,7 +180,7 @@
                         <div class="testimonial_box">
                             <div class="testi_meta">
                                 <div class="testimonial_img">
-                                    <img src="assets/images/client_img3.jpg" alt="client">
+                                    <img src="{{ asset('assets/images/client_img3.jpg') }}" alt="client">
                                 </div>
                                 <div class="testi_user">
                                     <h5>Calvin William</h5>
@@ -208,7 +195,7 @@
                         <div class="testimonial_box">
                             <div class="testi_meta">
                                 <div class="testimonial_img">
-                                    <img src="assets/images/client_img4.jpg" alt="client">
+                                    <img src="{{ asset('assets/images/client_img4.jpg') }}" alt="client">
                                 </div>
                                 <div class="testi_user">
                                     <h5>Maria Wolter</h5>
@@ -228,33 +215,33 @@
     {{-- <!-- END SECTION TESTIMONIAL --> --}}
 
     {{-- <!-- START SECTION COUNTER --> --}}
-    <section class="overlay_bg_70 parallax_bg" data-parallax-bg-image="assets/images/counter_bg.jpg">
+    <section class="overlay_bg_70 parallax_bg" data-parallax-bg-image="{{ asset('assets/images/counter_bg.jpg') }}">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-6 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
                     <div class="box_counter counter_white text-center">
-                        <i class="flaticon-trainers"></i>
+                        <i class="fa-solid fa-child"></i>
                         <h3 class="counter_text"><span class="counter">18</span>+</h3>
                         <p>Our Trainers</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-6 animation" data-animation="fadeInUp" data-animation-delay="0.3s">
                     <div class="box_counter counter_white text-center">
-                        <i class="flaticon-trophy"></i>
+                        <i class="fa-solid fa-trophy"></i>
                         <h3 class="counter_text"><span class="counter">15</span>+</h3>
                         <p>Win Awards</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-6 animation" data-animation="fadeInUp" data-animation-delay="0.4s">
                     <div class="box_counter counter_white text-center">
-                        <i class="flaticon-users"></i>
+                        <i class="fa-solid fa-users"></i>
                         <h3 class="counter_text"><span class="counter">1800</span>+</h3>
                         <p>Happy Member</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-6 animation" data-animation="fadeInUp" data-animation-delay="0.5s">
                     <div class="box_counter counter_white text-center">
-                        <i class="flaticon-classes"></i>
+                        <i class="fa-solid fa-school"></i>
                         <h3 class="counter_text"><span class="counter">45</span>+</h3>
                         <p>Monthly Classes</p>
                     </div>
@@ -265,7 +252,7 @@
     {{-- <!-- END SECTION COUNTER --> --}}
 
     {{-- <!-- START SECTION TEACHER --> --}}
-    <section class="pb_70">
+    <section class="bg_light_pink pb_70">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-8 col-md-10 text-center animation" data-animation="fadeInUp"
@@ -283,17 +270,17 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.2s">
                         <div class="team_img">
-                            <img src="assets/images/team1.jpg" alt="team1">
+                            <img src="{{ asset('assets/images/team1.jpg') }}" alt="team1">
                             <ul class="list_none social_icons social_style1 rounded_social">
-                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
-                                <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                             </ul>
                         </div>
                         <div class="team_info text-center">
                             <div class="team_title">
-                                <h5>Alea Brooks</h5>
+                                <h5><a href="#">Elena Mark</a></h5>
                                 <span>Yoga Teacher</span>
                             </div>
                         </div>
@@ -302,17 +289,17 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.3s">
                         <div class="team_img">
-                            <img src="assets/images/team2.jpg" alt="team2">
+                            <img src="{{ asset('assets/images/team2.jpg') }}" alt="team2">
                             <ul class="list_none social_icons social_style1 rounded_social">
-                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
-                                <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                             </ul>
                         </div>
                         <div class="team_info text-center">
                             <div class="team_title">
-                                <h5>Alea Brooks</h5>
+                                <h5><a href="#">Grace Wong</a></h5>
                                 <span>Yoga Teacher</span>
                             </div>
                         </div>
@@ -321,17 +308,17 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.4s">
                         <div class="team_img">
-                            <img src="assets/images/team3.jpg" alt="team3">
+                            <img src="{{ asset('assets/images/team3.jpg') }}" alt="team3">
                             <ul class="list_none social_icons social_style1 rounded_social">
-                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
-                                <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                             </ul>
                         </div>
                         <div class="team_info text-center">
                             <div class="team_title">
-                                <h5>Alea Brooks</h5>
+                                <h5><a href="#">Maria Redwood</a></h5>
                                 <span>Yoga Teacher</span>
                             </div>
                         </div>
@@ -340,17 +327,17 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.5s">
                         <div class="team_img">
-                            <img src="assets/images/team4.jpg" alt="team4">
+                            <img src="{{ asset('assets/images/team4.jpg') }}" alt="team4">
                             <ul class="list_none social_icons social_style1 rounded_social">
-                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
-                                <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                             </ul>
                         </div>
                         <div class="team_info text-center">
                             <div class="team_title">
-                                <h5>Alea Brooks</h5>
+                                <h5><a href="#">Merry Walter</a></h5>
                                 <span>Yoga Teacher</span>
                             </div>
                         </div>
