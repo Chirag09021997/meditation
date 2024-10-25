@@ -45,6 +45,12 @@ class APIController extends Controller
     public function MeditationAudioList(Request $request)
     {
         $perPage = $request->input('per_page', 10);
+        $id = $request->input('id', 0);
+        if ($id > 0) {
+            MeditationAudio::where('id', $id)->increment('total_view', 1);
+            $meditationAudio =  MeditationAudio::with('premiumPlans:id,name')->select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view')->where('status', 'Active')->find($id);
+            return $this->sendResponse($meditationAudio, "Get Meditation Audio Record SuccessFully.");
+        }
         $meditationAudio = MeditationAudio::with('premiumPlans:id,name')->select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view')->where('status', 'Active')->simplePaginate($perPage);
         return $this->sendResponse($meditationAudio, "Get Meditation Audio List SuccessFully.");
     }
@@ -52,6 +58,12 @@ class APIController extends Controller
     public function MusicList(Request $request)
     {
         $perPage = $request->input('per_page', 10);
+        $id = $request->input('id', 0);
+        if ($id > 0) {
+            Music::where('id', $id)->increment('total_view', 1);
+            $music =  Music::select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view')->where('status', 'Active')->find($id);
+            return $this->sendResponse($music, "Get Music Record SuccessFully.");
+        }
         $music = Music::select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view')->where('status', 'Active')->simplePaginate($perPage);
         return $this->sendResponse($music, "Get Music List SuccessFully.");
     }
@@ -59,6 +71,12 @@ class APIController extends Controller
     public function WorkShopList(Request $request)
     {
         $perPage = $request->input('per_page', 10);
+        $id = $request->input('id', 0);
+        if ($id > 0) {
+            WorkShop::where('id', $id)->increment('total_view', 1);
+            $workShop =  WorkShop::select('id', 'name', 'short_description', 'description', 'thumb_image',  'video_url', 'premium_type', 'second', 'total_view')->where('status', 'Active')->find($id);
+            return $this->sendResponse($workShop, "Get WorkShop Record SuccessFully.");
+        }
         $workShop = WorkShop::select('id', 'name', 'short_description', 'description', 'thumb_image',  'video_url', 'premium_type', 'second', 'total_view')->where('status', 'Active')->simplePaginate($perPage);
         return $this->sendResponse($workShop, "Get WorkShop List SuccessFully.");
     }

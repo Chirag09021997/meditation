@@ -1383,15 +1383,15 @@ button:focus {
 .dropdown-toggle::after,
 .dropdown-toggler::after {
     border: 0 none;
-    content: "\f3d0";
-    font-family: "Ionicons";
+    content: "\f0d7";
+    font-family: "Font Awesome 5 Free";
     height: auto;
     line-height: normal;
     margin-left: 5px;
     vertical-align: middle;
     width: auto;
     transition: all 0.3s ease-in-out;
-    font-weight: 100;
+    font-weight: 900;
 }
 
 .dd_main_arrow_none .navbar .navbar-nav>li>.nav-link.dropdown-toggle::after {

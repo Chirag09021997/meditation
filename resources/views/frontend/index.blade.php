@@ -180,7 +180,7 @@
                     <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
                         data-animation-delay="0.2s">
                         <div class="box_icon">
-                            <i class="flaticon-strong-body"></i>
+                            <img src="assets/images/strong-body.png" width="35" height="35" alt="strong-body">
                         </div>
                         <div class="intro_desc">
                             <h5>Strong Body life</h5>
@@ -193,7 +193,7 @@
                     <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
                         data-animation-delay="0.3s">
                         <div class="box_icon">
-                            <i class="flaticon-flexibility"></i>
+                            <img src="assets/images/flexibility.png" width="35" height="35" alt="flexibility">
                         </div>
                         <div class="intro_desc">
                             <h5>increased flexibility</h5>
@@ -206,7 +206,7 @@
                     <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
                         data-animation-delay="0.4s">
                         <div class="box_icon">
-                            <i class="flaticon-healthy-lifestyle"></i>
+                            <img src="assets/images/healthy-lifestyle.png" width="35" height="35" alt="healthy-lifestyle">
                         </div>
                         <div class="intro_desc">
                             <h5>healthy lifestyle</h5>
@@ -219,7 +219,7 @@
                     <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
                         data-animation-delay="0.2s">
                         <div class="box_icon">
-                            <i class="flaticon-blood-flow"></i>
+                            <img src="assets/images/blood-flow.png" width="35" height="35" alt="blood-flow">
                         </div>
                         <div class="intro_desc">
                             <h5>Increases blood flow </h5>
@@ -232,7 +232,7 @@
                     <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
                         data-animation-delay="0.3s">
                         <div class="box_icon">
-                            <i class="flaticon-drops-blood"></i>
+                            <img src="assets/images/drops-blood.png" width="35" height="35" alt="drops-blood">
                         </div>
                         <div class="intro_desc">
                             <h5>Drops blood pressure</h5>
@@ -245,7 +245,7 @@
                     <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
                         data-animation-delay="0.4s">
                         <div class="box_icon">
-                            <i class="flaticon-adrenal-gland"></i>
+                            <img src="assets/images/adrenal-gland.png" width="35" height="35" alt="adrenal-gland">
                         </div>
                         <div class="intro_desc">
                             <h5>Regulates adrenal gland</h5>
@@ -328,7 +328,7 @@
                         <div class="classes_img">
                             <img src="assets/images/classes_img1.jpg" alt="image" />
                             <div class="link_container">
-                                <a href="#"><i class="ion-plus"></i></a>
+                                <a href="#"><i class="fa-solid fa-plus"></i></a>
                             </div>
                         </div>
                         <div class="classes_info">
@@ -352,7 +352,7 @@
                         <div class="classes_img">
                             <img src="assets/images/classes_img2.jpg" alt="image" />
                             <div class="link_container">
-                                <a href="#"><i class="ion-plus"></i></a>
+                                <a href="#"><i class="fa-solid fa-plus"></i></a>
                             </div>
                         </div>
                         <div class="classes_info">
@@ -376,7 +376,7 @@
                         <div class="classes_img">
                             <img src="assets/images/classes_img3.jpg" alt="image" />
                             <div class="link_container">
-                                <a href="#"><i class="ion-plus"></i></a>
+                                <a href="#"><i class="fa-solid fa-plus"></i></a>
                             </div>
                         </div>
                         <div class="classes_info">
@@ -400,7 +400,7 @@
                         <div class="classes_img">
                             <img src="assets/images/classes_img4.jpg" alt="image" />
                             <div class="link_container">
-                                <a href="#"><i class="ion-plus"></i></a>
+                                <a href="#"><i class="fa-solid fa-plus"></i></a>
                             </div>
                         </div>
                         <div class="classes_info">
@@ -424,7 +424,7 @@
                         <div class="classes_img">
                             <img src="assets/images/classes_img5.jpg" alt="image" />
                             <div class="link_container">
-                                <a href="#"><i class="ion-plus"></i></a>
+                                <a href="#"><i class="fa-solid fa-plus"></i></a>
                             </div>
                         </div>
                         <div class="classes_info">
@@ -448,7 +448,7 @@
                         <div class="classes_img">
                             <img src="assets/images/classes_img6.jpg" alt="image" />
                             <div class="link_container">
-                                <a href="#"><i class="ion-plus"></i></a>
+                                <a href="#"><i class="fa-solid fa-plus"></i></a>
                             </div>
                         </div>
                         <div class="classes_info">
@@ -1075,10 +1075,10 @@
                         <div class="team_img">
                             <img src="assets/images/team1.jpg" alt="team1">
                             <ul class="list_none social_icons social_style1 rounded_social">
-                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
-                                <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                             </ul>
                         </div>
                         <div class="team_info text-center">
@@ -1094,10 +1094,10 @@
                         <div class="team_img">
                             <img src="assets/images/team2.jpg" alt="team2">
                             <ul class="list_none social_icons social_style1 rounded_social">
-                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
-                                <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                             </ul>
                         </div>
                         <div class="team_info text-center">
@@ -1113,10 +1113,10 @@
                         <div class="team_img">
                             <img src="assets/images/team3.jpg" alt="team3">
                             <ul class="list_none social_icons social_style1 rounded_social">
-                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
-                                <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                             </ul>
                         </div>
                         <div class="team_info text-center">
@@ -1132,10 +1132,10 @@
                         <div class="team_img">
                             <img src="assets/images/team4.jpg" alt="team4">
                             <ul class="list_none social_icons social_style1 rounded_social">
-                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
-                                <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                             </ul>
                         </div>
                         <div class="team_info text-center">
