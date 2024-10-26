@@ -9,7 +9,7 @@
      content="yoga teacher, yoga responsive, yoga instructor, yoga studio, yoga theme, yoga blog, yoga website, yoga fitness, yoga templates, meditation website templates">
 
  {{-- <!-- SITE TITLE --> --}}
- <title>Dhyana - Yoga Studio & Meditation HTML Template</title>
+ <title>{{ config('app.name') }}</title>
  {{-- <!-- Favicon Icon --> --}}
  <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/logox32.png') }}">
  {{-- <!-- Animation CSS --> --}}

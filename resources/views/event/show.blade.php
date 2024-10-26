@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-head-lable backhref="{{ route('event.index') }}">
-        {{ __('Music Show') }}
+        {{ __('Event Show') }}
     </x-head-lable>
 
     <div class="border-4 border-white rounded-lg p-2 sm:p-4">

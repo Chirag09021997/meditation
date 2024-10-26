@@ -23,12 +23,12 @@
                             href="{{ route('events') }}">Event</a>
                     </li>
                     <li>
-                        <a class="nav-link {{ request()->is('home') ? 'active' : '' }}"
-                            href="{{ route('home') }}">Blog</a>
+                        <a class="nav-link {{ request()->is('blogs') ? 'active' : '' }}"
+                            href="{{ route('blogs') }}">Blog</a>
                     </li>
                     <li>
-                        <a class="nav-link {{ request()->is('home') ? 'active' : '' }}"
-                            href="{{ route('home') }}">Store</a>
+                        <a class="nav-link {{ request()->is('stores') ? 'active' : '' }}"
+                            href="{{ route('stores') }}">Store</a>
                     </li>
                     <li>
                         <a class="nav-link {{ request()->is('contact') ? 'active' : '' }}"
@@ -81,8 +81,9 @@
                             <p class="cart_total">Total: <span class="cart_amount"> <span
                                         class="price_symbole">$</span>68.00</span>
                             </p>
-                            <p class="cart_buttons"><a href="cart.html" class="btn btn-default rounded-0 view-cart">View
-                                    Cart</a><a href="checkout.html" class="btn btn-dark rounded-0 checkout">Checkout</a>
+                            <p class="cart_buttons">
+                                <a href="{{ route('cart') }}" class="btn btn-default rounded-0 view-cart">View Cart</a>
+                                <a href="{{ route('checkout') }}" class="btn btn-dark rounded-0 checkout">Checkout</a>
                             </p>
                         </div>
                     </div>

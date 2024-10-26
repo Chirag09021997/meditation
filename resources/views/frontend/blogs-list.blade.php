@@ -7,12 +7,12 @@
             <div class="row align-items-center">
                 <div class="col-sm-12 text-center">
                     <div class="page-title">
-                        <h1>Events</h1>
+                        <h1>Blogs</h1>
                     </div>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Events</li>
+                            <li class="breadcrumb-item active" aria-current="page">Blogs</li>
                         </ol>
                     </nav>
                 </div>
@@ -21,29 +21,32 @@
     </section>
     <!-- END SECTION BREADCRUMB -->
 
-    <!-- START SECTION EVENTS -->
+    <!-- START SECTION BLOG -->
     <section>
         <div class="container">
-            <div class="row justify-content-center">
-                @foreach ($events as $event)
+            <div class="row">
+                @foreach ($blogs as $blog)
                     <div class="col-lg-4 col-md-6">
-                        <div class="event_box event_box_style1 box_shadow4 animation" data-animation="fadeInUp"
-                            data-animation-delay="0.2s">
-                            <a href="{{ route('events.single', $event->id) }}">
-                                <div class="event_img">
-                                    <img src="{{ $event->thumb_image }}" alt="{{ $event->name }}" />
-                                    <div class="event_date">
-                                        <h5>{{ $event->formatted_date }}</h5>
-                                    </div>
-                                </div>
-                                <div class="event_info">
-                                    <h5 class="event_title">{{ $event->name }}</h5>
-                                    <ul class="list_none event_meta">
-                                        <li><i class="fa-regular fa-clock"></i>{{ $event->formatted_time }}</li>
-                                        <li><i class="fa-solid fa-location-pin"></i>{{ $event->location }}</li>
-                                    </ul>
-                                </div>
-                            </a>
+                        <div class="blog_post box_shadow4">
+                            <div class="blog_img">
+                                <a href="{{ route('blogs.single', $blog->id) }}">
+                                    <img src="{{ $blog->thumb_image }}" alt="blog_small_img1">
+                                </a>
+                            </div>
+                            <div class="blog_content">
+                                <h5 class="blog_title"><a
+                                        href="{{ route('blogs.single', $blog->id) }}">{{ $blog->name }}</a></h5>
+                                <ul class="list_none blog_meta">
+                                    <li><img src="{{ asset('assets/images/cl_teacher_img1.jpg') }}"
+                                            alt="image"><span>Dayna</span></li>
+                                    <li>
+                                        <i class="far fa-calendar"></i>{{ $blog->formatted_date }}
+                                    </li>
+                                    <li><i class="far fa-comments"></i>4</li>
+                                </ul>
+                                <p>{{ $blog->short_description }}</p>
+                                <a href="{{ route('blogs.single', $blog->id) }}" class="blog_link">Read More</a>
+                            </div>
                         </div>
                     </div>
                 @endforeach
@@ -51,7 +54,7 @@
             <div class="row">
                 <div class="col-12 mt-3 mt-lg-4">
                     <div class="pagination justify-content-center">
-                        @if ($events->onFirstPage())
+                        @if ($blogs->onFirstPage())
                             <li class="page-item disabled">
                                 <a class="page-link" href="#" tabindex="-1">
                                     <i class="fa-solid fa-arrow-left"></i>
@@ -59,29 +62,29 @@
                             </li>
                         @else
                             <li class="page-item">
-                                <a class="page-link" href="{{ $events->previousPageUrl() }}" tabindex="-1">
+                                <a class="page-link" href="{{ $blogs->previousPageUrl() }}" tabindex="-1">
                                     <i class="fa-solid fa-arrow-left"></i>
                                 </a>
                             </li>
                         @endif
 
                         @php
-                            $start = max(1, $events->currentPage() - 2);
-                            $end = min($start + 4, $events->lastPage());
-                            if ($events->lastPage() - $events->currentPage() < 2) {
-                                $start = max(1, $events->lastPage() - 4);
+                            $start = max(1, $blogs->currentPage() - 2);
+                            $end = min($start + 4, $blogs->lastPage());
+                            if ($blogs->lastPage() - $blogs->currentPage() < 2) {
+                                $start = max(1, $blogs->lastPage() - 4);
                             }
                         @endphp
 
                         @for ($page = $start; $page <= $end; $page++)
-                            <li class="page-item {{ $page == $events->currentPage() ? 'active' : '' }}">
-                                <a class="page-link" href="{{ $events->url($page) }}">{{ $page }}</a>
+                            <li class="page-item {{ $page == $blogs->currentPage() ? 'active' : '' }}">
+                                <a class="page-link" href="{{ $blogs->url($page) }}">{{ $page }}</a>
                             </li>
                         @endfor
 
-                        @if ($events->hasMorePages())
+                        @if ($blogs->hasMorePages())
                             <li class="page-item">
-                                <a class="page-link" href="{{ $events->nextPageUrl() }}">
+                                <a class="page-link" href="{{ $blogs->nextPageUrl() }}">
                                     <i class="fa-solid fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -97,5 +100,5 @@
             </div>
         </div>
     </section>
-    <!-- END SECTION EVENTS -->
+    <!-- END SECTION BLOG -->
 @endsection

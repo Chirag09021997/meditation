@@ -11,8 +11,7 @@
                     </div>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Events Details</li>
                         </ol>
                     </nav>
@@ -29,23 +28,13 @@
                 <div class="col-xl-9 col-lg-8">
                     <div class="single_events">
                         <div class="event_img">
-                            <img src="{{ asset('assets/images/breadcrumb_bg3.jpg') }}" alt="breadcrumb_bg3">
+                            <img src="{{ $event->thumb_image }}" alt="thumb_image">
                         </div>
                         <div class="events_title">
-                            <h2>Yoga Fitness Experience</h2>
+                            <h2>{{ $event->name }}</h2>
                         </div>
                         <div class="event_desc">
-                            <p>Lorem Ipsu. is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                                been the industry's standard dummy text ever since the 1500s when an unknown printer took a
-                                galley of type and scrambled it to make
-                                a type specimen book. </p>
-                            <blockquote>It has survived not only five centuries, but also the leap into electronic
-                                typesetting. It was popularised in the release of Letraset sheets containing Lorem passages.
-                            </blockquote>
-                            <p>It has survived not only five centuries, but also the leap into electronic typesetting. It
-                                was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                                passages, and more recently with desktop publishing
-                                software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            {!! $event->description !!}
                         </div>
                         <div class="review_content">
                             <div class="content-title">
@@ -170,26 +159,26 @@
                                 <ul class="border_bottom_dash">
                                     <li>
                                         <div class="classes_cat">
-                                            <label>Days: </label>
-                                            <span>Mon, Thu, Fri</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="classes_cat">
                                             <label>Time: </label>
-                                            <span>9:00 - 11:00</span>
+                                            <span>{{ $event->formatted_time }}</span>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="classes_cat">
                                             <label>Start Date: </label>
-                                            <span>April 14, 2018</span>
+                                            <span>{{ $event->formatted_date }}</span>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="classes_student">
                                             <label>Location: </label>
-                                            <span>North London</span>
+                                            <span>{{ $event->location }}</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="classes_student">
+                                            <label>Fees: </label>
+                                            <span>{{ $event->fees }}</span>
                                         </div>
                                     </li>
                                 </ul>
@@ -205,65 +194,28 @@
                             <h5 class="widget_title">Featured Events</h5>
                             <div class="carousel_slider owl-carousel owl-theme" data-margin="15" data-dots="false"
                                 data-loop="true" data-autoheight="true" data-autoplay="true" data-items="1">
-                                <div class="items">
-                                    <div class="event_box event_box_style1 box_shadow4 animation"
-                                        data-animation="fadeInUp" data-animation-delay="0.2s">
-                                        <div class="event_img">
-                                            <a href="#"><img src="{{ asset('assets/images/event_img1.jpg') }}"
-                                                    alt="event_img" /></a>
-                                            <div class="event_date">
-                                                <h5><span>24</span> Apr</h5>
+                                @foreach ($events as $event)
+                                    <div class="items">
+                                        <div class="event_box event_box_style1 box_shadow4 animation"
+                                            data-animation="fadeInUp" data-animation-delay="0.2s">
+                                            <div class="event_img">
+                                                <img src="{{ $event->thumb_image }}" alt="event_img" />
+                                                <div class="event_date">
+                                                    <h5>{{ $event->formatted_date }}</h5>
+                                                </div>
+                                            </div>
+                                            <div class="event_info">
+                                                <h5 class="event_title">{{ $event->name }}</h5>
+                                                <ul class="list_none event_meta">
+                                                    <li><i class="fa-regular fa-clock"></i>>{{ $event->formatted_time }}
+                                                    </li>
+                                                    <li><i class="fa-solid fa-location-pin"></i>{{ $event->location }}
+                                                    </li>
+                                                </ul>
                                             </div>
                                         </div>
-                                        <div class="event_info">
-                                            <h5 class="event_title"><a href="#">Yoga Fitness Experience</a></h5>
-                                            <ul class="list_none event_meta">
-                                                <li><i class="fa-regular fa-clock"></i>9:00 - 4:00</li>
-                                                <li><i class="fa-solid fa-location-pin"></i>New York City</li>
-                                            </ul>
-                                        </div>
                                     </div>
-                                </div>
-                                <div class="items">
-                                    <div class="event_box event_box_style1 box_shadow4 animation"
-                                        data-animation="fadeInUp" data-animation-delay="0.3s">
-                                        <div class="event_img">
-                                            <a href="#"><img src="{{ asset('assets/images/event_img2.jpg') }}"
-                                                    alt="event_img" /></a>
-                                            <div class="event_date">
-                                                <h5><span>26</span> Apr</h5>
-                                            </div>
-                                        </div>
-                                        <div class="event_info">
-                                            <h5 class="event_title"><a href="#">Hatha Yoga Training Festival</a>
-                                            </h5>
-                                            <ul class="list_none event_meta">
-                                                <li><i class="fa-regular fa-clock"></i>9:00 - 4:00</li>
-                                                <li><i class="fa-solid fa-location-pin"></i>New York City</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="items">
-                                    <div class="event_box event_box_style1 box_shadow4 animation"
-                                        data-animation="fadeInUp" data-animation-delay="0.4s">
-                                        <div class="event_img">
-                                            <a href="#"><img src="{{ asset('assets/images/event_img3.jpg') }}"
-                                                    alt="event_img" /></a>
-                                            <div class="event_date">
-                                                <h5><span>28</span> Apr</h5>
-                                            </div>
-                                        </div>
-                                        <div class="event_info">
-                                            <h5 class="event_title"><a href="#">Hatha Yoga Training Festival</a>
-                                            </h5>
-                                            <ul class="list_none event_meta">
-                                                <li><i class="fa-regular fa-clock"></i>9:00 - 4:00</li>
-                                                <li><i class="fa-solid fa-location-pin"></i>New York City</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                         <div class="widget">

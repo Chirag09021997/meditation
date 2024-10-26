@@ -137,14 +137,14 @@
                         </div>
                         <div class="shape6">
                             <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                                <img data-parallax='{"y": 30, "smoothness": 20}' src="{{ asset('assets/images/slider_pattern6.png') }}"
-                                    alt="image" />
+                                <img data-parallax='{"y": 30, "smoothness": 20}'
+                                    src="{{ asset('assets/images/slider_pattern6.png') }}" alt="image" />
                             </div>
                         </div>
                         <div class="shape7">
                             <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                                <img data-parallax='{"y": -30, "smoothness": 20}' src="{{ asset('assets/images/slider_pattern7.png') }}"
-                                    alt="image" />
+                                <img data-parallax='{"y": -30, "smoothness": 20}'
+                                    src="{{ asset('assets/images/slider_pattern7.png') }}" alt="image" />
                             </div>
                         </div>
                     </div>
@@ -180,7 +180,8 @@
                     <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
                         data-animation-delay="0.2s">
                         <div class="box_icon">
-                            <img src="{{ asset('assets/images/strong-body.png') }}" width="35" height="35" alt="strong-body">
+                            <img src="{{ asset('assets/images/strong-body.png') }}" width="35" height="35"
+                                alt="strong-body">
                         </div>
                         <div class="intro_desc">
                             <h5>Strong Body life</h5>
@@ -193,7 +194,8 @@
                     <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
                         data-animation-delay="0.3s">
                         <div class="box_icon">
-                            <img src="{{ asset('assets/images/flexibility.png') }}" width="35" height="35" alt="flexibility">
+                            <img src="{{ asset('assets/images/flexibility.png') }}" width="35" height="35"
+                                alt="flexibility">
                         </div>
                         <div class="intro_desc">
                             <h5>increased flexibility</h5>
@@ -206,7 +208,8 @@
                     <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
                         data-animation-delay="0.4s">
                         <div class="box_icon">
-                            <img src="{{ asset('assets/images/healthy-lifestyle.png') }}" width="35" height="35" alt="healthy-lifestyle">
+                            <img src="{{ asset('assets/images/healthy-lifestyle.png') }}" width="35" height="35"
+                                alt="healthy-lifestyle">
                         </div>
                         <div class="intro_desc">
                             <h5>healthy lifestyle</h5>
@@ -219,7 +222,8 @@
                     <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
                         data-animation-delay="0.2s">
                         <div class="box_icon">
-                            <img src="{{ asset('assets/images/blood-flow.png') }}" width="35" height="35" alt="blood-flow">
+                            <img src="{{ asset('assets/images/blood-flow.png') }}" width="35" height="35"
+                                alt="blood-flow">
                         </div>
                         <div class="intro_desc">
                             <h5>Increases blood flow </h5>
@@ -232,7 +236,8 @@
                     <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
                         data-animation-delay="0.3s">
                         <div class="box_icon">
-                            <img src="{{ asset('assets/images/drops-blood.png') }}" width="35" height="35" alt="drops-blood">
+                            <img src="{{ asset('assets/images/drops-blood.png') }}" width="35" height="35"
+                                alt="drops-blood">
                         </div>
                         <div class="intro_desc">
                             <h5>Drops blood pressure</h5>
@@ -245,7 +250,8 @@
                     <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
                         data-animation-delay="0.4s">
                         <div class="box_icon">
-                            <img src="{{ asset('assets/images/adrenal-gland.png') }}" width="35" height="35" alt="adrenal-gland">
+                            <img src="{{ asset('assets/images/adrenal-gland.png') }}" width="35" height="35"
+                                alt="adrenal-gland">
                         </div>
                         <div class="intro_desc">
                             <h5>Regulates adrenal gland</h5>
@@ -276,8 +282,8 @@
                 </div>
                 <div class="col-md-6">
                     <div class="about_img animation" data-animation="fadeInUp" data-animation-delay="0.2s">
-                        <img data-parallax='{"y": -30, "smoothness": 20}' src="{{ asset('assets/images/about_img.png') }}"
-                            alt="about_img" />
+                        <img data-parallax='{"y": -30, "smoothness": 20}'
+                            src="{{ asset('assets/images/about_img.png') }}" alt="about_img" />
                     </div>
                 </div>
             </div>
@@ -495,11 +501,6 @@
             <div class="ol_shape6">
                 <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
                     <img src="{{ asset('assets/images/shape6.png') }}" alt="image" />
-                </div>
-            </div>
-            <div class="ol_shape7">
-                <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <img data-parallax='{"x": 20, "smoothness": 20}' src="{{ asset('assets/images/shape7.png') }}" alt="image" />
                 </div>
             </div>
         </div>
@@ -1192,7 +1193,7 @@
                     <div class="blog_post box_shadow4 animation" data-animation="fadeInUp" data-animation-delay="0.4s">
                         <div class="blog_img">
                             <a href="#">
-                                <img src="{{ asset('assets/images/blog_small_img2.jpg" alt="blog_small_img2') }}">
+                                <img src="{{ asset('assets/images/blog_small_img2.jpg')}}" alt="blog_small_img2">
                             </a>
                         </div>
                         <div class="blog_content">

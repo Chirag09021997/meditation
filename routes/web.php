@@ -32,6 +32,12 @@ Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/events', [HomeController::class, 'eventsList'])->name('events');
 Route::get('/events/{id}', [HomeController::class, 'eventSingle'])->name('events.single');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/blogs', [HomeController::class, 'blogsList'])->name('blogs');
+Route::get('/blogs/{id}', [HomeController::class, 'blogSingle'])->name('blogs.single');
+Route::get('/stores', [HomeController::class, 'storeList'])->name('stores');
+Route::get('/stores/{id}', [HomeController::class, 'storeSingle'])->name('stores.single');
+Route::get('/cart', [HomeController::class, 'cart'])->name('cart');
+Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
 
 
 Route::get('/dashboard', function () {
