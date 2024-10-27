@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ContactUsRequest;
 use App\Models\Blog;
+use App\Models\ContactUs;
 use App\Models\Event;
 use App\Models\Store;
 use Carbon\Carbon;
@@ -97,5 +99,12 @@ class HomeController extends Controller
     public function checkout()
     {
         return view('frontend.checkout');
+    }
+
+    public function contactStore(ContactUsRequest $request)
+    {
+        $validated = $request->validated();
+        ContactUs::create($validated);
+        return redirect()->route('home')->with('success', 'Contact Us Send SuccessFully.');
     }
 }

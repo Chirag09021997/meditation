@@ -3,6 +3,7 @@
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Web\BlogController;
+use App\Http\Controllers\Web\ContactUsController;
 use App\Http\Controllers\Web\CouponSystemController;
 use App\Http\Controllers\Web\CustomerController;
 use App\Http\Controllers\Web\EventController;
@@ -37,6 +38,7 @@ Route::get('/stores', [HomeController::class, 'storeList'])->name('stores');
 Route::get('/stores/{id}', [HomeController::class, 'storeSingle'])->name('stores.single');
 Route::get('/cart', [HomeController::class, 'cart'])->name('cart');
 Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
+Route::post('/contact', [HomeController::class, 'contactStore'])->name('contact.store');
 
 
 Route::get('/dashboard', function () {
@@ -87,6 +89,11 @@ Route::middleware('auth')->group(function () {
     Route::post('store/status/{store}', [StoreController::class, 'changeStatus'])->name('store.changeStatus');
     Route::delete('store/product-photo', [StoreController::class, 'deleteProductPhoto'])->name('store.productPhoto');
     Route::resource('store', StoreController::class);
+
+    Route::get('contact-us/data', [ContactUsController::class, 'getData'])->name('contact-us.data');
+    Route::get('contact-us', [ContactUsController::class, 'index'])->name('contact-us.index');
+    Route::get('contact-us/{id}', [ContactUsController::class, 'show'])->name('contact-us.show');
+    Route::delete('contact-us/{id}', [ContactUsController::class, 'destroy'])->name('contact-us.destroy');
 });
 
 require __DIR__ . '/auth.php';

@@ -49,24 +49,43 @@
                 </div>
                 <div class="col-lg-8 col-md-6 mt-4 mt-lg-0 animation" data-animation="fadeInUp" data-animation-delay="0.3s">
                     <div class="field_form icon_form">
-                        <form method="post" name="enq">
+                        <form method="POST" action="{{ route('contact.store') }}">
+                            @csrf
                             <div class="row">
-                                <div class="form-group col-lg-6">
+                                <div class="form-group col-12">
                                     <div class="form-input">
                                         <span>
                                             <i class="fa-regular fa-user"></i>
                                         </span>
-                                        <input required="required" placeholder="Enter Name *" id="first-name"
-                                            class="form-control" name="name" type="text">
+                                        <input placeholder="Enter Name *" id="first-name" class="form-control"
+                                            name="name" type="text">
+                                        @if ($errors->has('name'))
+                                            <p class="text-danger font_style1">{{ $errors->first('name') }}</p>
+                                        @endif
                                     </div>
                                 </div>
-                                <div class="form-group col-lg-6">
+                                <div class="form-group col-12">
                                     <div class="form-input">
                                         <span>
                                             <i class="fa-regular fa-envelope"></i>
                                         </span>
-                                        <input required="required" placeholder="Enter Email *" id="email"
-                                            class="form-control" name="email" type="email">
+                                        <input required placeholder="Enter Email *" id="email" class="form-control"
+                                            name="email" type="email">
+                                        @if ($errors->has('email'))
+                                            <p class="text-danger font_style1">{{ $errors->first('email') }}</p>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="form-group col-12">
+                                    <div class="form-input">
+                                        <span>
+                                            <i class="fa fa-mobile"></i>
+                                        </span>
+                                        <input placeholder="Enter Mobile No *" id="mobile_no" class="form-control"
+                                            name="mobile_no" type="text">
+                                        @if ($errors->has('mobile_no'))
+                                            <p class="text-danger font_style1">{{ $errors->first('mobile_no') }}</p>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group col-12">
@@ -76,6 +95,9 @@
                                         </span>
                                         <input placeholder="Enter Subject" id="subject" class="form-control"
                                             name="subject" type="text">
+                                        @if ($errors->has('subject'))
+                                            <p class="text-danger font_style1">{{ $errors->first('subject') }}</p>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-12">
@@ -83,16 +105,14 @@
                                         <span>
                                             <i class="fa-regular fa-comment"></i>
                                         </span>
-                                        <textarea required="required" placeholder="Message *" id="description" class="form-control" name="message"
-                                            rows="5"></textarea>
+                                        <textarea required placeholder="Message *" id="description" class="form-control" name="message" rows="5"></textarea>
+                                        @if ($errors->has('message'))
+                                            <p class="text-danger font_style1">{{ $errors->first('message') }}</p>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
-                                    <button type="submit" title="Submit Your Message!" class="btn btn-default"
-                                        id="submitButton" name="submit" value="Submit">Submit</button>
-                                </div>
-                                <div class="col-lg-12 text-center">
-                                    <div id="alert-msg" class="alert-msg text-center"></div>
+                                    <button type="submit" class="btn btn-default">Submit</button>
                                 </div>
                             </div>
                         </form>
