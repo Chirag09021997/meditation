@@ -1168,69 +1168,31 @@
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog_post box_shadow4 animation" data-animation="fadeInUp" data-animation-delay="0.3s">
-                        <div class="blog_img">
-                            <a href="#">
-                                <img src="{{ asset('assets/images/blog_small_img1.jpg') }}" alt="blog_small_img1">
-                            </a>
-                        </div>
-                        <div class="blog_content">
-                            <h5 class="blog_title"><a href="#">Varius Phasellus blandit massa enim</a></h5>
-                            <ul class="list_none blog_meta">
-                                <li><a href="#"><img src="{{ asset('assets/images/cl_teacher_img1.jpg') }}"
-                                            alt="image"><span>Dayna</span></a></li>
-                                <li><a href="#"><i class="far fa-calendar"></i>Mar 23, 2018</a></li>
-                                <li><a href="#"><i class="far fa-comments"></i>4</a></li>
-                            </ul>
-                            <p>Phasellus blandit massa enim elit variununc Lorems ipsum consectetur industry. If you are use
-                                dolor sit enim passage of Lorem Ipsum.</p>
-                            <a href="#" class="blog_link">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog_post box_shadow4 animation" data-animation="fadeInUp" data-animation-delay="0.4s">
-                        <div class="blog_img">
-                            <a href="#">
-                                <img src="{{ asset('assets/images/blog_small_img2.jpg')}}" alt="blog_small_img2">
-                            </a>
-                        </div>
-                        <div class="blog_content">
-                            <h5 class="blog_title"><a href="#">Varius Phasellus blandit massa enim</a></h5>
-                            <ul class="list_none blog_meta">
-                                <li><a href="#"><img src="{{ asset('assets/images/cl_teacher_img3.jpg') }}"
-                                            alt="image"><span>Dayna</span></a></li>
-                                <li><a href="#"><i class="far fa-calendar"></i>Mar 23, 2018</a></li>
-                                <li><a href="#"><i class="far fa-comments"></i>4</a></li>
-                            </ul>
-                            <p>Phasellus blandit massa enim elit variununc Lorems ipsum consectetur industry. If you are use
-                                dolor sit enim passage of Lorem Ipsum.</p>
-                            <a href="#" class="blog_link">Read More</a>
+                @foreach ($blogs as $blog)
+                    <div class="col-lg-4 col-md-6">
+                        <div class="blog_post box_shadow4 animation" data-animation="fadeInUp"
+                            data-animation-delay="0.3s">
+                            <div class="blog_img">
+                                <a href="{{ route('blogs.single', $blog->id) }}">
+                                    <img src="{{ $blog->thumb_image }}" alt="blog">
+                                </a>
+                            </div>
+                            <div class="blog_content">
+                                <h5 class="blog_title"><a
+                                        href="{{ route('blogs.single', $blog->id) }}">{{ $blog->name }}</a></h5>
+                                <ul class="list_none blog_meta">
+                                    <li><img src="{{ asset('assets/images/cl_teacher_img1.jpg') }}"
+                                            alt="image"><span>Dayna</span></li>
+                                    <li>
+                                        <i class="far fa-calendar"></i>{{ $blog->formatted_date }}
+                                    </li>
+                                </ul>
+                                <p>{{ $blog->short_description }}</p>
+                                <a href="{{ route('blogs.single', $blog->id) }}" class="blog_link">Read More</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog_post box_shadow4 animation" data-animation="fadeInUp" data-animation-delay="0.5s">
-                        <div class="blog_img">
-                            <a href="#">
-                                <img src="{{ asset('assets/images/blog_small_img3.jpg') }}" alt="blog_small_img3">
-                            </a>
-                        </div>
-                        <div class="blog_content">
-                            <h5 class="blog_title"><a href="#">Varius Phasellus blandit massa enim</a></h5>
-                            <ul class="list_none blog_meta">
-                                <li><a href="#"><img src="{{ asset('assets/images/cl_teacher_img4.jpg') }}"
-                                            alt="image"><span>Dayna</span></a></li>
-                                <li><a href="#"><i class="far fa-calendar"></i>Mar 23, 2018</a></li>
-                                <li><a href="#"><i class="far fa-comments"></i>4</a></li>
-                            </ul>
-                            <p>Phasellus blandit massa enim elit variununc Lorems ipsum consectetur industry. If you are use
-                                dolor sit enim passage of Lorem Ipsum.</p>
-                            <a href="#" class="blog_link">Read More</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

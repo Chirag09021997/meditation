@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Exceptions\PostTooLargeException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
@@ -33,6 +34,9 @@ class Handler extends ExceptionHandler
     {
         if ($exception instanceof NotFoundHttpException) {
             return response()->view('errors.404', [], 404);
+        }
+        if ($exception instanceof PostTooLargeException) {
+            return response()->json(['error' => 'Uploaded file is too large.'], 413);
         }
         return parent::render($request, $exception);
     }

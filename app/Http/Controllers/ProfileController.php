@@ -26,7 +26,20 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $validated = $request->validated();
+        if ($request->hasFile('profile')) {
+            if ($request->user()->profile != null &&  $request->user()->profile != asset('assets/images/cl_teacher_img1.jpg')) {
+                $imagePath = storage_path(str_replace(config('app.url') . '/storage', 'app/public', $request->user()->profile));
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
+                }
+            }
+            $image = $request->file('profile');
+            $fileName = time() . '_' . str_replace(' ', '_', $image->getClientOriginalName());
+            $filePath = $image->storeAs('public/uploads/users', $fileName);
+            $validated['profile'] = str_replace('public/', 'storage/', $filePath);
+        }
+        $request->user()->fill($validated);
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;

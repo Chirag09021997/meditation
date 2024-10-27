@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Event;
+use App\Models\Store;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -12,12 +13,13 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('frontend.index');
-    }
-
-    public function schedule()
-    {
-        return view('frontend.schedule');
+        $blogs = Blog::where('status', 'Active')->latest()->take(3)->get();
+        $blogs->transform(function ($blog) {
+            $blog->formatted_date = Carbon::parse($blog->starting_date)->format('d M');
+            $blog->formatted_time = Carbon::parse($blog->starting_date)->format('H:i');
+            return $blog;
+        });
+        return view('frontend.index', compact('blogs'));
     }
 
     public function about()
@@ -58,7 +60,7 @@ class HomeController extends Controller
 
     public function blogsList()
     {
-        $blogs = Blog::where('status', 'Active')->select('id', 'name', 'short_description', 'thumb_image')->orderByDesc('created_at')->paginate(9);
+        $blogs = Blog::with(['users:id,name,profile'])->where('status', 'Active')->select('id', 'name', 'short_description', 'thumb_image')->orderByDesc('created_at')->paginate(9);
         $blogs->getCollection()->transform(function ($blog) {
             $blog->formatted_date = Carbon::parse($blog->created_at)->format('M d, Y');
             return $blog;
@@ -68,19 +70,23 @@ class HomeController extends Controller
 
     public function blogSingle(string $id)
     {
-        $blog = Blog::where('status', 'Active')->select('id', 'name', 'short_description', 'description', 'thumb_image', 'total_view')->findOrFail($id);
+        $blog = Blog::with(['users:id,name,profile'])->where('status', 'Active')->select('id', 'name', 'short_description', 'description', 'thumb_image', 'total_view', 'created_by')->findOrFail($id);
         $blog->formatted_date = Carbon::parse($blog->created_at)->format('M d, Y');
         return view('frontend.blogs-detail', compact('blog'));
     }
 
     public function storeList()
     {
-        return view('frontend.stores-list');
+        $stores = Store::where('status', 'Active')->select('id', 'product_name', 'product_thumb',  'price', 'discount')->latest()->paginate(9);
+        $latestStore = Store::where('status', 'Active')->select('id', 'product_name', 'product_thumb',  'price', 'discount')->latest()->take(3)->get();
+        return view('frontend.stores-list', compact('stores', 'latestStore'));
     }
 
-    public function storeSingle()
+    public function storeSingle(string $id)
     {
-        return view('frontend.stores-detail');
+        $store = Store::where('status', 'Active')->select('id', 'product_name', 'short_description', 'description', 'product_thumb', 'video_preview', 'price', 'total_stock', 'total_sale', 'discount', 'tags')->findOrFail($id);
+        $latestStore = Store::where('status', 'Active')->select('id', 'product_name', 'product_thumb',  'price', 'discount')->latest()->take(4)->get();
+        return view('frontend.stores-detail', compact('store', 'latestStore'));
     }
 
     public function cart()

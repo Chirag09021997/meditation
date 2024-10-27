@@ -92,7 +92,7 @@ class CustomerController extends Controller
 
     public function getData()
     {
-        $customers = Customer::select(['id', 'profile', 'name', 'country_name', 'mobile_no', 'email', 'business_category', 'dob']);
+        $customers = Customer::select(['id', 'profile', 'name', 'country_name', 'mobile_no', 'email', 'business_category', 'dob'])->orderByDesc('created_at');
         return DataTables::of($customers)
             ->addColumn('action', function ($data) {
                 $viewLink = $updateLink = $deleteLink = '';

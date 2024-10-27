@@ -29,21 +29,21 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="event_box event_box_style1 box_shadow4 animation" data-animation="fadeInUp"
                             data-animation-delay="0.2s">
-                            <a href="{{ route('events.single', $event->id) }}">
-                                <div class="event_img">
+                            <div class="event_img">
+                                <a href="{{ route('events.single', $event->id) }}">
                                     <img src="{{ $event->thumb_image }}" alt="{{ $event->name }}" />
-                                    <div class="event_date">
-                                        <h5>{{ $event->formatted_date }}</h5>
-                                    </div>
+                                </a>
+                                <div class="event_date">
+                                    <h5>{{ $event->formatted_date }}</h5>
                                 </div>
-                                <div class="event_info">
-                                    <h5 class="event_title">{{ $event->name }}</h5>
-                                    <ul class="list_none event_meta">
-                                        <li><i class="fa-regular fa-clock"></i>{{ $event->formatted_time }}</li>
-                                        <li><i class="fa-solid fa-location-pin"></i>{{ $event->location }}</li>
-                                    </ul>
-                                </div>
-                            </a>
+                            </div>
+                            <div class="event_info">
+                                <h5 class="event_title">{{ $event->name }}</h5>
+                                <ul class="list_none event_meta">
+                                    <li><i class="fa-regular fa-clock"></i>{{ $event->formatted_time }}</li>
+                                    <li><i class="fa-solid fa-location-pin"></i>{{ $event->location }}</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 @endforeach

@@ -27,7 +27,6 @@ use Illuminate\Support\Facades\Route;
 
 // fronted routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/schedule', [HomeController::class, 'schedule'])->name('schedule');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/events', [HomeController::class, 'eventsList'])->name('events');
 Route::get('/events/{id}', [HomeController::class, 'eventSingle'])->name('events.single');

@@ -116,7 +116,7 @@ class StoreController extends Controller
 
     public function getData(Request $request)
     {
-        $store = Store::select(['id', 'product_name', 'product_thumb', 'price', 'total_stock', 'total_sale', 'discount', 'status']);
+        $store = Store::select(['id', 'product_name', 'product_thumb', 'price', 'total_stock', 'total_sale', 'discount', 'status'])->orderByDesc('created_at');
 
         return DataTables::of($store)
             ->addColumn('action', function ($data) {

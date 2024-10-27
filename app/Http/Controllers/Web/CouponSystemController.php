@@ -73,7 +73,7 @@ class CouponSystemController extends Controller
 
     public function getData()
     {
-        $couponSystem = CouponSystem::select(['id', 'type', 'coupon_code', 'value', 'start_date', 'end_date', 'status']);
+        $couponSystem = CouponSystem::select(['id', 'type', 'coupon_code', 'value', 'start_date', 'end_date', 'status'])->orderByDesc('created_at');
 
         return DataTables::of($couponSystem)
             ->addColumn('action', function ($data) {

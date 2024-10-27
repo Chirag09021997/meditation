@@ -110,7 +110,7 @@ class MusicController extends Controller
 
     public function getData()
     {
-        $music = Music::select(['id', 'name', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view', 'status']);
+        $music = Music::select(['id', 'name', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view', 'status'])->orderByDesc('created_at');
 
         return DataTables::of($music)
             ->addColumn('action', function ($data) {

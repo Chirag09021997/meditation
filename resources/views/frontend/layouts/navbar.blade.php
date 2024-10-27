@@ -15,10 +15,6 @@
                             href="{{ route('home') }}">Home</a>
                     </li>
                     <li>
-                        <a class="nav-link {{ request()->is('schedule') ? 'active' : '' }}"
-                            href="{{ route('schedule') }}">Schedule</a>
-                    </li>
-                    <li>
                         <a class="nav-link {{ request()->is('events') ? 'active' : '' }}"
                             href="{{ route('events') }}">Event</a>
                     </li>

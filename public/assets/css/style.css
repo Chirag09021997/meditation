@@ -5270,7 +5270,7 @@ newsletter_form3 {
 }
 
 .custom_select::before {
-    content: "\f3d0";
+    /* content: "\f3d0"; */
     font-family: "Ionicons";
     position: absolute;
     display: block;

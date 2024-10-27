@@ -36,119 +36,6 @@
                         <div class="event_desc">
                             {!! $event->description !!}
                         </div>
-                        <div class="review_content">
-                            <div class="content-title">
-                                <h5>Reviews</h5>
-                            </div>
-                            <ul class="list_none comment_list">
-                                <li class="comment_info">
-                                    <div class="d-flex">
-                                        <div class="user_img">
-                                            <img src="{{ asset('assets/images/client_img1.jpg') }}" alt="client_img1">
-                                        </div>
-                                        <div class="comment_content">
-                                            <div class="d-flex">
-                                                <div class="meta_data">
-                                                    <h6><a href="#">Merry Walter</a></h6>
-                                                    <div class="comment-time">March 5, 2018, 6:05 PM</div>
-                                                </div>
-                                                <div class="ml-auto">
-                                                    <a href="#" class="comment-reply">Reply</a>
-                                                </div>
-                                            </div>
-                                            <p>We denounce with righteous indignation and dislike men who are so beguiled
-                                                and demoralized by the charms of pleasure of the moment the pain and trouble
-                                                that.</p>
-                                        </div>
-                                    </div>
-                                    <ul class="children_comment">
-                                        <li class="comment_info">
-                                            <div class="d-flex">
-                                                <div class="user_img">
-                                                    <img src="{{ asset('assets/images/client_img3.jpg') }}"
-                                                        alt="client_img3">
-                                                </div>
-                                                <div class="comment_content">
-                                                    <div class="d-flex">
-                                                        <div class="meta_data">
-                                                            <h6><a href="#">Alia Noor</a></h6>
-                                                            <div class="comment-time">March 5, 2018, 6:05 PM</div>
-                                                        </div>
-                                                        <div class="ml-auto">
-                                                            <a href="#" class="comment-reply">Reply</a>
-                                                        </div>
-                                                    </div>
-                                                    <p>We denounce with righteous indignation and dislike men who are so
-                                                        beguiled and demoralized by the charms of pleasure of the moment.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="comment_info">
-                                    <div class="d-flex">
-                                        <div class="user_img">
-                                            <img src="{{ asset('assets/images/client_img2.jpg') }}" alt="client_img2">
-                                        </div>
-                                        <div class="comment_content">
-                                            <div class="d-flex">
-                                                <div class="meta_data">
-                                                    <h6><a href="#">Jessica Olivia</a></h6>
-                                                    <div class="comment-time">april 15, 2018, 10:30 PM</div>
-                                                </div>
-                                                <div class="ml-auto">
-                                                    <a href="#" class="comment-reply">Reply</a>
-                                                </div>
-                                            </div>
-                                            <p>We denounce with righteous indignation and dislike men who are so beguiled
-                                                and demoralized by the charms of pleasure of the moment and trouble that.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                            <div class="review_form field_form icon_form">
-                                <div class="content-title">
-                                    <h5>Add a review</h5>
-                                </div>
-                                <form>
-                                    <div class="row">
-                                        <div class="form-group col-12">
-                                            <div class="form-input">
-                                                <span>
-                                                    <i class="fa-regular fa-comment"></i>
-                                                </span>
-                                                <textarea required="required" placeholder="Your review *" class="form-control" name="message" rows="4"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <div class="form-input">
-                                                <span>
-                                                    <i class="fa-regular fa-user"></i>
-                                                </span>
-                                                <input required="required" placeholder="Enter Name *" class="form-control"
-                                                    name="name" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <div class="form-input">
-                                                <span>
-                                                    <i class="fa-regular fa-envelope"></i>
-                                                </span>
-                                                <input required="required" placeholder="Enter Email *" class="form-control"
-                                                    name="email" type="email">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group col-12">
-                                            <button type="submit" class="btn btn-default" name="submit"
-                                                value="Submit">Submit Review</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-4 pt-3 pt-lg-0">
@@ -217,17 +104,6 @@
                                     </div>
                                 @endforeach
                             </div>
-                        </div>
-                        <div class="widget">
-                            <h5 class="widget_title">Social Share</h5>
-                            <ul class="list_none social_icons">
-                                <li><a href="#" class="sc_facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#" class="sc_twitter"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#" class="sc_twitter"><i class="fa-brands fa-google-plus-g"></i></a>
-                                </li>
-                                <li><a href="#" class="sc_facebook"><i class="fa-brands fa-youtube"></i></a></li>
-                                <li><a href="#" class="sc_instagram"><i class="fab fa-instagram"></i></a></li>
-                            </ul>
                         </div>
                     </div>
                 </div>

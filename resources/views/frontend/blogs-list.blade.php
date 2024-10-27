@@ -37,8 +37,8 @@
                                 <h5 class="blog_title"><a
                                         href="{{ route('blogs.single', $blog->id) }}">{{ $blog->name }}</a></h5>
                                 <ul class="list_none blog_meta">
-                                    <li><img src="{{ asset('assets/images/cl_teacher_img1.jpg') }}"
-                                            alt="image"><span>Dayna</span></li>
+                                    <li><img src="{{ $blog->users?->profile }}"
+                                            alt="img"><span>{{ $blog->users?->name }}</span></li>
                                     <li>
                                         <i class="far fa-calendar"></i>{{ $blog->formatted_date }}
                                     </li>

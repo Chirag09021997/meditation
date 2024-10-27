@@ -13,9 +13,9 @@
                         <th>Product Name</th>
                         <th>Product Thumb</th>
                         <th>Price</th>
+                        <th>Discount</th>
                         <th>Total Stock</th>
                         <th>Total Sale</th>
-                        <th>Discount</th>
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -50,13 +50,13 @@
                         data: 'price'
                     },
                     {
+                        data: 'discount'
+                    },
+                    {
                         data: 'total_stock'
                     },
                     {
                         data: 'total_sale'
-                    },
-                    {
-                        data: 'discount'
                     },
                     {
                         data: 'status'

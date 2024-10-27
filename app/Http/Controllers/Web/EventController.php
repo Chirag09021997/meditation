@@ -97,7 +97,7 @@ class EventController extends Controller
 
     public function getData()
     {
-        $event = Event::select(['id', 'name', 'thumb_image', 'starting_date', 'location', 'is_paid', 'fees', 'status']);
+        $event = Event::select(['id', 'name', 'thumb_image', 'starting_date', 'location', 'is_paid', 'fees', 'status'])->orderByDesc('created_at');
 
         return DataTables::of($event)
             ->addColumn('action', function ($data) {

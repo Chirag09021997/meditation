@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile',
     ];
 
     /**
@@ -42,4 +43,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function getProfileAttribute($value)
+    {
+        return !empty($value) ? config('app.url') . "/" . $value :  asset('assets/images/cl_teacher_img1.jpg');
+    }
 }

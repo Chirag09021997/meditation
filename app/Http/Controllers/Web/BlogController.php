@@ -91,7 +91,7 @@ class BlogController extends Controller
 
     public function getData()
     {
-        $blog = Blog::select(['id', 'name', 'thumb_image', 'total_view', 'status']);
+        $blog = Blog::select(['id', 'name', 'thumb_image', 'total_view', 'status'])->orderByDesc('created_at');
 
         return DataTables::of($blog)
             ->addColumn('action', function ($data) {

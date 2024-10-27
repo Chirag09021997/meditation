@@ -567,11 +567,13 @@
     22. PRICE FILTER JS
     *===================================*/
     $(function () {
+        const price_first = $("#price_first").val();
+        const price_second = $("#price_second").val();
         $("#price_filter").slider({
             range: true,
             min: 0,
-            max: 200,
-            values: [30, 150],
+            max: 500,
+            values: [price_first, price_second],
             slide: function (event, ui) {
                 $("#flt_price").html(
                     "$" + ui.values[0] + " - $" + ui.values[1]

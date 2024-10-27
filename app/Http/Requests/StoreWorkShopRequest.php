@@ -26,7 +26,7 @@ class StoreWorkShopRequest extends FormRequest
             'short_description' => 'nullable|string',
             'description' => 'nullable|string',
             'thumb_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // 2MB Max
-            'video_upload' => 'nullable|file|mimes:mp4,mov,avi,wmv|max:2048', // Max 10MB
+            'video_upload' => 'nullable|file|mimes:mp4,mov,avi,wmv|max:204800',
             'video_url' => 'nullable|url|required_without:video_upload',
             'second' => 'nullable|integer|min:0',
             'total_view' => 'required|integer|min:0',
