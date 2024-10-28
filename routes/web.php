@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Front\GoogleController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Web\BlogController;
@@ -39,6 +40,16 @@ Route::get('/stores/{id}', [HomeController::class, 'storeSingle'])->name('stores
 Route::get('/cart', [HomeController::class, 'cart'])->name('cart');
 Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
 Route::post('/contact', [HomeController::class, 'contactStore'])->name('contact.store');
+Route::get('/term-condition', [HomeController::class, 'termCondition'])->name('term.condition');
+Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
+Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacy.policy');
+Route::get('/refund-policy', [HomeController::class, 'refundPolicy'])->name('refund.policy');
+Route::get('/login', [HomeController::class, 'login'])->name('user.login');
+
+Route::controller(GoogleController::class)->group(function () {
+    Route::get('/auth/google', 'redirectToGoogle')->name('auth.google');
+    Route::get('auth/google/callback', 'handleGoogleCallback');
+});
 
 
 Route::get('/dashboard', function () {

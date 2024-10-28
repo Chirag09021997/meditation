@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\APIController;
+use App\Http\Controllers\Api\FavoriteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,3 +32,5 @@ Route::get('events', [APIController::class, 'EventList']);
 Route::get('stores', [APIController::class, 'StoreList']);
 Route::get('home', [APIController::class, 'Home']);
 Route::post('customer', [APIController::class, 'customerUpdate']);
+Route::post('favorite', [FavoriteController::class, 'store']);
+Route::post('get-favorite', [FavoriteController::class, 'getFavorite']);

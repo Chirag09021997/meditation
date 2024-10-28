@@ -107,4 +107,29 @@ class HomeController extends Controller
         ContactUs::create($validated);
         return redirect()->route('home')->with('success', 'Contact Us Send SuccessFully.');
     }
+
+    public function refundPolicy()
+    {
+        return view('frontend.refund-policy');
+    }
+
+    public function privacyPolicy()
+    {
+        return view('frontend.privacy-policy');
+    }
+
+    public function faq()
+    {
+        return view('frontend.faq');
+    }
+
+    public function termCondition()
+    {
+        return view('frontend.term-condition');
+    }
+
+    public function login()
+    {
+        return view('frontend.login');
+    }
 }

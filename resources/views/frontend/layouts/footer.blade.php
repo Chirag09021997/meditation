@@ -12,10 +12,10 @@
                         </div>
                         <div class="col-md-6">
                             <ul class="list_none footer_link text-center text-md-right">
-                                <li><a href="#">Terms & Condition</a></li>
-                                <li><a href="#">FAQ</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Cancellation Refund Policy</a></li>
+                                <li><a href="{{ route('term.condition') }}">Terms & Condition</a></li>
+                                <li><a href="{{ route('faq') }}">FAQ</a></li>
+                                <li><a href="{{ route('privacy.policy') }}">Privacy Policy</a></li>
+                                <li><a href="{{ route('refund.policy') }}">Cancellation Refund Policy</a></li>
                             </ul>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
 <script src="{{ asset('assets/js/jquery.dd.min.js') }}"></script>
 {{-- <!-- countdown js  --> --}}
 <script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>
-{{-- <!-- jquery.counterup.min js --> --}}
+{{-- <!-- jquery.counterup.min js --> --}}  
 <script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
 {{-- <!-- jquery.parallax-scroll js --> --}}
 <script src="{{ asset('assets/js/jquery.parallax-scroll.js') }}"></script>
