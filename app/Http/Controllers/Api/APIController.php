@@ -12,9 +12,12 @@ use App\Models\MeditationType;
 use App\Models\Music;
 use App\Models\PremiumPlan;
 use App\Models\Store;
+use App\Models\TrackMeditation;
 use App\Models\WorkShop;
+use Carbon\Carbon;
 use Faker\Provider\Medical;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
@@ -109,17 +112,39 @@ class APIController extends Controller
         return $this->sendResponse($store, "Get Store List SuccessFully.");
     }
 
-    public function Home()
+    public function Home(Request $request)
     {
+        $customerId = $request->get('customer_id', 0);
         $meditationType = MeditationType::select('id', 'name')->get();
         $meditationAudio = MeditationAudio::with('premiumPlans:id,name')->select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view')->where('status', 'Active')->latest()->take(5)->get();
         $music = Music::select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view')->where('status', 'Active')->latest()->take(5)->get();
         $workshop = WorkShop::select('id', 'name', 'short_description', 'description', 'thumb_image',  'video_url', 'premium_type', 'second', 'total_view')->where('status', 'Active')->latest()->take(5)->get();
+        $myTracking = [
+            "total_day" => Carbon::now()->daysInMonth,
+            "progress_day" => 0,
+            "listening_time" => 0,
+            "total_time" => 0
+        ];
+        if ($customerId > 0) {
+            $customer = TrackMeditation::where('customer_id', $customerId)->latest()->first();
+            if ($customer) {
+                $myTracking["listening_time"] = intval($customer->listening_time);
+                $myTracking["total_time"] = intval($customer->total_time);
+                $progressDays = TrackMeditation::where('customer_id', $customerId)
+                    ->whereMonth('created_at', Carbon::now()->month)
+                    ->whereYear('created_at', Carbon::now()->year)
+                    ->select(DB::raw('DATE(created_at) as date')) // Select distinct dates
+                    ->distinct() // Distinct dates
+                    ->count();
+                $myTracking["progress_day"] = $progressDays;
+            }
+        }
         return $this->sendResponse([
             'meditation_type' => $meditationType,
             'meditation_audio' => $meditationAudio,
             'music' => $music,
             'workshop' => $workshop,
+            'my_tracking' => $myTracking,
         ], "Get Home List SuccessFully.");
     }
 

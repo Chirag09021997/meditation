@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\APIController;
 use App\Http\Controllers\Api\FavoriteController;
+use App\Http\Controllers\Api\TrackingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,3 +35,4 @@ Route::get('home', [APIController::class, 'Home']);
 Route::post('customer', [APIController::class, 'customerUpdate']);
 Route::post('favorite', [FavoriteController::class, 'store']);
 Route::post('get-favorite', [FavoriteController::class, 'getFavorite']);
+Route::post('track-meditation', [TrackingController::class, 'trackMeditation']);
