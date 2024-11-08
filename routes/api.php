@@ -36,3 +36,4 @@ Route::post('customer', [APIController::class, 'customerUpdate']);
 Route::post('favorite', [FavoriteController::class, 'store']);
 Route::post('get-favorite', [FavoriteController::class, 'getFavorite']);
 Route::post('track-meditation', [TrackingController::class, 'trackMeditation']);
+Route::post('user-available',[APIController::class,'userAvailable']);

@@ -196,4 +196,19 @@ class APIController extends Controller
         $customer = Customer::updateOrCreate(['email' => $request->email], $validatedData);
         return $this->sendResponse($customer, "Customer update successFully.");
     }
+
+    public function userAvailable(Request $request)
+    {
+        $rules =  [
+            'email' => 'required|email|exists:customers,email'
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return $this->sendError($validator->errors()->first(), [], 200);
+        }
+        $validator->validated();
+        $customers = Customer::select('id', 'name', 'profile', 'country_name', 'mobile_no', 'email', 'business_category', 'dob')->where('email', $request->email)->first();
+        return $this->sendResponse($customers, "Get Customer List SuccessFully.");
+    }
 }
