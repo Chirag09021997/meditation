@@ -15,7 +15,6 @@ use App\Models\Store;
 use App\Models\TrackMeditation;
 use App\Models\WorkShop;
 use Carbon\Carbon;
-use Faker\Provider\Medical;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -210,5 +209,24 @@ class APIController extends Controller
         $validator->validated();
         $customers = Customer::select('id', 'name', 'profile', 'country_name', 'mobile_no', 'email', 'business_category', 'dob')->where('email', $request->email)->first();
         return $this->sendResponse($customers, "Get Customer List SuccessFully.");
+    }
+
+    public function CustomerDelete(Request $request)
+    {
+        $rules =  [
+            'email' => 'required|email|exists:customers,email'
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return $this->sendError($validator->errors()->first(), [], 200);
+        }
+        $validator->validated();
+        $customer = Customer::whereNull('deleted_at')->where('email', $request->email)->first();
+        if ($customer) {
+            $customer->delete();
+            return $this->sendResponse([], "Delete Customer SuccessFully.");
+        }
+        return $this->sendError('Customer not exist.', [], 200);
     }
 }
