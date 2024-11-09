@@ -38,3 +38,4 @@ Route::post('get-favorite', [FavoriteController::class, 'getFavorite']);
 Route::post('track-meditation', [TrackingController::class, 'trackMeditation']);
 Route::post('user-available', [APIController::class, 'userAvailable']);
 Route::delete('customer', [APIController::class, 'CustomerDelete']);
+Route::post('track-report', [TrackingController::class, "reportMeditation"]);

@@ -40,4 +40,48 @@ class TrackingController extends Controller
         }
         return $this->sendResponse($track, 'Track Meditation added successfully.');
     }
+
+    public function reportMeditation(Request $request)
+    {
+        $rules =  [
+            'customer_id' => 'required|integer|exists:customers,id',
+            'short' => 'nullable|string|in:today,yesterday,week,month,6months,year,all'
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return $this->sendError('Validation Error.', $validator->errors()->all(), 200);
+        }
+
+        $validatedData = $validator->validated();
+        $short = $validatedData['short'] ?? 'all';
+
+        $trackQuery = TrackMeditation::select('listening_time', 'created_at')->where('customer_id', $request->customer_id);
+        switch ($short) {
+            case 'today':
+                $trackQuery->whereDate('created_at', now()->toDateString());
+                break;
+            case 'yesterday':
+                $trackQuery->whereDate('created_at', now()->subDay()->toDateString());
+                break;
+            case 'week':
+                $trackQuery->whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()]);
+                break;
+            case 'month':
+                $trackQuery->whereMonth('created_at', now()->month)
+                    ->whereYear('created_at', now()->year);
+                break;
+            case '6months':
+                $trackQuery->whereBetween('created_at', [now()->subMonths(6), now()]);
+                break;
+            case 'year':
+                $trackQuery->whereYear('created_at', now()->year);
+                break;
+            case 'all':
+            default:
+                break;
+        }
+        $track = $trackQuery->get();
+        return $this->sendResponse($track, 'Report Meditation retrieved successfully.');
+    }
 }
