@@ -222,7 +222,7 @@ class APIController extends Controller
             return $this->sendError($validator->errors()->first(), [], 200);
         }
         $validator->validated();
-        $customer = Customer::whereNull('deleted_at')->where('email', $request->email)->first();
+        $customer = Customer::where('email', $request->email)->first();
         if ($customer) {
             $customer->forceDelete();
             TrackMeditation::where('customer_id', $customer->id)->delete();
