@@ -56,7 +56,7 @@ class TrackingController extends Controller
         $validatedData = $validator->validated();
         $short = $validatedData['short'] ?? 'all';
 
-        $trackQuery = TrackMeditation::select('listening_time', 'created_at')->where('customer_id', $request->customer_id);
+        $trackQuery = TrackMeditation::select('listening_time', 'total_time', 'created_at')->where('customer_id', $request->customer_id);
         switch ($short) {
             case 'today':
                 $trackQuery->whereDate('created_at', now()->toDateString());
