@@ -5,3 +5,214 @@
  *  Place here all your custom js. Make sure it's loaded after app.js
  *
  * ---------------------------------------------------------------------------- */
+
+$(document).ready(function () {
+    function navbarCartItems() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const cartList = $(".cart_list");
+        cartList.empty();
+        let totalAmount = 0;
+        cart.forEach((item) => {
+            let finalPrice = item.price - item.discount;
+            totalAmount += finalPrice * item.quantity;
+            cartList.append(`
+                <li data-id="${item.id}">
+                    <a href="#" class="item_remove"><i class="fa fa-times"></i></a>
+                    <a href="#"><img src="${item.thumb}" alt="cart_thumb"> ${item.name}</a>
+                    <span class="cart_quantity">${item.quantity} x <span class="cart_amount"> <span class="price_symbole">$</span>${finalPrice}</span></span>
+                </li>
+            `);
+        });
+        $(".cart_total .cart_amount").text(`$${totalAmount.toFixed(2)}`);
+        $(".cart_count").text(cart.length);
+    }
+
+    navbarCartItems();
+
+    $(".add-to-cart-btn").on("click", function (e) {
+        e.preventDefault();
+        const productId = $(this).data("id");
+        const productName = $(this).data("name");
+        const productThumb = $(this).data("thumb");
+        const productPrice = $(this).data("price");
+        const productDiscount = $(this).data("discount");
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let existingProduct = cart.find((item) => item.id === productId);
+        if (existingProduct) {
+            existingProduct.quantity += 1;
+        } else {
+            cart.push({
+                id: productId,
+                name: productName,
+                thumb: productThumb,
+                price: productPrice,
+                discount: productDiscount,
+                quantity: 1,
+            });
+        }
+        localStorage.setItem("cart", JSON.stringify(cart));
+        navbarCartItems();
+    });
+
+    $(".cart_list").on("click", ".item_remove", function (e) {
+        e.preventDefault();
+        const itemId = $(this).closest("li").data("id");
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart = cart.filter((item) => item.id !== itemId);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        navbarCartItems();
+    });
+
+    function renderCart() {
+        let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+        let coupon = JSON.parse(localStorage.getItem("coupon")) || {};
+        console.log("coupon=>", coupon);
+
+        $("#cart-items").empty();
+        if (cartItems.length === 0) {
+            $("#cart-items").append(
+                `<tr><td colspan="6">Your cart is empty.</td></tr>`
+            );
+            return;
+        }
+
+        let discount = 0;
+        let prices = 0;
+        let couponDiscount = 0;
+        cartItems.forEach((item, index) => {
+            const discountedPrice = item.price - item.discount;
+            prices += item.price * item.quantity;
+            discount += item.discount * item.quantity;
+            $("#cart-items").append(`
+                <tr>
+                    <td class="product-thumbnail"><img src="${
+                        item.thumb
+                    }" alt="${item.name}" style="width:70px;height:70px;"></td>
+                    <td class="product-name">${item.name}</td>
+                    <td class="product-price">$${discountedPrice.toFixed(
+                        2
+                    )}</td>
+                    <td class="product-quantity">
+                        <button class="minus" data-index="${index}">-</button>
+                        <input type="text" value="${
+                            item.quantity
+                        }" class="qty w-25" min="1" readonly>
+                        <button class="plus" data-index="${index}">+</button>
+                    </td>
+                    <td class="product-subtotal">$${(
+                        discountedPrice * item.quantity
+                    ).toFixed(2)}</td>
+                    <td class="product-remove"><button class="remove" data-index="${index}">×</button></td>
+                </tr>
+            `);
+        });
+        let finalTotal = prices - discount;
+        if (coupon?.id > 0) {
+            if (coupon?.type == "Percentage") {
+                couponDiscount += (finalTotal * coupon?.value) / 100;
+            } else {
+                couponDiscount += coupon?.value;
+            }
+            $("#apply_coupon").val(coupon?.coupon_code);
+        }
+        finalTotal -= couponDiscount;
+        discount += couponDiscount;
+        $(".cart_sub_total").text(`$${prices.toFixed(2)}`);
+        $(".cart_discount_total").text(`$${discount.toFixed(2)}`);
+        $(".cart_final_total").text(`$${finalTotal.toFixed(2)}`);
+    }
+
+    renderCart();
+
+    // Increase quantity
+    $(document).on("click", ".plus", function () {
+        let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+        const index = $(this).data("index");
+        cartItems[index].quantity++;
+        localStorage.setItem("cart", JSON.stringify(cartItems));
+        renderCart();
+    });
+
+    // Decrease quantity, minimum of 1
+    $(document).on("click", ".minus", function () {
+        let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+        const index = $(this).data("index");
+        if (cartItems[index].quantity > 1) {
+            cartItems[index].quantity--;
+            localStorage.setItem("cart", JSON.stringify(cartItems));
+            renderCart();
+        }
+    });
+
+    // Remove item from cart
+    $(document).on("click", ".remove", function () {
+        let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+        const index = $(this).data("index");
+        cartItems.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cartItems));
+        renderCart();
+        navbarCartItems();
+    });
+
+    $(document).on("click", ".add_apply_coupon", function () {
+        var coupon = $("#apply_coupon").val().trim();
+        if (coupon.length > 0) {
+            $.ajax({
+                url: "/api/apply-coupon",
+                type: "POST",
+                data: JSON.stringify({ coupon: coupon }),
+                contentType: "application/json",
+                success: function (response) {
+                    localStorage.setItem(
+                        "coupon",
+                        JSON.stringify(response.data)
+                    );
+                    renderCart();
+                },
+                error: function (error) {
+                    console.error("Error applying coupon:", error);
+                    alert("Failed to apply coupon. Please try again.");
+                },
+            });
+        }
+    });
+
+    $(document).on("click", ".clear_apply_coupon", function () {
+        localStorage.removeItem("coupon");
+        $("#apply_coupon").val("");
+        renderCart();
+    });
+
+    // Checkout Page
+    function checkoutProduct() {
+        let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+        $("#checkout_product_list").empty();
+        if (cartItems.length === 0) {
+            $("#cart-items").append(
+                `<tr><td colspan="2">Your cart is empty.</td></tr>`
+            );
+            return;
+        }
+        let discount = 0;
+        let prices = 0;
+        let couponDiscount = 0;
+        cartItems.forEach((item, index) => {
+            const discountedPrice =
+                (item.price - item.discount) * item.quantity;
+            prices += item.price * item.quantity;
+            discount += item.discount * item.quantity;
+            $("#checkout_product_list").append(
+                `<tr>
+                <td>${item.name} <span class="product-qty">x ${item.quantity}</span></td>
+                <td>$${discountedPrice}</td>
+            </tr>`
+            );
+        });
+        var finalTotal = prices - discount;
+        console.log("finalTotal =>", finalTotal);
+
+        $("#checkout-sub-total").text(finalTotal.toFixed(2));
+        $("#checkout-total").text(finalTotal.toFixed(2));
+    }
+    checkoutProduct();
+});

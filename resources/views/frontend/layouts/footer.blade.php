@@ -48,7 +48,7 @@
 <script src="{{ asset('assets/js/jquery.dd.min.js') }}"></script>
 {{-- <!-- countdown js  --> --}}
 <script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>
-{{-- <!-- jquery.counterup.min js --> --}}  
+{{-- <!-- jquery.counterup.min js --> --}}
 <script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
 {{-- <!-- jquery.parallax-scroll js --> --}}
 <script src="{{ asset('assets/js/jquery.parallax-scroll.js') }}"></script>
@@ -62,3 +62,5 @@
 <script src="{{ asset('assets/js/js.cookie.js') }}"></script>
 {{-- <!-- scripts js --> --}}
 <script src="{{ asset('assets/js/scripts.js') }}"></script>
+{{-- <!-- custom js --> --}}
+<script src="{{ asset('assets/js/custom.js') }}"></script>

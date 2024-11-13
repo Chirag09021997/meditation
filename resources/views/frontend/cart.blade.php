@@ -39,61 +39,7 @@
                                     <th class="product-remove">Remove</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="product-thumbnail"><a href="#"><img
-                                                src="{{ asset('assets/images/shop_small1.jpg') }}" alt="product1"></a></td>
-                                    <td class="product-name" data-title="Product"><a href="#">yoga mat For
-                                            Exercises</a>
-                                    </td>
-                                    <td class="product-price" data-title="Price">$23.00</td>
-                                    <td class="product-quantity" data-title="Quantity">
-                                        <div class="quantity">
-                                            <input type="button" value="-" class="minus">
-                                            <input type="text" name="quantity" value="2" title="Qty"
-                                                class="qty" size="4">
-                                            <input type="button" value="+" class="plus">
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal" data-title="Total">$46.00</td>
-                                    <td class="product-remove" data-title="Remove"><a href="#"><i
-                                                class="ti-close"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="product-thumbnail"><a href="#"><img
-                                                src="{{ asset('assets/images/shop_small2.jpg') }}" alt="product2"></a></td>
-                                    <td class="product-name" data-title="Product"><a href="#">Running Shoes</a></td>
-                                    <td class="product-price" data-title="Price">$45.00</td>
-                                    <td class="product-quantity" data-title="Quantity">
-                                        <div class="quantity">
-                                            <input type="button" value="-" class="minus">
-                                            <input type="text" name="quantity" value="1" title="Qty"
-                                                class="qty" size="4">
-                                            <input type="button" value="+" class="plus">
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal" data-title="Total">$45.00</td>
-                                    <td class="product-remove" data-title="Remove"><a href="#"><i
-                                                class="ti-close"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="product-thumbnail"><a href="#"><img
-                                                src="{{ asset('assets/images/shop_small3.jpg') }}" alt="product3"></a></td>
-                                    <td class="product-name" data-title="Product"><a href="#">Cotton Yoga Strap</a>
-                                    </td>
-                                    <td class="product-price" data-title="Price">$45.00</td>
-                                    <td class="product-quantity" data-title="Quantity">
-                                        <div class="quantity">
-                                            <input type="button" value="-" class="minus">
-                                            <input type="text" name="quantity" value="3" title="Qty"
-                                                class="qty" size="4">
-                                            <input type="button" value="+" class="plus">
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal" data-title="Total">$135.00</td>
-                                    <td class="product-remove" data-title="Remove"><a href="#"><i
-                                                class="ti-close"></i></a></td>
-                                </tr>
+                            <tbody id="cart-items">
                             </tbody>
                             <tfoot>
                                 <tr>
@@ -102,16 +48,23 @@
                                             <div class="col-lg-4 col-md-6 mb-3 mb-md-0">
                                                 <div class="coupon field_form input-group">
                                                     <input type="text" value="" class="form-control"
-                                                        placeholder="Enter Coupon Code..">
+                                                        placeholder="Enter Coupon Code.." name="apply_coupon"
+                                                        id="apply_coupon">
                                                     <div class="input-group-append">
-                                                        <button class="btn btn-default btn-sm" type="submit">Apply
+                                                        <button class="btn btn-dark btn-sm add_apply_coupon"
+                                                            type="submit">Apply
                                                             Coupon</button>
+                                                    </div>
+                                                    <div class="input-group-append mx-1">
+                                                        <button
+                                                            class="btn btn-default btn-sm clear_apply_coupon">Clear</button>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-8 col-md-6 text-center text-md-right">
                                                 <button class="btn btn-dark btn-sm" type="submit">Update Cart</button>
-                                                <a href="#" class="btn btn-default btn-sm">Proceed to Checkout</a>
+                                                <a href="{{ route('checkout') }}" class="btn btn-default btn-sm">Proceed to
+                                                    Checkout</a>
                                             </div>
                                         </div>
                                     </td>
@@ -136,12 +89,16 @@
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <td class="cart_total_label">Cart Subtotal</td>
-                                        <td class="cart_total_amount">$226.00</td>
+                                        <td class="cart_total_label">Total</td>
+                                        <td class="cart_total_amount cart_sub_total">$226.00</td>
                                     </tr>
                                     <tr>
-                                        <td class="cart_total_label">Total</td>
-                                        <td class="cart_total_amount"><strong>$226.00</strong></td>
+                                        <td class="cart_total_label">Discount</td>
+                                        <td class="cart_total_amount cart_discount_total">$226.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cart_total_label">Grand Total</td>
+                                        <td class="cart_total_amount cart_final_total"><strong>$226.00</strong></td>
                                     </tr>
                                 </tbody>
                             </table>

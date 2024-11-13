@@ -39,3 +39,4 @@ Route::post('track-meditation', [TrackingController::class, 'trackMeditation']);
 Route::post('user-available', [APIController::class, 'userAvailable']);
 Route::post('delete-customer', [APIController::class, 'CustomerDelete']);
 Route::post('track-report', [TrackingController::class, "reportMeditation"]);
+Route::post('apply-coupon', [APIController::class, "applyCoupon"]);

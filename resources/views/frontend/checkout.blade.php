@@ -251,28 +251,16 @@
                                     <th>Total</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>yoga mat For Exercises <span class="product-qty">x 2</span></td>
-                                    <td>$70.00</td>
-                                </tr>
-                                <tr>
-                                    <td>Running Shoes <span class="product-qty">x 1</span></td>
-                                    <td>$40.00</td>
-                                </tr>
-                                <tr>
-                                    <td>Cotton Yoga Strap <span class="product-qty">x 3</span></td>
-                                    <td>$156.00</td>
-                                </tr>
+                            <tbody id="checkout_product_list">
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <td>SubTotal</td>
-                                    <td>$266.00</td>
+                                    <td>$ <span id="checkout-sub-total">266.00</span></td>
                                 </tr>
                                 <tr>
                                     <td class="product-subtotal">Total</td>
-                                    <td class="product-subtotal">$266.00</td>
+                                    <td class="product-subtotal">$ <span id="checkout-total">266.00</span></td>
                                 </tr>
                             </tfoot>
                         </table>

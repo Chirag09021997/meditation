@@ -230,4 +230,23 @@ class APIController extends Controller
         }
         return $this->sendError('Customer not exist.', [], 200);
     }
+
+    public function applyCoupon(Request $request)
+    {
+        $rules =  [
+            'coupon' => 'required|string|exists:coupon_systems,coupon_code'
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return $this->sendError($validator->errors()->first(), [], 200);
+        }
+        $validator->validated();
+        $coupon = CouponSystem::whereNull('deleted_at')->where('coupon_code', $request->coupon)->where('start_date', '<=', now())->where('end_date', '>=', now())->select('id', 'type', 'coupon_code', 'value')->first();
+        $coupon->value = floatval($coupon->value);
+        if ($coupon) {
+            return $this->sendResponse($coupon, "Get Coupon Data SuccessFully.");
+        }
+        return $this->sendError('Coupon not exist.', [], 200);
+    }
 }

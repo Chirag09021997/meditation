@@ -45,7 +45,12 @@
                                                 src="{{ $store->product_thumb }}" alt="store" /></a>
                                         <div class="product_action_box">
                                             <ul class="list_none pr_action_btn">
-                                                <li><a href="#" class="btn btn-default rounded-0">Add To Cart</a></li>
+                                                <li><a href="#" class="btn btn-default rounded-0 add-to-cart-btn"
+                                                        data-id="{{ $store->id }}" data-name="{{ $store->product_name }}"
+                                                        data-thumb="{{ $store->product_thumb }}"
+                                                        data-price="{{ $store->price }}"
+                                                        data-discount="{{ $store->discount }}">Add To Cart</a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
