@@ -85,149 +85,185 @@
                     <form method="post" class="form_style2">
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <label>First name <span class="required">*</span></label>
-                                <input type="text" required class="form-control" name="fname" value="">
+                                <label for="b_fname">First name <span class="required">*</span></label>
+                                <input type="text" required class="form-control" name="b_fname" id="b_fname"
+                                    value="{{ old('b_fname') }}">
+                                @if ($errors->has('b_fname'))
+                                    <p class="text-danger font_style1">{{ $errors->first('b_fname') }}</p>
+                                @endif
                             </div>
                             <div class="form-group col-md-6">
-                                <label>Last name <span class="required">*</span></label>
-                                <input type="text" required class="form-control" name="lname" value="">
+                                <label for="b_lname">Last name <span class="required">*</span></label>
+                                <input type="text" required class="form-control" name="b_lname" id="b_lname"
+                                    value="{{ old('b_lname') }}">
+                                @if ($errors->has('b_lname'))
+                                    <p class="text-danger font_style1">{{ $errors->first('b_lname') }}</p>
+                                @endif
                             </div>
                             <div class="form-group col-md-6">
-                                <label>Company Name:</label>
-                                <input class="form-control" required type="text" name="cname">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>Country <span class="required">*</span></label>
+                                <label for="b_country">Country <span class="required">*</span></label>
                                 <div class="custom_select">
-                                    <select>
+                                    <select id="b_country" name="b_country">
                                         <option value="">Choose a option...</option>
-                                        <option value="AX">Aland Islands</option>
-                                        <option value="AF">Afghanistan</option>
-                                        <option value="AL">Albania</option>
-                                        <option value="DZ">Algeria</option>
-                                        <option value="AD">Andorra</option>
-                                        <option value="AO">Angola</option>
-                                        <option value="AI">Anguilla</option>
-                                        <option value="AQ">Antarctica</option>
-                                        <option value="AG">Antigua and Barbuda</option>
-                                        <option value="AR">Argentina</option>
-                                        <option value="AM">Armenia</option>
-                                        <option value="AW">Aruba</option>
-                                        <option value="AU">Australia</option>
-                                        <option value="AT">Austria</option>
+                                        @foreach ($countries as $country)
+                                            <option value="{{ $country['code'] }}"
+                                                {{ old('b_country') == $country['code'] ? 'selected' : '' }}>
+                                                {{ $country['name'] }}</option>
+                                        @endforeach
                                     </select>
+                                    @if ($errors->has('b_country'))
+                                        <p class="text-danger font_style1">{{ $errors->first('b_country') }}</p>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-group col-md-6">
-                                <label>Address: <span class="required">*</span></label>
-                                <input type="text" value="" class="form-control" name="billing_address"
-                                    required="">
+                                <label for="b_address">Address: <span class="required">*</span></label>
+                                <input type="text" value="{{ old('b_address') }}" class="form-control"
+                                    name="b_address" id="b_address" required>
+                                @if ($errors->has('b_address'))
+                                    <p class="text-danger font_style1">{{ $errors->first('b_address') }}</p>
+                                @endif
                             </div>
                             <div class="form-group col-md-6">
-                                <label>Address line2:</label>
-                                <input type="text" value="" class="form-control" name="billing_address2"
-                                    required="">
+                                <label for="b_address2">Address line2:</label>
+                                <input type="text" value="{{ old('b_address2') }}" class="form-control"
+                                    name="b_address2" id="b_address2" required>
+                                @if ($errors->has('b_address2'))
+                                    <p class="text-danger font_style1">{{ $errors->first('b_address2') }}</p>
+                                @endif
                             </div>
                             <div class="form-group col-md-6">
-                                <label>City / Town: <span class="required">*</span></label>
-                                <input class="form-control" required type="text" name="city">
+                                <label for="b_city">City / Town: <span class="required">*</span></label>
+                                <input class="form-control" required type="text" name="b_city" id="b_city"
+                                    value="{{ old('b_city') }}">
+                                @if ($errors->has('b_city'))
+                                    <p class="text-danger font_style1">{{ $errors->first('b_city') }}</p>
+                                @endif
                             </div>
                             <div class="form-group col-md-6">
-                                <label>State / County</label>
-                                <input class="form-control" required type="text" name="state">
+                                <label for="b_state">State / County</label>
+                                <input class="form-control" required type="text" name="b_state" id="b_state"
+                                    value="{{ old('b_state') }}">
+                                @if ($errors->has('b_state'))
+                                    <p class="text-danger font_style1">{{ $errors->first('b_state') }}</p>
+                                @endif
                             </div>
                             <div class="form-group col-md-6">
-                                <label>Postcode / ZIP <span class="required">*</span></label>
-                                <input class="form-control" required type="text" name="zipcode">
+                                <label for="b_zipcode">Postcode / ZIP <span class="required">*</span></label>
+                                <input class="form-control" required type="text" name="b_zipcode" id="b_zipcode"
+                                    value="{{ old('b_zipcode') }}">
+                                @if ($errors->has('b_zipcode'))
+                                    <p class="text-danger font_style1">{{ $errors->first('b_zipcode') }}</p>
+                                @endif
                             </div>
                             <div class="form-group col-md-6">
-                                <label>Phone <span class="required">*</span></label>
-                                <input class="form-control" required type="text" name="phone">
+                                <label for="b_phone">Phone <span class="required">*</span></label>
+                                <input class="form-control" required type="text" name="b_phone" id="b_phone"
+                                    value="{{ old('b_phone') }}">
+                                @if ($errors->has('b_phone'))
+                                    <p class="text-danger font_style1">{{ $errors->first('b_phone') }}</p>
+                                @endif
                             </div>
                             <div class="form-group col-md-6">
-                                <label>Email address <span class="required">*</span></label>
-                                <input class="form-control" required type="text" name="email">
+                                <label for="b_email">Email address <span class="required">*</span></label>
+                                <input class="form-control" required type="text" name="b_email" id="b_email"
+                                    value="{{ old('b_email') }}">
+                                @if ($errors->has('b_email'))
+                                    <p class="text-danger font_style1">{{ $errors->first('b_email') }}</p>
+                                @endif
                             </div>
                             <div class="form-group col-md-12">
-                                <label>
-                                    <input name="createaccount" id="createaccount" type="checkbox" value="">
-                                    <span> Create an account?</span>
-                                </label>
-                            </div>
-                            <div class="form-group col-md-6 create-account">
-                                <label>Create account password <span class="required">*</span></label>
-                                <input class="form-control" required type="password" placeholder="Password"
-                                    name="password">
-                            </div>
-                            <div class="form-group col-md-12">
-                                <label>
-                                    <input name="createaccount" id="differentaddress" type="checkbox" value="">
+                                <label for="differentaddress">
+                                    <input name="ship_address" id="differentaddress" type="checkbox"
+                                        value="{{ old('ship_address') }}" {{ old('ship_address') ? 'checked' : '' }}>
                                     <span> Ship to a different address?</span>
                                 </label>
                             </div>
                         </div>
                         <div class="row different_address">
-                            <div class="form-group col-md-6">
-                                <label>First name <span class="required">*</span></label>
-                                <input type="text" required class="form-control" name="fname" value="">
+                            <div class="heading_s2 col-md-12">
+                                <h5>Shipping Details</h5>
                             </div>
                             <div class="form-group col-md-6">
-                                <label>Last name <span class="required">*</span></label>
-                                <input type="text" required class="form-control" name="lname" value="">
+                                <label for="s_fname">First name <span class="required">*</span></label>
+                                <input type="text" required class="form-control" name="s_fname" id="s_fname"
+                                    value="{{ old('s_fname') }}">
+                                @if ($errors->has('s_fname'))
+                                    <p class="text-danger font_style1">{{ $errors->first('s_fname') }}</p>
+                                @endif
                             </div>
                             <div class="form-group col-md-6">
-                                <label>Company Name:</label>
-                                <input class="form-control" required type="text" name="cname">
+                                <label for="s_lname">Last name <span class="required">*</span></label>
+                                <input type="text" required class="form-control" name="s_lname" id="s_lname"
+                                    value="{{ old('s_lname') }}">
+                                @if ($errors->has('s_lname'))
+                                    <p class="text-danger font_style1">{{ $errors->first('s_lname') }}</p>
+                                @endif
                             </div>
                             <div class="form-group col-md-6">
-                                <label>Country <span class="required">*</span></label>
+                                <label for="s_country">Country <span class="required">*</span></label>
                                 <div class="custom_select">
-                                    <select>
+                                    <select id="s_country" name="s_country">
                                         <option value="">Choose a option...</option>
-                                        <option value="AX">Aland Islands</option>
-                                        <option value="AF">Afghanistan</option>
-                                        <option value="AL">Albania</option>
-                                        <option value="DZ">Algeria</option>
-                                        <option value="AD">Andorra</option>
-                                        <option value="AO">Angola</option>
-                                        <option value="AI">Anguilla</option>
-                                        <option value="AQ">Antarctica</option>
-                                        <option value="AG">Antigua and Barbuda</option>
-                                        <option value="AR">Argentina</option>
-                                        <option value="AM">Armenia</option>
-                                        <option value="AW">Aruba</option>
-                                        <option value="AU">Australia</option>
-                                        <option value="AT">Austria</option>
+                                        @foreach ($countries as $country)
+                                            <option value="{{ $country['code'] }}"
+                                                {{ old('s_country') == $country['code'] ? 'selected' : '' }}>
+                                                {{ $country['name'] }}</option>
+                                        @endforeach
                                     </select>
+                                    @if ($errors->has('s_country'))
+                                        <p class="text-danger font_style1">{{ $errors->first('s_country') }}</p>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-group col-md-6">
-                                <label>Address: <span class="required">*</span></label>
-                                <input type="text" value="" class="form-control" name="billing_address"
-                                    required="">
+                                <label for="s_address">Address: <span class="required">*</span></label>
+                                <input type="text" value="{{ old('s_address') }}" class="form-control"
+                                    name="s_address" id="s_address" required>
+                                @if ($errors->has('s_address'))
+                                    <p class="text-danger font_style1">{{ $errors->first('s_address') }}</p>
+                                @endif
                             </div>
                             <div class="form-group col-md-6">
-                                <label>Address line2:</label>
-                                <input type="text" value="" class="form-control" name="billing_address2"
-                                    required="">
+                                <label for="s_address2">Address line2:</label>
+                                <input type="text" value="{{ old('s_address2') }}" class="form-control"
+                                    name="s_address2" id="s_address2" required>
+                                @if ($errors->has('s_address2'))
+                                    <p class="text-danger font_style1">{{ $errors->first('s_address2') }}</p>
+                                @endif
                             </div>
                             <div class="form-group col-md-6">
-                                <label>City / Town: <span class="required">*</span></label>
-                                <input class="form-control" required type="text" name="city">
+                                <label for="s_city">City / Town: <span class="required">*</span></label>
+                                <input class="form-control" required type="text" name="s_city" id="s_city"
+                                    value="{{ old('s_city') }}">
+                                @if ($errors->has('s_city'))
+                                    <p class="text-danger font_style1">{{ $errors->first('s_city') }}</p>
+                                @endif
                             </div>
                             <div class="form-group col-md-6">
-                                <label>State / County</label>
-                                <input class="form-control" required type="text" name="state">
+                                <label for="s_state">State / County</label>
+                                <input class="form-control" required type="text" name="s_state" id="s_state"
+                                    value="{{ old('s_state') }}">
+                                @if ($errors->has('s_state'))
+                                    <p class="text-danger font_style1">{{ $errors->first('s_state') }}</p>
+                                @endif
                             </div>
                             <div class="form-group col-md-6">
-                                <label>Postcode / ZIP <span class="required">*</span></label>
-                                <input class="form-control" required type="text" name="zipcode">
+                                <label for="s_zipcode">Postcode / ZIP <span class="required">*</span></label>
+                                <input class="form-control" required type="text" name="s_zipcode" id="s_zipcode"
+                                    value="{{ old('s_zipcode') }}">
+                                @if ($errors->has('s_zipcode'))
+                                    <p class="text-danger font_style1">{{ $errors->first('s_zipcode') }}</p>
+                                @endif
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label>Order notes</label>
-                                <textarea rows="5" class="form-control"></textarea>
+                                <label for="note">Order notes</label>
+                                <textarea rows="5" class="form-control" name="note" id="note">{{ old('note') }}</textarea>
+                                @if ($errors->has('note'))
+                                    <p class="text-danger font_style1">{{ $errors->first('note') }}</p>
+                                @endif
                             </div>
                         </div>
                     </form>
@@ -276,7 +312,7 @@
                 <div class="col-12">
                     <div class="payment_method">
                         <div class="custome-radio">
-                            <input class="form-check-input" required="" type="radio" name="payment_option"
+                            <input class="form-check-input" required type="radio" name="payment_option"
                                 id="exampleRadios3" value="option3" checked="">
                             <label class="form-check-label" for="exampleRadios3">Direct Bank Transfer</label>
                             <p data-method="option3" class="payment-text">There are many variations of passages of Lorem

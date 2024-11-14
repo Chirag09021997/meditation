@@ -98,7 +98,9 @@ class HomeController extends Controller
 
     public function checkout()
     {
-        return view('frontend.checkout');
+        $jsonPath = public_path('assets/country.json');
+        $countries = json_decode(file_get_contents($jsonPath), true);
+        return view('frontend.checkout', compact('countries'));
     }
 
     public function contactStore(ContactUsRequest $request)

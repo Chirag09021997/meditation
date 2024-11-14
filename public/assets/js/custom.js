@@ -120,6 +120,7 @@ $(document).ready(function () {
         $(".cart_sub_total").text(`$${prices.toFixed(2)}`);
         $(".cart_discount_total").text(`$${discount.toFixed(2)}`);
         $(".cart_final_total").text(`$${finalTotal.toFixed(2)}`);
+        navbarCartItems();
     }
 
     renderCart();
@@ -151,7 +152,6 @@ $(document).ready(function () {
         cartItems.splice(index, 1);
         localStorage.setItem("cart", JSON.stringify(cartItems));
         renderCart();
-        navbarCartItems();
     });
 
     $(document).on("click", ".add_apply_coupon", function () {
