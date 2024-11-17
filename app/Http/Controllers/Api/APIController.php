@@ -243,8 +243,8 @@ class APIController extends Controller
         }
         $validator->validated();
         $coupon = CouponSystem::whereNull('deleted_at')->where('coupon_code', $request->coupon)->where('start_date', '<=', now())->where('end_date', '>=', now())->select('id', 'type', 'coupon_code', 'value')->first();
-        $coupon->value = floatval($coupon->value);
         if ($coupon) {
+            $coupon->value = isset($coupon->value) && !is_null(isset($coupon->value)) ? floatval($coupon->value) : 0;
             return $this->sendResponse($coupon, "Get Coupon Data SuccessFully.");
         }
         return $this->sendError('Coupon not exist.', [], 200);

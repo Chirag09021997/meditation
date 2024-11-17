@@ -34,6 +34,24 @@
                         <a class="nav-link {{ request()->is('about') ? 'active' : '' }}"
                             href="{{ route('about') }}">About</a>
                     </li>
+                    @if (Auth::guard('customer')->check())
+                        <li class="nav-item">
+                            <p class="nav-link">
+                                {{ Auth::guard('customer')->user()->name }}
+                            </p>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="#" id="logoutBtn">Logout</a>
+                            <form id="logoutForm" action="{{ route('user.logout') }}" method="POST" class="d-none">
+                                @csrf
+                                <button type="submit" class="nav-link btn btn-link">Logout</button>
+                            </form>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('user.login') }}">Login</a>
+                        </li>
+                    @endif
                 </ul>
             </div>
             <ul class="navbar-nav attr-nav align-items-center">

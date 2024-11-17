@@ -66,7 +66,6 @@ $(document).ready(function () {
     function renderCart() {
         let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
         let coupon = JSON.parse(localStorage.getItem("coupon")) || {};
-        console.log("coupon=>", coupon);
 
         $("#cart-items").empty();
         if (cartItems.length === 0) {
@@ -163,11 +162,17 @@ $(document).ready(function () {
                 data: JSON.stringify({ coupon: coupon }),
                 contentType: "application/json",
                 success: function (response) {
-                    localStorage.setItem(
-                        "coupon",
-                        JSON.stringify(response.data)
-                    );
-                    renderCart();
+                    if (response.success) {
+                        localStorage.setItem(
+                            "coupon",
+                            JSON.stringify(response.data)
+                        );
+                        renderCart();
+                        checkoutProduct();
+                        alert("Apply coupon successFully.");
+                    } else {
+                        alert("Coupon not valid.");
+                    }
                 },
                 error: function (error) {
                     console.error("Error applying coupon:", error);
@@ -181,11 +186,13 @@ $(document).ready(function () {
         localStorage.removeItem("coupon");
         $("#apply_coupon").val("");
         renderCart();
+        checkoutProduct();
     });
 
     // Checkout Page
     function checkoutProduct() {
         let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+        let coupon = JSON.parse(localStorage.getItem("coupon")) || {};
         $("#checkout_product_list").empty();
         if (cartItems.length === 0) {
             $("#cart-items").append(
@@ -208,11 +215,55 @@ $(document).ready(function () {
             </tr>`
             );
         });
-        var finalTotal = prices - discount;
-        console.log("finalTotal =>", finalTotal);
 
-        $("#checkout-sub-total").text(finalTotal.toFixed(2));
+        if (coupon?.id > 0) {
+            if (coupon?.type == "Percentage") {
+                couponDiscount += (finalTotal * coupon?.value) / 100;
+            } else {
+                couponDiscount += coupon?.value;
+            }
+            $("#coupon_code").val(coupon?.coupon_code);
+        }
+
+        var finalDiscount = discount + couponDiscount;
+        var finalTotal = prices - finalDiscount;
+        $("#checkout-sub-total").text(prices.toFixed(2));
         $("#checkout-total").text(finalTotal.toFixed(2));
+        $("#checkout-discount-total").text(finalDiscount.toFixed(2));
     }
     checkoutProduct();
+
+    $("#checkoutSubmit").on("submit", function (e) {
+        e.preventDefault();
+        const differentAddress = $("#differentaddress").is(":checked");
+        if (!differentAddress) {
+            const fields = [
+                "fname",
+                "lname",
+                "country",
+                "address",
+                "address2",
+                "city",
+                "state",
+                "zipcode",
+            ];
+            fields.forEach((field) => {
+                $(`#s_${field}`).val($(`#b_${field}`).val());
+            });
+        }
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const cartItems = cart.map((item) => ({
+            id: item.id,
+            quantity: item.quantity,
+        }));
+        $("#cartItemsInput").val(JSON.stringify(cartItems));
+        this.submit();
+    });
+
+    $("#logoutBtn").on("click", function (e) {
+        e.preventDefault();
+        if (confirm("Are you sure you want to logout?")) {
+            $("#logoutForm").submit();
+        }
+    });
 });

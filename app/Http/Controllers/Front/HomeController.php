@@ -6,10 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactUsRequest;
 use App\Models\Blog;
 use App\Models\ContactUs;
+use App\Models\CouponSystem;
 use App\Models\Event;
+use App\Models\Order;
 use App\Models\Store;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -101,6 +104,54 @@ class HomeController extends Controller
         $jsonPath = public_path('assets/country.json');
         $countries = json_decode(file_get_contents($jsonPath), true);
         return view('frontend.checkout', compact('countries'));
+    }
+
+    public function checkoutStore(Request $request)
+    {
+        $cartItems = json_decode($request->input('cartItems'), true);
+        $request->merge(['cartItems' => $cartItems]);
+        $validatedData = $request->validate([
+            'b_fname' => 'required|string|max:255',
+            'b_lname' => 'required|string|max:255',
+            'b_country' => 'required|string|max:2',
+            'b_address' => 'required|string|max:255',
+            'b_address2' => 'required|string|max:255',
+            'b_city' => 'required|string|max:255',
+            'b_state' => 'required|string|max:255',
+            'b_zipcode' => 'required|string|max:10',
+            'b_phone' => 'required|string|max:15',
+            'b_email' => 'required|email|max:255',
+            's_fname' => 'nullable|string|max:255',
+            's_lname' => 'nullable|string|max:255',
+            's_country' => 'nullable|string|max:2',
+            's_address' => 'nullable|string|max:255',
+            's_address2' => 'nullable|string|max:255',
+            's_city' => 'nullable|string|max:255',
+            's_state' => 'nullable|string|max:255',
+            's_zipcode' => 'nullable|string|max:10',
+            'cartItems' => 'required|array',
+            'cartItems.*.id' => 'required|exists:stores,id',
+            'cartItems.*.quantity' => 'required|integer|min:1',
+            'coupon_code' => 'nullable|string|exists:coupon_systems,coupon_code',
+        ]);
+        $customer = Auth::guard('customer')->user();
+        $coupon = CouponSystem::whereNull('deleted_at')->where('coupon_code', $request->coupon_code)->where('start_date', '<=', now())->where('end_date', '>=', now())->select('id', 'type', 'coupon_code', 'value')->first();
+        $order = Order::create([
+            'payment_option' => $request->input('payment_option'),
+            'note' => $request->input('note'),
+            'coupon_id' => $coupon?->id,
+            'customer_id' => $customer->id,
+        ]);
+
+        $order->orderAddress()->create(array_merge($validatedData, ['customer_id' => auth()->id()]));
+
+        foreach ($validatedData['cartItems'] as $cart) {
+            $order->orderItem()->create([
+                'store_id' => $cart['id'],
+                'quantity' => $cart['quantity'],
+            ]);
+        }
+        return redirect()->route('home')->with('success', "Order created successFully.");
     }
 
     public function contactStore(ContactUsRequest $request)

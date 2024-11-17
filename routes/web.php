@@ -14,6 +14,7 @@ use App\Http\Controllers\Web\MusicController;
 use App\Http\Controllers\Web\PremiumPlanController;
 use App\Http\Controllers\Web\StoreController;
 use App\Http\Controllers\Web\WorkShopController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,7 +39,6 @@ Route::get('/blogs/{id}', [HomeController::class, 'blogSingle'])->name('blogs.si
 Route::get('/stores', [HomeController::class, 'storeList'])->name('stores');
 Route::get('/stores/{id}', [HomeController::class, 'storeSingle'])->name('stores.single');
 Route::get('/cart', [HomeController::class, 'cart'])->name('cart');
-Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
 Route::post('/contact', [HomeController::class, 'contactStore'])->name('contact.store');
 Route::get('/term-condition', [HomeController::class, 'termCondition'])->name('term.condition');
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
@@ -46,11 +46,20 @@ Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('p
 Route::get('/refund-policy', [HomeController::class, 'refundPolicy'])->name('refund.policy');
 Route::get('/login', [HomeController::class, 'login'])->name('user.login');
 
+Route::post('/user/logout', function () {
+    Auth::guard('customer')->logout();
+    return redirect()->route('home');
+})->name('user.logout');
+
 Route::controller(GoogleController::class)->group(function () {
     Route::get('/auth/google', 'redirectToGoogle')->name('auth.google');
     Route::get('auth/google/callback', 'handleGoogleCallback');
 });
 
+Route::middleware('customer')->group(function () {
+    Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
+    Route::post('/checkout', [HomeController::class, 'checkoutStore'])->name('checkout.store');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
