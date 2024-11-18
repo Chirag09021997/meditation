@@ -36,10 +36,11 @@ $(document).ready(function () {
         const productThumb = $(this).data("thumb");
         const productPrice = $(this).data("price");
         const productDiscount = $(this).data("discount");
+        var quantity = $("#quantity").val() || 1;
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
         let existingProduct = cart.find((item) => item.id === productId);
         if (existingProduct) {
-            existingProduct.quantity += 1;
+            existingProduct.quantity += quantity;
         } else {
             cart.push({
                 id: productId,
@@ -47,7 +48,7 @@ $(document).ready(function () {
                 thumb: productThumb,
                 price: productPrice,
                 discount: productDiscount,
-                quantity: 1,
+                quantity: quantity,
             });
         }
         localStorage.setItem("cart", JSON.stringify(cart));

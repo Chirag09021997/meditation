@@ -36,15 +36,15 @@
                     </li>
                     @if (Auth::guard('customer')->check())
                         <li class="nav-item">
-                            <p class="nav-link">
-                                {{ Auth::guard('customer')->user()->name }}
-                            </p>
+                            <a class="nav-link {{ request()->is('user.profile') ? 'active' : '' }}"
+                                href="{{ route('user.profile') }}">Profile</a>
                         </li>
                         <li>
-                            <a class="nav-link" href="#" id="logoutBtn">Logout</a>
+                            <a class="nav-link" href="#" id="logoutBtn"><i class="fas fa-power-off"></i></a>
                             <form id="logoutForm" action="{{ route('user.logout') }}" method="POST" class="d-none">
                                 @csrf
-                                <button type="submit" class="nav-link btn btn-link">Logout</button>
+                                <button type="submit" class="nav-link btn btn-link"><i
+                                        class="fas fa-power-off"></i></button>
                             </form>
                         </li>
                     @else

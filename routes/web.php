@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Front\GoogleController;
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Front\ProfileController as FrontProfileController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Web\BlogController;
 use App\Http\Controllers\Web\ContactUsController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\Web\EventController;
 use App\Http\Controllers\Web\MeditationAudioController;
 use App\Http\Controllers\Web\MeditationTypeController;
 use App\Http\Controllers\Web\MusicController;
+use App\Http\Controllers\Web\OrderController;
 use App\Http\Controllers\Web\PremiumPlanController;
 use App\Http\Controllers\Web\StoreController;
 use App\Http\Controllers\Web\WorkShopController;
@@ -59,6 +61,8 @@ Route::controller(GoogleController::class)->group(function () {
 Route::middleware('customer')->group(function () {
     Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
     Route::post('/checkout', [HomeController::class, 'checkoutStore'])->name('checkout.store');
+    Route::get('/user-profile', [FrontProfileController::class, 'index'])->name('user.profile');
+    Route::post('/user-profile', [FrontProfileController::class, 'update'])->name('user.profile.update');
 });
 
 Route::get('/dashboard', function () {
@@ -114,6 +118,9 @@ Route::middleware('auth')->group(function () {
     Route::get('contact-us', [ContactUsController::class, 'index'])->name('contact-us.index');
     Route::get('contact-us/{id}', [ContactUsController::class, 'show'])->name('contact-us.show');
     Route::delete('contact-us/{id}', [ContactUsController::class, 'destroy'])->name('contact-us.destroy');
+
+    Route::get('order/data', [OrderController::class, 'getData'])->name('order.data');
+    Route::resource('order', OrderController::class)->except(['create', 'store']);
 });
 
 require __DIR__ . '/auth.php';

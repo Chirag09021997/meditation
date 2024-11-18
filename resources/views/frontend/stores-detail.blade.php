@@ -52,13 +52,16 @@
                             <div class="cart-product-quantity">
                                 <div class="quantity">
                                     <input type="button" value="-" class="minus">
-                                    <input type="text" name="quantity" value="1" title="Qty" class="qty"
-                                        size="4">
+                                    <input type="text" name="quantity" id="quantity" value="1" title="Qty"
+                                        class="qty" size="4">
                                     <input type="button" value="+" class="plus">
                                 </div>
                             </div>
                             <div class="cart_btn">
-                                <button class="btn btn-default rounded-0 btn-addtocart" type="button">Add to
+                                <button class="btn btn-default rounded-0 btn-addtocart add-to-cart-btn" type="button"
+                                    data-id="{{ $store->id }}" data-name="{{ $store->product_name }}"
+                                    data-thumb="{{ $store->product_thumb }}" data-price="{{ $store->price }}"
+                                    data-discount="{{ $store->discount }}">Add to
                                     cart</button>
                             </div>
                         </div>
