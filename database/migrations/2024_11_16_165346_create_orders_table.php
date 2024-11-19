@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('note')->nullable();
             $table->enum('status', ['Pending', 'Complete', 'Shipping'])->default('Pending');
             $table->timestamps();
-            $table->foreign('customer_id')->references('id')->on('customers')->cascadeOnDelete();
+            // $table->foreign('customer_id')->references('id')->on('customers')->cascadeOnDelete();
         });
     }
 

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->decimal('price', 10, 2)->default(0);
             $table->decimal('discount', 5, 2)->default(0);
             $table->timestamps();
-            $table->foreign('order_id')->references('id')->on('orders')->cascadeOnDelete();
+            // $table->foreign('order_id')->references('id')->on('orders')->cascadeOnDelete();
             // $table->foreign('store_id')->references('id')->on('stores')->cascadeOnDelete();
         });
     }
