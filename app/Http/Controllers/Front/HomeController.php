@@ -139,16 +139,21 @@ class HomeController extends Controller
         $order = Order::create([
             'payment_option' => $request->input('payment_option'),
             'note' => $request->input('note'),
-            'coupon_id' => $coupon?->id,
+            'coupon_type' => $coupon?->type,
+            'coupon_code' => $coupon?->coupon_code,
+            'coupon_value' => $coupon?->value,
             'customer_id' => $customer->id,
         ]);
 
         $order->orderAddress()->create(array_merge($validatedData, ['customer_id' => auth()->id()]));
 
         foreach ($validatedData['cartItems'] as $cart) {
+            $store = Store::find($cart['id']);
             $order->orderItem()->create([
                 'store_id' => $cart['id'],
                 'quantity' => $cart['quantity'],
+                'price' => $store->price,
+                'discount' => $store->discount
             ]);
         }
         return redirect()->route('home')->with('success', "Order created successFully.");

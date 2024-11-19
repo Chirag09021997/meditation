@@ -33,7 +33,7 @@ return new class extends Migration
             $table->string('s_state')->nullable();
             $table->string('s_zipcode')->nullable();
             $table->timestamps();
-            $table->foreign('order_id')->references('id')->on('orders')->cascadeOnDelete();
+            // $table->foreign('order_id')->references('id')->on('orders')->cascadeOnDelete();
         });
     }
 

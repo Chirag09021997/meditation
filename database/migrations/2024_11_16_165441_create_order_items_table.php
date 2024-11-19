@@ -16,9 +16,11 @@ return new class extends Migration
             $table->unsignedBigInteger('order_id')->nullable();
             $table->unsignedBigInteger('store_id')->nullable();
             $table->integer('quantity')->default(1);
+            $table->decimal('price', 10, 2)->default(0);
+            $table->decimal('discount', 5, 2)->default(0);
             $table->timestamps();
             $table->foreign('order_id')->references('id')->on('orders')->cascadeOnDelete();
-            $table->foreign('store_id')->references('id')->on('stores')->cascadeOnDelete();
+            // $table->foreign('store_id')->references('id')->on('stores')->cascadeOnDelete();
         });
     }
 

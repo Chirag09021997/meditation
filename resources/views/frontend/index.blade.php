@@ -2,6 +2,12 @@
 @section('content')
     {{-- <!-- START SECTION BANNER --> --}}
     <section class="banner_slider banner_slide_half p-0">
+        @if (session('success'))
+            <script>
+                localStorage.removeItem('cart');
+                localStorage.removeItem('coupon');
+            </script>
+        @endif
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active bg_light_pink">

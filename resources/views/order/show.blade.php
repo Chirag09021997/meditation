@@ -1,87 +1,149 @@
 <x-app-layout>
-    <x-head-lable backhref="{{ route('store.index') }}">
-        {{ __('Store Show') }}
+    @php
+        $totalPrice = $totalDiscount = 0;
+    @endphp
+    <x-head-lable backhref="{{ route('order.index') }}">
+        {{ __('Order Show') }}
     </x-head-lable>
 
     <div class="border-4 border-white rounded-lg p-2 sm:p-4">
-        <div class="grid md:grid-cols-2 gap-4">
-            <!-- product_name -->
-            <div class="mt-4">
-                <x-input-label for="product_name" :value="__('Product Name')" />
-                <x-text-input id="product_name" class="block mt-1 w-full" type="text" :value="old('product_name', $store->product_name)" disabled />
-            </div>
+        <section class=" py-4 antialiased dark:bg-gray-900 ">
+            <div class="mx-auto px-4 2xl:px-0">
+                <div class="mx-2">
+                    <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Order Details</h2>
 
-            <!-- product_thumb -->
-            <div class="mt-4">
-                <x-input-label for="product_thumb" :value="__('Product Thumb')" />
-                <img src="{{ $store->product_thumb }}" alt="thumb upload" class="w-16 my-2">
-            </div>
+                    <div class="md:grid grid-flow-col gap-2">
+                        <div class="mt-3 space-y-2 border-b border-t border-gray-200 py-4 dark:border-gray-700 sm:mt-4">
+                            <h4 class="text-lg font-semibold text-gray-900 dark:text-white">Billing information
+                            </h4>
+                            <dl>
+                                <dt class="text-base font-medium text-gray-900 dark:text-white">
+                                    Name : {{ $order?->orderAddress?->b_fname }} {{ $order?->orderAddress?->b_lname }}
+                                </dt>
+                                <dt class="text-base font-medium text-gray-900 dark:text-white">
+                                    Email : {{ $order?->orderAddress?->b_email }}</dt>
+                                <dt class="text-base font-medium text-gray-900 dark:text-white">
+                                    Mo : {{ $order?->orderAddress?->b_phone }}</dt>
+                                <dd class="mt-1 text-base font-normal text-gray-500 dark:text-gray-400">
+                                    {{ $order?->orderAddress?->b_address }},</dd>
+                                <dd class="mt-1 text-base font-normal text-gray-500 dark:text-gray-400">
+                                    {{ $order?->orderAddress?->b_address2 }}</dd>
+                                <dd class="mt-1 text-base font-normal text-gray-500 dark:text-gray-400">
+                                    {{ $order?->orderAddress?->b_city }}, {{ $order?->orderAddress?->b_state }} </dd>
+                                <dd class="mt-1 text-base font-normal text-gray-500 dark:text-gray-400">
+                                    {{ $order?->orderAddress?->b_country }}, {{ $order?->orderAddress?->b_zipcode }}
+                                </dd>
+                            </dl>
+                        </div>
 
-            <!-- product_photos -->
-            <div class="mt-4">
-                <x-input-label for="product_photos" :value="__('Product Photos (multiple)')" />
-                <div class="grid sm:grid-cols-3 md:grid-cols-5 gap-4">
-                    @foreach ($productPhotos as $photo)
-                        <img src="{{ $photo->url }}" alt="Product Photos" class="w-16 my-2">
-                    @endforeach
+                        <div class="mt-3 space-y-2 border-b border-t border-gray-200 py-4 dark:border-gray-700 sm:mt-4">
+                            <h4 class="text-lg font-semibold text-gray-900 dark:text-white">Shipping information
+                            </h4>
+
+                            <dl>
+                                <dt class="text-base font-medium text-gray-900 dark:text-white">
+                                    Name : {{ $order?->orderAddress?->s_fname }} {{ $order?->orderAddress?->s_lname }}
+                                </dt>
+                                <dd class="mt-1 text-base font-normal text-gray-500 dark:text-gray-400">
+                                    {{ $order?->orderAddress?->s_address }},</dd>
+                                <dd class="mt-1 text-base font-normal text-gray-500 dark:text-gray-400">
+                                    {{ $order?->orderAddress?->s_address2 }}</dd>
+                                <dd class="mt-1 text-base font-normal text-gray-500 dark:text-gray-400">
+                                    {{ $order?->orderAddress?->s_city }}, {{ $order?->orderAddress?->s_state }} </dd>
+                                <dd class="mt-1 text-base font-normal text-gray-500 dark:text-gray-400">
+                                    {{ $order?->orderAddress?->s_country }}, {{ $order?->orderAddress?->s_zipcode }}
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 sm:mt-8">
+                        <h4 class="text-lg font-semibold text-gray-900 dark:text-white">Item information</h4>
+                        <div class="relative overflow-x-auto border-b border-gray-200 dark:border-gray-800">
+                            <table class="w-full text-left font-medium text-gray-900 dark:text-white md:table-fixed">
+                                <tbody class="divide-y divide-gray-200 dark:divide-gray-800">
+                                    @foreach ($order?->orderItem as $item)
+                                        @php
+                                            $totalPrice += $item->price * $item->quantity;
+                                            $totalDiscount += $item->discount * $item->quantity;
+                                        @endphp
+                                        <tr>
+                                            <td class="whitespace-nowrap py-4 md:w-[384px]">
+                                                <div class="flex items-center gap-4">
+                                                    <a href="{{ route('store.show', $item->store_id) }}"
+                                                        class="flex items-center aspect-square w-10 h-10 shrink-0">
+                                                        <img class="h-auto w-full max-h-full "
+                                                            src="{{ $item->store->product_thumb }}" alt="imac image" />
+                                                    </a>
+                                                    <div>
+                                                        <a href="{{ route('store.show', $item->store_id) }}"
+                                                            class="hover:underline">
+                                                            <span
+                                                                class="block text-left">{{ $item->store->product_name }}</span>
+                                                        </a>
+                                                        <span class="block text-sm text-gray-600"><del
+                                                                class="me-2">${{ $item->price }}</del>
+                                                            ${{ number_format($item->price - $item->discount, 2) }}</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+
+                                            <td class="p-4 text-base font-normal text-gray-900 dark:text-white">
+                                                x{{ $item->quantity }}</td>
+
+                                            <td
+                                                class="p-4 text-right text-base font-bold text-gray-900 dark:text-white">
+                                                ${{ number_format(($item->price - $item->discount) * $item->quantity, 2) }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="mt-4 space-y-6">
+                            <h4 class="text-xl font-semibold text-gray-900 dark:text-white">Order summary</h4>
+
+                            <div class="space-y-4">
+                                <div class="space-y-2">
+                                    @php
+                                        $couponDiscount =
+                                            $order->coupon_type == 'Percentage'
+                                                ? ($totalPrice * $order->coupon_value) / 100
+                                                : $order->coupon_value;
+                                    @endphp
+                                    <dl class="flex items-center justify-between gap-4">
+                                        <dt class="text-gray-500 dark:text-gray-400">Original price</dt>
+                                        <dd class="text-base font-medium text-gray-900 dark:text-white">
+                                            ${{ number_format($totalPrice, 2) }}</dd>
+                                    </dl>
+
+                                    <dl class="flex items-center justify-between gap-4">
+                                        <dt class="text-gray-500 dark:text-gray-400">Savings</dt>
+                                        <dd class="text-base font-medium text-green-500">
+                                            - ${{ number_format($totalDiscount, 2) }}</dd>
+                                    </dl>
+
+                                    <dl class="flex items-center justify-between gap-4">
+                                        <dt class="text-gray-500 dark:text-gray-400">Coupon code</dt>
+                                        <dd class="text-base font-medium text-green-500 dark:text-white">
+                                            - ${{ number_format($couponDiscount, 2) }}
+                                        </dd>
+                                    </dl>
+                                </div>
+
+                                <dl
+                                    class="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 dark:border-gray-700">
+                                    <dt class="text-lg font-bold text-gray-900 dark:text-white">Total</dt>
+                                    <dd class="text-lg font-bold text-gray-900 dark:text-white">
+                                        ${{ number_format($totalPrice - $totalDiscount - $couponDiscount, 2) }}</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <!-- video_preview -->
-            <div class="mt-4">
-                <x-input-label for="video_preview" :value="__('Video Preview')" />
-                <x-text-input id="video_preview" class="block mt-1 w-full" type="text" :value="old('video_preview', $store->video_preview)" />
-            </div>
-
-            <!-- price -->
-            <div class="mt-4">
-                <x-input-label for="price" :value="__('Price')" />
-                <x-text-input id="price" class="block mt-1 w-full" type="number" :value="old('price', $store->price)" disabled />
-            </div>
-
-            <!-- discount -->
-            <div class="mt-4">
-                <x-input-label for="discount" :value="__('Discount')" />
-                <x-text-input id="discount" class="block mt-1 w-full" type="number" :value="old('discount', $store->discount)" disabled />
-            </div>
-
-            <!-- total_stock -->
-            <div class="mt-4">
-                <x-input-label for="total_stock" :value="__('Total Stock')" />
-                <x-text-input id="total_stock" class="block mt-1 w-full" type="number" :value="old('total_stock', $store->total_stock)" disabled />
-            </div>
-
-            <!-- total_sale -->
-            <div class="mt-4">
-                <x-input-label for="total_sale" :value="__('Total Sale')" />
-                <x-text-input id="total_sale" class="block mt-1 w-full" type="number" :value="old('total_sale', $store->total_sale)" />
-            </div>
-
-            <!-- tags -->
-            <div class="mt-4">
-                <x-input-label for="tags" :value="__('Tags')" />
-                <x-text-input id="tags" class="block mt-1 w-full" type="text" :value="old('tags', $store->tags)" />
-            </div>
-
-            <!-- short_description -->
-            <div class="mt-4">
-                <x-input-label for="short_description" :value="__('Short Description')" />
-                <textarea id="short_description"rows="4"
-                    class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200">{{ old('short_description', $store->short_description) }}</textarea>
-            </div>
-        </div>
-
-        <!-- description -->
-        <div class="mt-4">
-            <x-input-label for="description" :value="__('Description')" />
-            <textarea id="description" name="description" rows="4"
-                class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200">{{ old('description', $store->description) }}</textarea>
-        </div>
+        </section>
     </div>
-    <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
-    <script>
-        CKEDITOR.replace('description', {
-            height: 300,
-        });
-    </script>
 </x-app-layout>
