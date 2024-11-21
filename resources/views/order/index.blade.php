@@ -101,5 +101,40 @@
                     }
                 });
         });
+
+        $(document).on('change', '.status-change', function(e) {
+            e.preventDefault();
+            const url = $(this).data('url');
+            const status = $(this).val();
+            const order_id = $(this).data('order-id');
+            $.ajax({
+                url: url,
+                type: "POST",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "status": status,
+                    "order_id": order_id
+                },
+                success: function(data) {
+                    swal({
+                        title: "Success!",
+                        text: "Status has been successfully updated.",
+                        type: "success",
+                        showCancelButton: false,
+                        timer: 500
+                    });
+                    $('#order-table').DataTable().row($(this).parents('tr')).invalidate().draw();
+                },
+                error: function(xhr, status, error) {
+                    swal({
+                        title: "Error!",
+                        text: "There was an issue updating the status. Please try again.",
+                        type: "error",
+                        showCancelButton: false,
+                        timer: 1000
+                    });
+                }
+            });
+        });
     </script>
 </x-app-layout>

@@ -166,70 +166,76 @@
         <div class="border-4 border-white rounded-lg p-4 my-2">
             <h1 class="font-bold text-lg my-3">Order Information:</h1>
             <div class="relative overflow-x-auto border-b border-gray-200 dark:border-gray-800">
-                <table class="w-full text-left font-medium text-gray-900 dark:text-white md:table-fixed">
+                <table id="order-table" class="w-full text-left font-medium text-gray-900 dark:text-white">
                     <thead>
                         <tr>
-                            <th>Img</th>
-                            <th>Price</th>
-                            <th>Discount</th>
-                            <th>Quantity</th>
-                            <th>Final Price</th>
-                            <th>Delete</th>
+                            <th class="p-2">Img</th>
+                            <th class="p-2">Store Name</th>
+                            <th class="p-2">Price</th>
+                            <th class="p-2">Discount</th>
+                            <th class="p-2">Quantity</th>
+                            <th class="p-2">Final Price</th>
+                            <th class="p-2">Delete</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        @foreach ($order?->orderItem as $item)
+                            @php
+                                $totalPrice += $item->price * $item->quantity;
+                                $totalDiscount += $item->discount * $item->quantity;
+                            @endphp
+                            <tr class="py-4 border-b border-gray-300">
+                                <!-- Image -->
+                                <td class="p-2">
+                                    <div class="flex items-center space-x-4">
+                                        <a href="{{ route('store.show', $item->store_id) }}" class="flex-shrink-0">
+                                            <img class="h-16 w-16 object-cover"
+                                                src="{{ $item->store->product_thumb }}" alt="Product Image" />
+                                        </a>
+                                    </div>
+                                </td>
+                                 <!-- Item Name -->
+                                <td class="p-2 text-base font-normal text-gray-900 dark:text-white">
+                                    <a href="{{ route('store.show', $item->store_id) }}"
+                                        class="text-blue-600 hover:underline">
+                                        <span class="block text-left">{{ $item->store->product_name }}</span>
+                                    </a>
+                                    <input type="hidden" name="store_id[]" value="{{ $item->store_id }}">
+                                </td>
+                                <!-- Price -->
+                                <td class="p-2 text-base font-normal text-gray-900 dark:text-white">
+                                    <input type="number" name="price[]" value="{{ $item->price }}"
+                                        onchange="updateFinalPrice(this)"
+                                        class="form-input w-full px-3 py-2 border rounded-md" />
+                                </td>
+                                <!-- Discount -->
+                                <td class="p-2 text-base font-normal text-gray-900 dark:text-white">
+                                    <input type="number" name="discount[]" value="{{ $item->discount }}"
+                                        onchange="updateFinalPrice(this)"
+                                        class="form-input w-full px-3 py-2 border rounded-md" />
+                                </td>
+                                <!-- Quantity -->
+                                <td class="p-2 text-base font-normal text-gray-900 dark:text-white">
+                                    <input type="number" name="quantity[]" value="{{ $item->quantity }}"
+                                        onchange="updateFinalPrice(this)"
+                                        class="form-input w-full px-3 py-2 border rounded-md" />
+                                </td>
+                                <!-- Final Price -->
+                                <td
+                                    class="p-2 text-right text-base font-bold text-gray-900 dark:text-white final-price">
+                                    ${{ number_format(($item->price - $item->discount) * $item->quantity, 2) }}
+                                </td>
+                                <!-- Delete Button -->
+                                <td class="p-2 text-center">
+                                    <button type="button" onclick="deleteItem(this)"
+                                        class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500">
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
                 </table>
-                @foreach ($order?->orderItem as $item)
-                    @php
-                        $totalPrice += $item->price * $item->quantity;
-                        $totalDiscount += $item->discount * $item->quantity;
-                    @endphp
-                    <div class="grid grid-cols-6 gap-4 py-4 border-b border-gray-300">
-                        <!-- Image and Item Name -->
-                        <div class="flex items-center space-x-4">
-                            <a href="{{ route('store.show', $item->store_id) }}" class="flex-shrink-0">
-                                <img class="h-16 w-16 object-cover" src="{{ $item->store->product_thumb }}"
-                                    alt="Product Image" />
-                            </a>
-                            <div>
-                                <a href="{{ route('store.show', $item->store_id) }}"
-                                    class="text-blue-600 hover:underline">
-                                    <span class="block text-left">{{ $item->store->product_name }}</span>
-                                </a>
-                                <input type="hidden" name="store_id[]" id="store_id"
-                                    value="{{ $item->store_id }}">
-                            </div>
-                        </div>
-                        <!-- Price -->
-                        <div class="text-base font-normal text-gray-900 dark:text-white">
-                            <input type="number" name="price[]" id="price" value="{{ $item->price }}"
-                                onchange="updateFinalPrice(this)"
-                                class="form-input w-full px-3 py-2 border rounded-md" />
-                        </div>
-                        <!-- Discount -->
-                        <div class="text-base font-normal text-gray-900 dark:text-white">
-                            <input type="number" name="discount[]" id="discount" value="{{ $item->discount }}"
-                                onchange="updateFinalPrice(this)"
-                                class="form-input w-full px-3 py-2 border rounded-md" />
-                        </div>
-                        <!-- Quantity -->
-                        <div class="text-base font-normal text-gray-900 dark:text-white">
-                            <input type="number" name="quantity[]" id="quantity" value="{{ $item->quantity }}"
-                                onchange="updateFinalPrice(this)"
-                                class="form-input w-full px-3 py-2 border rounded-md" />
-                        </div>
-                        <!-- Final Price -->
-                        <div class="text-right text-base font-bold text-gray-900 dark:text-white final-price">
-                            ${{ number_format(($item->price - $item->discount) * $item->quantity, 2) }}
-                        </div>
-                        <!-- Delete Button -->
-                        <div class="text-center">
-                            <button type="button" onclick="deleteItem(this)"
-                                class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500">
-                                Delete
-                            </button>
-                        </div>
-                    </div>
-                @endforeach
             </div>
         </div>
 
@@ -245,12 +251,12 @@
     </form>
     <script>
         function updateFinalPrice(element) {
-            let row = element.closest('.grid');
-            let price = parseFloat(row.querySelector('[name="price[]"]').value);
-            let discount = parseFloat(row.querySelector('[name="discount[]"]').value);
-            let quantity = parseInt(row.querySelector('[name="quantity[]"]').value);
+            let row = $(element).closest('tr');
+            let price = parseFloat(row.find('[name="price[]"]').val()) || 0;
+            let discount = parseFloat(row.find('[name="discount[]"]').val()) || 0;
+            let quantity = parseInt(row.find('[name="quantity[]"]').val()) || 0;
             let finalPrice = (price - discount) * quantity;
-            row.querySelector('.final-price').innerText = "$" + finalPrice.toFixed(2);
+            row.find('.final-price').text("$" + finalPrice.toFixed(2));
         }
 
         // Delete the item row
@@ -258,5 +264,21 @@
             let row = button.closest('.grid');
             row.remove();
         }
+
+        $(document).ready(function() {
+            $('#order-table').DataTable({
+                responsive: true,
+                pageLength: 5,
+                lengthChange: false,
+                autoWidth: false,
+                columnDefs: [{
+                    targets: [5],
+                    orderable: false,
+                }, ],
+            });
+            $('#order-table').on('input', '[name="price[]"], [name="discount[]"], [name="quantity[]"]', function() {
+                updateFinalPrice(this);
+            });
+        });
     </script>
 </x-app-layout>

@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\OrderAddress;
 use App\Models\OrderItems;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
 
 class OrderController extends Controller
@@ -137,7 +138,7 @@ class OrderController extends Controller
             })
             ->editColumn('status', function ($data) {
                 $statusOptions = ['Pending', 'Shipping', 'Complete'];
-                $statusDropdown = '<select class="status-change rounded-sm" data-order-id="' . $data->id . '">';
+                $statusDropdown = '<select class="status-change rounded-sm" data-order-id="' . $data->id . '" data-url="' . route('order.status') . '">';
                 foreach ($statusOptions as  $statusValue) {
                     $selected = ($data->status == $statusValue) ? 'selected' : '';
                     $statusDropdown .= '<option value="' . $statusValue . '" ' . $selected . '>' . $statusValue . '</option>';
@@ -148,5 +149,22 @@ class OrderController extends Controller
             ->rawColumns(['action', 'customer_name', 'status'])
             ->addIndexColumn()
             ->toJson();
+    }
+
+    public function statusUpdate(Request $request)
+    {
+        $rules =  [
+            'order_id' => 'required|exists:orders,id',
+            'status' => 'required|in:Pending,Shipping,Complete'
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return $this->sendError($validator->errors()->first(), [], 200);
+        }
+        Order::where('id', $request->order_id)->update([
+            'status' => $request->status
+        ]);
+        return $this->sendResponse('Order status updated successfully', [], 200);
     }
 }

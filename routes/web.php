@@ -120,6 +120,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('contact-us/{id}', [ContactUsController::class, 'destroy'])->name('contact-us.destroy');
 
     Route::get('order/data', [OrderController::class, 'getData'])->name('order.data');
+    Route::post('order-status', [OrderController::class, 'statusUpdate'])->name('order.status');
     Route::resource('order', OrderController::class)->except(['create', 'store']);
 });
 
