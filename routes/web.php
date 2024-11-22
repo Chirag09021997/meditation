@@ -5,6 +5,7 @@ use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\ProfileController as FrontProfileController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Web\BlogController;
+use App\Http\Controllers\Web\BusinessController;
 use App\Http\Controllers\Web\ContactUsController;
 use App\Http\Controllers\Web\CouponSystemController;
 use App\Http\Controllers\Web\CustomerController;
@@ -122,6 +123,10 @@ Route::middleware('auth')->group(function () {
     Route::get('order/data', [OrderController::class, 'getData'])->name('order.data');
     Route::post('order-status', [OrderController::class, 'statusUpdate'])->name('order.status');
     Route::resource('order', OrderController::class)->except(['create', 'store']);
+
+    Route::get('business/data', [BusinessController::class, 'getData'])->name('business.data');
+    Route::post('business/status/{business}', [BusinessController::class, 'changeStatus'])->name('business.changeStatus');
+    Route::resource('business', BusinessController::class);
 });
 
 require __DIR__ . '/auth.php';

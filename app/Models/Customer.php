@@ -10,9 +10,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Customer extends Authenticatable
 {
     use HasFactory, SoftDeletes;
-    protected $fillable = ['name', 'profile', 'country_name', 'mobile_no', 'email', 'business_category', 'dob'];
+    protected $fillable = ['name', 'profile', 'country_name', 'mobile_no', 'email', 'business_category', 'dob', 'business_id'];
     public function getProfileAttribute($value)
     {
         return !empty($value) ? config('app.url') . "/" . $value : null;
+    }
+
+    public function business()
+    {
+        return $this->belongsTo(Business::class, 'business_id');
     }
 }

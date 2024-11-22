@@ -26,7 +26,7 @@ class APIController extends Controller
     public function CustomerList(Request $request)
     {
         $perPage = $request->input('per_page', 10);
-        $customers = Customer::select('id', 'name', 'profile', 'country_name', 'mobile_no', 'email', 'business_category', 'dob')->simplePaginate($perPage);
+        $customers = Customer::with('business:id,name')->select('id', 'name', 'profile', 'country_name', 'mobile_no', 'email', 'business_category', 'dob', 'business_id')->simplePaginate($perPage);
         return $this->sendResponse($customers, "Get Customer List SuccessFully.");
     }
 
@@ -190,6 +190,7 @@ class APIController extends Controller
             'profile' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // 2MB max file size
             'business_category' => 'nullable|string|max:255',
             'dob' => 'required|date|before:today',
+            'business_id' => 'nullable|exists:businesses,id',
         ];
         if ($customer) {
             $rules['mobile_no'] =  [
