@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\APIController;
 use App\Http\Controllers\Api\FavoriteController;
+use App\Http\Controllers\Api\RecentController;
 use App\Http\Controllers\Api\TrackingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -40,3 +41,5 @@ Route::post('user-available', [APIController::class, 'userAvailable']);
 Route::post('delete-customer', [APIController::class, 'CustomerDelete']);
 Route::post('track-report', [TrackingController::class, "reportMeditation"]);
 Route::post('apply-coupon', [APIController::class, "applyCoupon"]);
+Route::post('recent', [RecentController::class, 'store']);
+Route::post('get-recent', [RecentController::class, 'getRecent']);

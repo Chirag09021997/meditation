@@ -11,6 +11,7 @@ use App\Models\MeditationAudio;
 use App\Models\MeditationType;
 use App\Models\Music;
 use App\Models\PremiumPlan;
+use App\Models\Recent;
 use App\Models\Store;
 use App\Models\TrackMeditation;
 use App\Models\WorkShop;
@@ -124,19 +125,51 @@ class APIController extends Controller
             "listening_time" => 0,
             "total_time" => 0
         ];
+        $recent = [];
+        $today = Carbon::today();
         if ($customerId > 0) {
             $customer = TrackMeditation::where('customer_id', $customerId)->latest()->first();
+            $listeningTimeCount = TrackMeditation::where('customer_id', $customerId)
+                ->whereDate('created_at', $today)
+                ->sum('listening_time');
             if ($customer) {
-                $myTracking["listening_time"] = intval($customer->listening_time);
+                $myTracking["listening_time"] = intval($listeningTimeCount);
                 $myTracking["total_time"] = intval($customer->total_time);
                 $progressDays = TrackMeditation::where('customer_id', $customerId)
                     ->whereMonth('created_at', Carbon::now()->month)
                     ->whereYear('created_at', Carbon::now()->year)
-                    ->select(DB::raw('DATE(created_at) as date')) // Select distinct dates
-                    ->distinct() // Distinct dates
+                    ->select(DB::raw('DATE(created_at) as date'))
+                    ->distinct()
                     ->count();
                 $myTracking["progress_day"] = $progressDays;
             }
+            $customersRecent = Recent::where('customer_id', $customerId)
+                ->latest()
+                ->get()
+                ->groupBy('type')
+                ->map(function ($items) {
+                    return $items->pluck('type_id')->take(5);
+                });
+            $mergedRecent = [];
+            foreach ($customersRecent as $key => $favorite) {
+                switch ($key) {
+                    case 'meditation_audio':
+                        $mergedRecent[] = MeditationAudio::whereIn('id', $favorite)->select('id', 'name', 'short_description', 'description', 'audio_thumb as thumb', 'created_at', DB::raw("'meditation_audio' as type"))->get()->toArray();
+                        break;
+                    case 'music':
+                        $mergedRecent[] = Music::whereIn('id', $favorite)->select('id', 'name', 'short_description', 'description', 'audio_thumb as thumb', 'created_at', DB::raw("'music' as type"))->get()->toArray();
+                        break;
+                    case 'work_shops':
+                        $mergedRecent[] = WorkShop::whereIn('id', $favorite)->select('id', 'name', 'short_description', 'description', 'thumb_image as thumb', 'created_at', DB::raw("'work_shops' as type"))->get()->toArray();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            $recent = array_merge(...$mergedRecent);
+            usort($recent, function ($a, $b) {
+                return strtotime($b['created_at']) - strtotime($a['created_at']);
+            });
         }
         return $this->sendResponse([
             'meditation_type' => $meditationType,
@@ -144,6 +177,7 @@ class APIController extends Controller
             'music' => $music,
             'workshop' => $workshop,
             'my_tracking' => $myTracking,
+            'recent' => $recent
         ], "Get Home List SuccessFully.");
     }
 
