@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\TrackMeditation;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -55,33 +56,91 @@ class TrackingController extends Controller
 
         $validatedData = $validator->validated();
         $short = $validatedData['short'] ?? 'all';
+        $startDate = null;
+        $endDate = now();
 
-        $trackQuery = TrackMeditation::select('listening_time', 'total_time', 'created_at')->where('customer_id', $request->customer_id);
         switch ($short) {
             case 'today':
-                $trackQuery->whereDate('created_at', now()->toDateString());
+                $startDate = now()->toDateString();
                 break;
             case 'yesterday':
-                $trackQuery->whereDate('created_at', now()->subDay()->toDateString());
+                $startDate = now()->subDay()->toDateString();
                 break;
             case 'week':
-                $trackQuery->whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()]);
+                $startDate = now()->startOfWeek(Carbon::SUNDAY)->toDateString();
+                $endDate = now()->endOfWeek(Carbon::SATURDAY)->toDateString();
                 break;
             case 'month':
-                $trackQuery->whereMonth('created_at', now()->month)
-                    ->whereYear('created_at', now()->year);
+                $startDate = now()->startOfMonth()->toDateString();
                 break;
             case '6months':
-                $trackQuery->whereBetween('created_at', [now()->subMonths(6), now()]);
+                $startDate = now()->subMonths(6)->toDateString();
                 break;
             case 'year':
-                $trackQuery->whereYear('created_at', now()->year);
+                $startDate = now()->startOfYear()->toDateString();
                 break;
             case 'all':
             default:
+                $firstRecord = TrackMeditation::where('customer_id', $request->customer_id)
+                    ->orderBy('created_at', 'asc')
+                    ->first();
+                $startDate = $firstRecord ? $firstRecord->created_at->toDateString() :  now()->toDateString();
                 break;
         }
-        $track = $trackQuery->get();
-        return $this->sendResponse($track, 'Report Meditation retrieved successfully.');
+
+        if (in_array($short, ['today', 'yesterday', 'week', 'month'])) {
+            $dates = collect();
+            $currentDate = Carbon::parse($startDate);
+            while ($currentDate <= $endDate) {
+                $dates->push($currentDate->toDateString());
+                $currentDate->addDay();
+            }
+
+            $trackQuery = TrackMeditation::where('customer_id', $request->customer_id)
+                ->whereBetween('created_at', [$startDate, $endDate]);
+
+            $trackData = $trackQuery
+                ->selectRaw('DATE(created_at) as date, SUM(listening_time) as listening_time_sum, SUM(total_time) as total_time_sum')
+                ->groupBy('date')
+                ->orderBy('date', 'desc')
+                ->get();
+
+            $formattedData = $dates->map(function ($date) use ($trackData) {
+                $record = $trackData->firstWhere('date', $date);
+                return [
+                    'date' => Carbon::parse($date)->format('d-m-Y'),
+                    'listening_time' => $record->listening_time_sum ?? 0,
+                    'total_time' => $record->total_time_sum ?? 0,
+                    'day_name' => Carbon::parse($date)->format('D')
+                ];
+            });
+        } else {
+            $months = collect();
+            $currentDate = Carbon::parse($startDate)->startOfMonth();
+            while ($currentDate <= $endDate) {
+                $months->push($currentDate->format('Y-m'));
+                $currentDate->addMonth();
+            }
+
+            $trackQuery = TrackMeditation::where('customer_id', $request->customer_id)
+                ->whereBetween('created_at', [$startDate, $endDate]);
+
+            $trackData = $trackQuery
+                ->selectRaw('DATE_FORMAT(created_at, "%Y-%m") as month, SUM(listening_time) as listening_time_sum, SUM(total_time) as total_time_sum')
+                ->groupBy('month')
+                ->orderBy('month', 'desc')
+                ->get();
+
+            $formattedData = $months->map(function ($month) use ($trackData, $startDate) {
+                $record = $trackData->firstWhere('month', $month);
+                return [
+                    'date' => Carbon::parse($month)->format('m-Y'),
+                    'listening_time' => $record->listening_time_sum ?? 0,
+                    'total_time' => $record->total_time_sum ?? 0,
+                    'day_name' => Carbon::parse($month)->format('F Y'),
+                ];
+            });
+        }
+        return $this->sendResponse($formattedData, 'Report Meditation retrieved successfully.');
     }
 }
