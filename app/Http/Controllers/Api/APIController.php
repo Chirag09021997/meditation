@@ -143,33 +143,43 @@ class APIController extends Controller
                     ->count();
                 $myTracking["progress_day"] = $progressDays;
             }
-            $customersRecent = Recent::where('customer_id', $customerId)
+            $customersRecent = Recent::where('customer_id', $request->customer_id)
                 ->latest()
-                ->get()
-                ->groupBy('type')
-                ->map(function ($items) {
-                    return $items->pluck('type_id')->take(5);
-                });
-            $mergedRecent = [];
-            foreach ($customersRecent as $key => $favorite) {
-                switch ($key) {
+                ->take(5)
+                ->get();
+            $recent = [];
+            foreach ($customersRecent as $favorite) {
+                switch ($favorite->type) {
                     case 'meditation_audio':
-                        $mergedRecent[] = MeditationAudio::whereIn('id', $favorite)->select('id', 'name', 'short_description', 'description', 'audio_thumb as thumb', 'created_at', DB::raw("'meditation_audio' as type"))->get()->toArray();
+                        $item = MeditationAudio::select('id', 'name', 'short_description', 'description', 'audio_thumb as thumb',  'premium_type', 'created_at', DB::raw("'meditation_audio' as type"))
+                            ->find($favorite->type_id);
+                        if ($item && $item->thumb) {
+                            $item->thumb = config('app.url') . "/" . $item->thumb;
+                        }
+                        $item['recent_id'] = $favorite->id;
+                        $recent[] = $item;
                         break;
                     case 'music':
-                        $mergedRecent[] = Music::whereIn('id', $favorite)->select('id', 'name', 'short_description', 'description', 'audio_thumb as thumb', 'created_at', DB::raw("'music' as type"))->get()->toArray();
+                        $item = Music::select('id', 'name', 'short_description', 'description', 'audio_thumb as thumb', 'premium_type',  'created_at', DB::raw("'music' as type"))
+                            ->find($favorite->type_id);
+                        if ($item && $item->thumb) {
+                            $item->thumb = config('app.url') . "/" . $item->thumb;
+                        }
+                        $item['recent_id'] = $favorite->id;
+                        $recent[] = $item;
                         break;
                     case 'work_shops':
-                        $mergedRecent[] = WorkShop::whereIn('id', $favorite)->select('id', 'name', 'short_description', 'description', 'thumb_image as thumb', 'created_at', DB::raw("'work_shops' as type"))->get()->toArray();
+                        $item = WorkShop::select('id', 'name', 'short_description', 'description', 'thumb_image as thumb', 'premium_type',  'created_at', DB::raw("'work_shops' as type"))->find($favorite->type_id);
+                        if ($item && $item->thumb) {
+                            $item->thumb = config('app.url') . "/" . $item->thumb;
+                        }
+                        $item['recent_id'] = $favorite->id;
+                        $recent[] = $item;
                         break;
                     default:
                         break;
                 }
             }
-            $recent = array_merge(...$mergedRecent);
-            usort($recent, function ($a, $b) {
-                return strtotime($b['created_at']) - strtotime($a['created_at']);
-            });
         }
         return $this->sendResponse([
             'meditation_type' => $meditationType,
