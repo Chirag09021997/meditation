@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('audio_thumb')->nullable();
             $table->string('audio_upload')->nullable();
-            $table->string('premium_type')->nullable();
+            $table->boolean('premium_type')->default(false);
             $table->integer('total_view')->default(0);
             $table->enum('status', ['Active', 'Inactive'])->default('Active');
             $table->timestamps();

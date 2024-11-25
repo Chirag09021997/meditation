@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\MeditationAudio;
 use App\Http\Requests\StoreMeditationAudioRequest;
 use App\Http\Requests\UpdateMeditationAudioRequest;
+use App\Models\MeditationType;
 use App\Models\PremiumPlan;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
@@ -26,7 +27,8 @@ class MeditationAudioController extends Controller
     public function create()
     {
         $premiumPlans = PremiumPlan::all();
-        return view('meditation-audio.create', compact('premiumPlans'));
+        $meditationTypes = MeditationType::all();
+        return view('meditation-audio.create', compact('premiumPlans', 'meditationTypes'));
     }
 
     /**
@@ -71,8 +73,9 @@ class MeditationAudioController extends Controller
     public function edit(MeditationAudio $meditationAudio)
     {
         $premiumPlans = PremiumPlan::all();
+        $meditationTypes = MeditationType::all();
         $oldPremiumPlans = $meditationAudio->premiumPlans->pluck('id')->toArray();
-        return view('meditation-audio.edit', compact('meditationAudio', 'premiumPlans', 'oldPremiumPlans'));
+        return view('meditation-audio.edit', compact('meditationAudio', 'premiumPlans', 'oldPremiumPlans', 'meditationTypes'));
     }
 
     /**
@@ -124,7 +127,7 @@ class MeditationAudioController extends Controller
 
     public function getData()
     {
-        $meditationAudio = MeditationAudio::select(['id', 'name', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view', 'status'])->orderByDesc('created_at');
+        $meditationAudio = MeditationAudio::with('meditationType')->select(['id', 'name', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view', 'status', 'meditation_type_id'])->orderByDesc('created_at');
 
         return DataTables::of($meditationAudio)
             ->addColumn('action', function ($data) {
@@ -143,7 +146,10 @@ class MeditationAudioController extends Controller
             ->editColumn('premium_type', function ($data) {
                 return $data->premium_type == 0 ? false : true;
             })
-            ->rawColumns(['action', 'status', 'audio_thumb', 'premium_type'])
+            ->addColumn('meditation_type_name', function ($data) {
+                return isset($data->meditationType) ? $data->meditationType->name : "";
+            })
+            ->rawColumns(['action', 'status', 'audio_thumb', 'premium_type', 'meditation_type_name'])
             ->addIndexColumn()
             ->toJson();
     }

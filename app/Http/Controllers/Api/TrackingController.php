@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\TrackMeditation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class TrackingController extends Controller
@@ -142,5 +143,37 @@ class TrackingController extends Controller
             });
         }
         return $this->sendResponse($formattedData, 'Report Meditation retrieved successfully.');
+    }
+
+    public function  getUserCategoryList($customerId)
+    {
+        if ($customerId === null) {
+            return $this->sendError('Validation Error.', 'customerId required', 200);
+        }
+        $trackMeditations = TrackMeditation::with('meditationAudio.meditationType')
+            ->where('customer_id', $customerId)
+            ->get();
+        $result = [];
+
+        foreach ($trackMeditations as $track) {
+            $meditationType = $track?->meditationAudio?->meditationType;
+            $meditationTypeName = $meditationType?->name;
+            $meditationTypeId = $meditationType?->id;
+            if ($meditationTypeName === null) {
+                continue;
+            }
+            $listeningTime = (int) $track->listening_time;
+            if (isset($result[$meditationTypeId])) {
+                $result[$meditationTypeId]['listening_time'] += $listeningTime;
+            } else {
+                $result[$meditationTypeId] = [
+                    'id' => $meditationTypeId,
+                    'category_name' => $meditationTypeName,
+                    'listening_time' => $listeningTime,
+                ];
+            }
+        }
+        $result = array_values($result);
+        return $this->sendResponse($result, 'Get user-categories data successfully.');
     }
 }

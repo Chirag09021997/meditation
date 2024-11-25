@@ -10,6 +10,7 @@
                     <tr>
                         <th class="text-center">Actions</th>
                         <th>#</th>
+                        <th>Meditation Type Name</th>
                         <th>Name</th>
                         <th>Total View</th>
                         <th>Audio Thumb</th>
@@ -37,6 +38,9 @@
                         data: 'DT_RowIndex',
                         searchable: false,
                         sortable: false
+                    },
+                    {
+                        data: 'meditation_type_name',
                     },
                     {
                         data: 'name',

@@ -15,4 +15,9 @@ class MeditationType extends Model
     {
         return !empty($value) ? config('app.url') . "/" . $value : null;
     }
+
+    public function meditationAudio()
+    {
+        return $this->hasMany(MeditationAudio::class, "meditation_type_id");
+    }
 }

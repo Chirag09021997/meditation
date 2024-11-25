@@ -11,6 +11,13 @@
                 <x-text-input id="name" class="block mt-1 w-full" type="text" :value="old('name', $meditationAudio->name)" disabled />
             </div>
 
+            <!-- meditation_type_id -->
+            <div class="mt-4">
+                <x-input-label for="meditation_type_id" :value="__('Meditation Type')" />
+                <x-text-input id="meditation_type_id" class="block mt-1 w-full" type="text" :value="old('name', $meditationAudio?->meditationType?->name)"
+                    disabled />
+            </div>
+
             <!-- total_view -->
             <div class="mt-4">
                 <x-input-label for="total_view" :value="__('Total View')" />

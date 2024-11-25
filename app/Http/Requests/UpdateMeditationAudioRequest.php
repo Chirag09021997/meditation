@@ -27,11 +27,11 @@ class UpdateMeditationAudioRequest extends FormRequest
             'description' => 'nullable|string',
             'audio_thumb' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'audio_upload' => 'nullable|mimes:mp3,wav,ogg|max:204800',
-            'premium_type' => 'nullable|string',
             'total_view' => 'required|integer|min:0',
             'premium_type' => 'required|boolean',
             'premium_plan' => 'nullable|array',
             'premium_plan.*' => 'exists:premium_plans,id',
+            'meditation_type_id' => 'required|exists:meditation_types,id'
         ];
     }
 }

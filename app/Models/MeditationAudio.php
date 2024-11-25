@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class MeditationAudio extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $fillable = ['name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view', 'status'];
+    protected $fillable = ['name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view', 'status', 'meditation_type_id'];
 
     public function getAudioThumbAttribute($value)
     {
@@ -24,5 +24,10 @@ class MeditationAudio extends Model
     public function premiumPlans()
     {
         return $this->belongsToMany(PremiumPlan::class, 'meditation_audio_premium_plan');
+    }
+
+    public function meditationType()
+    {
+        return $this->belongsTo(MeditationType::class, "meditation_type_id");
     }
 }

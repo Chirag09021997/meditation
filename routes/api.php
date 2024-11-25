@@ -43,3 +43,4 @@ Route::post('track-report', [TrackingController::class, "reportMeditation"]);
 Route::post('apply-coupon', [APIController::class, "applyCoupon"]);
 Route::post('recent', [RecentController::class, 'store']);
 Route::post('get-recent', [RecentController::class, 'getRecent']);
+Route::post('user-categories/{customerId}', [TrackingController::class, 'getUserCategoryList']);

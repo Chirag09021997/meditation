@@ -31,6 +31,7 @@ class StoreMeditationAudioRequest extends FormRequest
             'premium_type' => 'required|boolean',
             'premium_plan' => 'nullable|array',
             'premium_plan.*' => 'exists:premium_plans,id',
+            'meditation_type_id' => 'required|exists:meditation_types,id'
         ];
     }
 }
