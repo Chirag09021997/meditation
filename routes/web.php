@@ -13,6 +13,7 @@ use App\Http\Controllers\Web\EventController;
 use App\Http\Controllers\Web\MeditationAudioController;
 use App\Http\Controllers\Web\MeditationTypeController;
 use App\Http\Controllers\Web\MusicController;
+use App\Http\Controllers\Web\NotificationController;
 use App\Http\Controllers\Web\OrderController;
 use App\Http\Controllers\Web\PremiumPlanController;
 use App\Http\Controllers\Web\StoreController;
@@ -127,6 +128,10 @@ Route::middleware('auth')->group(function () {
     Route::get('business/data', [BusinessController::class, 'getData'])->name('business.data');
     Route::post('business/status/{business}', [BusinessController::class, 'changeStatus'])->name('business.changeStatus');
     Route::resource('business', BusinessController::class);
+
+    Route::get('notification/data', [NotificationController::class, 'getData'])->name('notification.data');
+    Route::post('notification/status/{notification}', [NotificationController::class, 'changeStatus'])->name('notification.changeStatus');
+    Route::resource('notification', NotificationController::class);
 });
 
 require __DIR__ . '/auth.php';

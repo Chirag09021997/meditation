@@ -10,6 +10,7 @@ use App\Models\Event;
 use App\Models\MeditationAudio;
 use App\Models\MeditationType;
 use App\Models\Music;
+use App\Models\Notification;
 use App\Models\PremiumPlan;
 use App\Models\Recent;
 use App\Models\Store;
@@ -299,5 +300,12 @@ class APIController extends Controller
             return $this->sendResponse($coupon, "Get Coupon Data SuccessFully.");
         }
         return $this->sendError('Coupon not exist.', [], 200);
+    }
+
+    public function NotificationsList(Request $request)
+    {
+        $perPage = $request->input('per_page', 10);
+        $customers = Notification::select('id', 'title', 'image', 'short_desc')->where('status', 'Active')->simplePaginate($perPage);
+        return $this->sendResponse($customers, "Get Notification List SuccessFully.");
     }
 }

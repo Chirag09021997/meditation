@@ -44,7 +44,7 @@
         </div>
         <div class="flex items-center justify-end mt-4">
             <a class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-200 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 "
-                href="{{ route('premium-type.index') }}">
+                href="{{ route('meditation-type.index') }}">
                 {{ __('Cancel') }}
             </a>
 
