@@ -113,10 +113,17 @@
                 timePickerIncrement: 1,
                 timePicker24Hour: true,
                 locale: {
-                    format: 'YYYY-MM-DD HH:mm:ss'
+                    format: 'DD-MM-YYYY HH:mm:ss'
                 }
-            }, function(start) {
-                console.log("A new date selection was made: " + start.format('YYYY-MM-DD HH:mm:ss'));
+            });
+
+            $('form').on('submit', function(e) {
+                e.preventDefault();
+                var startingDateDisplay = $('input[name="starting_date"]').val();
+                var startingDate = moment(startingDateDisplay, 'DD-MM-YYYY HH:mm:ss').format(
+                    'YYYY-MM-DD HH:mm:ss');
+                $('input[name="starting_date"]').val(startingDate);
+                this.submit();
             });
         });
         $(document).ready(function() {

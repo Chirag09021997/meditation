@@ -33,7 +33,10 @@
             <div class="mt-4">
                 <x-input-label for="starting_date" :value="__('Starting Date')" />
                 <x-text-input id="starting_date" class="block mt-1 w-full" type="text" name="starting_date"
-                    :value="old('starting_date', $event->starting_date)" placeholder="Enter starting date" />
+                    :value="old(
+                        'starting_date',
+                        \Carbon\Carbon::parse($event->starting_date)->format('d-m-Y H:i:s'),
+                    )" />
                 <x-input-error :messages="$errors->get('starting_date')" class="mt-2" />
             </div>
 
@@ -115,10 +118,18 @@
                 timePickerIncrement: 1,
                 timePicker24Hour: true,
                 locale: {
-                    format: 'YYYY-MM-DD HH:mm:ss'
+                    format: 'DD-MM-YYYY HH:mm:ss'
                 }
             }, function(start) {
                 console.log("A new date selection was made: " + start.format('YYYY-MM-DD HH:mm:ss'));
+            });
+            $('form').on('submit', function(e) {
+                e.preventDefault();
+                var startingDateDisplay = $('input[name="starting_date"]').val();
+                var startingDate = moment(startingDateDisplay, 'DD-MM-YYYY HH:mm:ss').format(
+                    'YYYY-MM-DD HH:mm:ss');
+                $('input[name="starting_date"]').val(startingDate);
+                this.submit();
             });
         });
         $(document).ready(function() {

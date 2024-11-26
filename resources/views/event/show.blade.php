@@ -20,7 +20,7 @@
             <!-- starting_date -->
             <div class="mt-4">
                 <x-input-label for="starting_date" :value="__('Starting Date')" />
-                <x-text-input id="starting_date" class="block mt-1 w-full" type="text" :value="old('starting_date', $event->starting_date)" />
+                <x-text-input id="starting_date" class="block mt-1 w-full" type="text" :value="old('starting_date', \Carbon\Carbon::parse($event->starting_date)->format('d-m-Y H:i:s'))" />
             </div>
 
             <!-- thumb_image -->

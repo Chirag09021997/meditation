@@ -181,13 +181,19 @@ class APIController extends Controller
                 }
             }
         }
+
+        $today = Carbon::today();
+        $startDate = $today->addDay()->copy()->startOfDay();
+        $endDate = $today->addDay()->copy()->endOfDay();
+        $sliderEvents = Event::where('status', 'Active')->whereBetween('starting_date', ["$startDate", "$endDate"])->select('id', 'name', 'thumb_image', 'short_description', 'description', 'starting_date', 'location', 'total_joining', 'is_paid', 'fees',)->get();
         return $this->sendResponse([
             'meditation_type' => $meditationType,
             'meditation_audio' => $meditationAudio,
             'music' => $music,
             'workshop' => $workshop,
             'my_tracking' => $myTracking,
-            'recent' => $recent
+            'recent' => $recent,
+            'slider' => $sliderEvents
         ], "Get Home List SuccessFully.");
     }
 
