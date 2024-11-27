@@ -75,30 +75,19 @@ class OrderController extends Controller
             'discount' => 'required|array|min:1',
             'discount.*' => 'numeric|min:0',
             'quantity' => 'required|array|min:1',
-            'quantity.*' => 'integer|min:1'
+            'quantity.*' => 'integer|min:1',
+
+            // Applied Coupon Information
+            'coupon_type' => 'nullable|in:Percentage,Amount',
+            'coupon_code' => 'required|string|max:255',
+            'coupon_value' => 'required|numeric',
+            'note' => 'nullable|string'
         ]);
 
         // Update order address
-        OrderAddress::where('order_id', $id)->update([
-            'b_fname' => $validated['b_fname'],
-            'b_lname' => $validated['b_lname'],
-            'b_email' => $validated['b_email'],
-            'b_phone' => $validated['b_phone'],
-            'b_address' => $validated['b_address'],
-            'b_address2' => $validated['b_address2'],
-            'b_city' => $validated['b_city'],
-            'b_state' => $validated['b_state'],
-            'b_country' => $validated['b_country'],
-            'b_zipcode' => $validated['b_zipcode'],
-            's_fname' => $validated['s_fname'],
-            's_lname' => $validated['s_lname'],
-            's_address' => $validated['s_address'],
-            's_address2' => $validated['s_address2'],
-            's_city' => $validated['s_city'],
-            's_state' => $validated['s_state'],
-            's_country' => $validated['s_country'],
-            's_zipcode' => $validated['s_zipcode']
-        ]);
+        $orderAddressData = $request->only(['b_fname', 'b_lname', 'b_email', 'b_phone', 'b_address', 'b_address2', 'b_city', 'b_state', 'b_country', 'b_zipcode', 's_fname', 's_lname', 's_address', 's_address2', 's_city', 's_state', 's_country', 's_zipcode']);
+
+        OrderAddress::where('order_id', $id)->update($orderAddressData);
 
         // Update or create order items
         foreach ($validated['store_id'] as $index => $storeId) {
@@ -111,6 +100,8 @@ class OrderController extends Controller
                 ]
             );
         }
+        $couponData = $request->only(['coupon_type', 'coupon_code', 'coupon_value', 'note']);
+        $order->update($couponData);
         return redirect()->route('order.index')->with('success', 'Order Updated SuccessFully.');
     }
 

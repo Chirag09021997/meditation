@@ -267,4 +267,13 @@ $(document).ready(function () {
             $("#logoutForm").submit();
         }
     });
+
+    $("#cancelOrderBtn").on("click", function (e) {
+        e.preventDefault();
+        var order_Id = $(this).data("id");
+        if (confirm("Are you sure you want to cancel order?")) {
+            $("#order_id").val(order_Id);
+            $("#cancelOrderForm").submit();
+        }
+    });
 });

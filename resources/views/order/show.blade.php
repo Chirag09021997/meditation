@@ -126,7 +126,9 @@
                                     </dl>
 
                                     <dl class="flex items-center justify-between gap-4">
-                                        <dt class="text-gray-500 dark:text-gray-400">Coupon code</dt>
+                                        <dt class="text-gray-500 dark:text-gray-400">Coupon code :
+                                            <b>{{ $order?->coupon_code }}</b>
+                                        </dt>
                                         <dd class="text-base font-medium text-green-500 dark:text-white">
                                             - ${{ number_format($couponDiscount, 2) }}
                                         </dd>

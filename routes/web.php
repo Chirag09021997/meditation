@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Front\GoogleController;
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Front\OrderController as FrontOrderController;
 use App\Http\Controllers\Front\ProfileController as FrontProfileController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Web\BlogController;
@@ -65,6 +66,8 @@ Route::middleware('customer')->group(function () {
     Route::post('/checkout', [HomeController::class, 'checkoutStore'])->name('checkout.store');
     Route::get('/user-profile', [FrontProfileController::class, 'index'])->name('user.profile');
     Route::post('/user-profile', [FrontProfileController::class, 'update'])->name('user.profile.update');
+    Route::get('/user-orders', [FrontOrderController::class, 'index'])->name('user.orders');
+    Route::post('/user-order-cancel', [FrontOrderController::class, 'cancelOrder'])->name('user.order.cancel');
 });
 
 Route::get('/dashboard', function () {

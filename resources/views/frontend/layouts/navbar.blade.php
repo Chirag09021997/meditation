@@ -34,28 +34,11 @@
                         <a class="nav-link {{ request()->is('about') ? 'active' : '' }}"
                             href="{{ route('about') }}">About</a>
                     </li>
-                    @if (Auth::guard('customer')->check())
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->is('user.profile') ? 'active' : '' }}"
-                                href="{{ route('user.profile') }}">Profile</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="#" id="logoutBtn"><i class="fas fa-power-off"></i></a>
-                            <form id="logoutForm" action="{{ route('user.logout') }}" method="POST" class="d-none">
-                                @csrf
-                                <button type="submit" class="nav-link btn btn-link"><i
-                                        class="fas fa-power-off"></i></button>
-                            </form>
-                        </li>
-                    @else
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('user.login') }}">Login</a>
-                        </li>
-                    @endif
                 </ul>
             </div>
             <ul class="navbar-nav attr-nav align-items-center">
-                <li><a href="javascript:void(0);" class="nav-link search_trigger"><i class="fa fa-search"></i></a>
+                <li><a href="javascript:void(0);" class="nav-link search_trigger" title="search"><i
+                            class="fa fa-search"></i></a>
                     <div class="search-overlay">
                         <div class="search_wrap">
                             <form>
@@ -102,6 +85,30 @@
                         </div>
                     </div>
                 </li>
+
+                @if (Auth::guard('customer')->check())
+                    <li>
+                        <a class="nav-link px-2 {{ request()->is('user.profile') ? 'active' : '' }}"
+                            href="{{ route('user.profile') }}" title="Profile"><i class="fas fa-user-edit"></i></a>
+                    </li>
+                    <li>
+                        <a class="nav-link px-2 {{ request()->is('user.orders') ? 'active' : '' }}"
+                            href="{{ route('user.orders') }}" title="Order-History"><i class="fas fa-receipt"></i></a>
+                    </li>
+                    <li>
+                        <a class="nav-link px-2" href="#" id="logoutBtn" title="Logout"><i
+                                class="fas fa-power-off"></i></a>
+                        <form id="logoutForm" action="{{ route('user.logout') }}" method="POST" class="d-none">
+                            @csrf
+                            <button type="submit" class="nav-link btn btn-link"><i
+                                    class="fas fa-power-off"></i></button>
+                        </form>
+                    </li>
+                @else
+                    <li>
+                        <a class="nav-link" href="{{ route('user.login') }}"><i class="fa-solid fa-user"></i></a>
+                    </li>
+                @endif
             </ul>
         </nav>
     </div>

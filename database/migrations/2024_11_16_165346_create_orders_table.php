@@ -19,7 +19,7 @@ return new class extends Migration
             $table->decimal('coupon_value')->default(0.00);
             $table->string('payment_option')->nullable();
             $table->text('note')->nullable();
-            $table->enum('status', ['Pending', 'Complete', 'Shipping'])->default('Pending');
+            $table->enum('status', ['Pending', 'Complete', 'Shipping', 'Cancel'])->default('Pending');
             $table->timestamps();
             // $table->foreign('customer_id')->references('id')->on('customers')->cascadeOnDelete();
         });

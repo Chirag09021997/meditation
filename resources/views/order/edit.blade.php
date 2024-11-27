@@ -194,7 +194,7 @@
                                         </a>
                                     </div>
                                 </td>
-                                 <!-- Item Name -->
+                                <!-- Item Name -->
                                 <td class="p-2 text-base font-normal text-gray-900 dark:text-white">
                                     <a href="{{ route('store.show', $item->store_id) }}"
                                         class="text-blue-600 hover:underline">
@@ -236,6 +236,45 @@
                         @endforeach
                     </tbody>
                 </table>
+            </div>
+        </div>
+
+        <div class="border-4 border-white rounded-lg p-2 sm:p-4 my-2">
+            <h1 class="font-bold my-3 text-lg">Applied Coupon Information:</h1>
+            <div class="grid md:grid-cols-2 gap-4">
+                <!-- type -->
+                <div class="mt-4">
+                    <x-input-label for="name" :value="__('Select Type')" />
+                    <select id="type" name="type"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option value="Percentage" @selected(old('type', $order->type) == 'Percentage')>Percentage</option>
+                        <option value="Amount" @selected(old('type', $order->type) == 'Amount')>Amount</option>
+                    </select>
+                </div>
+
+                <!-- coupon_code -->
+                <div class="mt-1">
+                    <x-input-label for="coupon_code" :value="__('Coupon Code')" />
+                    <x-text-input type="text" class="block mt-1 w-full" id="coupon_code" name="coupon_code"
+                        :value="old('coupon_code', $order?->coupon_code)" placeholder="Enter coupon code" />
+                    <x-input-error :messages="$errors->get('coupon_code')" class="mt-2" />
+                </div>
+
+                <!-- coupon_value -->
+                <div class="mt-1">
+                    <x-input-label for="coupon_value" :value="__('Coupon Value')" />
+                    <x-text-input type="text" class="block mt-1 w-full" id="coupon_value" name="coupon_value"
+                        :value="old('coupon_value', $order?->coupon_value)" placeholder="Enter coupon value" />
+                    <x-input-error :messages="$errors->get('coupon_value')" class="mt-2" />
+                </div>
+
+                <!-- note -->
+                <div class="mt-1">
+                    <x-input-label for="note" :value="__('Note')" />
+                    <x-text-input type="text" class="block mt-1 w-full" id="note" name="note"
+                        :value="old('note', $order?->note)" placeholder="Enter note" />
+                    <x-input-error :messages="$errors->get('note')" class="mt-2" />
+                </div>
             </div>
         </div>
 
