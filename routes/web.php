@@ -67,6 +67,9 @@ Route::middleware('customer')->group(function () {
     Route::get('/user-profile', [FrontProfileController::class, 'index'])->name('user.profile');
     Route::post('/user-profile', [FrontProfileController::class, 'update'])->name('user.profile.update');
     Route::get('/user-orders', [FrontOrderController::class, 'index'])->name('user.orders');
+    Route::get('/user-order-show/{id}', [FrontOrderController::class, 'show'])->name('user.order.show');
+    Route::get('/user-order-edit/{id}', [FrontOrderController::class, 'edit'])->name('user.order.edit');
+    Route::post('/user-order-update/{id}', [FrontOrderController::class, 'update'])->name('user.order.update');
     Route::post('/user-order-cancel', [FrontOrderController::class, 'cancelOrder'])->name('user.order.cancel');
 });
 

@@ -41,4 +41,41 @@ class OrderController extends Controller
         }
         return redirect()->back()->with('success', 'Order Cancel Successfully');
     }
+
+    public function show(string $id)
+    {
+        $user = Auth::guard('customer')->user();
+        $order = Order::with(['orderItem', 'orderAddress'])->where('customer_id', $user->id)->findOrFail($id);
+        $totalPrice = $totalDiscount = 0;
+        foreach ($order?->orderItem as $item) {
+            $totalPrice += $item->price * $item->quantity;
+            $totalDiscount += $item->discount * $item->quantity;
+        }
+        $order['total_price'] = $totalPrice;
+        $order['total_discount'] = $totalDiscount;
+        $order['final_price'] = $totalPrice - $totalDiscount;
+        return view('frontend.order-show', compact('order'));
+    }
+
+    public function edit(string $id)
+    {
+        $user = Auth::guard('customer')->user();
+        $order = Order::with(['orderItem', 'orderAddress'])->where('customer_id', $user->id)->findOrFail($id);
+        $totalPrice = $totalDiscount = 0;
+        foreach ($order?->orderItem as $item) {
+            $totalPrice += $item->price * $item->quantity;
+            $totalDiscount += $item->discount * $item->quantity;
+        }
+        $order['total_price'] = $totalPrice;
+        $order['total_discount'] = $totalDiscount;
+        $order['final_price'] = $totalPrice - $totalDiscount;
+        $jsonPath = public_path('assets/country.json');
+        $countries = json_decode(file_get_contents($jsonPath), true);
+        return view('frontend.order-edit', compact('order', 'countries'));
+    }
+
+    public function update(Request $request, string $id)
+    {
+        return redirect()->route('user.orders')->with('success', 'Order Update Successfully');
+    }
 }

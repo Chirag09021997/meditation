@@ -6,7 +6,7 @@
                 <div class="card-body p-5 text-center">
                     <h3 class="mb-5">Sign in</h3>
                     <button onclick="window.location='{{ url('/auth/google') }}'" class="btn btn-lg btn-block btn-primary"
-                        style="background-color: #508bfc;" type="submit"><i class="fab fa-google me-2 "></i> Sign in
+                        style="background-color: #dd4b39;" type="submit"><i class="fab fa-google me-2 "></i> Sign in
                         with google</button>
                 </div>
             </div>

@@ -27,8 +27,7 @@
             <h3 class="text-center">Orders List</h3>
             <div class="row">
                 <div class="col-12">
-                    <div class=" table-responsive animation" data-animation="fadeInUp"
-                        data-animation-delay="0.3s">
+                    <div class=" table-responsive animation" data-animation="fadeInUp" data-animation-delay="0.3s">
                         <table class="table table-bordered text-center">
                             <thead>
                                 <tr>
@@ -49,8 +48,12 @@
                                         <td>
                                             @if ($order['status'] == 'Pending')
                                                 <a href="#" id="cancelOrderBtn" title="Cancel"
-                                                    data-id="{{ $order['id'] }}">Cancel</a>
+                                                    class="text-danger mx-2" data-id="{{ $order['id'] }}">Cancel</a>
+                                                <a href="{{ route('user.order.edit', $order['id']) }}" title="Edit"
+                                                    class="text-success mx-2">Edit</a>
                                             @endif
+                                            <a href="{{ route('user.order.show', $order['id']) }}" title="Show"
+                                                class="text-info mx-2">Show</a>
                                         </td>
                                     </tr>
                                 @endforeach

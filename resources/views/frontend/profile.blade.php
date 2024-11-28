@@ -73,7 +73,7 @@
                                         accept="image/*">
                                     @if (Auth::guard('customer')->user()->profile)
                                         <img src="{{ Auth::guard('customer')->user()->profile }}" alt="profile"
-                                            class="w-25">
+                                            class="w-25 my-1">
                                     @endif
                                     @error('profile')
                                         <p class="text-danger font_style1">{{ $message }}</p>

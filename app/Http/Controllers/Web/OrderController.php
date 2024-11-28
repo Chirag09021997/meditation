@@ -128,7 +128,7 @@ class OrderController extends Controller
                 return $data->customer ? $data->customer->name : '';
             })
             ->editColumn('status', function ($data) {
-                $statusOptions = ['Pending', 'Shipping', 'Complete'];
+                $statusOptions = ['Pending', 'Shipping', 'Complete', 'Cancel'];
                 $statusDropdown = '<select class="status-change rounded-sm" data-order-id="' . $data->id . '" data-url="' . route('order.status') . '">';
                 foreach ($statusOptions as  $statusValue) {
                     $selected = ($data->status == $statusValue) ? 'selected' : '';
