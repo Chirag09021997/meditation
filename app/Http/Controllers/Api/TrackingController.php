@@ -68,7 +68,7 @@ class TrackingController extends Controller
                 $startDate = now()->subDay()->toDateString();
                 break;
             case 'week':
-                $startDate = now()->subDays(7)->toDateString();
+                $startDate = now()->subDays(6)->toDateString();
                 // $startDate = now()->startOfWeek(Carbon::SUNDAY)->subDays(7)->toDateString();
                 // $endDate = now()->endOfWeek(Carbon::SATURDAY)->toDateString();
                 break;
