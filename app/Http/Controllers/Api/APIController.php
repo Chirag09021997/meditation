@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Business;
 use App\Models\CouponSystem;
 use App\Models\Customer;
 use App\Models\Event;
@@ -34,7 +35,7 @@ class APIController extends Controller
     public function PremiumPlansList(Request $request)
     {
         $perPage = $request->input('per_page', 10);
-        $premiumPlan = PremiumPlan::select('id', 'name', 'short_description', 'description', 'total_amount', 'discount', 'total_user', 'total_payable_amount', 'thumb_upload')
+        $premiumPlan = PremiumPlan::select('id', 'name', 'short_description', 'description', 'total_amount', 'discount', 'total_user', 'total_payable_amount', 'thumb_upload', 'is_free')
             ->where('status', 'Active')->simplePaginate($perPage);
         return $this->sendResponse($premiumPlan, "Get Premium Plan List SuccessFully.");
     }
@@ -307,5 +308,11 @@ class APIController extends Controller
         $perPage = $request->input('per_page', 10);
         $customers = Notification::select('id', 'title', 'image', 'short_desc')->where('status', 'Active')->simplePaginate($perPage);
         return $this->sendResponse($customers, "Get Notification List SuccessFully.");
+    }
+
+    public function businessList()
+    {
+        $business = Business::select('id', 'name')->where('status', 'Active')->get();
+        return $this->sendResponse($business, "Get Business List SuccessFully.");
     }
 }

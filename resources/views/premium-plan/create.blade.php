@@ -43,7 +43,7 @@
             <div class="mt-4">
                 <x-input-label for="total_payable_amount" :value="__('Total Payable Amount')" />
                 <x-text-input id="total_payable_amount" class="block mt-1 w-full" type="number"
-                    name="total_payable_amount" :value="old('total_payable_amount')" placeholder="Enter total payable amount" />
+                    name="total_payable_amount" :value="old('total_payable_amount', 0)" placeholder="Enter total payable amount" />
                 <x-input-error :messages="$errors->get('total_payable_amount')" class="mt-2" />
             </div>
 
@@ -72,6 +72,17 @@
                     class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
                     placeholder="Enter description...">{{ old('description') }}</textarea>
                 <x-input-error :messages="$errors->get('description')" class="mt-2" />
+            </div>
+
+            <!-- is_free -->
+            <div class="mt-4">
+                <x-input-label for="is_free" :value="__('Select Is Free')" />
+                <select id="is_free" name="is_free"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="0" @selected(old('is_free') == 0)>False</option>
+                    <option value="1" @selected(old('is_free') == 1)>True</option>
+                </select>
+                <x-input-error :messages="$errors->get('is_free')" class="mt-2" />
             </div>
         </div>
         <div class="flex items-center justify-end mt-4">

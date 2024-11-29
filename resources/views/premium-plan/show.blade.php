@@ -56,6 +56,11 @@
                     class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200">{{ old('description', $premiumPlan->description) }}</textarea>
             </div>
 
+            <!-- is_free -->
+            <div class="mt-4">
+                <x-input-label for="is_free" :value="__('Is Free')" />
+                <x-text-input id="is_free" class="block mt-1 w-full" type="text" :value="old('is_free', $premiumPlan->is_free)" />
+            </div>
         </div>
     </div>
 </x-app-layout>

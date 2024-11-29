@@ -30,6 +30,7 @@ class StorePremiumPlanRequest extends FormRequest
             'short_description' => 'nullable|string|max:500',
             'description' => 'nullable|string|max:1000',
             'thumb_upload' => 'nullable|file|mimes:jpeg,png,jpg,gif|max:2048',
+            'is_free' => 'nullable|boolean'
         ];
     }
 }

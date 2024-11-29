@@ -92,7 +92,7 @@ class PremiumPlanController extends Controller
 
     public function getData()
     {
-        $premiumPlans = PremiumPlan::select(['id', 'name', 'total_amount', 'discount', 'total_user', 'total_payable_amount',  'status'])->orderByDesc('created_at');
+        $premiumPlans = PremiumPlan::select(['id', 'name', 'total_amount', 'discount', 'total_user', 'total_payable_amount',  'status', 'is_free'])->orderByDesc('created_at');
 
         return DataTables::of($premiumPlans)
             ->addColumn('action', function ($data) {
@@ -105,7 +105,10 @@ class PremiumPlanController extends Controller
                 $checked = ($data->status == 'Active') ? 'checked' : '';
                 return '<input type="checkbox" data-url="' . route('premium-plan.changeStatus', $data->id) . '" ' . $checked . ' class="changeStatus">';
             })
-            ->rawColumns(['action', 'status'])
+            ->editColumn('is_free', function ($data) {
+                return ($data->is_free == 0) ? 'false' : 'true';
+            })
+            ->rawColumns(['action', 'status', 'is_free'])
             ->addIndexColumn()
             ->toJson();
     }

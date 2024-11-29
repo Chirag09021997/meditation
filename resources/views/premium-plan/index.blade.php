@@ -15,6 +15,7 @@
                         <th>Discount</th>
                         <th>Total User</th>
                         <th>Total Payable Amount</th>
+                        <th>Is Free</th>
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -58,6 +59,10 @@
                     {
                         data: 'total_payable_amount',
                         name: 'total_payable_amount'
+                    },
+                    {
+                        data: 'is_free',
+                        name: 'is_free'
                     },
                     {
                         data: 'status',

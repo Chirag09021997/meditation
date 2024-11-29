@@ -76,7 +76,16 @@
                     placeholder="Enter description...">{{ old('description', $premiumPlan->description) }}</textarea>
                 <x-input-error :messages="$errors->get('description')" class="mt-2" />
             </div>
-
+            <!-- is_free -->
+            <div class="mt-4">
+                <x-input-label for="is_free" :value="__('Select Is Free')" />
+                <select id="is_free" name="is_free"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="0" @selected(old('is_free', $premiumPlan->is_free) == 0)>False</option>
+                    <option value="1" @selected(old('is_free', $premiumPlan->is_free) == 1)>True</option>
+                </select>
+                <x-input-error :messages="$errors->get('is_free')" class="mt-2" />
+            </div>
         </div>
         <div class="flex items-center justify-end mt-4">
             <a class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-200 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 "

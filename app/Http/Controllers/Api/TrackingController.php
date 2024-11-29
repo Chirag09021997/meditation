@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\MeditationAudio;
 use App\Models\TrackMeditation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -143,7 +144,14 @@ class TrackingController extends Controller
                 ];
             });
         }
-        return $this->sendResponse($formattedData, 'Report Meditation retrieved successfully.');
+        $meditation_total_view = MeditationAudio::where('status', 'Active')->sum('total_view');
+        $meditation_total_listening_time = TrackMeditation::sum('listening_time');
+        $data = [
+            'meditation_total_view' => intval($meditation_total_view),
+            'meditation_total_listening_time' => intval($meditation_total_listening_time),
+            'report_data' => $formattedData,
+        ];
+        return $this->sendResponse($data, 'Report Meditation retrieved successfully.');
     }
 
     public function  getUserCategoryList($customerId)

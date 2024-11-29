@@ -45,3 +45,4 @@ Route::post('recent', [RecentController::class, 'store']);
 Route::post('get-recent', [RecentController::class, 'getRecent']);
 Route::post('user-categories/{customerId}', [TrackingController::class, 'getUserCategoryList']);
 Route::get('notifications', [APIController::class, 'NotificationsList']);
+Route::get("business-list", [APIController::class, "businessList"]);
