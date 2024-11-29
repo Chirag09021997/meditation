@@ -76,6 +76,32 @@ class OrderController extends Controller
 
     public function update(Request $request, string $id)
     {
+        $validatedData = $request->validate([
+            'b_fname' => 'required|string|max:255',
+            'b_lname' => 'required|string|max:255',
+            'b_country' => 'required|string|max:2',
+            'b_address' => 'required|string|max:255',
+            'b_address2' => 'required|string|max:255',
+            'b_city' => 'required|string|max:255',
+            'b_state' => 'required|string|max:255',
+            'b_zipcode' => 'required|string|max:10',
+            'b_phone' => 'required|string|max:15',
+            'b_email' => 'required|email|max:255',
+            's_fname' => 'nullable|string|max:255',
+            's_lname' => 'nullable|string|max:255',
+            's_country' => 'nullable|string|max:2',
+            's_address' => 'nullable|string|max:255',
+            's_address2' => 'nullable|string|max:255',
+            's_city' => 'nullable|string|max:255',
+            's_state' => 'nullable|string|max:255',
+            's_zipcode' => 'nullable|string|max:10',
+            'cartItems' => 'required|array',
+            'cartItems.*.id' => 'required|exists:stores,id',
+            'cartItems.*.quantity' => 'required|integer|min:1',
+            'coupon_code' => 'nullable|string|exists:coupon_systems,coupon_code',
+        ]);
+
+        // dd($validatedData);
         return redirect()->route('user.orders')->with('success', 'Order Update Successfully');
     }
 }

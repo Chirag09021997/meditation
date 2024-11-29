@@ -276,4 +276,45 @@ $(document).ready(function () {
             $("#cancelOrderForm").submit();
         }
     });
+
+    $(document).on("click", ".remove", function () {
+        var $row = $(this).closest("tr");
+        $row.remove();
+    });
+    $(document).on("input", ".qty", function () {
+        var index = $(this).closest(".order-item").index();
+        var quantity = $(this).val();
+        $('input[name="cartItems[' + index + '][quantity]"]').val(quantity);
+    });
+
+    $(document).on("click", ".minusOrder, .plusOrder", function () {
+        var $quantityInput = $(this).siblings("input.qty");
+        var $productRow = $(this).closest("tr");
+        var price = parseFloat(
+            $productRow.find(".product-price").data("price")
+        );
+        var index = $(this).closest(".order-item").index();
+
+        var quantity = parseInt($quantityInput.val()) || 1;
+
+        if ($(this).hasClass("minusOrder") && quantity > 1) {
+            quantity -= 1;
+        } else if ($(this).hasClass("plusOrder")) {
+            quantity += 1;
+        }
+
+        $quantityInput.val(quantity);
+        $('input[name="cartItems[' + index + '][quantity]"]').val(quantity);
+        var subtotal = price * quantity;
+        $productRow.find(".product-subtotal").text(subtotal.toFixed(2)); // Update
+        updateCartTotal();
+    });
+
+    function updateCartTotal() {
+        var total = 0;
+        $(".product-subtotal").each(function () {
+            total += parseFloat($(this).text()) || 0;
+        });
+        $(".cart-total").text("$" + total.toFixed(2));
+    }
 });

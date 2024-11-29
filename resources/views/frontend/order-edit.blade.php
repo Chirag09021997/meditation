@@ -41,7 +41,7 @@
                         <p>If you have a coupon code.</p>
                         <div class="coupon field_form input-group form_style2">
                             <input type="text" id="apply_coupon" name="coupon_code" class="form-control"
-                                value="{{ $order->coupon_code }}">
+                                value="{{ $order->coupon_code }}" disabled>
                         </div>
                     </div>
                 </div>
@@ -257,21 +257,27 @@
                                     @php
                                         $discountedPrice = $item->price - $item->discount;
                                     @endphp
-                                    <tr>
-                                        <td class="product-thumbnail"><img src="{{ $item->store->product_thumb }}"
+                                    <tr data-item-id="{{ $item->id }}">
+                                        <input type="hidden" name="cartItems[{{ $key }}][id]"
+                                            value="{{ $item->id }}">
+                                        <td class="product-thumbnail">
+                                            <img src="{{ $item->store->product_thumb }}"
                                                 alt="{{ $item->store->product_name }}" style="width:70px;height:70px;">
                                         </td>
                                         <td class="product-name">{{ $item->store->product_name }}</td>
-                                        <td class="product-price">${{ $item->price }}</td>
-                                        <td class="product-quantity">
-                                            <button class="minus" data-index="{{ $item->id }}">-</button>
-                                            <input type="text" value="{{ $item->quantity }}" class="qty w-25"
-                                                min="1">
-                                            <button class="plus" data-index="{{ $item->id }}">+</button>
+                                        <td class="product-price" data-price="{{ $item->price - $item->discount }}">
+                                            ${{ $item->price - $item->discount }}
+                                            <sub class="mx-2"><del>${{ $item->price }}</del></sub>
                                         </td>
-                                        <td class="product-subtotal">{{ $discountedPrice * $item->quantity }}</td>
-                                        <td class="product-remove"><button class="remove"
-                                                data-index="{{ $item->id }}">×</button>
+                                        <td class="product-quantity">
+                                            <span class="minusOrder" data-index="{{ $item->id }}">-</span>
+                                            <input type="number" name="cartItems[{{ $key }}][quantity]"
+                                                value="{{ $item->quantity }}" class="qty w-25" min="1">
+                                            <span class="plusOrder" data-index="{{ $item->id }}">+</span>
+                                        </td>
+                                        <td class="product-subtotal">${{ $discountedPrice * $item->quantity }}</td>
+                                        <td class="product-remove">
+                                            <span class="remove" data-index="{{ $item->id }}">X</span>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -306,7 +312,6 @@
                                         card if you don't have a PayPal account.</p>
                                 </div>
                             </div>
-                            <input type="hidden" name="cartItems" id="cartItemsInput" />
                             <button class="btn btn-default" type="submit">Update Order</button>
                         </div>
                     </div>
