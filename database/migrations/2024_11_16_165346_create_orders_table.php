@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('customer_id')->nullable();
             $table->enum('coupon_type', ['Percentage', 'Amount'])->nullable();
             $table->string('coupon_code')->nullable();
-            $table->decimal('coupon_value')->default(0.00);
+            $table->decimal('coupon_value')->default(0.00)->nullable();
             $table->string('payment_option')->nullable();
             $table->text('note')->nullable();
             $table->enum('status', ['Pending', 'Complete', 'Shipping', 'Cancel'])->default('Pending');

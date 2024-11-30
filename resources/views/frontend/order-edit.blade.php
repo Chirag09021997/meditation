@@ -258,8 +258,8 @@
                                         $discountedPrice = $item->price - $item->discount;
                                     @endphp
                                     <tr data-item-id="{{ $item->id }}">
-                                        <input type="hidden" name="cartItems[{{ $key }}][id]"
-                                            value="{{ $item->id }}">
+                                        <input type="hidden" name="cartItems[{{ $key }}][store_id]"
+                                            value="{{ $item->store_id }}">
                                         <td class="product-thumbnail">
                                             <img src="{{ $item->store->product_thumb }}"
                                                 alt="{{ $item->store->product_name }}" style="width:70px;height:70px;">
@@ -270,10 +270,12 @@
                                             <sub class="mx-2"><del>${{ $item->price }}</del></sub>
                                         </td>
                                         <td class="product-quantity">
-                                            <span class="minusOrder" data-index="{{ $item->id }}">-</span>
+                                            <span class="minusOrder cursor-pointer" data-index="{{ $item->id }}"
+                                                style="cursor: :pointer">-</span>
                                             <input type="number" name="cartItems[{{ $key }}][quantity]"
-                                                value="{{ $item->quantity }}" class="qty w-25" min="1">
-                                            <span class="plusOrder" data-index="{{ $item->id }}">+</span>
+                                                value="{{ $item->quantity }}" class="qty w-25 px-2" min="1">
+                                            <span class="plusOrder cursor-pointer"
+                                                data-index="{{ $item->id }}">+</span>
                                         </td>
                                         <td class="product-subtotal">${{ $discountedPrice * $item->quantity }}</td>
                                         <td class="product-remove">
@@ -285,36 +287,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="small_divider clearfix"></div>
-                        </div>
-                    </div>
-                    <div class="row my-3">
-                        <div class="col-12">
-                            <div class="payment_method">
-                                <div class="custome-radio">
-                                    <input class="form-check-input" required type="radio" name="payment_option"
-                                        id="exampleRadios3" value="direct" checked="">
-                                    <label class="form-check-label" for="exampleRadios3">Direct Bank Transfer</label>
-                                    <p data-method="option3" class="payment-text">There are many variations of passages of
-                                        Lorem
-                                        Ipsum available, but the majority have suffered alteration in some form, by injected
-                                        humour,
-                                        or randomised words which don't look even slightly believable. </p>
-                                </div>
-                                <div class="custome-radio">
-                                    <input class="form-check-input" type="radio" name="payment_option"
-                                        id="exampleRadios5" value="paypal">
-                                    <label class="form-check-label" for="exampleRadios5">Paypal</label>
-                                    <p data-method="option5" class="payment-text">Pay via PayPal; you can pay with your
-                                        credit
-                                        card if you don't have a PayPal account.</p>
-                                </div>
-                            </div>
-                            <button class="btn btn-default" type="submit">Update Order</button>
-                        </div>
-                    </div>
+                    <button class="btn btn-default my-3" type="submit">Update Order</button>
             </form>
         </div>
     </section>

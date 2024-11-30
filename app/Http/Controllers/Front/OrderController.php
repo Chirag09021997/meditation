@@ -76,6 +76,7 @@ class OrderController extends Controller
 
     public function update(Request $request, string $id)
     {
+        $order = Order::findOrFail($id);
         $validatedData = $request->validate([
             'b_fname' => 'required|string|max:255',
             'b_lname' => 'required|string|max:255',
@@ -96,12 +97,43 @@ class OrderController extends Controller
             's_state' => 'nullable|string|max:255',
             's_zipcode' => 'nullable|string|max:10',
             'cartItems' => 'required|array',
-            'cartItems.*.id' => 'required|exists:stores,id',
+            'cartItems.*.store_id' => 'required|exists:stores,id',
             'cartItems.*.quantity' => 'required|integer|min:1',
             'coupon_code' => 'nullable|string|exists:coupon_systems,coupon_code',
         ]);
-
-        // dd($validatedData);
-        return redirect()->route('user.orders')->with('success', 'Order Update Successfully');
+        $orderAddressData = $request->only([
+            'b_fname',
+            'b_lname',
+            'b_country',
+            'b_address',
+            'b_address2',
+            'b_city',
+            'b_state',
+            'b_zipcode',
+            'b_phone',
+            'b_email',
+            's_fname',
+            's_lname',
+            's_country',
+            's_address',
+            's_address2',
+            's_city',
+            's_state',
+            's_zipcode'
+        ]);
+        $order->orderAddress->update($orderAddressData);
+        $existingCartItemIds = $order->orderItem()->pluck('store_id')->toArray();
+        $newCartItemIds = collect($validatedData['cartItems'])->pluck('store_id')->toArray();
+        $itemsToRemove = array_diff($existingCartItemIds, $newCartItemIds);
+        if ($itemsToRemove) {
+            $order->orderItem()->whereIn('store_id', $itemsToRemove)->delete();
+        }
+        foreach ($validatedData['cartItems'] as $item) {
+            $order->orderItem()->updateOrCreate(
+                ['store_id' => $item['store_id']],
+                ['quantity' => $item['quantity']]
+            );
+        }
+        return redirect()->route('user.order.show', $id)->with('success', 'Order Update Successfully');
     }
 }

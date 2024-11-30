@@ -99,7 +99,7 @@
                                                 <div class="d-flex justify-content-around mb-1">
                                                     <p class="text-muted mt-1 mb-0 small ms-xl-5">Cancel</p>
                                                     <p class="text-muted mt-1 mb-0 small ms-xl-5">Pending</p>
-                                                    <p class="text-muted mt-1 mb-0 small ms-xl-5">Out for delivary</p>
+                                                    <p class="text-muted mt-1 mb-0 small ms-xl-5">Out for delivery</p>
                                                     <p class="text-muted mt-1 mb-0 small ms-xl-5">Delivered</p>
                                                 </div>
                                             </div>
