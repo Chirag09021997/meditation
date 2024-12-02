@@ -7,6 +7,7 @@ use App\Models\Blog;
 use App\Models\Business;
 use App\Models\CouponSystem;
 use App\Models\Customer;
+use App\Models\CustomerPurchasePlan;
 use App\Models\Event;
 use App\Models\MeditationAudio;
 use App\Models\MeditationType;
@@ -246,6 +247,11 @@ class APIController extends Controller
             $validatedData['profile'] = str_replace('public/', 'storage/', $filePath);
         }
         $customer = Customer::updateOrCreate(['email' => $request->email], $validatedData);
+        $plan = PremiumPlan::where('is_free', 1)->first();
+        CustomerPurchasePlan::firstOrCreate(
+            ['customer_id' => $customer->id],
+            ['premium_plan_id' => $plan->id]
+        );
         return $this->sendResponse($customer, "Customer update successFully.");
     }
 
@@ -314,5 +320,35 @@ class APIController extends Controller
     {
         $business = Business::select('id', 'name')->where('status', 'Active')->get();
         return $this->sendResponse($business, "Get Business List SuccessFully.");
+    }
+
+    public function CustomerPremiumPlan(Request $request)
+    {
+        $rules =  [
+            'note' => 'nullable|string|max:255',
+            'customer_id' => 'required|exists:customers,id',
+            'premium_plan_id' => 'required|exists:premium_plans,id',
+            'response' => "nullable"
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return $this->sendError($validator->errors()->first(), [], 200);
+        }
+
+        $validator->validated();
+        $customer = Customer::whereNull('deleted_at')->where('id', $request->customer_id)->first();
+        if ($customer) {
+            $premiumPlan = PremiumPlan::whereNull('deleted_at')->where('id', $request->premium_plan_id)->first();
+            if ($premiumPlan) {
+                $purchasePlan = CustomerPurchasePlan::updateOrCreate(
+                    ['customer_id' => $request->customer_id],
+                    ['premium_plan_id' => $request->premium_plan_id, 'note' => $request->note, 'response' => $request->response]
+                );
+                return $this->sendResponse($purchasePlan, "Purchase plan SuccessFully.");
+            }
+            return $this->sendError('premium_plan_id not valid.', [], 200);
+        }
+        return $this->sendError('customer_id not valid.', [], 200);
     }
 }
