@@ -92,7 +92,7 @@ class CustomerController extends Controller
 
     public function getData()
     {
-        $customers = Customer::select(['id', 'profile', 'name', 'country_name', 'mobile_no', 'email', 'business_category', 'dob'])->orderByDesc('created_at');
+        $customers = Customer::with('customerPurchasePlan.premiumPlan')->select(['id', 'profile', 'name', 'country_name', 'mobile_no', 'email', 'business_category', 'dob'])->orderByDesc('created_at');
         return DataTables::of($customers)
             ->addColumn('action', function ($data) {
                 $viewLink = $updateLink = $deleteLink = '';
@@ -104,7 +104,10 @@ class CustomerController extends Controller
             ->editColumn('profile', function ($data) {
                 return '<img src="' . $data->profile . '" alt="" class="w-8 mx-auto" />';
             })
-            ->rawColumns(['action', 'profile'])
+            ->addColumn('purchase_plan_name', function ($data) {
+                return $data->customerPurchasePlan->premiumPlan->name ?? '';
+            })
+            ->rawColumns(['action', 'profile', 'purchase_plan_name'])
             ->addIndexColumn()
             ->toJson();
     }

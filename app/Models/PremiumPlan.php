@@ -18,4 +18,9 @@ class PremiumPlan extends Model
     {
         return $this->belongsToMany(MeditationAudio::class, 'meditation_audio_premium_plan');
     }
+
+    public function customersPremium_plan()
+    {
+        return $this->hasMany(CustomerPurchasePlan::class, 'premium_plan_id');
+    }
 }

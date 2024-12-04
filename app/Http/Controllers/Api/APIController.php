@@ -36,8 +36,17 @@ class APIController extends Controller
     public function PremiumPlansList(Request $request)
     {
         $perPage = $request->input('per_page', 10);
-        $premiumPlan = PremiumPlan::select('id', 'name', 'short_description', 'description', 'total_amount', 'discount', 'total_user', 'total_payable_amount', 'thumb_upload', 'is_free')
-            ->where('status', 'Active')->simplePaginate($perPage);
+        $customerId = $request->input('customer_id', 0);
+        if ($customerId == 0) {
+            $premiumPlan = PremiumPlan::select('id', 'name', 'short_description', 'description', 'total_amount', 'discount', 'total_user', 'total_payable_amount', 'thumb_upload', 'is_free')
+                ->where('status', 'Active')->simplePaginate($perPage);
+        } else {
+            $premiumPlanId = CustomerPurchasePlan::where('customer_id', $customerId)->pluck('premium_plan_id')->first();
+            $premiumPlan = PremiumPlan::select('id', 'name', 'short_description', 'description', 'total_amount', 'discount', 'total_user', 'total_payable_amount', 'thumb_upload', 'is_free')
+                ->selectRaw('CASE WHEN premium_plans.id = ? THEN 1 ELSE premium_plans.is_free END as is_free', [$premiumPlanId])
+                ->where('status', 'Active')
+                ->simplePaginate($perPage);
+        }
         return $this->sendResponse($premiumPlan, "Get Premium Plan List SuccessFully.");
     }
 
@@ -267,6 +276,7 @@ class APIController extends Controller
         }
         $validator->validated();
         $customers = Customer::with('customerPurchasePlan:customer_id,premium_plan_id,note')->select('id', 'name', 'profile', 'country_name', 'mobile_no', 'email', 'business_category', 'dob')->where('email', $request->email)->first();
+        $customers->is_free = $customers->customerPurchasePlan ?  false : true;
         return $this->sendResponse($customers, "Get Customer List SuccessFully.");
     }
 

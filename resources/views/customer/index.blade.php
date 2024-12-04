@@ -15,6 +15,7 @@
                         <th>Email</th>
                         <th>Profile</th>
                         <th>Country</th>
+                        <th>Purchase Plan Name</th>
                     </tr>
                 </thead>
             </table>
@@ -53,6 +54,10 @@
                     {
                         data: 'country_name',
                         name: 'country_name'
+                    },
+                    {
+                        data: 'purchase_plan_name',
+                        name: 'purchase_plan_name'
                     }
                 ]
             });
