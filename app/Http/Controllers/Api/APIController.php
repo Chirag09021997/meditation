@@ -340,10 +340,11 @@ class APIController extends Controller
         $customer = Customer::whereNull('deleted_at')->where('id', $request->customer_id)->first();
         if ($customer) {
             $premiumPlan = PremiumPlan::whereNull('deleted_at')->where('id', $request->premium_plan_id)->first();
+            $response = is_array($request->response) ? json_encode($request->response) : $request->response;
             if ($premiumPlan) {
                 $purchasePlan = CustomerPurchasePlan::updateOrCreate(
                     ['customer_id' => $request->customer_id],
-                    ['premium_plan_id' => $request->premium_plan_id, 'note' => $request->note, 'response' => $request->response]
+                    ['premium_plan_id' => $request->premium_plan_id, 'note' => $request->note, 'response' => $response]
                 );
                 return $this->sendResponse($purchasePlan, "Purchase plan SuccessFully.");
             }
