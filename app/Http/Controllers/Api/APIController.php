@@ -266,7 +266,7 @@ class APIController extends Controller
             return $this->sendError($validator->errors()->first(), [], 200);
         }
         $validator->validated();
-        $customers = Customer::select('id', 'name', 'profile', 'country_name', 'mobile_no', 'email', 'business_category', 'dob')->where('email', $request->email)->first();
+        $customers = Customer::with('customerPurchasePlan:customer_id,premium_plan_id,note')->select('id', 'name', 'profile', 'country_name', 'mobile_no', 'email', 'business_category', 'dob')->where('email', $request->email)->first();
         return $this->sendResponse($customers, "Get Customer List SuccessFully.");
     }
 

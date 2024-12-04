@@ -20,4 +20,9 @@ class Customer extends Authenticatable
     {
         return $this->belongsTo(Business::class, 'business_id');
     }
+
+    public function customerPurchasePlan()
+    {
+        return $this->hasOne(CustomerPurchasePlan::class, 'customer_id');
+    }
 }
