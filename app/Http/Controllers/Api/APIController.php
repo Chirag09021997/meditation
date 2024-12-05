@@ -276,7 +276,7 @@ class APIController extends Controller
         }
         $validator->validated();
         $customers = Customer::with('customerPurchasePlan:customer_id,premium_plan_id,note')->select('id', 'name', 'profile', 'country_name', 'mobile_no', 'email', 'business_category', 'dob')->where('email', $request->email)->first();
-        $customers->is_free = $customers->customerPurchasePlan ?  false : true;
+        $customers->premium_plan = isset($customers->customerPurchasePlan->premium_plan_id) ? PremiumPlan::select('id', 'name', 'short_description', 'description', 'total_amount', 'discount', 'total_user', 'total_payable_amount', 'thumb_upload', 'is_free')->find($customers->customerPurchasePlan->premium_plan_id) : [];
         return $this->sendResponse($customers, "Get Customer List SuccessFully.");
     }
 
