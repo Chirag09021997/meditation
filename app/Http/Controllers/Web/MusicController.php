@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Music;
 use App\Http\Requests\StoreMusicRequest;
 use App\Http\Requests\UpdateMusicRequest;
+use App\Models\Interest;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
 class MusicController extends Controller
@@ -23,7 +25,8 @@ class MusicController extends Controller
      */
     public function create()
     {
-        return view('music.create');
+        $interestList = Interest::all();
+        return view('music.create', compact('interestList'));
     }
 
     /**
@@ -44,6 +47,12 @@ class MusicController extends Controller
             $filePath = $image->storeAs('public/uploads/music', $fileName);
             $validated['audio_upload'] = str_replace('public/', 'storage/', $filePath);
         }
+        DB::transaction(function () use ($validated, $request) {
+            $music = Music::create($validated);
+            if ($request->has('interest_type')) {
+                $music->interestType()->attach($request->input('interest_type'));
+            }
+        });
         Music::create($validated);
         return redirect()->route('music.index')->with('success', 'Music created successfully.');
     }
@@ -53,7 +62,8 @@ class MusicController extends Controller
      */
     public function show(Music $music)
     {
-        return view('music.show', compact('music'));
+        $oldInterest = $music->interestType->pluck('name')->toArray();
+        return view('music.show', compact('music','oldInterest'));
     }
 
     /**
@@ -61,7 +71,9 @@ class MusicController extends Controller
      */
     public function edit(Music $music)
     {
-        return view('music.edit', compact('music'));
+        $interestList = Interest::all();
+        $oldInterest = $music->interestType->pluck('id')->toArray();
+        return view('music.edit', compact('music','interestList','oldInterest'));
     }
 
     /**
@@ -95,6 +107,10 @@ class MusicController extends Controller
             $validated['audio_upload'] = str_replace('public/', 'storage/', $filePath);
         }
         $music->update($validated);
+
+        if ($request->has('interest_type')) {
+            $music->interestType()->attach($request->input('interest_type'));
+        }
         return redirect()->route('music.index')->with('success', 'Music updated successfully');
     }
 

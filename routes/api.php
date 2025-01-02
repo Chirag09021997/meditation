@@ -24,7 +24,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('customers', [APIController::class, 'CustomerList']);
 Route::get('premium-plans', [APIController::class, 'PremiumPlansList']);
+Route::get('intrest', [APIController::class, 'IntrestList']);
 Route::get('meditation-type', [APIController::class, 'MeditationTypeList']);
+Route::get('interest', [APIController::class, 'InterestList']);
 Route::get('meditation-audio', [APIController::class, 'MeditationAudioList']);
 Route::get('music', [APIController::class, 'MusicList']);
 Route::get('workshop', [APIController::class, 'WorkShopList']);

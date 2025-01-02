@@ -20,4 +20,10 @@ class Music extends Model
     {
         return !empty($value) ? config('app.url') . "/" . $value : null;
     }
+    
+    public function interestType()
+    {
+        return $this->belongsToMany(Interest::class, 'music_interest_type');
+    }
+
 }

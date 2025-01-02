@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\MeditationAudio;
 use App\Http\Requests\StoreMeditationAudioRequest;
 use App\Http\Requests\UpdateMeditationAudioRequest;
+use App\Models\Interest;
 use App\Models\MeditationType;
 use App\Models\PremiumPlan;
 use Illuminate\Support\Facades\DB;
@@ -27,8 +28,9 @@ class MeditationAudioController extends Controller
     public function create()
     {
         $premiumPlans = PremiumPlan::all();
+        $interestList = Interest::all();
         $meditationTypes = MeditationType::all();
-        return view('meditation-audio.create', compact('premiumPlans', 'meditationTypes'));
+        return view('meditation-audio.create', compact('premiumPlans','interestList', 'meditationTypes'));
     }
 
     /**
@@ -54,6 +56,9 @@ class MeditationAudioController extends Controller
             if ($request->has('premium_plan')) {
                 $meditationAudio->premiumPlans()->attach($request->input('premium_plan'));
             }
+            if ($request->has('interest_type')) {
+                $meditationAudio->interestType()->attach($request->input('interest_type'));
+            }
         });
         return redirect()->route('meditation-audio.index')->with('success', 'Meditation Audio created successfully');
     }
@@ -64,7 +69,8 @@ class MeditationAudioController extends Controller
     public function show(MeditationAudio $meditationAudio)
     {
         $oldPremiumPlans = $meditationAudio->premiumPlans->pluck('name')->toArray();
-        return view('meditation-audio.show', compact('meditationAudio', 'oldPremiumPlans'));
+        $oldInterest = $meditationAudio->interestType->pluck('name')->toArray();
+        return view('meditation-audio.show', compact('meditationAudio', 'oldPremiumPlans','oldInterest'));
     }
 
     /**
@@ -73,9 +79,11 @@ class MeditationAudioController extends Controller
     public function edit(MeditationAudio $meditationAudio)
     {
         $premiumPlans = PremiumPlan::all();
-        $meditationTypes = MeditationType::all();
         $oldPremiumPlans = $meditationAudio->premiumPlans->pluck('id')->toArray();
-        return view('meditation-audio.edit', compact('meditationAudio', 'premiumPlans', 'oldPremiumPlans', 'meditationTypes'));
+        $oldInterest = $meditationAudio->interestType->pluck('id')->toArray();
+        $meditationTypes = MeditationType::all();
+        $interestList = Interest::all();
+        return view('meditation-audio.edit', compact('meditationAudio', 'premiumPlans', 'oldPremiumPlans','oldInterest', 'meditationTypes','interestList'));
     }
 
     /**
@@ -111,6 +119,9 @@ class MeditationAudioController extends Controller
         $meditationAudio->update($validated);
         if ($request->has('premium_plan')) {
             $meditationAudio->premiumPlans()->sync($request->input('premium_plan'));
+        }
+        if ($request->has('interest_type')) {
+            $meditationAudio->interestType()->attach($request->input('interest_type'));
         }
         return redirect()->route('meditation-audio.index')->with('success', 'Meditation Audio updated successfully');
     }

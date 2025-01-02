@@ -26,6 +26,11 @@ class MeditationAudio extends Model
         return $this->belongsToMany(PremiumPlan::class, 'meditation_audio_premium_plan');
     }
 
+    public function interestType()
+    {
+        return $this->belongsToMany(Interest::class, 'meditation_audio_interest_type');
+    }
+
     public function meditationType()
     {
         return $this->belongsTo(MeditationType::class, "meditation_type_id");

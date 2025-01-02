@@ -13,6 +13,7 @@ use App\Http\Controllers\Web\CustomerController;
 use App\Http\Controllers\Web\EventController;
 use App\Http\Controllers\Web\MeditationAudioController;
 use App\Http\Controllers\Web\MeditationTypeController;
+use App\Http\Controllers\Web\InterestController;
 use App\Http\Controllers\Web\MusicController;
 use App\Http\Controllers\Web\NotificationController;
 use App\Http\Controllers\Web\OrderController;
@@ -92,6 +93,10 @@ Route::middleware('auth')->group(function () {
     Route::get('meditation-type/data', [MeditationTypeController::class, 'getData'])->name('meditation-type.data');
     Route::post('meditation-type/status/{meditation_type}', [MeditationTypeController::class, 'changeStatus'])->name('meditation-type.changeStatus');
     Route::resource('meditation-type', MeditationTypeController::class);
+    
+    Route::get('interest/data', [InterestController::class, 'getData'])->name('interest.data');
+    Route::post('interest/status/{interest}', [InterestController::class, 'changeStatus'])->name('interest.changeStatus');
+    Route::resource('interest', InterestController::class);
 
     Route::get('meditation-audio/data', [MeditationAudioController::class, 'getData'])->name('meditation-audio.data');
     Route::post('meditation-audio/status/{meditation_audio}', [MeditationAudioController::class, 'changeStatus'])->name('meditation-audio.changeStatus');

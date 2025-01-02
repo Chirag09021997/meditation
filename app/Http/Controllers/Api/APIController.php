@@ -11,6 +11,7 @@ use App\Models\CustomerPurchasePlan;
 use App\Models\Event;
 use App\Models\MeditationAudio;
 use App\Models\MeditationType;
+use App\Models\Interest;
 use App\Models\Music;
 use App\Models\Notification;
 use App\Models\PremiumPlan;
@@ -48,6 +49,13 @@ class APIController extends Controller
                 ->simplePaginate($perPage);
         }
         return $this->sendResponse($premiumPlan, "Get Premium Plan List SuccessFully.");
+    }
+
+    public function InterestList(Request $request)
+    {
+        $perPage = $request->input('per_page', 10);
+        $interest = Interest::select('id', 'name', 'thumb_image')->where('status', 'Active')->simplePaginate($perPage);
+        return $this->sendResponse($interest, "Get Interest List SuccessFully.");
     }
 
     public function MeditationTypeList(Request $request)
