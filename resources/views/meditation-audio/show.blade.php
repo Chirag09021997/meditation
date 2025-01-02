@@ -52,6 +52,12 @@
                 <x-text-input id="premium_plan" class="block mt-1 w-full" type="text" :value="old('premium_plan', implode(',', $oldPremiumPlans))" disabled />
             </div>
 
+            <!-- Interest -->
+            <div class="mt-4">
+                <x-input-label for="premium_plan" :value="__('Select Premium Plans')" />
+                <x-text-input id="premium_plan" class="block mt-1 w-full" type="text" :value="old('premium_plan', implode(',', $oldInterest))" disabled />
+            </div>
+
             <!-- short_description -->
             <div class="mt-4">
                 <x-input-label for="short_description" :value="__('Short Description')" />

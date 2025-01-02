@@ -19,6 +19,7 @@ use App\Http\Controllers\Web\NotificationController;
 use App\Http\Controllers\Web\OrderController;
 use App\Http\Controllers\Web\PremiumPlanController;
 use App\Http\Controllers\Web\StoreController;
+use App\Http\Controllers\Web\WorkshopCategoryController;
 use App\Http\Controllers\Web\WorkShopController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -93,7 +94,7 @@ Route::middleware('auth')->group(function () {
     Route::get('meditation-type/data', [MeditationTypeController::class, 'getData'])->name('meditation-type.data');
     Route::post('meditation-type/status/{meditation_type}', [MeditationTypeController::class, 'changeStatus'])->name('meditation-type.changeStatus');
     Route::resource('meditation-type', MeditationTypeController::class);
-    
+
     Route::get('interest/data', [InterestController::class, 'getData'])->name('interest.data');
     Route::post('interest/status/{interest}', [InterestController::class, 'changeStatus'])->name('interest.changeStatus');
     Route::resource('interest', InterestController::class);
@@ -143,6 +144,10 @@ Route::middleware('auth')->group(function () {
     Route::get('notification/data', [NotificationController::class, 'getData'])->name('notification.data');
     Route::post('notification/status/{notification}', [NotificationController::class, 'changeStatus'])->name('notification.changeStatus');
     Route::resource('notification', NotificationController::class);
+
+    Route::get('workshop-category/data', [WorkshopCategoryController::class, 'getData'])->name('workshop-category.data');
+    Route::post('workshop-category/status/{workshop_category}', [WorkshopCategoryController::class, 'changeStatus'])->name('workshop-category.changeStatus');
+    Route::resource('workshop-category', WorkshopCategoryController::class);
 });
 
 require __DIR__ . '/auth.php';

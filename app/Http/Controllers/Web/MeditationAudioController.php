@@ -121,7 +121,7 @@ class MeditationAudioController extends Controller
             $meditationAudio->premiumPlans()->sync($request->input('premium_plan'));
         }
         if ($request->has('interest_type')) {
-            $meditationAudio->interestType()->attach($request->input('interest_type'));
+            $meditationAudio->interestType()->sync($request->input('interest_type'));
         }
         return redirect()->route('meditation-audio.index')->with('success', 'Meditation Audio updated successfully');
     }
