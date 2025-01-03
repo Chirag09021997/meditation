@@ -77,6 +77,32 @@
                 <x-input-error :messages="$errors->get('second')" class="mt-2" />
             </div>
 
+            <!-- workshop_category -->
+            <div class="mt-4">
+                <x-input-label for="name" :value="__('Select Workshop Category')" />
+                <select multiple id="workshop_category" name="workshop_category[]"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option disabled>Choose workshop category</option>
+                    @foreach ($workshopCategory as $workshop)
+                        <option value="{{ $workshop->id }}" @selected(in_array($workshop->id, $oldWorkshopCategory))>
+                            {{ $workshop->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <!-- Interest -->
+            <div class="mt-4">
+                <x-input-label for="name" :value="__('Select Interest')" />
+                <select multiple id="interest_type" name="interest_type[]"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option disabled>Choose interest type</option>
+                    @foreach ($interestList as $interest)
+                        <option value="{{ $interest->id }}" @selected(in_array($interest->id, $oldInterestList))>
+                            {{ $interest->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <!-- short_description -->
             <div class="mt-4">
                 <x-input-label for="short_description" :value="__('Short Description')" />

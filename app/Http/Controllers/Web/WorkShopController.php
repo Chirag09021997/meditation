@@ -28,7 +28,7 @@ class WorkShopController extends Controller
     {
         $workshopCategory = WorkshopCategory::all();
         $interestList = Interest::all();
-        return view('workshop.create',compact('workshopCategory','interestList'));
+        return view('workshop.create', compact('workshopCategory', 'interestList'));
     }
 
     /**
@@ -43,14 +43,14 @@ class WorkShopController extends Controller
             $filePath = $image->storeAs('public/uploads/workshop', $fileName);
             $validated['thumb_image'] = str_replace('public/', 'storage/', $filePath);
         }
-        
+
         if ($request->hasFile('hi_video_upload') && $request->hi_video_url == "") {
             $video = $request->file('hi_video_upload');
             $fileName = time() . '_' . str_replace(' ', '_', $video->getClientOriginalName());
             $filePath = $video->storeAs('public/uploads/workshop', $fileName);
             $validated['hi_video_url'] = config('app.url') . "/" . str_replace('public/', 'storage/', $filePath);
         }
-        
+
         if ($request->hasFile('en_video_upload') && $request->en_video_url == "") {
             $video = $request->file('en_video_upload');
             $fileName = time() . '_' . str_replace(' ', '_', $video->getClientOriginalName());
@@ -63,15 +63,14 @@ class WorkShopController extends Controller
         }
         DB::transaction(function () use ($validated, $request) {
             $workshop = WorkShop::create($validated);
-            // if ($request->has('workshop_category')) {
-            //     $workshop->workshopCategory()->attach($request->input('workshop_category'));
-            // }
-            
+            if ($request->has('workshop_category')) {
+                $workshop->workshopCategory()->attach($request->input('workshop_category'));
+            }
+
             if ($request->has('interest_type')) {
                 $workshop->interestType()->attach($request->input('interest_type'));
             }
         });
-        WorkShop::create($validated);
         return redirect()->route('workshop.index')->with('success', 'Workshop created successfully');
     }
 
@@ -88,7 +87,11 @@ class WorkShopController extends Controller
      */
     public function edit(WorkShop $workshop)
     {
-        return view('workshop.edit', compact('workshop'));
+        $workshopCategory = WorkshopCategory::all();
+        $interestList = Interest::all();
+        $oldWorkshopCategory = $workshop->workshopCategory->pluck('id')->toArray();
+        $oldInterestList = $workshop->interestType->pluck('id')->toArray();
+        return view('workshop.edit', compact('workshop', 'workshopCategory', 'interestList', 'oldWorkshopCategory', 'oldInterestList'));
     }
 
     /**
@@ -153,6 +156,13 @@ class WorkShopController extends Controller
             unset($validated['second']);
         }
         $workshop->update($validated);
+        if ($request->has('workshop_category')) {
+            $workshop->workshopCategory()->sync($request->input('workshop_category'));
+        }
+
+        if ($request->has('interest_type')) {
+            $workshop->interestType()->sync($request->input('interest_type'));
+        }
         return redirect()->route('workshop.index')->with('success', 'Workshop updated successfully');
     }
 
