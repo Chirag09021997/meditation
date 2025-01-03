@@ -54,7 +54,7 @@ class MeditationAudioController extends Controller
         DB::transaction(function () use ($validated, $request) {
             $meditationAudio = MeditationAudio::create($validated);
             if ($request->has('premium_plan')) {
-                $meditationAudio->premiumPlans()->attach($request->input('premium_plan'));
+                $meditationAudio->premiumPlans()->attach($request->input(key: 'premium_plan'));
             }
             if ($request->has('interest_type')) {
                 $meditationAudio->interestType()->attach($request->input('interest_type'));

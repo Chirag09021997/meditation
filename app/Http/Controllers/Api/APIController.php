@@ -19,6 +19,7 @@ use App\Models\Recent;
 use App\Models\Store;
 use App\Models\TrackMeditation;
 use App\Models\WorkShop;
+use App\Models\WorkshopCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -138,7 +139,7 @@ class APIController extends Controller
         $meditationType = MeditationType::select('id', 'name')->get();
         $meditationAudio = MeditationAudio::with('premiumPlans:id,name')->select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view')->where('status', 'Active')->latest()->take(5)->get();
         $music = Music::select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view')->where('status', 'Active')->latest()->take(5)->get();
-        $workshop = WorkShop::select('id', 'name', 'short_description', 'description', 'thumb_image',  'video_url', 'premium_type', 'second', 'total_view')->where('status', 'Active')->latest()->take(5)->get();
+        $workshop_category = WorkshopCategory::select('id', 'name', 'thumb_image')->where('status', 'Active')->latest()->take(value: 10)->get();
         $myTracking = [
             "total_day" => Carbon::now()->daysInMonth,
             "progress_day" => 0,
@@ -189,7 +190,7 @@ class APIController extends Controller
                         $recent[] = $item;
                         break;
                     case 'work_shops':
-                        $item = WorkShop::select('id', 'name', 'short_description', 'description', 'thumb_image as thumb', 'premium_type',  'created_at', DB::raw("'work_shops' as type"))->find($favorite->type_id);
+                        $item = WorkshopCategory::select('id', 'name', 'short_description', 'description', 'thumb_image as thumb', 'premium_type',  'created_at', DB::raw("'work_shops' as type"))->find($favorite->type_id);
                         if ($item && $item->thumb) {
                             $item->thumb = config('app.url') . "/" . $item->thumb;
                         }
@@ -210,7 +211,7 @@ class APIController extends Controller
             'meditation_type' => $meditationType,
             'meditation_audio' => $meditationAudio,
             'music' => $music,
-            'workshop' => $workshop,
+            'workshop_category' => $workshop_category,
             'my_tracking' => $myTracking,
             'recent' => $recent,
             'slider' => $sliderEvents

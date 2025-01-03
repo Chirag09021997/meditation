@@ -26,8 +26,10 @@ class UpdateWorkShopRequest extends FormRequest
             'short_description' => 'nullable|string',
             'description' => 'nullable|string',
             'thumb_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // 2MB Max
-            'video_upload' => 'nullable|file|mimes:mp4,mov,avi,wmv|max:204800',
-            'video_url' => 'nullable|url',
+            'hi_video_upload' => 'nullable|file|mimes:mp4,mov,avi,wmv|max:204800',
+            'en_video_upload' => 'nullable|file|mimes:mp4,mov,avi,wmv|max:204800',
+            'hi_video_url' => 'nullable|url',
+            'en_video_url' => 'nullable|url',
             'second' => 'nullable|integer|min:0',
             'total_view' => 'required|integer|min:0',
             'premium_type' => 'required|boolean',

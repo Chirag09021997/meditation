@@ -31,22 +31,64 @@
                 <x-input-error :messages="$errors->get('thumb_image')" class="mt-2" />
             </div>
 
-
-            <!-- video_upload  or video_url-->
+            <!-- hi_video_upload  or hi_video_url-->
             <div class="mt-4">
-                <x-input-label for="video_upload" :value="__('Video Upload')" />
-                <x-text-input id="video_upload"
+                <x-input-label for="hi_video_upload" :value="__('Hindi Video Upload')" />
+                <x-text-input id="hi_video_upload"
                     class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
-                    type="file" name="video_upload" accept="video/*" />
-                <x-input-error :messages="$errors->get('video_upload')" class="mt-2" />
+                    type="file" name="hi_video_upload" accept="video/*" />
+                <x-input-error :messages="$errors->get('hi_video_upload')" class="mt-2" />
 
                 <p class="text-center">Or</p>
 
-                <!-- video_url -->
-                <x-input-label for="video_url" :value="__('Video Url')" />
-                <x-text-input id="video_url" class="block mt-1 w-full" type="text" name="video_url"
-                    :value="old('video_url')" placeholder="Enter video url" />
-                <x-input-error :messages="$errors->get('video_url')" class="mt-2" />
+                <!-- hi_video_url -->
+                <x-input-label for="hi_video_url" :value="__('Hindi Video Url')" />
+                <x-text-input id="hi_video_url" class="block mt-1 w-full" type="text" name="hi_video_url"
+                    :value="old('hi_video_url')" placeholder="Enter video url" />
+                <x-input-error :messages="$errors->get('hi_video_url')" class="mt-2" />
+            </div>
+
+            <!-- en_video_upload  or en_video_url-->
+            <div class="mt-4">
+                <x-input-label for="en_video_upload" :value="__('English Video Upload')" />
+                <x-text-input id="en_video_upload"
+                    class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
+                    type="file" name="en_video_upload" accept="video/*" />
+                <x-input-error :messages="$errors->get('en_video_upload')" class="mt-2" />
+
+                <p class="text-center">Or</p>
+
+                <!-- en_video_url -->
+                <x-input-label for="en_video_url" :value="__('English Video Url')" />
+                <x-text-input id="en_video_url" class="block mt-1 w-full" type="text" name="en_video_url"
+                    :value="old('en_video_url')" placeholder="Enter video url" />
+                <x-input-error :messages="$errors->get('en_video_url')" class="mt-2" />
+            </div>
+
+            <!-- workshop_category -->
+            <div class="mt-4">
+                <x-input-label for="name" :value="__('Select Workshop Category')" />
+                <select multiple id="workshop_category" name="workshop_category[]"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option disabled>Choose workshop category</option>
+                    @foreach ($workshopCategory as $workshopcategory)
+                        <option value="{{ $workshopcategory->id }}" @selected(old('workshop_category[]') == $workshopcategory->id)>
+                            {{ $workshopcategory->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <!-- Interest -->
+            <div class="mt-4">
+                <x-input-label for="name" :value="__('Select Interest')" />
+                <select multiple id="interest_type" name="interest_type[]"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option disabled>Choose interest type</option>
+                    @foreach ($interestList as $interest)
+                        <option value="{{ $interest->id }}" @selected(old('interest_type[]') == $interest->id)>
+                            {{ $interest->name }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <!-- premium_type -->

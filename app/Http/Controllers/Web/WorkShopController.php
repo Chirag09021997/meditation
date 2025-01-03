@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\WorkshopCategory;
+use App\Models\Interest;
 use App\Models\WorkShop;
 use App\Http\Requests\StoreWorkShopRequest;
 use App\Http\Requests\UpdateWorkShopRequest;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\DB;
 
 class WorkShopController extends Controller
 {
@@ -23,7 +26,9 @@ class WorkShopController extends Controller
      */
     public function create()
     {
-        return view('workshop.create');
+        $workshopCategory = WorkshopCategory::all();
+        $interestList = Interest::all();
+        return view('workshop.create',compact('workshopCategory','interestList'));
     }
 
     /**
@@ -38,15 +43,34 @@ class WorkShopController extends Controller
             $filePath = $image->storeAs('public/uploads/workshop', $fileName);
             $validated['thumb_image'] = str_replace('public/', 'storage/', $filePath);
         }
-        if ($request->hasFile('video_upload') && $request->video_url == "") {
-            $video = $request->file('video_upload');
+        
+        if ($request->hasFile('hi_video_upload') && $request->hi_video_url == "") {
+            $video = $request->file('hi_video_upload');
             $fileName = time() . '_' . str_replace(' ', '_', $video->getClientOriginalName());
             $filePath = $video->storeAs('public/uploads/workshop', $fileName);
-            $validated['video_url'] = config('app.url') . "/" . str_replace('public/', 'storage/', $filePath);
+            $validated['hi_video_url'] = config('app.url') . "/" . str_replace('public/', 'storage/', $filePath);
         }
+        
+        if ($request->hasFile('en_video_upload') && $request->en_video_url == "") {
+            $video = $request->file('en_video_upload');
+            $fileName = time() . '_' . str_replace(' ', '_', $video->getClientOriginalName());
+            $filePath = $video->storeAs('public/uploads/workshop', $fileName);
+            $validated['en_video_url'] = config('app.url') . "/" . str_replace('public/', 'storage/', $filePath);
+        }
+
         if ($validated['second'] == null) {
             unset($validated['second']);
         }
+        DB::transaction(function () use ($validated, $request) {
+            $workshop = WorkShop::create($validated);
+            // if ($request->has('workshop_category')) {
+            //     $workshop->workshopCategory()->attach($request->input('workshop_category'));
+            // }
+            
+            if ($request->has('interest_type')) {
+                $workshop->interestType()->attach($request->input('interest_type'));
+            }
+        });
         WorkShop::create($validated);
         return redirect()->route('workshop.index')->with('success', 'Workshop created successfully');
     }
@@ -91,22 +115,40 @@ class WorkShopController extends Controller
             $validated['thumb_image'] = str_replace('public/', 'storage/', $filePath);
         }
 
-        if ($request->hasFile('video_upload')) {
-            if ($workshop->video_url != null) {
-                $videoPath = storage_path(str_replace(config('app.url') . '/storage', 'app/public', $workshop->video_url));
+        if ($request->hasFile('hi_video_upload')) {
+            if ($workshop->hi_video_url != null) {
+                $videoPath = storage_path(str_replace(config('app.url') . '/storage', 'app/public', $workshop->hi_video_url));
                 if (file_exists($videoPath)) {
                     unlink($videoPath);
                 }
             }
-            $video = $request->file('video_upload');
+            $video = $request->file('hi_video_upload');
             $fileName = time() . '_' . str_replace(' ', '_', $video->getClientOriginalName());
             $filePath = $video->storeAs('public/uploads/workshop', $fileName);
-            $validated['video_url'] = config('app.url') . "/" . str_replace('public/', 'storage/', $filePath);
-        } elseif ($request->filled('video_url')) {
-            $validated['video_url'] = $request->video_url;
+            $validated['hi_video_url'] = config('app.url') . "/" . str_replace('public/', 'storage/', $filePath);
+        } elseif ($request->filled('hi_video_url')) {
+            $validated['hi_video_url'] = $request->hi_video_url;
         } else {
-            unset($validated['video_url']);
+            unset($validated['hi_video_url']);
         }
+
+        if ($request->hasFile('en_video_upload')) {
+            if ($workshop->en_video_url != null) {
+                $videoPath = storage_path(str_replace(config('app.url') . '/storage', 'app/public', $workshop->en_video_url));
+                if (file_exists($videoPath)) {
+                    unlink($videoPath);
+                }
+            }
+            $video = $request->file('en_video_upload');
+            $fileName = time() . '_' . str_replace(' ', '_', $video->getClientOriginalName());
+            $filePath = $video->storeAs('public/uploads/workshop', $fileName);
+            $validated['en_video_url'] = config('app.url') . "/" . str_replace('public/', 'storage/', $filePath);
+        } elseif ($request->filled('en_video_url')) {
+            $validated['en_video_url'] = $request->hi_video_url;
+        } else {
+            unset($validated['en_video_url']);
+        }
+
         if ($validated['second'] == null) {
             unset($validated['second']);
         }
@@ -125,7 +167,7 @@ class WorkShopController extends Controller
 
     public function getData()
     {
-        $WorkShop = WorkShop::select(['id', 'name', 'thumb_image',  'video_url', 'premium_type', 'total_view', 'status'])->orderByDesc('created_at');
+        $WorkShop = WorkShop::select(['id', 'name', 'thumb_image', 'hi_video_url', 'en_video_url', 'premium_type', 'total_view', 'status'])->orderByDesc('created_at');
 
         return DataTables::of($WorkShop)
             ->addColumn('action', function ($data) {
@@ -153,6 +195,6 @@ class WorkShopController extends Controller
     {
         $workshop->status = ($workshop->status == 'Active') ? 'Inactive' : 'Active';
         $workshop->save();
-        echo  1;
+        echo 1;
     }
 }
