@@ -23,13 +23,24 @@
                 <img src="{{ $workshop->thumb_image }}" alt="thumb image" class="w-16 my-2">
             </div>
 
-            <!-- video_upload  or video_url-->
+            <!-- hi_video_upload or hi_video_url-->
             <div class="mt-4">
-                <x-input-label for="thumb_image" :value="__('Video Url')" />
-                @if ($workshop->video_url)
+                <x-input-label for="hi_video_url" :value="__('Hindi Video Url')" />
+                @if ($workshop->hi_video_url)
                     <video width="640" height="360" controls class="my-2">
-                        <source src="{{ $workshop->video_url }}" type="video/mp4">
-                        <source src="{{ $workshop->video_url }}" type="video/webm">
+                        <source src="{{ $workshop->hi_video_url }}" type="video/mp4">
+                        <source src="{{ $workshop->hi_video_url }}" type="video/webm">
+                    </video>
+                @endif
+            </div>
+
+            <!-- en_video_upload or en_video_url-->
+            <div class="mt-4">
+                <x-input-label for="en_video_url" :value="__('English Video Url')" />
+                @if ($workshop->en_video_url)
+                    <video width="640" height="360" controls class="my-2">
+                        <source src="{{ $workshop->en_video_url }}" type="video/mp4">
+                        <source src="{{ $workshop->en_video_url }}" type="video/webm">
                     </video>
                 @endif
             </div>

@@ -31,10 +31,14 @@ class Interest extends Model
     {
         return $this->belongsToMany(MeditationAudio::class, 'music_interest_type');
     }
-    
+
     public function interestType()
     {
         return $this->belongsToMany(Interest::class, 'workshop_interest_type');
     }
 
+    public function customers()
+    {
+        return $this->belongsToMany(Customer::class, 'customer_interest');
+    }
 }

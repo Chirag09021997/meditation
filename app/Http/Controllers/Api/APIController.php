@@ -75,7 +75,22 @@ class APIController extends Controller
             $meditationAudio =  MeditationAudio::with('premiumPlans:id,name')->select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view')->where('status', 'Active')->find($id);
             return $this->sendResponse($meditationAudio, "Get Meditation Audio Record SuccessFully.");
         }
-        $meditationAudio = MeditationAudio::with('premiumPlans:id,name')->select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view')->where('status', 'Active')->simplePaginate($perPage);
+        $customerId = $request->input('customer_id');
+        $query = MeditationAudio::with('premiumPlans:id,name')->select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view')->where('status', 'Active');
+        if ($customerId) {
+            $customer = Customer::with('interests')->find($customerId);
+            if (!$customer) {
+                return $this->sendError("Customer not found.", 404);
+            }
+            $interestIds = $customer->interests->pluck('id');
+            if ($interestIds->isNotEmpty()) {
+                $query->join('meditation_audio_interest_type', 'meditation_audio.id', '=', 'meditation_audio_interest_type.meditation_audio_id')
+                    ->orderByRaw("FIELD(meditation_audio_interest_type.interest_id, " . implode(',', $interestIds->toArray()) . ") DESC");
+            }
+        } else {
+            $query->orderBy('total_view', 'desc');
+        }
+        $meditationAudio = $query->simplePaginate($perPage);
         return $this->sendResponse($meditationAudio, "Get Meditation Audio List SuccessFully.");
     }
 
@@ -88,7 +103,23 @@ class APIController extends Controller
             $music =  Music::select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view')->where('status', 'Active')->find($id);
             return $this->sendResponse($music, "Get Music Record SuccessFully.");
         }
-        $music = Music::select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view')->where('status', 'Active')->simplePaginate($perPage);
+        $customerId = $request->input('customer_id');
+        $query = Music::select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view')
+            ->where('status', 'Active');
+        if ($customerId) {
+            $customer = Customer::with('interests')->find($customerId);
+            if (!$customer) {
+                return $this->sendError("Customer not found.", 404);
+            }
+            $interestIds = $customer->interests->pluck('id');
+            if ($interestIds->isNotEmpty()) {
+                $query->join('music_interest_type', 'music.id', '=', 'music_interest_type.music_id')
+                    ->orderByRaw("FIELD(music_interest_type.interest_id, " . implode(',', $interestIds->toArray()) . ") DESC");
+            }
+        } else {
+            $query->orderBy('total_view', 'desc');
+        }
+        $music = $query->simplePaginate($perPage);
         return $this->sendResponse($music, "Get Music List SuccessFully.");
     }
 
@@ -98,10 +129,26 @@ class APIController extends Controller
         $id = $request->input('id', 0);
         if ($id > 0) {
             WorkShop::where('id', $id)->increment('total_view', 1);
-            $workShop =  WorkShop::select('id', 'name', 'short_description', 'description', 'thumb_image',  'video_url', 'premium_type', 'second', 'total_view')->where('status', 'Active')->find($id);
+            $workShop =  WorkShop::select('id', 'name', 'short_description', 'description', 'thumb_image', 'hi_video_url', 'en_video_url', 'premium_type', 'second', 'total_view')->where('status', 'Active')->find($id);
             return $this->sendResponse($workShop, "Get WorkShop Record SuccessFully.");
         }
-        $workShop = WorkShop::select('id', 'name', 'short_description', 'description', 'thumb_image',  'video_url', 'premium_type', 'second', 'total_view')->where('status', 'Active')->simplePaginate($perPage);
+        $customerId = $request->input('customer_id');
+        $query = WorkShop::select('id', 'name', 'short_description', 'description', 'thumb_image', 'hi_video_url', 'en_video_url', 'premium_type', 'second', 'total_view')
+            ->where('status', 'Active');
+        if ($customerId) {
+            $customer = Customer::with('interests')->find($customerId);
+            if (!$customer) {
+                return $this->sendError("Customer not found.", 404);
+            }
+            $interestIds = $customer->interests->pluck('id');
+            if ($interestIds->isNotEmpty()) {
+                $query->join('workshop_interest_type', 'work_shops.id', '=', 'workshop_interest_type.workshop_id')
+                    ->orderByRaw("FIELD(workshop_interest_type.interest_id, " . implode(',', $interestIds->toArray()) . ") DESC");
+            }
+        } else {
+            $query->orderBy('total_view', 'desc');
+        }
+        $workShop = $query->simplePaginate($perPage);
         return $this->sendResponse($workShop, "Get WorkShop List SuccessFully.");
     }
 
@@ -228,6 +275,8 @@ class APIController extends Controller
             'business_category' => 'nullable|string|max:255',
             'dob' => 'required|date|before:today',
             'business_id' => 'nullable|exists:businesses,id',
+            'interest_ids' => 'nullable|array',
+            'interest_ids.*' => 'exists:interest,id',
         ];
         if ($customer) {
             $rules['mobile_no'] =  [
@@ -270,6 +319,9 @@ class APIController extends Controller
             ['customer_id' => $customer->id],
             ['premium_plan_id' => $plan->id]
         );
+        if ($request->has('interest_ids')) {
+            $customer->interests()->sync($request->input('interest_ids'));
+        }
         return $this->sendResponse($customer, "Customer update successFully.");
     }
 

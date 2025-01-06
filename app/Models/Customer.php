@@ -25,4 +25,9 @@ class Customer extends Authenticatable
     {
         return $this->hasOne(CustomerPurchasePlan::class, 'customer_id');
     }
+
+    public function interests()
+    {
+        return $this->belongsToMany(Interest::class, 'customer_interest');
+    }
 }

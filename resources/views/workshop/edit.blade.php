@@ -35,26 +35,48 @@
                 <img src="{{ $workshop->thumb_image }}" alt="thumb image" class="w-16 my-2">
             </div>
 
-
-            <!-- video_upload  or video_url-->
+            <!-- hi_video_upload or hi_video_url-->
             <div class="mt-4">
-                <x-input-label for="video_upload" :value="__('Video Upload')" />
-                <x-text-input id="video_upload"
+                <x-input-label for="hi_video_upload" :value="__('Hindi Video Upload')" />
+                <x-text-input id="hi_video_upload"
                     class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
-                    type="file" name="video_upload" accept="video/*" />
-                <x-input-error :messages="$errors->get('video_upload')" class="mt-2" />
+                    type="file" name="hi_video_upload" accept="video/*" />
+                <x-input-error :messages="$errors->get('hi_video_upload')" class="mt-2" />
 
                 <p class="text-center">Or</p>
 
-                <!-- video_url -->
-                <x-input-label for="video_url" :value="__('Video Url')" />
-                <x-text-input id="video_url" class="block mt-1 w-full" type="text" name="video_url"
-                    :value="old('video_url')" placeholder="Enter video url" />
-                <x-input-error :messages="$errors->get('video_url')" class="mt-2" />
-                @if ($workshop->video_url)
+                <!-- hi_video_url -->
+                <x-input-label for="hi_video_url" :value="__('Hindi Video Url')" />
+                <x-text-input id="hi_video_url" class="block mt-1 w-full" type="text" name="hi_video_url"
+                    :value="old('hi_video_url')" placeholder="Enter video url" />
+                <x-input-error :messages="$errors->get('hi_video_url')" class="mt-2" />
+                @if ($workshop->hi_video_url)
                     <video width="640" height="360" controls class="my-2">
-                        <source src="{{ $workshop->video_url }}" type="video/mp4">
-                        <source src="{{ $workshop->video_url }}" type="video/webm">
+                        <source src="{{ $workshop->hi_video_url }}" type="video/mp4">
+                        <source src="{{ $workshop->hi_video_url }}" type="video/webm">
+                    </video>
+                @endif
+            </div>
+
+            <!-- en_video_upload or en_video_url-->
+            <div class="mt-4">
+                <x-input-label for="en_video_upload" :value="__('English Video Upload')" />
+                <x-text-input id="en_video_upload"
+                    class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
+                    type="file" name="en_video_upload" accept="video/*" />
+                <x-input-error :messages="$errors->get('en_video_upload')" class="mt-2" />
+
+                <p class="text-center">Or</p>
+
+                <!-- en_video_url -->
+                <x-input-label for="en_video_url" :value="__('English Video Url')" />
+                <x-text-input id="en_video_url" class="block mt-1 w-full" type="text" name="en_video_url"
+                    :value="old('en_video_url')" placeholder="Enter video url" />
+                <x-input-error :messages="$errors->get('en_video_url')" class="mt-2" />
+                @if ($workshop->en_video_url)
+                    <video width="640" height="360" controls class="my-2">
+                        <source src="{{ $workshop->en_video_url }}" type="video/mp4">
+                        <source src="{{ $workshop->en_video_url }}" type="video/webm">
                     </video>
                 @endif
             </div>
