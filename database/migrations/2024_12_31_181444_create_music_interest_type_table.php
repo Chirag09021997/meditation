@@ -15,8 +15,8 @@ return new class extends Migration
             $table->unsignedBigInteger('interest_id');
             $table->unsignedBigInteger('music_id');
             $table->primary(['interest_id', 'music_id']);
-            $table->foreign('interest_id')->references('id')->on('interest')->onDelete('cascade');
-            $table->foreign('music_id')->references('id')->on('music')->onDelete('cascade');
+            // $table->foreign('interest_id')->references('id')->on('interest')->onDelete('cascade');
+            // $table->foreign('music_id')->references('id')->on('music')->onDelete('cascade');
         });
     }
 

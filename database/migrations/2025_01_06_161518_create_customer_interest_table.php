@@ -16,8 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('interest_id');
             $table->primary(['customer_id', 'interest_id']);
             $table->timestamps();
-            $table->foreign('customer_id')->references('id')->on('interest')->onDelete('cascade');
-            $table->foreign('interest_id')->references('id')->on('work_shops')->onDelete('cascade');
+            // $table->foreign('customer_id')->references('id')->on('interest')->onDelete('cascade');
+            // $table->foreign('interest_id')->references('id')->on('work_shops')->onDelete('cascade');
         });
     }
 

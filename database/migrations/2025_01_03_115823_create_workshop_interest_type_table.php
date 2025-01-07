@@ -15,8 +15,8 @@ return new class extends Migration
             $table->unsignedBigInteger('interest_id');
             $table->unsignedBigInteger('workshop_id');
             $table->primary(['interest_id', 'workshop_id']);
-            $table->foreign('interest_id')->references('id')->on('interest')->onDelete('cascade');
-            $table->foreign('workshop_id')->references('id')->on('workshop')->onDelete('cascade');
+            // $table->foreign('interest_id')->references('id')->on('interest')->onDelete('cascade');
+            // $table->foreign('workshop_id')->references('id')->on('workshop')->onDelete('cascade');
         });
     }
 
