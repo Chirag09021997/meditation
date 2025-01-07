@@ -22,6 +22,10 @@ return new class extends Migration
             $table->enum('status', ['Pending', 'Complete', 'Shipping', 'Cancel'])->default('Pending');
             $table->timestamps();
             // $table->foreign('customer_id')->references('id')->on('customers')->cascadeOnDelete();
+<<<<<<< Updated upstream
+=======
+            // $table->foreign('coupon_id')->references('id')->on('coupon_systems')->cascadeOnDelete();
+>>>>>>> Stashed changes
         });
     }
 
