@@ -72,20 +72,37 @@ class APIController extends Controller
         $id = $request->input('id', 0);
         if ($id > 0) {
             MeditationAudio::where('id', $id)->increment('total_view', 1);
-            $meditationAudio =  MeditationAudio::with('premiumPlans:id,name')->select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view')->where('status', 'Active')->find($id);
-            return $this->sendResponse($meditationAudio, "Get Meditation Audio Record SuccessFully.");
+            $meditationAudio = MeditationAudio::with('premiumPlans:id,name')
+                ->select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view')
+                ->where('status', 'Active')
+                ->find($id);
+            return $this->sendResponse($meditationAudio, "Get Meditation Audio Record Successfully.");
         }
+
         $customerId = $request->input('customer_id');
-        $query = MeditationAudio::with('premiumPlans:id,name')->select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view')->where('status', 'Active');
+        $query = MeditationAudio::with('premiumPlans:id,name')
+            ->select('meditation_audio.id', 'meditation_audio.name', 'meditation_audio.short_description', 'meditation_audio.description', 'meditation_audio.audio_thumb', 'meditation_audio.audio_upload', 'meditation_audio.premium_type', 'meditation_audio.total_view')
+            ->where('meditation_audio.status', 'Active');
+
         if ($customerId) {
-            $customer = Customer::with('interests')->find($customerId);
+            $customer = Customer::with('interests:id', 'customerPurchasePlan:id')->find($customerId);
             if (!$customer) {
                 return $this->sendError("Customer not found.", 404);
             }
             $interestIds = $customer->interests->pluck('id');
+            $purchasePlanId = $customer->customerPurchasePlan->id ?? null;
             if ($interestIds->isNotEmpty()) {
                 $query->join('meditation_audio_interest_type', 'meditation_audio.id', '=', 'meditation_audio_interest_type.meditation_audio_id')
+                    ->join('meditation_audio_premium_plan', 'meditation_audio.id', '=', 'meditation_audio_premium_plan.meditation_audio_id')
                     ->orderByRaw("FIELD(meditation_audio_interest_type.interest_id, " . implode(',', $interestIds->toArray()) . ") DESC");
+            }
+            if ($purchasePlanId) {
+                if (!$interestIds->isNotEmpty()) {
+                    $query->join('meditation_audio_premium_plan', 'meditation_audio.id', '=', 'meditation_audio_premium_plan.meditation_audio_id');
+                }
+                $query->orderByRaw(
+                    "CASE WHEN meditation_audio_premium_plan.premium_plan_id = $purchasePlanId THEN 1 ELSE 0 END DESC"
+                );
             }
         } else {
             $query->orderBy('total_view', 'desc');
@@ -183,9 +200,58 @@ class APIController extends Controller
     public function Home(Request $request)
     {
         $customerId = $request->get('customer_id', 0);
+        $customer = Customer::with('interests:id', 'customerPurchasePlan:id')->find($customerId);
+        $interestIds = isset($customer->interests) ? collect($customer->interests->pluck('id')) : collect([]);
+        $purchasePlanId = $customer->customerPurchasePlan->id ?? null;
         $meditationType = MeditationType::select('id', 'name')->get();
-        $meditationAudio = MeditationAudio::with('premiumPlans:id,name')->select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view')->where('status', 'Active')->latest()->take(5)->get();
-        $music = Music::select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view')->where('status', 'Active')->latest()->take(5)->get();
+        if ($customerId) {
+            $meditationAudioQuery = MeditationAudio::with('premiumPlans:id,name')
+                ->select(
+                    'meditation_audio.id',
+                    'meditation_audio.name',
+                    'meditation_audio.short_description',
+                    'meditation_audio.description',
+                    'meditation_audio.audio_thumb',
+                    'meditation_audio.audio_upload',
+                    'meditation_audio.premium_type',
+                    'meditation_audio.total_view'
+                );
+            if ($interestIds->isNotEmpty()) {
+                $meditationAudioQuery->join('meditation_audio_interest_type', 'meditation_audio.id', '=', 'meditation_audio_interest_type.meditation_audio_id')
+                    ->join('meditation_audio_premium_plan', 'meditation_audio.id', '=', 'meditation_audio_premium_plan.meditation_audio_id')
+                    ->where('meditation_audio.status', 'Active')
+                    ->groupBy('meditation_audio.id')
+                    ->orderByRaw("FIELD(MAX(meditation_audio_interest_type.interest_id), " . implode(',', $interestIds->toArray()) . ") DESC");
+            }
+            if ($purchasePlanId) {
+                if (!$interestIds->isNotEmpty()) {
+                    $meditationAudioQuery->join('meditation_audio_premium_plan', 'meditation_audio.id', '=', 'meditation_audio_premium_plan.meditation_audio_id');
+                }
+                $meditationAudioQuery->where('meditation_audio.status', 'Active')
+                    ->groupBy('meditation_audio.id')
+                    ->orderByRaw("CASE WHEN meditation_audio_premium_plan.premium_plan_id = $purchasePlanId THEN 1 ELSE 0 END DESC");
+            }
+            $meditationAudio = $meditationAudioQuery->take(5)->get();
+            if ($meditationAudio->count() < 5) {
+                $additionalRecords = MeditationAudio::with('premiumPlans:id,name')
+                    ->where('status', 'Active')
+                    ->whereNotIn('id', $meditationAudio->pluck('id'))
+                    ->latest()
+                    ->take(5 - $meditationAudio->count())
+                    ->get();
+                $meditationAudio = $meditationAudio->merge($additionalRecords);
+            }
+        } else {
+            $meditationAudio = MeditationAudio::with('premiumPlans:id,name')->select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view')->where('status', 'Active')->latest()->take(5)->get();
+        }
+        $musicQuery = Music::select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view')->where('status', 'Active');
+        if ($interestIds->isNotEmpty()) {
+            $musicQuery->join('music_interest_type', 'music.id', '=', 'music_interest_type.music_id')
+                ->orderByRaw("FIELD(music_interest_type.interest_id, " . implode(',', $interestIds->toArray()) . ") DESC");
+        } else {
+            $musicQuery->latest();
+        }
+        $music = $musicQuery->take(5)->get();
         $workshop_category = WorkshopCategory::select('id', 'name', 'thumb_image')->where('status', 'Active')->latest()->take(value: 10)->get();
         $myTracking = [
             "total_day" => Carbon::now()->daysInMonth,
@@ -237,7 +303,7 @@ class APIController extends Controller
                         $recent[] = $item;
                         break;
                     case 'work_shops':
-                        $item = WorkshopCategory::select('id', 'name', 'short_description', 'description', 'thumb_image as thumb', 'premium_type',  'created_at', DB::raw("'work_shops' as type"))->find($favorite->type_id);
+                        $item = WorkshopCategory::select('id', 'name', DB::raw('NULL as short_description'), DB::raw('NULL as description'), 'thumb_image as thumb', DB::raw('NULL as premium_type'),  'created_at', DB::raw("'work_shops' as type"))->find($favorite->type_id);
                         if ($item && $item->thumb) {
                             $item->thumb = config('app.url') . "/" . $item->thumb;
                         }
