@@ -52,14 +52,14 @@ a:hover,
 .list_style_2 li::before,
 .cart_total .cart_amount,
 .post_nav a:hover .nav_meta {
-    color: #F32B56;
+    color: #28579b;
 }
 
 .btn-white,
 .sub_heading,
 .text_default,
 .btn-outline-default {
-    color: #F32B56 !important;
+    color: #28579b !important;
 }
 
 .btn-default,
@@ -95,11 +95,11 @@ a:hover,
 .filter_price .ui-slider .ui-slider-range,
 .quantity .minus:hover,
 .quantity .plus:hover {
-    background-color: #F32B56;
+    background-color: #28579b;
 }
 
 .bg_default {
-    background-color: #F32B56 !important;
+    background-color: #28579b !important;
 }
 
 .btn-default,
@@ -118,33 +118,33 @@ a:hover,
 .custome-radio input[type="radio"]:checked+.form-check-label::before,
 .tab-style1 .nav-tabs .nav-link.active,
 .tab-style1 .nav-tabs .nav-link.active:hover {
-    border-color: #F32B56;
+    border-color: #28579b;
 }
 
 .btn-default:hover,
 .btn-default.focus,
 .btn-default:focus,
 .owl-theme .owl-nav [class*="owl-"]:hover {
-    background-color: #D30B36;
+    background-color: #28579b;
 }
 
 .btn-default:hover,
 .btn-default.focus,
 .btn-default:focus {
-    border-color: #D30B36;
+    border-color: #28579b;
 }
 
 .overlay_bg_default_90:before {
-    background-color: rgba(243, 43, 86, 0.90);
+    background-color: #28579b;
 }
 
 .overlay_bg_default_80:before,
 .pricing_style2:hover::before {
-    background-color: rgba(243, 43, 86, 0.80);
+    background-color: #569c;
 }
 
 .overlay_bg_default_70:before {
-    background-color: rgba(243, 43, 86, 0.70);
+    background-color: #28579b;
 }
 
 .overlay_bg_default_60:before {

@@ -10,36 +10,29 @@
         @endif
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active bg_light_pink">
+                <div class="carousel-item active bg_light_pink bg-content">
                     <div class="banner_slide_content">
                         <div class="container">
                             <div class="row justify-content-end align-items-center">
                                 <div class="col-xl-6 col-md-5">
-                                    <div class="banner_img text-center">
-                                        <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                                            <img data-parallax='{"y": -30, "smoothness": 20}'
-                                                src="{{ asset('assets/images/banner_img1.png') }}" alt="image" />
+                                    <div class="banner_img" data-animation="fadeIn"
+                                    data-animation-delay="0.4s" data-parallax='{"y": 30, "smoothness": 10}'>
+                                        <div>
+                                            <img src="{{ asset('assets/images/delta.png') }}" alt="image" />
                                         </div>
-                                        <div class="circle_bg1">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
+                                       
                                     </div>
                                 </div>
-                                <div class="col-xl-6 col-md-7">
+                                <div class="col-xl-6 col-md-7 ">
                                     <div class="banner_content animation" data-animation="zoomIn"
                                         data-animation-delay="0.4s" data-parallax='{"y": 30, "smoothness": 10}'>
-                                        <h2 class="animation" data-animation="fadeInDown" data-animation-delay="0.5s">
-                                            Welcome to Yoga Studio</h2>
-                                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.6s">Yoga has
-                                            always been something more, than just a workout routine. It's always been more
-                                            of a philosophy, a lifestyle for a mind & body balance. </p>
+                                        <h3 class="animation" data-animation="fadeInDown" data-animation-delay="0.5s">
+                                        WELCOM TO DELTA CIRCLE MEDITATION</h3>
+                                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.6s">
+                                            Meditation is a practice that involves focusing the mind to achieve a state of mental clarity,
+                                            relaxation, and emotional stability. It has been used for centuries in various cultures and spiritual traditions,
+                                            but it has also gained popularity in modern wellness practices for its physical, mental, and emotional benefits.
+                                        </p>
                                         <a class="btn btn-default rounded-0 animation" href="#"
                                             data-animation="fadeInUp" data-animation-delay="0.7s">Learn More</a>
                                         <a class="btn btn-white rounded-0 animation" href="#"
@@ -52,34 +45,34 @@
                     <div class="banner_shape">
                         <div class="shape1">
                             <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                                <img src="{{ asset('assets/images/slider_pattern1.png') }}" alt="image" />
+                                <img src="{{ asset('assets/images/pattern2.svg') }}" alt="image" />
                             </div>
                         </div>
                         <div class="shape2">
                             <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                                <img src="{{ asset('assets/images/slider_pattern2.png') }}" alt="image" />
+                                <img src="{{ asset('assets/images/pattern1.svg') }}" alt="image" />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item bg_light_yellow">
-                    <div class="banner_slide_content">
+                    <div class="banner_slide_content slider2">
                         <div class="container">
                             <div class="row align-items-center">
                                 <div class="col-lg-6 col-md-5">
                                     <div class="banner_img2 text-center">
-                                        <div class="animation border_img" data-animation="fadeInRight"
+                                        <!-- <div class="animation border_img" data-animation="fadeInRight"
                                             data-animation-delay="0.5s">
                                             <img data-parallax='{"y": -30, "smoothness": 20}'
                                                 src="{{ asset('assets/images/banner_img2.png') }}" alt="image" />
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-7 order-md-first">
                                     <div class="banner_content animation" data-animation="fadeIn"
                                         data-animation-delay="0.4s" data-parallax='{"y": 30, "smoothness": 10}'>
-                                        <h2 class="animation" data-animation="fadeInDown" data-animation-delay="0.5s">Find
-                                            lifestyle to the yoga </h2>
+                                        <h3 class="animation mt-7 blue-text" data-animation="fadeInDown" data-animation-delay="0.5s">FIND LIFE STYLE TO THE
+                                        <br/> DELTA MEDITATION </h3>
                                         <p class="animation" data-animation="fadeInUp" data-animation-delay="0.6s">Through
                                             and through we were trying to make our Yoga studio a peaceful, meditational
                                             place of tranquility, which according to our ever-growing list of attendees
@@ -93,20 +86,21 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="banner_shape">
                         <div class="shape3">
                             <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                                <img src="{{ asset('assets/images/slider_pattern3.png') }}" alt="image" />
+                                <img src="{{ asset('assets/images/pattern21.svg') }}" alt="image" />
                             </div>
                         </div>
                         <div class="shape4">
                             <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                                <img src="{{ asset('assets/images/slider_pattern4.png') }}" alt="image" />
+                                <img src="{{ asset('assets/images/pattern1.svg') }}" alt="image" />
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item bg_light_gold">
+                <!-- <div class="carousel-item bg_light_gold">
                     <div class="banner_slide_content">
                         <div class="container">
                             <div class="row align-items-center">
@@ -154,7 +148,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="carousel_nav">
                 <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev"><i
@@ -167,17 +161,19 @@
     {{-- <!-- END SECTION BANNER --> --}}
 
     {{-- <!-- START SECTION BENIFIT --> --}}
-    <section class="pb_70">
+    <section class="pb_70 bg-yoga">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-8 col-md-10 text-center animation" data-animation="fadeInUp"
                     data-animation-delay="0.2s">
                     <div class="heading_s1">
-                        <span class="sub_heading">What we do</span>
-                        <h2>Benifits of Yoga</h2>
+                        <!-- <span class="sub_heading">What we do</span> -->
+                        <h2>Benefit Of Delta Meditaon</h2>
                     </div>
-                    <p>Contrary to popular belief Lorem is not simply random text. It has roots in adipiscing ncididunt
-                        piece of classical literature</p>
+                    <p>Tejas Aura is an online and offline meditaon and spiritual educaon plaorm. We
+                        share meditaon and spiritual knowledge in easy-to-understand terms, such that you can
+                        actually apply it in your life.
+                    </p>
                     <div class="small_divider clearfix"></div>
                 </div>
             </div>
@@ -267,34 +263,71 @@
                     </div>
                 </div>
             </div>
+            <div class="banner_shape">
+                <div class="shape1">
+                    <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                        <img src="{{ asset('assets/images/pattern2.svg') }}" alt="image" />
+                    </div>
+                </div>
+                <div class="shape2">
+                    <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                        <img src="{{ asset('assets/images/pattern1.svg') }}" alt="image" />
+                    </div>
+                </div>
+            </div>
         </div>
+        
     </section>
     {{-- <!-- END SECTION BENIFIT --> --}}
 
     {{-- <!-- START SECTION ABOUT --> --}}
-    <section class="bg_gray">
+    <section class="bg_gray bg-yoga">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
-                    <div class="heading_s1">
-                        <span class="sub_heading">Welcome to Dhyana</span>
-                        <h2>Better Life With Perfect Body</h2>
+            <div class="row align-items-center text-center">
+                <div class="col-md-12 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
+                    <div class="heading_s1 ">
+                        <!-- <span class="sub_heading">Welcome to Dhyana</span> -->
+                        <h2>Beer Life With Delta circle </h2>
                     </div>
                     <p> Lorem ipsum dolor sit amet, consectetur blandit magna adipiscing elit ncididunt labore et dolore
                         magna aliqua enim. </p>
                     <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
                         classical Latin literature from 45 BC, making it over 2000 years old.</p>
                     <a href="#" class="btn btn-default rounded-0">Read More</a>
+                    <div class="mt-3">
+                        <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                            <img src="{{ asset('assets/images/group1.svg') }}" alt="image" class="ml-4"/>
+                            <img src="{{ asset('assets/images/group2.svg') }}" alt="image" class="ml-4"/>
+                            <img src="{{ asset('assets/images/group3.svg') }}" alt="image" class="ml-4" />
+                            <img src="{{ asset('assets/images/group4.svg') }}" alt="image" class="ml-4" />
+                            <img src="{{ asset('assets/images/group5.svg') }}" alt="image" class="ml-4"/>
+                            <img src="{{ asset('assets/images/group6.svg') }}" alt="image" class="ml-4"/>
+                            <img src="{{ asset('assets/images/group7.svg') }}" alt="image" class="ml-4"/>
+
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6">
+                <!-- <div class="col-md-6">
                     <div class="about_img animation" data-animation="fadeInUp" data-animation-delay="0.2s">
                         <img data-parallax='{"y": -30, "smoothness": 20}'
                             src="{{ asset('assets/images/about_img.png') }}" alt="about_img" />
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
-        <div class="shape_img">
+        <div class="banner_shape">
+                <div class="shape1">
+                    <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                        <img src="{{ asset('assets/images/pattern2.svg') }}" alt="image" />
+                    </div>
+                </div>
+                <div class="shape2">
+                    <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                        <img src="{{ asset('assets/images/pattern1.svg') }}" alt="image" />
+                    </div>
+                </div>
+            </div>
+        <!-- <div class="shape_img">
             <div class="ol_shape1">
                 <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
                     <img src="{{ asset('assets/images/shape1.png') }}" alt="image" />
@@ -315,12 +348,12 @@
                     <img src="{{ asset('assets/images/shape4.png') }}" alt="image" />
                 </div>
             </div>
-        </div>
+        </div> -->
     </section>
     {{-- <!-- END SECTION ABOUT --> --}}
 
     {{-- <!-- START SECTION CLASSES --> --}}
-    <section class="pb_70">
+    <!-- <section class="pb_70">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-8 col-md-10 text-center animation" data-animation="fadeInUp"
@@ -481,6 +514,105 @@
                 </div>
             </div>
         </div>
+    </section> -->
+    <section class="bg_gray ess-sect">
+        <div class="container">
+            <div class="row align-items-center text-center">
+                <div class="col-md-12 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
+                    <div class="heading_s1 ">
+                        <!-- <span class="sub_heading">Welcome to Dhyana</span> -->
+                        <h2>Essenals for everyday life </h2>
+                    </div>
+                    <p> A joyful and peaceful life from the experience of our life. Due to which the productivity and success in every work of life increased, he made it the principal of life and decided to work on it for people.
+                    </p>
+                </div>
+                
+            </div>
+            <div class="row">
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
+                            data-animation-delay="0.2s">
+                            <div class="box_icon">
+                                <img src="{{ asset('assets/images/strong-body.png') }}" width="35" height="35"
+                                    alt="strong-body">
+                            </div>
+                            <div class="intro_desc">
+                                <h5>Meditation</h5>
+                                <p> We believe that meditation can transform everyone, so we teach people to meditate. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
+                            data-animation-delay="0.3s">
+                            <div class="box_icon">
+                                <img src="{{ asset('assets/images/flexibility.png') }}" width="35" height="35"
+                                    alt="flexibility">
+                            </div>
+                            <div class="intro_desc">
+                                <h5>Aura</h5>
+                                <p> Helping people to have a holy and pure aura give people well-being in their lives. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
+                            data-animation-delay="0.4s">
+                            <div class="box_icon">
+                                <img src="{{ asset('assets/images/healthy-lifestyle.png') }}" width="35" height="35"
+                                    alt="healthy-lifestyle">
+                            </div>
+                            <div class="intro_desc">
+                                <h5>Thoughts</h5>
+                                <p> Unnecessary thoughts reduce the productivity of human life, so teach a method for managing thoughts. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1 col-sm-6"></div>
+
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
+                            data-animation-delay="0.2s">
+                            <div class="box_icon">
+                                <img src="{{ asset('assets/images/blood-flow.png') }}" width="35" height="35"
+                                    alt="blood-flow">
+                            </div>
+                            <div class="intro_desc">
+                                <h5>Energy </h5>
+                                <p> Understanding and awareness of inner energy is helpful in making life successful so act on inner energy and spread it. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6"> </div>
+
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
+                            data-animation-delay="0.4s">
+                            <div class="box_icon">
+                                <img src="{{ asset('assets/images/adrenal-gland.png') }}" width="35" height="35"
+                                    alt="adrenal-gland">
+                            </div>
+                            <div class="intro_desc">
+                                <h5>Vibration</h5>
+                                <p> Do practical and theoretical work on topics like vibration, frequency. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1 col-sm-6"></div>
+                </div>
+        </div>
+        <div class="banner_shape">
+                <div class="shape1">
+                    <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                        <img src="{{ asset('assets/images/pattern2.svg') }}" alt="image" />
+                    </div>
+                </div>
+                <div class="shape2">
+                    <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                        <img src="{{ asset('assets/images/pattern1.svg') }}" alt="image" />
+                    </div>
+                </div>
+            </div>
     </section>
     {{-- <!-- END SECTION CLASSES --> --}}
 
@@ -514,7 +646,7 @@
     {{-- <!-- END SECTION CALL TO ACTION --> --}}
 
     {{-- <!-- START SECTION CLASSES TIMETABLE --> --}}
-    <section>
+    <!-- <section>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-8 col-md-10 text-center animation" data-animation="fadeInUp"
@@ -868,7 +1000,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     {{-- <!-- END SECTION CLASSES TIMETABLE --> --}}
 
     {{-- <!-- START SECTION PRICING TABLE --> --}}
@@ -1076,18 +1208,21 @@
                     <div class="small_divider clearfix"></div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col-lg-3 col-sm-6">
                     <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.2s">
-                        <div class="team_img">
-                            <img src="{{ asset('assets/images/team1.jpg') }}" alt="team1">
-                            <ul class="list_none social_icons social_style1 rounded_social">
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            </ul>
+                        <div class="team_bor">
+                            <div class="team_img">
+                                <img src="{{ asset('assets/images/team1.jpg') }}" alt="team1">
+                                <ul class="list_none social_icons social_style1 rounded_social">
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
                         </div>
+                       
                         <div class="team_info text-center">
                             <div class="team_title">
                                 <h5><a href="#">Elena Mark</a></h5>
@@ -1098,6 +1233,7 @@
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.3s">
+                    <div class="team_bor">
                         <div class="team_img">
                             <img src="{{ asset('assets/images/team2.jpg') }}" alt="team2">
                             <ul class="list_none social_icons social_style1 rounded_social">
@@ -1107,6 +1243,7 @@
                                 <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                             </ul>
                         </div>
+                    </div>
                         <div class="team_info text-center">
                             <div class="team_title">
                                 <h5><a href="#">Grace Wong</a></h5>
@@ -1115,16 +1252,18 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
+                <!-- <div class="col-lg-3 col-sm-6">
                     <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.4s">
-                        <div class="team_img">
-                            <img src="{{ asset('assets/images/team3.jpg') }}" alt="team3">
-                            <ul class="list_none social_icons social_style1 rounded_social">
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            </ul>
+                        <div class="team_bor">
+                            <div class="team_img">
+                                <img src="{{ asset('assets/images/team3.jpg') }}" alt="team3">
+                                <ul class="list_none social_icons social_style1 rounded_social">
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="team_info text-center">
                             <div class="team_title">
@@ -1133,17 +1272,19 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
+                </div> -->
+                <!-- <div class="col-lg-3 col-sm-6">
                     <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.5s">
-                        <div class="team_img">
-                            <img src="{{ asset('assets/images/team4.jpg') }}" alt="team4">
-                            <ul class="list_none social_icons social_style1 rounded_social">
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            </ul>
+                        <div class="team_bor">
+                            <div class="team_img">
+                                <img src="{{ asset('assets/images/team4.jpg') }}" alt="team4">
+                                <ul class="list_none social_icons social_style1 rounded_social">
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="team_info text-center">
                             <div class="team_title">
@@ -1152,7 +1293,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>

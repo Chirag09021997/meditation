@@ -1,23 +1,24 @@
 @extends('frontend.layouts.app')
 @section('content')
     <!-- START SECTION BREADCRUMB -->
-    <section class="breadcrumb_section page-title-light background_bg overlay_bg_70"
-        data-img-src="{{ asset('assets/images/breadcrumb_bg3.jpg') }}">
+    <section class="bg_light_pink breadcrumb_section">
+        <div class="abt-sec">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-sm-12 text-center">
-                    <div class="page-title">
+                    <div class="page-title space">
                         <h1>Blogs</h1>
                     </div>
-                    <nav aria-label="breadcrumb">
+                    <!-- <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Blogs</li>
                         </ol>
-                    </nav>
+                    </nav> -->
                 </div>
             </div>
         </div>
+    </div>
     </section>
     <!-- END SECTION BREADCRUMB -->
 
@@ -26,7 +27,7 @@
         <div class="container">
             <div class="row">
                 @foreach ($blogs as $blog)
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-12 col-md-6">
                         <div class="blog_post box_shadow4">
                             <div class="blog_img">
                                 <a href="{{ route('blogs.single', $blog->id) }}">

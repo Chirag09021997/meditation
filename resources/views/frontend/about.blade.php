@@ -2,20 +2,22 @@
 @section('content')
     {{-- <!-- START SECTION BREADCRUMB --> --}}
     <section class="bg_light_pink breadcrumb_section">
+        <div class="abt-sec">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-sm-12 text-center">
-                    <div class="page-title">
+                    <div class="page-title space">
                         <h1>About Us</h1>
                     </div>
-                    <nav aria-label="breadcrumb">
+                    <!-- <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">About Us</li>
                         </ol>
-                    </nav>
+                    </nav> -->
                 </div>
             </div>
+        </div>
         </div>
     </section>
     {{-- <!-- END SECTION BREADCRUMB --> --}}
@@ -176,7 +178,7 @@
                                     Nullam varius nunc.Lorem ipsum doloramet consectetur adipiscing</p>
                             </div>
                         </div>
-                        <div class="testimonial_box">
+                        <!-- <div class="testimonial_box">
                             <div class="testi_meta">
                                 <div class="testimonial_img">
                                     <img src="{{ asset('assets/images/client_img3.jpg') }}" alt="client">
@@ -205,7 +207,7 @@
                                 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Phasellus blandit massa enim
                                     Nullam varius nunc.Lorem ipsum doloramet consectetur adipiscing</p>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
