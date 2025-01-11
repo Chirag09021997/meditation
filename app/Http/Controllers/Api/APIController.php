@@ -169,6 +169,43 @@ class APIController extends Controller
         return $this->sendResponse($workShop, "Get WorkShop List SuccessFully.");
     }
 
+    public function getWorkshopsByCategory(Request $request)
+{
+    // Validate request parameters
+    $validated = $request->validate([
+        'category_id' => 'integer|min:0',
+        'per_page' => 'integer|min:1|max:100',
+    ]);
+
+    $perPage = $validated['per_page'] ?? 10;
+    $categoryId = $validated['category_id'] ?? 0;
+
+    // Fetch categories with their workshops
+    $query = WorkShopCategory::with(['workshops' => function ($q) use ($categoryId) {
+        $q->select('id', 'name', 'short_description', 'description', 'thumb_image', 'hi_video_url', 'en_video_url', 'premium_type', 'second', 'total_view')
+            ->where('status', 'Active');
+        
+        // Apply category filter if provided
+        if ($categoryId > 0) {
+            $q->whereHas('workshopCategoryWise', function ($subQuery) use ($categoryId) {
+                $subQuery->where('id', $categoryId);
+            });
+        }
+    }]);
+
+    // Fetch paginated results
+    $categories = $query->simplePaginate($perPage);
+
+    if ($categories->isEmpty()) {
+        return $this->sendError('No workshops found for the selected category.');
+    }
+
+    return $this->sendResponse($categories, 'Workshops grouped by category retrieved successfully.');
+}
+
+    
+    
+
     public function BlogList(Request $request)
     {
         $perPage = $request->input('per_page', 10);

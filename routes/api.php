@@ -30,6 +30,7 @@ Route::get('interest', [APIController::class, 'InterestList']);
 Route::get('meditation-audio', [APIController::class, 'MeditationAudioList']);
 Route::get('music', [APIController::class, 'MusicList']);
 Route::get('workshop', [APIController::class, 'WorkShopList']);
+Route::get('workshopcategorywise', [APIController::class, 'getWorkshopsByCategory']);
 Route::get('blogs', [APIController::class, 'BlogList']);
 Route::get('coupon-system', [APIController::class, 'CouponSystemList']);
 Route::get('events', [APIController::class, 'EventList']);
