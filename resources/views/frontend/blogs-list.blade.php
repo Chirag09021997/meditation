@@ -27,7 +27,7 @@
         <div class="container">
             <div class="row">
                 @foreach ($blogs as $blog)
-                    <div class="col-lg-12 col-md-6">
+                    <div class="col-lg-4 col-md-6">
                         <div class="blog_post box_shadow4">
                             <div class="blog_img">
                                 <a href="{{ route('blogs.single', $blog->id) }}">

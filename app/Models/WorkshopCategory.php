@@ -15,4 +15,9 @@ class WorkshopCategory extends Model
     {
         return !empty($value) ? config('app.url') . "/" . $value : null;
     }
+
+    public function workshops()
+    {
+        return $this->belongsToMany(WorkShop::class, 'workshop_workshop_category', 'workshop_category_id', 'workshop_id');
+    }
 }

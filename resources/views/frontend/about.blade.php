@@ -270,14 +270,16 @@
             <div class="row">
                 <div class="col-lg-3 col-sm-6">
                     <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.2s">
-                        <div class="team_img">
-                            <img src="{{ asset('assets/images/team1.jpg') }}" alt="team1">
-                            <ul class="list_none social_icons social_style1 rounded_social">
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            </ul>
+                        <div class="team_bor">
+                            <div class="team_img">
+                                <img src="{{ asset('assets/images/team1.jpg') }}" alt="team1">
+                                <ul class="list_none social_icons social_style1 rounded_social">
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="team_info text-center">
                             <div class="team_title">
@@ -289,14 +291,16 @@
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.3s">
-                        <div class="team_img">
-                            <img src="{{ asset('assets/images/team2.jpg') }}" alt="team2">
-                            <ul class="list_none social_icons social_style1 rounded_social">
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            </ul>
+                        <div class="team_bor">
+                            <div class="team_img">
+                                <img src="{{ asset('assets/images/team2.jpg') }}" alt="team2">
+                                <ul class="list_none social_icons social_style1 rounded_social">
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="team_info text-center">
                             <div class="team_title">
@@ -308,14 +312,16 @@
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.4s">
-                        <div class="team_img">
-                            <img src="{{ asset('assets/images/team3.jpg') }}" alt="team3">
-                            <ul class="list_none social_icons social_style1 rounded_social">
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            </ul>
+                        <div class="team_bor">
+                            <div class="team_img">
+                                <img src="{{ asset('assets/images/team3.jpg') }}" alt="team3">
+                                <ul class="list_none social_icons social_style1 rounded_social">
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="team_info text-center">
                             <div class="team_title">
@@ -327,14 +333,16 @@
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.5s">
-                        <div class="team_img">
-                            <img src="{{ asset('assets/images/team4.jpg') }}" alt="team4">
-                            <ul class="list_none social_icons social_style1 rounded_social">
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            </ul>
+                        <div class="team_bor">
+                            <div class="team_img">
+                                <img src="{{ asset('assets/images/team4.jpg') }}" alt="team4">
+                                <ul class="list_none social_icons social_style1 rounded_social">
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="team_info text-center">
                             <div class="team_title">

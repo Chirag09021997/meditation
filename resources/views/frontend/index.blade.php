@@ -186,9 +186,8 @@
                                 alt="strong-body">
                         </div>
                         <div class="intro_desc">
-                            <h5>Strong Body life</h5>
-                            <p> Lorem ipsum dolor sit amet, consectetur blandit magna adipiscing elit ncididunt labore et
-                                dolore magna aliqua enim. </p>
+                            <h5>Reduces Stress</h5>
+                            <p> Meditation helps lower cortisol levels, which are associated with stress. </p>
                         </div>
                     </div>
                 </div>
@@ -200,9 +199,8 @@
                                 alt="flexibility">
                         </div>
                         <div class="intro_desc">
-                            <h5>increased flexibility</h5>
-                            <p> Lorem ipsum dolor sit amet, consectetur blandit magna adipiscing elit ncididunt labore et
-                                dolore magna aliqua enim. </p>
+                            <h5>Improves Focus</h5>
+                            <p> Regular practice enhances attention and concentration. </p>
                         </div>
                     </div>
                 </div>
@@ -214,9 +212,8 @@
                                 alt="healthy-lifestyle">
                         </div>
                         <div class="intro_desc">
-                            <h5>healthy lifestyle</h5>
-                            <p> Lorem ipsum dolor sit amet, consectetur blandit magna adipiscing elit ncididunt labore et
-                                dolore magna aliqua enim. </p>
+                            <h5>Increases Self-Awareness</h5>
+                            <p> Encourages mindfulness and helps develop a deeper understanding of oneself. </p>
                         </div>
                     </div>
                 </div>
@@ -228,9 +225,8 @@
                                 alt="blood-flow">
                         </div>
                         <div class="intro_desc">
-                            <h5>Increases blood flow </h5>
-                            <p> Lorem ipsum dolor sit amet, consectetur blandit magna adipiscing elit ncididunt labore et
-                                dolore magna aliqua enim. </p>
+                            <h5>Reduces Anxiety </h5>
+                            <p> Can decrease symptoms of anxiety and promote emotional stability. </p>
                         </div>
                     </div>
                 </div>
@@ -242,9 +238,8 @@
                                 alt="drops-blood">
                         </div>
                         <div class="intro_desc">
-                            <h5>Drops blood pressure</h5>
-                            <p> Lorem ipsum dolor sit amet, consectetur blandit magna adipiscing elit ncididunt labore et
-                                dolore magna aliqua enim. </p>
+                            <h5>Boosts Creativity</h5>
+                            <p> Encourages out-of-the-box thinking and problem-solving skills. </p>
                         </div>
                     </div>
                 </div>
@@ -256,9 +251,8 @@
                                 alt="adrenal-gland">
                         </div>
                         <div class="intro_desc">
-                            <h5>Regulates adrenal gland</h5>
-                            <p> Lorem ipsum dolor sit amet, consectetur blandit magna adipiscing elit ncididunt labore et
-                                dolore magna aliqua enim. </p>
+                            <h5>Enhances Memory</h5>
+                            <p> Improves working memory and cognitive clarity. </p>
                         </div>
                     </div>
                 </div>
@@ -287,13 +281,13 @@
                 <div class="col-md-12 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
                     <div class="heading_s1 ">
                         <!-- <span class="sub_heading">Welcome to Dhyana</span> -->
-                        <h2>Beer Life With Delta circle </h2>
+                        <h2>Better Life With Delta circle </h2>
                     </div>
-                    <p> Lorem ipsum dolor sit amet, consectetur blandit magna adipiscing elit ncididunt labore et dolore
-                        magna aliqua enim. </p>
-                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
-                        classical Latin literature from 45 BC, making it over 2000 years old.</p>
-                    <a href="#" class="btn btn-default rounded-0">Read More</a>
+                    <p> We all get up and go to work but when we are asked why we do we get different answers from each of us but everyone goes to work every day to achieve happiness, peace, prosperity and success . There is a lot of work going on in everyday life. Yet we always feel that we are missing something in life. Happiness, peace, prosperity and success are not enough for us in life. Delta Circle helps our life to fill this void. </p>
+                    <p>The question we get here is what is a delta circle? The Delta Circle is a source of happiness, peace, prosperity and success. Which serves to give direction to our lives. The seven layers of the delta circle are the task of evaluating our life and giving the right direction to be happy.</p>
+                    <p><b>Who can use Delta Circle?</b></p>
+                    <p>Delta Circle can be helpful to anyone who works from morning to evening with the desire to achieve something in life. Delta Circle Student Jobs, Professional, or Business Everybody should learn and create. Provides guidance on what can be used to accomplish the objectives. Let's try to understand the player.</p>
+                    <a href="/delta" class="btn btn-default rounded-0">Read More</a>
                     <div class="mt-3">
                         <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
                             <img src="{{ asset('assets/images/group1.svg') }}" alt="image" class="ml-4"/>
@@ -1004,21 +998,35 @@
     {{-- <!-- END SECTION CLASSES TIMETABLE --> --}}
 
     {{-- <!-- START SECTION PRICING TABLE --> --}}
-    <section class="bg_light_yellow pb_70">
+    <section class="bg_light_yellow pb_0">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-xl-6 col-lg-8 col-md-10 text-center animation" data-animation="fadeInUp"
+                <div class="col-xl-12 col-lg-12 col-md-10 text-center animation" data-animation="fadeInUp"
                     data-animation-delay="0.2s">
                     <div class="heading_s1">
-                        <span class="sub_heading">Choose Our Package</span>
-                        <h2>Yoga Pricing Plan</h2>
+                        <!-- <span class="sub_heading">We are available on</span> -->
+                        <h2>We are available on</h2>
                     </div>
+                    
                     <p>Lorem ipsum dolor sit amet, consectetur blandit magna adipiscing elit ncididunt labore et dolore
                         magna aliqua enim. </p>
                     <div class="small_divider clearfix"></div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <img src="{{ asset('assets/images/phone.png') }}" alt="">
+                        </div>
+                        <div class="col-lg-6">
+                            <h2>Get Mobile Application & Do Yoga Online!</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur blandit magna adipiscing elit ncididunt labore et dolore magna aliqua enim.</p>
+                            <h5>BeYoga Application</h5>
+                            <button class="btn btn-dark app-button apple-btn "><i class="fa-apple-pay fa-2x"></i><span class="text-uppercase ml-2">Apple store</span></button>
+                            <button class="btn btn-dark app-button play-btn"><i class="fa fa-play fa-2x"></i><span class="text-uppercase ml-2">Google store</span></button>
+
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-lg-4">
                     <div class="pricing_box pricing_style1 animation" data-animation="fadeInUp"
                         data-animation-delay="0.2s">
@@ -1089,9 +1097,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
-        <div class="shape_img">
+        <!-- <div class="shape_img">
             <div class="ol_shape8">
                 <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
                     <img src="{{ asset('assets/images/shape8.png') }}" alt="image" />
@@ -1102,7 +1110,7 @@
                     <img src="{{ asset('assets/images/shape9.png') }}" alt="image" />
                 </div>
             </div>
-        </div>
+        </div> -->
     </section>
     {{-- <!-- END SECTION PRICING TABLE --> --}}
 
