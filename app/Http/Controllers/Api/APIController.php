@@ -170,36 +170,23 @@ class APIController extends Controller
     }
 
     public function getWorkshopsByCategory(Request $request)
-{
-    $perPage = $request->input('per_page', 10);
-    $categoryId = $request->input('category_id', null); // Add filter for category ID
+    {
+        $perPage = $request->input('per_page', 10);
+        $categoryId = $request->input('category_id', null); // Add filter for category ID
 
-
-    // Fetch templates filtered by category if provided
-    $query = WorkShop::select('id', 'name', 'short_description', 'description', 'thumb_image', 'hi_video_url', 'en_video_url', 'premium_type', 'second', 'total_view')
-        ->where('status', 'Active');
-
-    // Apply category filter if categoryId is provided
-        $query->whereHas('workshopCategory', function ($q) use ($categoryId) {
-            $q->where('id', $categoryId);
+        $query = WorkShop::select('id', 'name', 'short_description', 'description', 'thumb_image', 'hi_video_url', 'en_video_url', 'premium_type', 'second', 'total_view')
+            ->where('status', 'Active');
+        $query->when($categoryId, function ($q) use ($categoryId) {
+            $q->whereHas('workshopCategory', function ($query) use ($categoryId) {
+                $query->where('id', $categoryId);
+            });
         });
-
-    // Fetch paginated templates
-    $templates = $query->simplePaginate($perPage);
-
-        // Transform each template by applying unwanted strings and encoding
-        $templates->each(function ($template)  {
-    
-            // Remove pivot data from relationship
+        $templates = $query->simplePaginate($perPage);
+        $templates->each(function ($template) {
             unset($template->pivot);
         });
-    
-
-    return $this->sendResponse($templates, "Get Template List Successfully.");
-}
-
-    
-    
+        return $this->sendResponse($templates, "Get Template List Successfully.");
+    }
 
     public function BlogList(Request $request)
     {

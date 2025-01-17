@@ -25,8 +25,9 @@ class WorkShop extends Model
     {
         return $this->belongsToMany(Workshop::class, 'workshop_workshop_category', 'workshop_id', 'workshop_category_id');
     }
+
     public function workshopCategoryWise()
     {
-        return $this->belongsToMany(WorkshopCategory::class, 'workshop_workshop_category');
+        return $this->belongsToMany(WorkshopCategory::class, 'workshop_workshop_category', 'workshop_id', 'workshop_category_id');
     }
 }
