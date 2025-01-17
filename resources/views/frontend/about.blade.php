@@ -42,7 +42,7 @@
                         magna aliqua enim. </p>
                     <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
                         classical Latin literature from 45 BC, making it over 2000 years old.</p>
-                    <a href="#" class="btn btn-default rounded-0">Read More</a>
+                    <a href="/life"  target="_blank" class="btn btn-default rounded-0">Read More</a>
                 </div>
             </div>
         </div>

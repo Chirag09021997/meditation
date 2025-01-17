@@ -3832,6 +3832,9 @@ footer {
 }
 .register_event{
     color: #28579b;
+    margin-left: 10px;
+    margin-top: 10px;
+
 }
 .widget_links li {
     padding: 0 0 7px;

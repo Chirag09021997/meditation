@@ -190,4 +190,14 @@ class HomeController extends Controller
     {
         return view('frontend.login');
     }
+
+    public function delta()
+    {
+        return view('frontend.delta');
+    }
+
+    public function life()
+    {
+        return view('frontend.life');
+    }
 }

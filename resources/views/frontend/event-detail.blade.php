@@ -3,18 +3,20 @@
     <!-- START SECTION BREADCRUMB -->
     <section class="breadcrumb_section page-title-light background_bg overlay_bg_70"
         data-img-src="{{ asset('assets/images/breadcrumb_bg4.jpg') }}">
+        <div class="abt-sec">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-sm-12 text-center">
-                    <div class="page-title">
-                        <h1>Events Details</h1>
+                <div class="row align-items-center">
+                    <div class="col-sm-12 text-center">
+                        <div class="page-title space">
+                            <h1>Events Details</h1>
+                        </div>
+                        <!-- <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Events Details</li>
+                            </ol>
+                        </nav> -->
                     </div>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Events Details</li>
-                        </ol>
-                    </nav>
                 </div>
             </div>
         </div>

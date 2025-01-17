@@ -2,18 +2,20 @@
 @section('content')
     {{-- <!-- START SECTION BREADCRUMB --> --}}
     <section class="bg_light_pink breadcrumb_section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-sm-12 text-center">
-                    <div class="page-title">
-                        <h1>Term-Condition</h1>
+        <div class="abt-sec">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-sm-12 text-center">
+                        <div class="page-title space">
+                            <h1>Term-Condition</h1>
+                        </div>
+                        <!-- <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Term-Condition</li>
+                            </ol>
+                        </nav> -->
                     </div>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Term-Condition</li>
-                        </ol>
-                    </nav>
                 </div>
             </div>
         </div>

@@ -33,9 +33,9 @@
                                             relaxation, and emotional stability. It has been used for centuries in various cultures and spiritual traditions,
                                             but it has also gained popularity in modern wellness practices for its physical, mental, and emotional benefits.
                                         </p>
-                                        <a class="btn btn-default rounded-0 animation" href="#"
+                                        <a class="btn btn-default rounded-0 animation" href="/delta" target="_blank"
                                             data-animation="fadeInUp" data-animation-delay="0.7s">Learn More</a>
-                                        <a class="btn btn-white rounded-0 animation" href="#"
+                                        <a class="btn btn-white rounded-0 animation" href="/contact" target="_blank"
                                             data-animation="fadeInUp" data-animation-delay="0.8s">Contact Us</a>
                                     </div>
                                 </div>
@@ -77,9 +77,9 @@
                                             and through we were trying to make our Yoga studio a peaceful, meditational
                                             place of tranquility, which according to our ever-growing list of attendees
                                             we've succeeded at.</p>
-                                        <a class="btn btn-default rounded-0 animation" href="#"
+                                        <a class="btn btn-default rounded-0 animation" href="/delta" target="_blank"
                                             data-animation="fadeInUp" data-animation-delay="0.7s">Learn More</a>
-                                        <a class="btn btn-white rounded-0 animation" href="#"
+                                        <a class="btn btn-white rounded-0 animation" href="/contact" target="_blank"
                                             data-animation="fadeInUp" data-animation-delay="0.8s">Contact Us</a>
                                     </div>
                                 </div>
@@ -287,7 +287,7 @@
                     <p>The question we get here is what is a delta circle? The Delta Circle is a source of happiness, peace, prosperity and success. Which serves to give direction to our lives. The seven layers of the delta circle are the task of evaluating our life and giving the right direction to be happy.</p>
                     <p><b>Who can use Delta Circle?</b></p>
                     <p>Delta Circle can be helpful to anyone who works from morning to evening with the desire to achieve something in life. Delta Circle Student Jobs, Professional, or Business Everybody should learn and create. Provides guidance on what can be used to accomplish the objectives. Let's try to understand the player.</p>
-                    <a href="/delta" class="btn btn-default rounded-0">Read More</a>
+                    <a href="/delta" target="_blank" class="btn btn-default rounded-0">Read More</a>
                     <div class="mt-3">
                         <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
                             <img src="{{ asset('assets/images/group1.svg') }}" alt="image" class="ml-4"/>
