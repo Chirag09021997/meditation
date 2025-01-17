@@ -18,15 +18,10 @@ class WorkShop extends Model
 
     public function interestType()
     {
-        return $this->belongsToMany(Workshop::class, 'workshop_interest_type', 'workshop_id', 'interest_id');
+        return $this->belongsToMany(Interest::class, 'workshop_interest_type', 'workshop_id', 'interest_id');
     }
 
     public function workshopCategory()
-    {
-        return $this->belongsToMany(Workshop::class, 'workshop_workshop_category', 'workshop_id', 'workshop_category_id');
-    }
-
-    public function workshopCategoryWise()
     {
         return $this->belongsToMany(WorkshopCategory::class, 'workshop_workshop_category', 'workshop_id', 'workshop_category_id');
     }
