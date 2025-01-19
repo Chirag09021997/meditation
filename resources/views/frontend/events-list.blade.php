@@ -122,7 +122,7 @@
                                                     <div class="col-md-3 p-0 m-0 ">
                                                         <div class="row p-0 m-0">
                                                             <span class="workshop_btn btn p-0 m-0 position-absolute fixed-bottom text-right pr-3">
-                                                                <a class="register_event" target="_blank" href="/events/{{$event->id}}"><strong>Register Now </strong></a></span>
+                                                                <a class="register_event" target="_blank" href="#"><strong>Register Now </strong></a></span>
                                                         </div>
                                                     </div>
                                                 </div>
