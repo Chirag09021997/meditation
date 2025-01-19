@@ -54,6 +54,7 @@ Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacy.policy');
 Route::get('/refund-policy', [HomeController::class, 'refundPolicy'])->name('refund.policy');
 Route::get('/login', [HomeController::class, 'login'])->name('user.login');
+Route::post('/customer-event-join', [HomeController::class, 'customerEventJoin'])->name('customer.event.join');
 
 Route::post('/user/logout', function () {
     Auth::guard('customer')->logout();
@@ -150,6 +151,8 @@ Route::middleware('auth')->group(function () {
     Route::get('workshop-category/data', [WorkshopCategoryController::class, 'getData'])->name('workshop-category.data');
     Route::post('workshop-category/status/{workshop_category}', [WorkshopCategoryController::class, 'changeStatus'])->name('workshop-category.changeStatus');
     Route::resource('workshop-category', WorkshopCategoryController::class);
+
+    Route::get('customer-event-join/data/{id}', [EventController::class, 'customerEventJoinList'])->name('customer-event-join.list');
 });
 
 require __DIR__ . '/auth.php';

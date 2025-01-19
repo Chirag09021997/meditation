@@ -64,10 +64,62 @@
                 placeholder="Enter description...">{{ old('description', $event->description) }}</textarea>
         </div>
     </div>
+
+    <x-head-lable>
+        {{ __('Event Customers') }}
+    </x-head-lable>
+    <div class="p-4">
+        <div class="overflow-x-auto">
+            <table id="event-table" class="min-w-full bg-white border border-gray-300">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Total Person</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
     <script>
         CKEDITOR.replace('description', {
             height: 300,
+        });
+
+        $(document).ready(function() {
+            $('#event-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('customer-event-join.list', $event->id) }}",
+                columns: [{
+                        data: 'DT_RowIndex',
+                        searchable: false,
+                        sortable: false
+                    },
+                    {
+                        data: 'person'
+                    },
+                    {
+                        data: 'name',
+                    },
+                    {
+                        data: 'email'
+                    },
+                    {
+                        data: 'mobile'
+                    },
+                    {
+                        data: 'address'
+                    },
+                ]
+            });
+
+            $('#event-table_length, #event-table_info').addClass('my-2')
         });
     </script>
 </x-app-layout>

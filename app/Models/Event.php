@@ -15,4 +15,9 @@ class Event extends Model
     {
         return !empty($value) ? config('app.url') . "/" . $value : null;
     }
+
+    public function customers()
+    {
+        return $this->hasMany(CustomerEvents::class, 'event_id');
+    }
 }

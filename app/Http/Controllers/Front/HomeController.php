@@ -7,6 +7,7 @@ use App\Http\Requests\ContactUsRequest;
 use App\Models\Blog;
 use App\Models\ContactUs;
 use App\Models\CouponSystem;
+use App\Models\CustomerEvents;
 use App\Models\Event;
 use App\Models\Order;
 use App\Models\Store;
@@ -57,7 +58,7 @@ class HomeController extends Controller
     {
         $event = Event::where('status', 'Active')->select('id', 'name', 'thumb_image', 'short_description', 'description', 'starting_date', 'location', 'total_joining', 'is_paid', 'fees')->findOrFail($id);
         $event->formatted_date = Carbon::parse($event->starting_date)->format('M d, Y');
-        $event->formatted_time = Carbon::parse($event->starting_date)->format('H:i');
+        $event->formatted_time = Carbon::parse($event->starting_date)->format('h:i A');
 
         $events = Event::where('status', 'Active')->select('id', 'name', 'thumb_image', 'starting_date', 'location')->latest()->take(5)->get();
         $events->transform(function ($event) {
@@ -199,5 +200,20 @@ class HomeController extends Controller
     public function login()
     {
         return view('frontend.login');
+    }
+
+    public function customerEventJoin(Request $request)
+    {
+        $validated = $request->validate([
+            'event_id' => 'required|exists:events,id',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'mobile' => 'nullable|string|max:15',
+            'address' => 'nullable|string|max:1000',
+            'person' => 'nullable|integer|min:1',
+            'total_fees' => 'nullable|numeric|min:0',
+        ]);
+        CustomerEvents::create($validated);
+        return redirect()->route('home')->with('success', 'Event Join SuccessFully.');
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
+use App\Models\CustomerEvents;
 use Yajra\DataTables\Facades\DataTables;
 
 class EventController extends Controller
@@ -50,7 +51,8 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        return view('event.show', compact('event'));
+        $customers = $event->customers()->get();
+        return view('event.show', compact('event', 'customers'));
     }
 
     /**
@@ -123,5 +125,13 @@ class EventController extends Controller
         $event->status = ($event->status == 'Active') ? 'Inactive' : 'Active';
         $event->save();
         echo  1;
+    }
+
+    public function customerEventJoinList(string $id)
+    {
+        $customers = CustomerEvents::where('event_id', $id)->orderByDesc('created_at');
+        return DataTables::of($customers)
+            ->addIndexColumn()
+            ->toJson();
     }
 }

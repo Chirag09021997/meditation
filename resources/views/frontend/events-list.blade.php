@@ -89,7 +89,7 @@
                                                                         <span class="text-muted" style=" "><b>Duration</b></span><br>
                                                                         <span class="text-muted" style=" "> 21 Days</span>
                                                                     </div>
-                                                                </div> 
+                                                                </div>
                                                             </div>
 
                                                             <div class="col-md-3  pl-1 pb-0 pr-0 pt-0 m-0 border-right">
@@ -101,9 +101,9 @@
                                                                         <span class="text-muted" style=" "><b>Timing</b></span><br>
                                                                         <span class="text-muted" style=" "> {{ $event->formatted_time }}</span>
                                                                     </div>
-                                                                </div> 
+                                                                </div>
                                                             </div>
-                                                        
+
                                                             <div class="col-md-3  pl-1 pb-0 pr-0 pt-0 m-0">
                                                                 <div class="row align-items-center  p-0 m-0">
                                                                     <div class="col-sm-4 p-0 m-0 align-items-center">
@@ -115,20 +115,20 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            
+
                                                             <div class="col-md-4  p-0 m-0"></div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3 p-0 m-0 ">
                                                         <div class="row p-0 m-0">
                                                             <span class="workshop_btn btn p-0 m-0 position-absolute fixed-bottom text-right pr-3">
-                                                                <a class="register_event" target="_blank" href="#"><strong>Register Now </strong></a></span>
+                                                                <a class="register_event" href="{{route('events.single', $event->id)}}"><strong>Register Now </strong></a></span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
 
                                     <div class="d-block d-md-none w-details col-md-6 p-3 mr-3 d-flex">
@@ -159,7 +159,7 @@
                                                 </span><br>
                                                 </div>
                                                 <div class="relative cursor-pointer text-muted mt-3">
-                                                    Learn 9 steps to heal your chronic lifestyle diseases following the Satvic Healing Plan.                            
+                                                    Learn 9 steps to heal your chronic lifestyle diseases following the Satvic Healing Plan.
                                                 </div>
                                             </div><hr>
                                             <div class="row pb-0">
@@ -167,7 +167,7 @@
                                                     <span class=""><a class="register_event" target="_blank" href="#"><strong>Register Now </strong></a></span>
                                                 </div>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
