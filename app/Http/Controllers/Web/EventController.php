@@ -129,8 +129,13 @@ class EventController extends Controller
 
     public function customerEventJoinList(string $id)
     {
+        $event = Event::findOrFail($id);
         $customers = CustomerEvents::where('event_id', $id)->orderByDesc('created_at');
         return DataTables::of($customers)
+            ->addColumn('custom', function ($data) use ($event) {
+                return $data->person * $event->fees;
+            })
+            ->rawColumns(['custom'])
             ->addIndexColumn()
             ->toJson();
     }

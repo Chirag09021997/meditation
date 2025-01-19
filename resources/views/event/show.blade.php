@@ -75,6 +75,7 @@
                     <tr>
                         <th>#</th>
                         <th>Total Person</th>
+                        <th>Total Fees</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Mobile</th>
@@ -103,6 +104,9 @@
                     },
                     {
                         data: 'person'
+                    },
+                    {
+                        data: 'custom'
                     },
                     {
                         data: 'name',
