@@ -32,6 +32,16 @@ class HomeController extends Controller
         return view('frontend.about');
     }
 
+    public function delta()
+    {
+        return view('frontend.delta');
+    }
+
+    public function life()
+    {
+        return view('frontend.life');
+    }
+
     public function eventsList()
     {
         $events = Event::where('status', 'Active')->select('id', 'name', 'thumb_image', 'starting_date', 'location')->orderByDesc('created_at')->paginate(9);
@@ -55,7 +65,7 @@ class HomeController extends Controller
             $event->formatted_time = Carbon::parse($event->starting_date)->format('H:i');
             return $event;
         });
-        return view('frontend.event-detail', compact('event', 'events'));
+        return view('frontend.events-detail', compact('event', 'events'));
     }
 
     public function contact()
@@ -189,15 +199,5 @@ class HomeController extends Controller
     public function login()
     {
         return view('frontend.login');
-    }
-
-    public function delta()
-    {
-        return view('frontend.delta');
-    }
-
-    public function life()
-    {
-        return view('frontend.life');
     }
 }
