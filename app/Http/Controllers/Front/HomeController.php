@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactUsRequest;
 use App\Models\Blog;
+use App\Models\Category;
 use App\Models\ContactUs;
 use App\Models\CouponSystem;
 use App\Models\CustomerEvents;
@@ -74,14 +75,30 @@ class HomeController extends Controller
         return view('frontend.contact');
     }
 
-    public function blogsList()
+    public function blogsList(Request $request)
     {
-        $blogs = Blog::with(['users:id,name,profile'])->where('status', 'Active')->select('id', 'name', 'short_description', 'thumb_image')->orderByDesc('created_at')->paginate(9);
+        $categoryId = $request->input('category_id', null);
+        $blogs = Blog::with(['users:id,name,profile', 'categories:id,name'])
+            ->where('status', 'Active')
+            ->select('id', 'name', 'short_description', 'thumb_image')
+            ->when($categoryId, function ($query) use ($categoryId) {
+                return $query->whereHas('categories', function ($q) use ($categoryId) {
+                    $q->where('id', $categoryId);
+                });
+            })
+            ->orderByDesc('created_at')
+            ->paginate(9);
         $blogs->getCollection()->transform(function ($blog) {
             $blog->formatted_date = Carbon::parse($blog->created_at)->format('M d, Y');
             return $blog;
         });
-        return view('frontend.blogs-list', compact('blogs'));
+        $categories = Category::where('status', 'Active')
+            ->get()
+            ->map(function ($category) {
+                $category->blog_count = $category->blogs()->count();
+                return $category;
+            });
+        return view('frontend.blogs-list', compact('blogs', 'categories'));
     }
 
     public function blogSingle(string $id)

@@ -29,7 +29,7 @@
                 <div class="col-12">
                     <div class="single_post">
                         <div class="blog_img">
-                            <img src="{{ $blog->thumb_image }}" alt="blog_img">
+                            <img src="{{ $blog->thumb_image }}" alt="blog_img" height="500">
                         </div>
                         <div class="single_post_content">
                             <div class="blog_text">
