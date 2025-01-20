@@ -30,6 +30,12 @@
                     class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
                     disabled>{{ old('short_description', $blog->short_description) }}</textarea>
             </div>
+
+            <!-- Categories -->
+            <div class="mt-4">
+                <x-input-label for="categories" :value="__('Categories')" />
+                <x-text-input id="categories" class="block mt-1 w-full" type="text" :value="old('categories', implode(', ', $oldCategories))" disabled />
+            </div>
         </div>
 
         <!-- description -->

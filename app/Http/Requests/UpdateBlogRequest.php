@@ -27,6 +27,7 @@ class UpdateBlogRequest extends FormRequest
             'description' => 'nullable|string',
             'thumb_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'total_view' => 'required|integer|min:0',
+            'categories' => 'nullable|array',
         ];
     }
 }

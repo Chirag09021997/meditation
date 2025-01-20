@@ -7,6 +7,7 @@ use App\Http\Controllers\Front\ProfileController as FrontProfileController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Web\BlogController;
 use App\Http\Controllers\Web\BusinessController;
+use App\Http\Controllers\Web\CategoryController;
 use App\Http\Controllers\Web\ContactUsController;
 use App\Http\Controllers\Web\CouponSystemController;
 use App\Http\Controllers\Web\CustomerController;
@@ -153,6 +154,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('workshop-category', WorkshopCategoryController::class);
 
     Route::get('customer-event-join/data/{id}', [EventController::class, 'customerEventJoinList'])->name('customer-event-join.list');
+
+    Route::get('category/data', [CategoryController::class, 'getData'])->name('category.data');
+    Route::post('category/status/{category}', [CategoryController::class, 'changeStatus'])->name('category.changeStatus');
+    Route::resource('category', CategoryController::class);
 });
 
 require __DIR__ . '/auth.php';

@@ -43,6 +43,19 @@
                     placeholder="Enter short description...">{{ old('short_description', $blog->short_description) }}</textarea>
                 <x-input-error :messages="$errors->get('short_description')" class="mt-2" />
             </div>
+
+            <!-- Categories -->
+            <div class="mt-4">
+                <x-input-label for="categories" :value="__('Select Categories')" />
+                <select multiple id="categories" name="categories[]"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option disabled>Choose categories type</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" @selected(in_array($category->id, $oldCategoryList))>
+                            {{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>
         </div>
 
         <!-- description -->

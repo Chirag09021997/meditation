@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
+use App\Models\Category;
 use Yajra\DataTables\Facades\DataTables;
 
 class BlogController extends Controller
@@ -23,7 +24,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('blog.create');
+        $categories = Category::where('status', 'Active')->get();
+        return view('blog.create', compact('categories'));
     }
 
     /**
@@ -38,7 +40,10 @@ class BlogController extends Controller
             $filePath = $image->storeAs('public/uploads/blog', $fileName);
             $validated['thumb_image'] = str_replace('public/', 'storage/', $filePath);
         }
-        Blog::create($validated);
+        $blog = Blog::create($validated);
+        if ($request->has('categories')) {
+            $blog->categories()->attach($request->input('categories'));
+        }
         return redirect()->route('blog.index')->with('success', 'Blog created successfully.');
     }
 
@@ -47,7 +52,8 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        return view('blog.show', compact('blog'));
+        $oldCategories = $blog->categories()->pluck('name')->toArray();
+        return view('blog.show', compact('blog', 'oldCategories'));
     }
 
     /**
@@ -55,7 +61,9 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        return view('blog.edit', compact('blog'));
+        $categories = Category::where('status', 'Active')->get();
+        $oldCategoryList = $blog->categories()->pluck('id')->toArray();
+        return view('blog.edit', compact('blog', 'categories', 'oldCategoryList'));
     }
 
     /**
@@ -77,6 +85,9 @@ class BlogController extends Controller
             $validated['thumb_image'] = str_replace('public/', 'storage/', $filePath);
         }
         $blog->update($validated);
+        if ($request->has('categories')) {
+            $blog->categories()->sync($request->input('categories'));
+        }
         return redirect()->route('blog.index')->with('success', 'Blog updated successfully');
     }
 
