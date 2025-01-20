@@ -15,8 +15,6 @@ return new class extends Migration
             $table->unsignedBigInteger('blog_id');
             $table->unsignedBigInteger('category_id');
             $table->primary(['blog_id', 'category_id']);
-            $table->foreign('blog_id')->references('id')->on('blogs')->onDelete('cascade');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 
