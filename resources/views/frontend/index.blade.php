@@ -20,7 +20,7 @@
                                         <div>
                                             <img src="{{ asset('assets/images/delta.png') }}" alt="image" />
                                         </div>
-                                       
+
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-md-7 ">
@@ -86,7 +86,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="banner_shape">
                         <div class="shape3">
                             <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
@@ -270,7 +270,7 @@
                 </div>
             </div>
         </div>
-        
+
     </section>
     {{-- <!-- END SECTION BENIFIT --> --}}
 
@@ -520,7 +520,7 @@
                     <p> A joyful and peaceful life from the experience of our life. Due to which the productivity and success in every work of life increased, he made it the principal of life and decided to work on it for people.
                     </p>
                 </div>
-                
+
             </div>
             <div class="row">
                     <div class="col-lg-4 col-sm-6">
@@ -1007,7 +1007,7 @@
                         <!-- <span class="sub_heading">We are available on</span> -->
                         <h2>We are available on</h2>
                     </div>
-                    
+
                     <p>Lorem ipsum dolor sit amet, consectetur blandit magna adipiscing elit ncididunt labore et dolore
                         magna aliqua enim. </p>
                     <div class="small_divider clearfix"></div>
@@ -1019,7 +1019,7 @@
                             <h2>Get Mobile Application & Do Yoga Online!</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur blandit magna adipiscing elit ncididunt labore et dolore magna aliqua enim.</p>
                             <h5>BeYoga Application</h5>
-                            <button class="btn btn-dark app-button apple-btn "><i class="fa-apple-pay fa-2x"></i><span class="text-uppercase ml-2">Apple store</span></button>
+                            <button class="btn btn-dark app-button apple-btn "><i class="fa-brands fa-app-store fa-2x"></i><span class="text-uppercase ml-2">Apple store</span></button>
                             <button class="btn btn-dark app-button play-btn"><i class="fa fa-play fa-2x"></i><span class="text-uppercase ml-2">Google store</span></button>
 
                         </div>
@@ -1230,7 +1230,7 @@
                                 </ul>
                             </div>
                         </div>
-                       
+
                         <div class="team_info text-center">
                             <div class="team_title">
                                 <h5><a href="#">Elena Mark</a></h5>
