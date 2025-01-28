@@ -49,3 +49,4 @@ Route::post('user-categories/{customerId}', [TrackingController::class, 'getUser
 Route::get('notifications', [APIController::class, 'NotificationsList']);
 Route::get("business-list", [APIController::class, "businessList"]);
 Route::post("customer-premium-plan", [APIController::class, "CustomerPremiumPlan"]);
+Route::get('workshopcategorywise', [APIController::class, 'getWorkshopsByCategory']);
