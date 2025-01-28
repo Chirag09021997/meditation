@@ -67,7 +67,7 @@ class HomeController extends Controller
             $event->formatted_time = Carbon::parse($event->starting_date)->format('H:i');
             return $event;
         });
-        return view('frontend.event-detail', compact('event', 'events'));
+        return view('frontend.events-detail', compact('event', 'events'));
     }
 
     public function contact()
