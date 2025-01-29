@@ -1216,92 +1216,46 @@
                     <div class="small_divider clearfix"></div>
                 </div>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.2s">
-                        <div class="team_bor">
-                            <div class="team_img">
-                                <img src="{{ asset('assets/images/team1.jpg') }}" alt="team1">
-                                <ul class="list_none social_icons social_style1 rounded_social">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
+            <div class="row">
+                <div class="col-12 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
+                    <div class="testimonial_slider testimonial_style1 carousel_slider owl-carousel owl-theme"
+                        data-margin="15" data-loop="true" data-autoplay="true"
+                        data-responsive='{"0":{"items": "1"}, "768":{"items": "2"}, "1199":{"items": "3"}}'>
+                            @foreach ($outTeams as $ourTeam)
+                                <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.2s">
+                                    <div class="team_bor">
+                                        <div class="team_img">
+                                            <img src="{{ $ourTeam->profile }}" alt="{{ $ourTeam->name }}">
+                                            <ul class="list_none social_icons social_style1 rounded_social">
+                                                @if ($ourTeam->facebook_url)
+                                                    <li><a href="{{ $ourTeam->facebook_url }}"><i class="fab fa-facebook-f"></i></a></li>
+                                                @endif
+                                                @if ($ourTeam->twitter_url)
+                                                    <li><a href="{{ $ourTeam->twitter_url }}"><i class="fab fa-twitter"></i></a></li>
+                                                @endif
+                                                @if ($ourTeam->google_url)
+                                                    <li><a href="{{ $ourTeam->google_url }}"><i class="fab fa-google-plus-g"></i></a></li>
+                                                @endif
+                                                @if ($ourTeam->instagram_url)
+                                                    <li><a href="{{ $ourTeam->instagram_url }}"><i class="fab fa-instagram"></i></a></li>
+                                                @endif
+                                                @if ($ourTeam->youtube_url)
+                                                    <li><a href="{{ $ourTeam->youtube_url }}"><i class="fab fa-youtube"></i></a></li>
+                                                @endif
+                                            </ul>
+                                        </div>
+                                    </div>
 
-                        <div class="team_info text-center">
-                            <div class="team_title">
-                                <h5><a href="#">Elena Mark</a></h5>
-                                <span>Yoga Teacher</span>
-                            </div>
-                        </div>
+                                    <div class="team_info text-center">
+                                        <div class="team_title">
+                                            <h5><a href="{{route('our-team-single',$our)}}">{{ $ourTeam->name }}</a></h5>
+                                            <span>{{ $ourTeam->post }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.3s">
-                    <div class="team_bor">
-                        <div class="team_img">
-                            <img src="{{ asset('assets/images/team2.jpg') }}" alt="team2">
-                            <ul class="list_none social_icons social_style1 rounded_social">
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                        <div class="team_info text-center">
-                            <div class="team_title">
-                                <h5><a href="#">Grace Wong</a></h5>
-                                <span>Yoga Teacher</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="col-lg-3 col-sm-6">
-                    <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.4s">
-                        <div class="team_bor">
-                            <div class="team_img">
-                                <img src="{{ asset('assets/images/team3.jpg') }}" alt="team3">
-                                <ul class="list_none social_icons social_style1 rounded_social">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="team_info text-center">
-                            <div class="team_title">
-                                <h5><a href="#">Maria Redwood</a></h5>
-                                <span>Yoga Teacher</span>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-                <!-- <div class="col-lg-3 col-sm-6">
-                    <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.5s">
-                        <div class="team_bor">
-                            <div class="team_img">
-                                <img src="{{ asset('assets/images/team4.jpg') }}" alt="team4">
-                                <ul class="list_none social_icons social_style1 rounded_social">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="team_info text-center">
-                            <div class="team_title">
-                                <h5><a href="#">Merry Walter</a></h5>
-                                <span>Yoga Teacher</span>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
     </section>

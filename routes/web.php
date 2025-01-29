@@ -18,6 +18,7 @@ use App\Http\Controllers\Web\InterestController;
 use App\Http\Controllers\Web\MusicController;
 use App\Http\Controllers\Web\NotificationController;
 use App\Http\Controllers\Web\OrderController;
+use App\Http\Controllers\Web\OurTeamController;
 use App\Http\Controllers\Web\PremiumPlanController;
 use App\Http\Controllers\Web\StoreController;
 use App\Http\Controllers\Web\WorkshopCategoryController;
@@ -56,6 +57,7 @@ Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('p
 Route::get('/refund-policy', [HomeController::class, 'refundPolicy'])->name('refund.policy');
 Route::get('/login', [HomeController::class, 'login'])->name('user.login');
 Route::post('/customer-event-join', [HomeController::class, 'customerEventJoin'])->name('customer.event.join');
+Route::get('/our-team-single/{id}', [HomeController::class, 'ourTeamSingle'])->name('our-team-single');
 
 Route::post('/user/logout', function () {
     Auth::guard('customer')->logout();
@@ -79,6 +81,7 @@ Route::middleware('customer')->group(function () {
     Route::post('/user-order-cancel', [FrontOrderController::class, 'cancelOrder'])->name('user.order.cancel');
 });
 
+// admin portal routes
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -158,6 +161,9 @@ Route::middleware('auth')->group(function () {
     Route::get('category/data', [CategoryController::class, 'getData'])->name('category.data');
     Route::post('category/status/{category}', [CategoryController::class, 'changeStatus'])->name('category.changeStatus');
     Route::resource('category', CategoryController::class);
+
+    Route::get('/our-team/data', [OurTeamController::class, 'getData'])->name('our-team.data');
+    Route::resource('our-team', OurTeamController::class);
 });
 
 require __DIR__ . '/auth.php';

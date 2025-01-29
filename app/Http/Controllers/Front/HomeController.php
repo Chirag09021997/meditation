@@ -11,6 +11,7 @@ use App\Models\CouponSystem;
 use App\Models\CustomerEvents;
 use App\Models\Event;
 use App\Models\Order;
+use App\Models\OurTeam;
 use App\Models\Store;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -26,7 +27,8 @@ class HomeController extends Controller
             $blog->formatted_time = Carbon::parse($blog->starting_date)->format('H:i');
             return $blog;
         });
-        return view('frontend.index', compact('blogs'));
+        $outTeams = OurTeam::all();
+        return view('frontend.index', compact('blogs', 'outTeams'));
     }
 
     public function about()
@@ -232,5 +234,12 @@ class HomeController extends Controller
         ]);
         CustomerEvents::create($validated);
         return redirect()->route('home')->with('success', 'Event Join SuccessFully.');
+    }
+
+    public function ourTeamSingle(string $id)
+    {
+        $ourTeam = OurTeam::findOrFail($id);
+        $ourTeamMembers = OurTeam::where('id', '!=', $id)->get();
+        return view('frontend.our-team-detail', compact('ourTeam', 'ourTeamMembers'));
     }
 }
