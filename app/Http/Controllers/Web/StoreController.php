@@ -129,10 +129,14 @@ class StoreController extends Controller
                 $checked = ($data->status == 'Active') ? 'checked' : '';
                 return '<input type="checkbox" data-url="' . route('store.changeStatus', $data->id) . '" ' . $checked . ' class="changeStatus">';
             })
+            ->editColumn('add_home_status', function ($data) {
+                $checked = ($data->add_home_status == 'Active') ? 'checked' : '';
+                return '<input type="checkbox" data-url="' . route('store.changeHomeStatus', $data->id) . '" ' . $checked . ' class="changeHomeStatus">';
+            })
             ->editColumn('product_thumb', function ($data) {
                 return '<img src="' . $data->product_thumb . '" alt="" class="w-8 mx-auto" />';
             })
-            ->rawColumns(['action', 'status', 'product_thumb'])
+            ->rawColumns(['action', 'status', 'product_thumb','add_home_status'])
             ->addIndexColumn()
             ->toJson();
     }
@@ -140,6 +144,13 @@ class StoreController extends Controller
     public function changeStatus(Store $store)
     {
         $store->status = ($store->status == 'Active') ? 'Inactive' : 'Active';
+        $store->save();
+        echo  1;
+    }
+
+    public function changeHomeStatus(Store $store)
+    {
+        $store->add_home_status = ($store->add_home_status == 'Active') ? 'Inactive' : 'Active';
         $store->save();
         echo  1;
     }

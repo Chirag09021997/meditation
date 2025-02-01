@@ -53,3 +53,8 @@
 .error {
     color: var(--danger);
 }
+
+.logo_dark {
+    max-width: 100%;  /* Ensures the image doesn't overflow its container */
+    height: auto;      /* Keeps the aspect ratio */
+}

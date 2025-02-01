@@ -6539,6 +6539,24 @@ a.close.disabled {
     }
 }
 
+
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    width: 50px; /* Adjust width */
+    height: 50px; /* Adjust height */
+    border-radius: 5px; /* Optional: Rounded corners */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Darker background on hover */
+}
+
+
 .carousel-item-next,
 .carousel-item-prev,
 .carousel-item.active {

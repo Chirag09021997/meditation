@@ -106,15 +106,14 @@
         <div class="container ps-0">
             <div class="row mt-5 md:mt-0">
                 <div class="col-lg-6 pt-0 pt-sm-4">
-                    <h3 class="heading_7_day">7 Day</h3>
-                    <h1 id='title'>Heal Yourself <br />Challenge
-                    </h1>
-                    <div class="here2">9 Steps to Reverse Your Disease and Thrive</div>
+                    <h3 class="heading_7_day">{{$event->duration}} Days</h3>
+                    <h1 id='title'>{{$event->name}}</h1>
+                    <div class="here2">{{$event->short_description}}</div>
                     <div>
                         <a href="#register_form" class="btn btn-primary reg-btn block">Register Now</a>
                     </div>
                     <div class="people_joined"><span id="user_count">
-                            731</span> people have already joined
+                            {{$event->total_joining}}</span> people have already joined
                     </div>
                 </div>
                 <div class="col-lg-6 pt-4 mt-2 main_video pe-0 pe-sm-3 ">
@@ -143,22 +142,7 @@
         <div class="container ps-0 ps-md-5">
             <div class="row">
                 <div class="col-sm-12 col-lg-6">
-                    <div class="hook_details d-flex pb-1">
-                        <img src="{{ asset('assets/images/green_circle_tick.png') }}" width="32px" height="35px">
-                        <div class="hook_text">Tired of popping <b>pill after pill</b> for your health problem?</div>
-                    </div>
-                    <div class="hook_details d-flex py-1 mt-2">
-                        <img src="{{ asset('assets/images/green_circle_tick.png') }}" width="32px" height="35px">
-                        <div class="hook_text">Exhausted from the <strong>countless doctor visits</strong>?</div>
-                    </div>
-                    <div class="hook_details d-flex py-1 mt-2">
-                        <img src="{{ asset('assets/images/green_circle_tick.png') }}" width="32px" height="35px">
-                        <div class="hook_text">Seeking a permanent, <strong>long lasting solution</strong> to healing?</div>
-                    </div>
-                    <div class="hook_details hook_details_final pt-2 ps-1 mt-3">
-                        <div class="hook_text_final"><strong>If you answered "YES" to any of the above questions, then this
-                                program is for you.</strong></div>
-                    </div>
+                {!! html_entity_decode($event->question) !!}
                 </div>
             </div>
         </div>
@@ -178,7 +162,7 @@
                                             alt="Appointment">
                                         <div class="stdate">Start Date</div>
                                         <div class="fulldate" id="workshop_date">
-                                            20th Jan, 2025 <br>
+                                            {{$event->formatted_date}} <br>
                                         </div>
                                     </div>
                                 </div>
@@ -190,10 +174,7 @@
                                             alt="Time">
                                         <div class="stdate">Timings</div>
                                         <div class="fulldate">
-                                            6 to 07:15 AM (IST) or
-                                            <br> 8 to 09:15 AM (IST) or
-                                            <br> 4 to 05:15 PM (IST) or
-                                            <br> 8 to 09:15 PM (IST)
+                                            {{$event->formatted_time}}
                                         </div>
                                     </div>
                                 </div>
@@ -204,7 +185,7 @@
                                             src="https://heal-satvicmovement-org.b-cdn.net/resources/img/Icons/global_1.webp"
                                             alt="Global" width="50px" height="50px">
                                         <div class="stdate">Language</div>
-                                        <div class="fulldate">English</div>
+                                        <div class="fulldate">{{$event->language}}</div>
                                     </div>
                                 </div>
 
@@ -215,7 +196,7 @@
                                             alt="Duration">
                                         <div class="stdate">Duration</div>
                                         <div class="fulldate">
-                                            7 Days <br>
+                                        {{$event->duration}} Days
                                             <br>
                                             <br>
                                         </div>
@@ -227,30 +208,24 @@
                     <div class="col-lg-3">
                         <div class="right_block_container">
                             <div class="right_block register_desktop mt-4" style="">
-                                <h2>Heal <br /> Yourself Challenge</h2>
+                                <h2>{{$event->name}}</h2>
                                 <span class="date-and-time">
                                     <img loading="lazy"
                                         src="https://heal-satvicmovement-org.b-cdn.net/resources/img/date.png"
                                         alt="Date" width="100" height="100" />
-                                    20th Jan - 26th Jan
+                                    {{$event->formatted_date}}
                                 </span>
                                 <span class="date-and-time d-flex">
                                     <img loading="lazy"
                                         src="https://heal-satvicmovement-org.b-cdn.net/resources/img/time-blue.png"
                                         alt="Date" width="100" height="100" />
-                                    6 to 07:15 AM (IST)
-                                    or<br>
-                                    8 to 09:15 AM (IST)
-                                    or<br>
-                                    4 to 05:15 PM (IST)
-                                    or<br>
-                                    8 to 09:15 PM (IST)
+                                        {{$event->formatted_time}}
                                 </span>
 
                                 <span class="date-and-time mb-3">
                                     <img loading="lazy"
                                         src="https://heal-satvicmovement-org.b-cdn.net/resources/img/rupee.png"
-                                        alt="Date" width="100" height="100" />Contribution: Rs: 990 - 2990
+                                        alt="Date" width="100" height="100" />Contribution: Rs: {{$event->fees}}
                                 </span>
 
                                 <a href="#register_form"
@@ -301,76 +276,8 @@
                 <div class="row">
                     <div class="col-lg-9 mt-4">
                         <div class="white_block program_block">
-                            <div class="program_block_header_img d-flex justify-content-center">
-                                <img loading="lazy" src="{{ asset('assets/images/green_circle_tick.png') }}"
-                                    width="100px">
-                            </div>
-                            <h3 class="brown_heading program_block_mobile_header">This program is designed to help you
-                                overcome</h3>
-                            <div class="program_block_body">
-                                <div class="row">
-                                    <div class="col-6 p-0">
-                                        <div>
-                                            <img loading="lazy"
-                                                src="https://heal-satvicmovement-org.b-cdn.net/resources/img/program_for/mobile/1.webp">
-                                        </div>
-                                    </div>
-                                    <div class="col-6 p-0">
-                                        <div>
-                                            <img loading="lazy"
-                                                src="https://heal-satvicmovement-org.b-cdn.net/resources/img/program_for/mobile/2.webp">
-                                        </div>
-                                    </div>
-                                    <div class="col-6 p-0">
-                                        <div>
-                                            <img loading="lazy"
-                                                src="https://heal-satvicmovement-org.b-cdn.net/resources/img/program_for/mobile/3.webp">
-                                        </div>
-                                    </div>
-                                    <div class="col-6 p-0">
-                                        <div>
-                                            <img loading="lazy"
-                                                src="https://heal-satvicmovement-org.b-cdn.net/resources/img/program_for/mobile/4.webp">
-                                        </div>
-                                    </div>
-                                    <div class="col-6 p-0">
-                                        <div>
-                                            <img loading="lazy"
-                                                src="https://heal-satvicmovement-org.b-cdn.net/resources/img/program_for/mobile/5.webp">
-                                        </div>
-                                    </div>
-                                    <div class="col-6 p-0">
-                                        <div>
-                                            <img loading="lazy"
-                                                src="https://heal-satvicmovement-org.b-cdn.net/resources/img/program_for/mobile/6.webp">
-                                        </div>
-                                    </div>
-                                    <div class="col-6 p-0">
-                                        <div>
-                                            <img loading="lazy"
-                                                src="https://heal-satvicmovement-org.b-cdn.net/resources/img/program_for/mobile/7.webp">
-                                        </div>
-                                    </div>
-                                    <div class="col-6 p-0">
-                                        <div>
-                                            <img loading="lazy"
-                                                src="https://heal-satvicmovement-org.b-cdn.net/resources/img/program_for/mobile/8.webp">
-                                        </div>
-                                    </div>
-                                    <div class="col-6 p-0">
-                                        <div>
-                                            <img loading="lazy"
-                                                src="https://heal-satvicmovement-org.b-cdn.net/resources/img/program_for/mobile/9.webp">
-                                        </div>
-                                    </div>
-                                    <div class="col-6 p-0">
-                                        <div>
-                                            <img loading="lazy"
-                                                src="https://heal-satvicmovement-org.b-cdn.net/resources/img/program_for/mobile/10.webp">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <img loading="lazy"
+                        src="{{$event->event_image}}">
                         </div>
                     </div>
                 </div>
@@ -379,87 +286,25 @@
                     <div class="col-lg-9">
                         <div class="white_block white_block_transparent count_block_whiteblock mt-0">
                             <h3 class="brown_heading text-center">What's Included?</h3>
+                            @foreach ($event->include as $key => $include)
                             <div class="include_details">
                                 <div class="row">
                                     <div class="col-lg-3">
                                         <img loading="lazy"
-                                            src="https://heal-satvicmovement-org.b-cdn.net/resources/img/whats/11.webp"
-                                            alt="Daily Morning Online Session" class="mb-0 mb-sm-2" width="180px">
+                                            src="{{$include['image']}}"
+                                            alt="{{$include['title']}}" class="mb-0 mb-sm-2" width="180px">
                                     </div>
                                     <div class="col-lg-9 pr-3">
                                         <div class="include_details_bg">
-                                            <h4>Daily Morning Online Session</h4>
-                                            <div class="include_text">An engaging 1 hour session every morning, wherein you
-                                                will understand the science of natural healing in a way that you can
-                                                immediately implement in your life. The sessions will be led by Mrs Subah
-                                                Saraf, the founder
-                                                of Satvic Movement. </div>
+                                            <h4>{{$include['title']}}</h4>
+                                            <div class="include_text">{{$include['description']}} </div>
                                         </div>
                                     </div>
 
                                 </div>
                             </div>
-                            <div class="include_details">
-                                <div class="row">
-                                    <div class="col-lg-3">
-                                        <img loading="lazy"
-                                            src="https://heal-satvicmovement-org.b-cdn.net/resources/img/whats/12.webp"
-                                            alt="Understand the Root Cause of Your Disease" class="mb-0 mb-sm-2"
-                                            width="180px">
-                                    </div>
-                                    <div class="col-lg-9">
-                                        <div class="include_details_bg">
-                                            <h4>Understand the Root Cause of Your Disease</h4>
-                                            <div class="include_text">Fed up with pill after pill? Ever wondered why you're
-                                                facing health issues in the first place? The truth is, nobody really tells
-                                                you the underlying cause. But we're here to change that. <a
-                                                    class="show_hide" style="color: #8063a0!important;"
-                                                    data-content="toggle-text">Read More</a>
-                                                <div class="testinomial-content-more" id="more-data">In this challenge,
-                                                    you'll uncover the real culprit behind your health problems.</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="include_details">
-                                <div class="row">
-                                    <div class="col-lg-3">
-                                        <img loading="lazy"
-                                            src="https://heal-satvicmovement-org.b-cdn.net/resources/img/whats/13.webp"
-                                            alt="9 Step Plan to Reverse Your Disease Naturally" class="mb-0 mb-sm-2"
-                                            width="180px">
-                                    </div>
-                                    <div class="col-lg-9">
-                                        <div class="include_details_bg">
-                                            <h4>9 Step Plan to Reverse Your Disease Naturally</h4>
-                                            <div class="include_text">By the end of the 7 days, you will have a practical
-                                                9-step healing plan which you have to follow for the next 3 months. It will
-                                                involve simple food and lifestyle changes. No need to spend money on
-                                                medicines, pills,
-                                                fancy herbs or expensive treatments.</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="include_details">
-                                <div class="row">
-                                    <div class="col-lg-3">
-                                        <img loading="lazy"
-                                            src="https://heal-satvicmovement-org.b-cdn.net/resources/img/whats/14.webp"
-                                            alt="Strong Healing Community To Support You" class="mb-0 mb-sm-2"
-                                            width="180px">
-                                    </div>
-                                    <div class="col-lg-9">
-                                        <div class="include_details_bg">
-                                            <h4>Strong Healing Community To Support You</h4>
-                                            <div class="include_text">You'll have access to a supportive community who is
-                                                following the healing plan with you. You'll never feel alone in your journey
-                                                as you can share your experiences and receive encouragement from them.</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
+                            
                         </div>
                     </div>
                 </div>
@@ -473,64 +318,18 @@
                                     teachings</span></h3>
                             <div class="benefits_block">
                                 <div class="row">
+                                @foreach ($event->teaching as $key => $tech)
                                     <div class="col-lg-6 col-6">
                                         <div class="benefits_block_content pt-4">
-                                            <img srcset="https://heal-satvicmovement-org.b-cdn.net/resources/img/benifits/11.webp 480w,https://heal-satvicmovement-org.b-cdn.net/resources/img/benifits/11.webp 800w"
+                                            <img srcset="{{$tech['image']}}"
                                                 sizes="(max-width: 600px) 480px, 800px"
-                                                src="https://heal-satvicmovement-org.b-cdn.net/resources/img/benifits/11.webp">
+                                                src="{{$tech['image']}}">
                                         </div>
-                                        <div class="benefits_desc pt-2"><span><b>Reach your ideal weight</b></span><span
-                                                class="benefits_desc_extra"><br>transform your physique.</span></div>
+                                        <div class="benefits_desc pt-2"><span><b>{{$tech['title']}}</b></span><span
+                                                class="benefits_desc_extra"><br>{{$include['description']}}</span></div>
                                     </div>
-                                    <div class="col-lg-6 col-6">
-                                        <div class="benefits_block_content pt-4">
-                                            <img srcset="https://heal-satvicmovement-org.b-cdn.net/resources/img/benifits/12.webp 480w,https://heal-satvicmovement-org.b-cdn.net/resources/img/benifits/12.webp 800w"
-                                                sizes="(max-width: 600px) 480px, 800px"
-                                                src="https://heal-satvicmovement-org.b-cdn.net/resources/img/benifits/12.webp">
-                                        </div>
-                                        <div class="benefits_desc pt-2"><span><b>Save money on expensive
-                                                    pills</b></span><span class="benefits_desc_extra"><br>heal naturally
-                                                through lifestyle changes</span></div>
-                                    </div>
-                                    <div class="col-lg-6 col-6">
-                                        <div class="benefits_block_content pt-5">
-                                            <img srcset="https://heal-satvicmovement-org.b-cdn.net/resources/img/benifits/13.webp 480w,https://heal-satvicmovement-org.b-cdn.net/resources/img/benifits/13.webp 800w"
-                                                sizes="(max-width: 600px) 480px, 800px"
-                                                src="https://heal-satvicmovement-org.b-cdn.net/resources/img/benifits/13.webp">
-                                        </div>
-                                        <div class="benefits_desc pt-2"><span><b>Gain more energy in life</b></span><span
-                                                class="benefits_desc_extra"><br>accomplish more in less time</span></div>
-                                    </div>
-                                    <div class="col-lg-6 col-6">
-                                        <div class="benefits_block_content pt-5">
-                                            <img srcset="https://heal-satvicmovement-org.b-cdn.net/resources/img/benifits/14.webp 480w,https://heal-satvicmovement-org.b-cdn.net/resources/img/benifits/14.webp 800w"
-                                                sizes="(max-width: 600px) 480px, 800px"
-                                                src="https://heal-satvicmovement-org.b-cdn.net/resources/img/benifits/14.webp">
-                                        </div>
-                                        <div class="benefits_desc pt-2"><span><b>Strengthen your immunity</b></span><span
-                                                class="benefits_desc_extra"><br>protect yourself from future
-                                                illnesses</span></div>
-                                    </div>
-                                    <div class="col-lg-6 col-6">
-                                        <div class="benefits_block_content pt-5">
-                                            <img srcset="https://heal-satvicmovement-org.b-cdn.net/resources/img/benifits/15.webp 480w,https://heal-satvicmovement-org.b-cdn.net/resources/img/benifits/15.webp 800w"
-                                                sizes="(max-width: 600px) 480px, 800px"
-                                                src="https://heal-satvicmovement-org.b-cdn.net/resources/img/benifits/15.webp">
-                                        </div>
-                                        <div class="benefits_desc pt-2"><span><b>Uncomplicate health</b></span><span
-                                                class="benefits_desc_extra"><br>understand how simple healing is</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-6">
-                                        <div class="benefits_block_content pt-5">
-                                            <img srcset="https://heal-satvicmovement-org.b-cdn.net/resources/img/benifits/16.webp 480w,https://heal-satvicmovement-org.b-cdn.net/resources/img/benifits/16.webp 800w"
-                                                sizes="(max-width: 600px) 480px, 800px"
-                                                src="https://heal-satvicmovement-org.b-cdn.net/resources/img/benifits/16.webp">
-                                        </div>
-                                        <div class="benefits_desc pt-2"><span><b>Break free from dependency</b></span><span
-                                                class="benefits_desc_extra"><br>Take your health back in your own
-                                                hands</span></div>
-                                    </div>
+                                @endforeach
+                                    
                                 </div>
                                 <div class="pt-5">
                                     <a href="https://heal.satvicmovement.org/?utm_source=web&utm_medium=upw#register_form"
@@ -544,186 +343,17 @@
                             <h3 class="brown_heading">Curriculum For <br>The 7 Days</h3>
                             <div class="content">
                                 <div class="content-item active">
-                                    <div class="grid gtc curr-sm-2 curr-md-2 curr-lg-2 curr_grid">
-                                        <div class="row">
-                                            <div class="col-3 curr_section">
-                                                <div class="">
-                                                    <div class="heading_cur1">Day 1</div>
-                                                    <div class="heading_cur2">Mon</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="heading_cur3 curr_section">
-                                                    <div class="d-flex">
-                                                        <div> - </div>&nbsp;
-                                                        <div>Understand the <b>root cause</b> of disease</div>
-                                                    </div>
-                                                    <div class="d-flex">
-                                                        <div> - </div>&nbsp;
-                                                        <div>Know the <b>3 basic laws</b> of Satvic healing</div>
-                                                    </div>
-                                                    <div class="d-flex">
-                                                        <div> - </div>&nbsp;
-                                                        <div>Meet the <b>best healer</b> in the world</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="grid gtc curr-sm-2 curr-md-2 curr-lg-2 curr_grid" >
+                                       <div style="text-align:center">
+                                       {!! html_entity_decode($event->curriculum) !!}
 
-                                        <div class="row">
-                                            <div class="col-3 curr_section">
-                                                <div class="">
-                                                    <div class="heading_cur1">Day 2</div>
-                                                    <div class="heading_cur2">Tue</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="heading_cur3 curr_section">
-                                                    <div class="d-flex">
-                                                        <div> - </div>&nbsp;
-                                                        <div>Uncover the importance of <b>detoxification</b></div>
-                                                    </div>
-                                                    <div class="d-flex">
-                                                        <div> - </div>&nbsp;
-                                                        <div> Optimal <b>fasting</b> methods for healing</div>
-                                                    </div>
-                                                    <div class="d-flex">
-                                                        <div> - </div>&nbsp;
-                                                        <div> Best morning <b>juices</b></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                       </div>
 
-                                        <div class="row">
-                                            <div class="col-3 curr_section">
-                                                <div class="">
-                                                    <div class="heading_cur1">Day 3</div>
-                                                    <div class="heading_cur2">Wed</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="heading_cur3 curr_section">
-                                                    <div class="d-flex">
-                                                        <div> - </div>&nbsp;
-                                                        <div> Every <b>disease</b> begins in the colon</div>
-                                                    </div>
-                                                    <div class="d-flex">
-                                                        <div> - </div>&nbsp;
-                                                        <div> Enemas: Powerful way to <b>cleanse</b></div>
-                                                    </div>
-                                                    <div class="d-flex">
-                                                        <div> - </div>&nbsp;
-                                                        <div> Cold packs: Improve <b>blood circulation</b></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-3 curr_section">
-                                                <div class="">
-                                                    <div class="heading_cur1">Day 4</div>
-                                                    <div class="heading_cur2">Thur</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="heading_cur3 curr_section">
-                                                    <div class="d-flex">
-                                                        <div> - </div>&nbsp;
-                                                        <div> How to use <b>food as medicine?</b></div>
-                                                    </div>
-                                                    <div class="d-flex">
-                                                        <div> - </div>&nbsp;
-                                                        <div> What is the perfect healing <b>breakfast?</b></div>
-                                                    </div>
-                                                    <div class="d-flex">
-                                                        <div> - </div>&nbsp;
-                                                        <div> Tweak <b>lunch</b> to help in disease reversal</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-3 curr_section">
-                                                <div class="">
-                                                    <div class="heading_cur1">Day 5</div>
-                                                    <div class="heading_cur2">Fri</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="heading_cur3 curr_section">
-                                                    <div class="d-flex">
-                                                        <div> - </div>&nbsp;
-                                                        <div> Two mistakes to avoid in your <b>mid-meal</b></div>
-                                                    </div>
-                                                    <div class="d-flex">
-                                                        <div> - </div>&nbsp;
-                                                        <div> The best <b>healing dinner</b> options</div>
-                                                    </div>
-                                                    <div class="d-flex">
-                                                        <div> - </div>&nbsp;
-                                                        <div> Creative <b>meal planning</b> activity</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-3 curr_section">
-                                                <div class="">
-                                                    <div class="heading_cur1">Day 6</div>
-                                                    <div class="heading_cur2">Sat</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="heading_cur3 curr_section">
-                                                    <div class="d-flex">
-                                                        <div> - </div>&nbsp;
-                                                        <div> Impact of <b>meat, fish and eggs </b></div>
-                                                    </div>
-                                                    <div class="d-flex">
-                                                        <div> - </div>&nbsp;
-                                                        <div> <b>Milk</b> - The truth nobody is telling</div>
-                                                    </div>
-                                                    <div class="d-flex">
-                                                        <div> - </div>&nbsp;
-                                                        <div> <b>Protein</b> and <b>calcium</b> needs</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-3 curr_section">
-                                                <div class="">
-                                                    <div class="heading_cur1">Day 7</div>
-                                                    <div class="heading_cur2">Sun</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-9">
-                                                <div class="heading_cur3 curr_section">
-                                                    <div class="d-flex">
-                                                        <div> - </div>&nbsp;
-                                                        <div> How to go about <b>your medication?</b></div>
-                                                    </div>
-                                                    <div class="d-flex">
-                                                        <div> - </div>&nbsp;
-                                                        <div> Understanding the <b>healing timeline</b></div>
-                                                    </div>
-                                                    <div class="d-flex">
-                                                        <div> - </div>&nbsp;
-                                                        <div> <b>Socialising</b>, going out and cravings</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div id="people" class="white_block people">
+                        <!-- <div id="people" class="white_block people">
                             <h3 class="brown_heading mb-4 text-center">People are saying</h3>
                             <div class="row">
                                 <div class="col-sn-12 col-nd-5 col-lg-4">
@@ -1215,13 +845,12 @@
                                                         onclick="openTestinomial('four')">4</button></li>
                                                 <li class="page-item"><button class="page-link"
                                                         onclick="openTestinomial('five')">5</button></li>
-                                                <!-- <li class="page-item"><button class="page-link" onclick="openTestinomial('five')">5</button></li> -->
                                             </ul>
                                         </nav>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
 
                         <div id="about" class="white_block_no_padding about">

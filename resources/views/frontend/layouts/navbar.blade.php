@@ -2,8 +2,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg">
             <a class="navbar-brand" href="{{ route('home') }}">
-                <img class="logo_dark" src="{{ asset('assets/images/tejas_logo.png') }}" alt="logo" width="195"
-                    height="55" />
+            <img class="logo_dark img-fluid" src="{{ asset('assets/images/tejas_logo.png') }}" alt="logo">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span

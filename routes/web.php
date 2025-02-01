@@ -134,6 +134,7 @@ Route::middleware('auth')->group(function () {
     Route::post('store/status/{store}', [StoreController::class, 'changeStatus'])->name('store.changeStatus');
     Route::delete('store/product-photo', [StoreController::class, 'deleteProductPhoto'])->name('store.productPhoto');
     Route::resource('store', StoreController::class);
+    Route::post('store/add-home-status/{store}', [StoreController::class, 'changeHomeStatus'])->name('store.changeHomeStatus');
 
     Route::get('contact-us/data', [ContactUsController::class, 'getData'])->name('contact-us.data');
     Route::get('contact-us', [ContactUsController::class, 'index'])->name('contact-us.index');
@@ -164,6 +165,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/our-team/data', [OurTeamController::class, 'getData'])->name('our-team.data');
     Route::resource('our-team', OurTeamController::class);
+
+    Route::get('/slider/data', [OurTeamController::class, 'getData'])->name('slider.data');
+    Route::resource('slider', OurTeamController::class);
 });
 
 require __DIR__ . '/auth.php';

@@ -22,13 +22,15 @@ class HomeController extends Controller
     public function index()
     {
         $blogs = Blog::where('status', 'Active')->latest()->take(3)->get();
+        $latestStore = Store::where('status', 'Active')->select('id', 'product_name', 'product_thumb',  'price', 'discount')->latest()->take(4)->get();
+        $store = Store::where('add_home_status', 'Active')->select('*')->first();
         $blogs->transform(function ($blog) {
             $blog->formatted_date = Carbon::parse($blog->starting_date)->format('d M');
             $blog->formatted_time = Carbon::parse($blog->starting_date)->format('H:i');
             return $blog;
         });
         $outTeams = OurTeam::all();
-        return view('frontend.index', compact('blogs', 'outTeams'));
+        return view('frontend.index', compact('blogs','outTeams','latestStore','store'));
     }
 
     public function about()

@@ -1,23 +1,23 @@
 <x-app-layout>
-    <x-head-lable href="{{ route('store.create') }}">
-        {{ __('Store List') }}
+    <x-head-lable href="{{ route('slider.create') }}">
+        {{ __('Slider List') }}
     </x-head-lable>
 
     <div class="p-4">
         <div class="overflow-x-auto">
-            <table id="store-table" class="min-w-full bg-white border border-gray-300">
+
+            <table id="slider-table" class="min-w-full bg-white border border-gray-300">
                 <thead>
                     <tr>
                         <th class="text-center">Actions</th>
                         <th>#</th>
-                        <th>Product Name</th>
-                        <th>Product Thumb</th>
-                        <th>Price</th>
-                        <th>Discount</th>
-                        <th>Total Stock</th>
-                        <th>Total Sale</th>
-                        <th>Status</th>
-                        <th>Add Home Status</th>
+                        <th>Name</th>
+                        <th>Post</th>
+                        <th>Profile</th>
+                        <th>Speciality</th>
+                        <th>Experience</th>
+                        <th>Phone No</th>
+                        <th>Trainers Skill</th>
                     </tr>
                 </thead>
             </table>
@@ -26,10 +26,10 @@
 
     <script>
         $(document).ready(function() {
-            $('#store-table').DataTable({
+            $('#slider-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ route('store.data') }}',
+                ajax: '{{ route('slider.data') }}',
                 columns: [{
                         data: 'action',
                         searchable: false,
@@ -42,33 +42,37 @@
                         sortable: false
                     },
                     {
-                        data: 'product_name',
+                        data: 'name',
+                        name: 'name'
                     },
                     {
-                        data: 'product_thumb'
+                        data: 'post',
+                        name: 'post'
                     },
                     {
-                        data: 'price'
+                        data: 'profile',
+                        name: 'profile'
                     },
                     {
-                        data: 'discount'
+                        data: 'speciality',
+                        name: 'speciality'
                     },
                     {
-                        data: 'total_stock'
+                        data: 'experience',
+                        name: 'experience'
                     },
                     {
-                        data: 'total_sale'
+                        data: 'phone_no',
+                        name: 'phone_no'
                     },
                     {
-                        data: 'status'
-                    },
-                    {
-                        data: 'add_home_status'
+                        data: 'trainers_skill',
+                        name: 'trainers_skill'
                     },
                 ]
             });
 
-            $('#store-table_length, #store-table_info').addClass('my-2')
+            $('#slider-table_length, #slider-table_info').addClass('my-2')
         });
 
         // SweetAlert for delete confirmation
@@ -103,7 +107,7 @@
                                 timer: 500
                             });
 
-                            $('#store-table').DataTable().row($(this).parents('tr'))
+                            $('#slider-table').DataTable().row($(this).parents('tr'))
                                 .remove().draw();
                         });
 
@@ -117,36 +121,5 @@
                     }
                 });
         });
-
-        $(document).on('click', '.changeStatus', function(e) {
-            e.preventDefault();
-            const url = $(this).data('url');
-            $.ajax({
-                url: url,
-                type: 'POST',
-                data: {
-                    _token: "{{ csrf_token() }}",
-                },
-                success: function(response) {
-                    $('#store-table').DataTable().ajax.reload(null, false);
-                }
-            });
-        });
-        
-        $(document).on('click', '.changeHomeStatus', function(e) {
-            e.preventDefault();
-            const url = $(this).data('url');
-            $.ajax({
-                url: url,
-                type: 'POST',
-                data: {
-                    _token: "{{ csrf_token() }}",
-                },
-                success: function(response) {
-                    $('#store-table').DataTable().ajax.reload(null, false);
-                }
-            });
-        });
-
     </script>
 </x-app-layout>

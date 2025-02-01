@@ -87,7 +87,7 @@
                                                                     </div>
                                                                     <div class="col-sm-8 pt-0 pl-2 m-0 pr-0">
                                                                         <span class="text-muted" style=" "><b>Duration</b></span><br>
-                                                                        <span class="text-muted" style=" "> 21 Days</span>
+                                                                        <span class="text-muted" style=" ">{{$event->duration}}  Days</span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -111,7 +111,7 @@
                                                                 </div>
                                                                     <div class="col-sm-8 pt-0 pl-2 m-0 pr-0">
                                                                         <span class="text-muted" style=" "><b>Language</b></span><br>
-                                                                        <span class="text-muted" style=" "> English</span>
+                                                                        <span class="text-muted" style=" ">  {{$event->language}}</span>
                                                                     </div>
                                                                 </div>
                                                             </div>

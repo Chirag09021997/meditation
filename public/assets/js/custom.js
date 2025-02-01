@@ -318,3 +318,39 @@ $(document).ready(function () {
         $(".cart-total").text("$" + total.toFixed(2));
     }
 });
+
+
+$(document).ready(function () {
+    var audio = new Audio(); // Single audio instance
+    var hasClicked = false;  // Track the first click
+
+    // Allow autoplay after first click anywhere
+    $(document).one('click', function () {
+        hasClicked = true;
+    });
+
+    // Play audio when hovering
+    $('.zoom-img').on('mouseenter', function () {
+        if (!hasClicked) return; // If no click has happened, don't play audio
+
+        var soundPath = $(this).data('sound');
+        if (soundPath) {
+            audio.src = soundPath;
+            audio.loop = true;  // Loop the audio while hovering
+            audio.play().catch(function (error) {
+                console.log("Autoplay blocked:", error);  // Handle autoplay blocking
+            });
+        }
+    });
+
+    // Stop the audio when leaving hover
+    $('.zoom-img').on('mouseleave', function () {
+        audio.pause();
+        audio.currentTime = 0;  // Reset the audio when cursor leaves
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector(".carousel-control-prev").style.backgroundColor = "#23579D";
+    document.querySelector(".carousel-control-next").style.backgroundColor = "#23579D";
+});

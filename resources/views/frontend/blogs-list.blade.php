@@ -102,7 +102,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 order-lg-first mt-5 mt-lg-0">
+                <div class="col-lg-3 mt-5 mt-lg-0">
                     <div class="sidebar">
                         <a href="{{ route('blogs') }}">
                             <h5 class="widget_title">Categories</h5>
@@ -119,7 +119,7 @@
                                 @endforeach
                             </ul>
                         </div>
-                        <div class="widget widget_tags">
+                        <!-- <div class="widget widget_tags">
                             <h5 class="widget_title">tags</h5>
                             <div class="tags">
                                 <a href="#">Gym</a>
@@ -173,7 +173,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

@@ -50,82 +50,109 @@
     {{-- <!-- END SECTION ABOUT --> --}}
 
     {{-- <!-- START SECTION BENIFIT --> --}}
-    <section class="bg_gray">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-6 col-lg-8 col-md-10 text-center animation" data-animation="fadeInUp"
+
+    <section class="bg_gray ess-sect" >
+    <div class="container">
+        <div class="row align-items-center text-center">
+            <div class="col-md-12 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
+                <div class="heading_s1 ">
+                    <!-- <span class="sub_heading">Welcome to Dhyana</span> -->
+                    <h2>Essenals for everyday life </h2>
+                </div>
+                <p> A joyful and peaceful life from the experience of our life. Due to which the productivity and
+                    success in every work of life increased, he made it the principal of life and decided to work on it
+                    for people.
+                </p>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-sm-6">
+                <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
                     data-animation-delay="0.2s">
-                    <div class="heading_s1">
-                        <span class="sub_heading">What we do</span>
-                        <h2>Essentials for everyday Yoga</h2>
+                    <div class="box_icon">
+                        <img src="{{ asset('assets/images/strong-body.png') }}" width="35" height="35"
+                            alt="strong-body">
                     </div>
-                    <p>Contrary to popular belief Lorem is not simply random text. It has roots in adipiscing ncididunt
-                        piece of classical literature</p>
-                    <div class="small_divider clearfix"></div>
+                    <div class="intro_desc">
+                        <h5>Meditation</h5>
+                        <p> We believe that meditation can transform everyone, so we teach people to meditate. </p>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="icon_box box_shadow4 icon_box_style2 animation" data-animation="fadeInRight"
-                        data-animation-delay="0.2s">
-                        <div class="box_icon">
-                            <img src="{{ asset('assets/images/strong-body.png') }}" width="35" height="35"
-                                alt="strong-body">
-                        </div>
-                        <div class="intro_desc">
-                            <h5>Strong Body life</h5>
-                            <p> Lorem ipsum dolor sit amet, consectetur blandit magna adipiscing elit ncididunt labore et
-                                dolore magna aliqua enim. </p>
-                        </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
+                    data-animation-delay="0.3s">
+                    <div class="box_icon">
+                        <img src="{{ asset('assets/images/flexibility.png') }}" width="35" height="35"
+                            alt="flexibility">
                     </div>
-                    <div class="icon_box box_shadow4 icon_box_style2 animation" data-animation="fadeInRight"
-                        data-animation-delay="0.3s">
-                        <div class="box_icon">
-                            <img src="{{ asset('assets/images/flexibility.png') }}" width="35" height="35"
-                                alt="flexibility">
-                        </div>
-                        <div class="intro_desc">
-                            <h5>increased flexibility</h5>
-                            <p> Lorem ipsum dolor sit amet, consectetur blandit magna adipiscing elit ncididunt labore et
-                                dolore magna aliqua enim. </p>
-                        </div>
+                    <div class="intro_desc">
+                        <h5>Aura</h5>
+                        <p> Helping people to have a holy and pure aura give people well-being in their lives. </p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 order-lg-last">
-                    <div class="icon_box box_shadow4 icon_box_style2 animation" data-animation="fadeInLeft"
-                        data-animation-delay="0.2s">
-                        <div class="box_icon">
-                            <img src="{{ asset('assets/images/healthy-lifestyle.png') }}" width="35" height="35"
-                                alt="healthy-lifestyle">
-                        </div>
-                        <div class="intro_desc">
-                            <h5>healthy lifestyle</h5>
-                            <p> Lorem ipsum dolor sit amet, consectetur blandit magna adipiscing elit ncididunt labore et
-                                dolore magna aliqua enim. </p>
-                        </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
+                    data-animation-delay="0.4s">
+                    <div class="box_icon">
+                        <img src="{{ asset('assets/images/healthy-lifestyle.png') }}" width="35" height="35"
+                            alt="healthy-lifestyle">
                     </div>
-                    <div class="icon_box box_shadow4 icon_box_style2 animation" data-animation="fadeInLeft"
-                        data-animation-delay="0.3s">
-                        <div class="box_icon">
-                            <img src="{{ asset('assets/images/drops-blood.png') }}" width="35" height="35"
-                                alt="drops-blood">
-                        </div>
-                        <div class="intro_desc">
-                            <h5>Drops blood pressure</h5>
-                            <p> Lorem ipsum dolor sit amet, consectetur blandit magna adipiscing elit ncididunt labore et
-                                dolore magna aliqua enim. </p>
-                        </div>
+                    <div class="intro_desc">
+                        <h5>Thoughts</h5>
+                        <p> Unnecessary thoughts reduce the productivity of human life, so teach a method for managing
+                            thoughts. </p>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="text-center benifits_bg animation" data-animation="fadeInUp" data-animation-delay="0.2s">
-                        <img src="{{ asset('assets/images/benifits_img.png') }}" alt="benifits_img" />
+            </div>
+            <div class="col-lg-1 col-sm-6"></div>
+
+            <div class="col-lg-4 col-sm-6">
+                <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
+                    data-animation-delay="0.2s">
+                    <div class="box_icon">
+                        <img src="{{ asset('assets/images/blood-flow.png') }}" width="35" height="35" alt="blood-flow">
+                    </div>
+                    <div class="intro_desc">
+                        <h5>Energy </h5>
+                        <p> Understanding and awareness of inner energy is helpful in making life successful so act on
+                            inner energy and spread it. </p>
                     </div>
                 </div>
+            </div>
+            <div class="col-lg-2 col-sm-6"> </div>
+
+            <div class="col-lg-4 col-sm-6">
+                <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
+                    data-animation-delay="0.4s">
+                    <div class="box_icon">
+                        <img src="{{ asset('assets/images/adrenal-gland.png') }}" width="35" height="35"
+                            alt="adrenal-gland">
+                    </div>
+                    <div class="intro_desc">
+                        <h5>Vibration</h5>
+                        <p> Do practical and theoretical work on topics like vibration, frequency. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1 col-sm-6"></div>
+        </div>
+    </div>
+    <div class="banner_shape">
+        <div class="shape1">
+            <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                <img src="{{ asset('assets/images/pattern2.svg') }}" alt="image" />
             </div>
         </div>
-
-    </section>
+        <div class="shape2">
+            <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                <img src="{{ asset('assets/images/pattern1.svg') }}" alt="image" />
+            </div>
+        </div>
+    </div>
+</section>
     {{-- <!-- END SECTION BENIFIT --> --}}
 
     {{-- <!-- START SECTION TESTIMONIAL --> --}}
