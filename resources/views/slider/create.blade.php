@@ -15,119 +15,44 @@
                 <x-input-error :messages="$errors->get('title')" class="mt-2" />
             </div>
 
+            <!-- background -->
+            <div class="mt-4">
+                <x-input-label for="background" :value="__('Background')" />
+                <x-text-input id="background"
+                    class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
+                    type="file" name="background" accept="image/*" :value="old('background')" />
+                <x-input-error :messages="$errors->get('background')" class="mt-2" />
+            </div>
+
+            {{-- text_align --}}
+            <div class="mt-4">
+                <label class="block font-medium text-sm text-gray-700" for="name">
+                    Select text align :
+                </label>
+                <select id="text_align" name="text_align"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="Left" {{ old('text_align', $model->text_align ?? '') == 'Left' ? 'selected' : '' }}>Left</option>
+                    <option value="Right" {{ old('text_align', $model->text_align ?? '') == 'Right' ? 'selected' : '' }}>Right</option>
+                </select>
+            </div>
+
             <!-- sub_description -->
             <div class="mt-4">
                 <x-input-label for="sub_description" :value="__('Short Description')" />
-                <x-text-input id="sub_description" class="block mt-1 w-full" type="text" name="sub_description" :value="old('sub_description')"
-                    placeholder="Enter short description" required autofocus />
+                <textarea id="sub_description" name="sub_description" rows="4"
+                    class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
+                    placeholder="Enter sub description...">{{ old('sub_description') }}</textarea>
                 <x-input-error :messages="$errors->get('sub_description')" class="mt-2" />
-            </div>
-
-            <!-- name -->
-            <div class="mt-4">
-                <x-input-label for="title" :value="__('Title')" />
-                <x-text-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')"
-                    placeholder="Enter title" required autofocus />
-                <x-input-error :messages="$errors->get('title')" class="mt-2" />
-            </div>
-            
-            <!-- post -->
-            <div class="mt-4">
-                <x-input-label for="post" :value="__('Post')" />
-                <x-text-input id="post" class="block mt-1 w-full" type="text" name="post" :value="old('post')"
-                    placeholder="Enter post" required />
-                <x-input-error :messages="$errors->get('post')" class="mt-2" />
-            </div>
-
-            <!-- profile -->
-            <div class="mt-4">
-                <x-input-label for="profile" :value="__('Profile')" />
-                <x-text-input id="profile"
-                    class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
-                    type="file" name="profile" accept="image/*" :value="old('profile')" />
-                <x-input-error :messages="$errors->get('profile')" class="mt-2" />
-            </div>
-
-            <!-- speciality -->
-            <div class="mt-4">
-                <x-input-label for="speciality" :value="__('Speciality')" />
-                <x-text-input id="speciality" class="block mt-1 w-full" type="text" name="speciality"
-                    :value="old('speciality')" placeholder="Enter speciality" />
-                <x-input-error :messages="$errors->get('speciality')" class="mt-2" />
-            </div>
-
-            <!-- experience -->
-            <div class="mt-4">
-                <x-input-label for="experience" :value="__('Experience')" />
-                <x-text-input id="experience" class="block mt-1 w-full" type="text" name="experience"
-                    :value="old('experience')" placeholder="Enter experience" />
-                <x-input-error :messages="$errors->get('experience')" class="mt-2" />
-            </div>
-
-            <!-- phone_no -->
-            <div class="mt-4">
-                <x-input-label for="phone_no" :value="__('Phone No')" />
-                <x-text-input id="phone_no" class="block mt-1 w-full" type="text" name="phone_no" :value="old('phone_no')"
-                    placeholder="Enter phone no" />
-                <x-input-error :messages="$errors->get('phone_no')" class="mt-2" />
-            </div>
-
-            <!-- trainers_skill -->
-            <div class="mt-4">
-                <x-input-label for="trainers_skill" :value="__('Trainers Skill')" />
-                <x-text-input id="trainers_skill" class="block mt-1 w-full" type="text" name="trainers_skill"
-                    placeholder="Enter trainers skill" :value="old('trainers_skill')" />
-                <x-input-error :messages="$errors->get('trainers_skill')" class="mt-2" />
-            </div>
-
-            <!-- facebook_url -->
-            <div class="mt-4">
-                <x-input-label for="facebook_url" :value="__('Facebook Url')" />
-                <x-text-input id="facebook_url" class="block mt-1 w-full" type="text" name="facebook_url"
-                    placeholder="Enter facebook url" :value="old('facebook_url')" />
-                <x-input-error :messages="$errors->get('facebook_url')" class="mt-2" />
-            </div>
-
-            <!-- twitter_url -->
-            <div class="mt-4">
-                <x-input-label for="twitter_url" :value="__('Twitter Url')" />
-                <x-text-input id="twitter_url" class="block mt-1 w-full" type="text" name="twitter_url"
-                    placeholder="Enter twitter url" :value="old('twitter_url')" />
-                <x-input-error :messages="$errors->get('twitter_url')" class="mt-2" />
-            </div>
-
-            <!-- google_url -->
-            <div class="mt-4">
-                <x-input-label for="google_url" :value="__('Google Url')" />
-                <x-text-input id="google_url" class="block mt-1 w-full" type="text" name="google_url"
-                    placeholder="Enter google url" :value="old('google_url')" />
-                <x-input-error :messages="$errors->get('google_url')" class="mt-2" />
-            </div>
-
-            <!-- instagram_url -->
-            <div class="mt-4">
-                <x-input-label for="instagram_url" :value="__('Instagram Url')" />
-                <x-text-input id="instagram_url" class="block mt-1 w-full" type="text" name="instagram_url"
-                    placeholder="Enter instagram url" :value="old('instagram_url')" />
-                <x-input-error :messages="$errors->get('instagram_url')" class="mt-2" />
-            </div>
-
-            <!-- youtube_url -->
-            <div class="mt-4">
-                <x-input-label for="youtube_url" :value="__('Youtube Url')" />
-                <x-text-input id="youtube_url" class="block mt-1 w-full" type="text" name="youtube_url"
-                    placeholder="Enter youtube url" :value="old('youtube_url')" />
-                <x-input-error :messages="$errors->get('youtube_url')" class="mt-2" />
             </div>
         </div>
 
-        <!-- about -->
+        <!-- description -->
         <div class="mt-4">
-            <x-input-label for="about" :value="__('About')" />
-            <textarea id="about" name="about" rows="4"
+            <x-input-label for="description" :value="__('Description')" />
+            <textarea id="description" name="description" rows="4"
                 class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
-                placeholder="Enter about...">{{ old('about') }}</textarea>
-            <x-input-error :messages="$errors->get('about')" class="mt-2" />
+                placeholder="Enter description...">{{ old('description') }}</textarea>
+            <x-input-error :messages="$errors->get('description')" class="mt-2" />
         </div>
 
         <div class="flex items-center justify-end mt-4">
@@ -142,7 +67,7 @@
     </form>
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
     <script>
-        CKEDITOR.replace('about', {
+        CKEDITOR.replace('description', {
             height: 300,
         });
     </script>

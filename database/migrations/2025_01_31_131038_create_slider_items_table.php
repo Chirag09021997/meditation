@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('background');
             $table->enum('text_align', ['Left', 'Right'])->default('Left');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

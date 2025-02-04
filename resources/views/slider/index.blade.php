@@ -11,19 +11,15 @@
                     <tr>
                         <th class="text-center">Actions</th>
                         <th>#</th>
-                        <th>Name</th>
-                        <th>Post</th>
-                        <th>Profile</th>
-                        <th>Speciality</th>
-                        <th>Experience</th>
-                        <th>Phone No</th>
-                        <th>Trainers Skill</th>
+                        <th>Title</th>
+                        <th>Background</th>
+                        <th>Text Align</th>
                     </tr>
                 </thead>
             </table>
         </div>
     </div>
-
+    {{-- 'id', 'title', 'sub_description', 'description', 'background', 'text_align' --}}
     <script>
         $(document).ready(function() {
             $('#slider-table').DataTable({
@@ -42,32 +38,16 @@
                         sortable: false
                     },
                     {
-                        data: 'name',
-                        name: 'name'
+                        data: 'title',
+                        name: 'title'
                     },
                     {
-                        data: 'post',
-                        name: 'post'
+                        data: 'background',
+                        name: 'background'
                     },
                     {
-                        data: 'profile',
-                        name: 'profile'
-                    },
-                    {
-                        data: 'speciality',
-                        name: 'speciality'
-                    },
-                    {
-                        data: 'experience',
-                        name: 'experience'
-                    },
-                    {
-                        data: 'phone_no',
-                        name: 'phone_no'
-                    },
-                    {
-                        data: 'trainers_skill',
-                        name: 'trainers_skill'
+                        data: 'text_align',
+                        name: 'text_align'
                     },
                 ]
             });

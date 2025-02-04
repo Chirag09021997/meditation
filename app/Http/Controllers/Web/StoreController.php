@@ -116,7 +116,7 @@ class StoreController extends Controller
 
     public function getData(Request $request)
     {
-        $store = Store::select(['id', 'product_name', 'product_thumb', 'price', 'total_stock', 'total_sale', 'discount', 'status'])->orderByDesc('created_at');
+        $store = Store::select(['id', 'product_name', 'product_thumb', 'price', 'total_stock', 'total_sale', 'discount', 'status', 'add_home_status'])->orderByDesc('created_at');
 
         return DataTables::of($store)
             ->addColumn('action', function ($data) {
@@ -136,7 +136,7 @@ class StoreController extends Controller
             ->editColumn('product_thumb', function ($data) {
                 return '<img src="' . $data->product_thumb . '" alt="" class="w-8 mx-auto" />';
             })
-            ->rawColumns(['action', 'status', 'product_thumb','add_home_status'])
+            ->rawColumns(['action', 'status', 'product_thumb', 'add_home_status'])
             ->addIndexColumn()
             ->toJson();
     }

@@ -20,6 +20,7 @@ use App\Http\Controllers\Web\NotificationController;
 use App\Http\Controllers\Web\OrderController;
 use App\Http\Controllers\Web\OurTeamController;
 use App\Http\Controllers\Web\PremiumPlanController;
+use App\Http\Controllers\Web\SliderController;
 use App\Http\Controllers\Web\StoreController;
 use App\Http\Controllers\Web\WorkshopCategoryController;
 use App\Http\Controllers\Web\WorkShopController;
@@ -166,8 +167,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/our-team/data', [OurTeamController::class, 'getData'])->name('our-team.data');
     Route::resource('our-team', OurTeamController::class);
 
-    Route::get('/slider/data', [OurTeamController::class, 'getData'])->name('slider.data');
-    Route::resource('slider', OurTeamController::class);
+    Route::get('/slider/data', [SliderController::class, 'getData'])->name('slider.data');
+    Route::resource('slider', SliderController::class);
 });
 
 require __DIR__ . '/auth.php';

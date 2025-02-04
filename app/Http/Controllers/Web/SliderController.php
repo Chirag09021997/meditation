@@ -39,30 +39,33 @@ class SliderController extends Controller
             $validated['background'] = str_replace('public/', 'storage/', $filePath);
         }
         SliderItem::create($validated);
-        return redirect()->route('slider.index')->with('success', 'Our Team created successfully.');
+        return redirect()->route('slider.index')->with('success', 'Slider created successfully.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(SliderItem $sliderItem)
+    public function show(string $id)
     {
+        $sliderItem = SliderItem::findOrFail($id);
         return view('slider.show', compact('sliderItem'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(SliderItem $sliderItem)
+    public function edit(string $id)
     {
+        $sliderItem = SliderItem::findOrFail($id);
         return view('slider.edit', compact('sliderItem'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSliderRequest $request, SliderItem $sliderItem)
+    public function update(UpdateSliderRequest $request, string $id)
     {
+        $sliderItem = SliderItem::findOrFail($id);
         $validated = $request->validated();
         if ($request->hasFile('background')) {
             if ($sliderItem->background != null) {
@@ -78,14 +81,15 @@ class SliderController extends Controller
             $validated['background'] = str_replace('public/', 'storage/', $filePath);
         }
         $sliderItem->update($validated);
-        return redirect()->route('slider.index')->with('success', 'Our Team updated successfully.');
+        return redirect()->route('slider.index')->with('success', 'Slider updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(SliderItem $sliderItem)
+    public function destroy(string $id)
     {
+        $sliderItem = SliderItem::find($id);
         $sliderItem->delete();
         echo 1;
     }

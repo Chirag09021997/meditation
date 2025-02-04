@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SliderItem extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $table = 'slider_items'; // Table name
 
@@ -18,4 +19,9 @@ class SliderItem extends Model
         'background',
         'text_align'
     ];
+
+    public function getBackgroundAttribute($value)
+    {
+        return !empty($value) ? config('app.url') . "/" . $value : null;
+    }
 }
