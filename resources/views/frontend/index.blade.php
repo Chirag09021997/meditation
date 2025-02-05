@@ -67,15 +67,16 @@
                     </div>
                 @else
                     <div class="carousel-item bg_light_yellow {{ $key == 0 ? 'active' : ''}}">
-                        <div class="banner_slide_content slider2">
+                    <div class="banner_slide_content slider2"
+                            style="margin-top: 20px; background-image: url('{{ asset($slider->background) }}');">
                             <div class="container">
                                 <div class="row align-items-center">
                                     <div class="col-lg-6 col-md-5">
                                         <div class="banner_img2 text-center">
                                             <div class="animation border_img" data-animation="fadeInRight"
                                                 data-animation-delay="0.5s">
-                                                <img data-parallax='{"y": -30, "smoothness": 20}'
-                                                    src="{{ $slider->background }}" alt="image" />
+                                                <!-- <img data-parallax='{"y": -30, "smoothness": 20}'
+                                                    src="{{ $slider->background }}" alt="image" /> -->
                                             </div>
                                         </div>
                                     </div>
