@@ -73,11 +73,11 @@
                                 <div class="row align-items-center">
                                     <div class="col-lg-6 col-md-5">
                                         <div class="banner_img2 text-center">
-                                            <div class="animation border_img" data-animation="fadeInRight"
-                                                data-animation-delay="0.5s">
+                                            <!-- <div class="animation border_img" data-animation="fadeInRight"
+                                                data-animation-delay="0.5s"> -->
                                                 <!-- <img data-parallax='{"y": -30, "smoothness": 20}'
                                                     src="{{ $slider->background }}" alt="image" /> -->
-                                            </div>
+                                            <!-- </div> -->
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-7 order-md-first">
