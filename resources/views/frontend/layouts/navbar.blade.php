@@ -14,24 +14,24 @@
                             href="{{ route('home') }}">Home</a>
                     </li>
                     <li>
-                        <a class="nav-link {{ request()->is('events') ? 'active' : '' }}"
-                            href="{{ route('events') }}">Event</a>
-                    </li>
-                    <li>
-                        <a class="nav-link {{ request()->is('blogs') ? 'active' : '' }}"
-                            href="{{ route('blogs') }}">Blog</a>
+                        <a class="nav-link {{ request()->is('about') ? 'active' : '' }}"
+                            href="{{ route('about') }}">About</a>
                     </li>
                     <li>
                         <a class="nav-link {{ request()->is('stores') ? 'active' : '' }}"
                             href="{{ route('stores') }}">Store</a>
                     </li>
                     <li>
-                        <a class="nav-link {{ request()->is('contact') ? 'active' : '' }}"
-                            href="{{ route('contact') }}">Contact Us</a>
+                        <a class="nav-link {{ request()->is('blogs') ? 'active' : '' }}"
+                            href="{{ route('blogs') }}">Blog</a>
                     </li>
                     <li>
-                        <a class="nav-link {{ request()->is('about') ? 'active' : '' }}"
-                            href="{{ route('about') }}">About</a>
+                        <a class="nav-link {{ request()->is('events') ? 'active' : '' }}"
+                            href="{{ route('events') }}">Programs</a>
+                    </li>
+                    <li>
+                        <a class="nav-link {{ request()->is('contact') ? 'active' : '' }}"
+                            href="{{ route('contact') }}">Contact Us</a>
                     </li>
                 </ul>
             </div>

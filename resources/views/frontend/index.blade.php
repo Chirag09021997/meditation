@@ -31,11 +31,14 @@
                                         <h3 class="animation" data-animation="fadeInDown" data-animation-delay="0.5s">
                                             WELCOM TO DELTA CIRCLE MEDITATION</h3>
                                         <p class="animation" data-animation="fadeInUp" data-animation-delay="0.6s">
-                                            Meditation is a practice that involves focusing the mind to achieve a state of
+                                            Meditation is a practice that involves focusing the mind to achieve a state
+                                            of
                                             mental clarity,
-                                            relaxation, and emotional stability. It has been used for centuries in various
+                                            relaxation, and emotional stability. It has been used for centuries in
+                                            various
                                             cultures and spiritual traditions,
-                                            but it has also gained popularity in modern wellness practices for its physical,
+                                            but it has also gained popularity in modern wellness practices for its
+                                            physical,
                                             mental, and emotional benefits.
                                         </p>
                                         <a class="btn btn-default rounded-0 animation" href="/delta" target="_blank"
@@ -45,7 +48,7 @@
                                     </div>
 
                                 </div>
-                               
+
                             </div>
                         </div>
                     </div>
@@ -53,12 +56,14 @@
                 <div class="banner_shape">
                     <div class="shape_circle1">
                         <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                            <img src="{{ asset('assets/images/Group-circle.png') }}" alt="image" class="rotate linear infinite"/>
+                            <img src="{{ asset('assets/images/Group-circle.png') }}" alt="image"
+                                class="rotate linear infinite" />
                         </div>
                     </div>
                     <div class="shape_circle2">
                         <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                            <img src="{{ asset('assets/images/Group-blue.png') }}" alt="image" class="rotate linear infinite" />
+                            <img src="{{ asset('assets/images/Group-blue.png') }}" alt="image"
+                                class="rotate linear infinite" />
                         </div>
                     </div>
                 </div>
@@ -100,12 +105,14 @@
                 <div class="banner_shape">
                     <div class="shape_circle1">
                         <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                            <img src="{{ asset('assets/images/Group-circle.png') }}" alt="image" class="rotate linear infinite"/>
+                            <img src="{{ asset('assets/images/Group-circle.png') }}" alt="image"
+                                class="rotate linear infinite" />
                         </div>
                     </div>
                     <div class="shape_circle2">
                         <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                            <img src="{{ asset('assets/images/Group-blue.png') }}" alt="image" class="rotate linear infinite" />
+                            <img src="{{ asset('assets/images/Group-blue.png') }}" alt="image"
+                                class="rotate linear infinite" />
                         </div>
                     </div>
                 </div>
@@ -174,7 +181,7 @@
 <section class="pb_70 bg-yoga">
     <div class="container ">
         <div class="row justify-content-center">
-        <img src="{{ asset('assets/images/bg2.svg') }}" class="rotate  linear infinite circle-img" />
+            <img src="{{ asset('assets/images/bg2.svg') }}" class="rotate  linear infinite circle-img" />
             <div class="col-xl-6 col-lg-8 col-md-10 text-center animation" data-animation="fadeInUp"
                 data-animation-delay="0.2s">
                 <div class="heading_s1">
@@ -270,7 +277,8 @@
         <div class="banner_shape">
             <div class="shape1">
                 <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <img src="{{ asset('assets/images/Group-circle.png') }}" alt="image" class="r-link linear infinite" />
+                    <img src="{{ asset('assets/images/Group-circle.png') }}" alt="image"
+                        class="r-link linear infinite" />
                 </div>
             </div>
             <div class="shape2">
@@ -288,24 +296,27 @@
 <section class="bg_gray bg-yoga">
     <div class="container">
         <div class="row justify-content-center">
-        <img src="{{ asset('assets/images/bg2.svg') }}" class="rotate linear infinite circle-img2" />
+            <img src="{{ asset('assets/images/bg2.svg') }}" class="rotate linear infinite circle-img2" />
             <div class="col-md-12 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
                 <div class="heading_s1 center">
                     <h2>Better Life With Delta Circle</h2>
                 </div>
-                <p class="center">We all get up and go to work, but when we are asked why, we all have different answers. However, the
+                <p class="center">We all get up and go to work, but when we are asked why, we all have different
+                    answers. However, the
                     common goal is happiness, peace, prosperity, and success. Despite our daily efforts, we often feel
                     something is missing in life. Delta Circle helps fill this void.</p>
-                <p class="center">So, what is the Delta Circle? It is a source of happiness, peace, prosperity, and success that guides
+                <p class="center">So, what is the Delta Circle? It is a source of happiness, peace, prosperity, and
+                    success that guides
                     our lives. The seven layers of the Delta Circle help evaluate our life and provide the right
                     direction to achieve true fulfillment.</p>
                 <p class="center"><b>Who can use Delta Circle?</b></p>
-                <p class="center">Delta Circle is beneficial for anyone working towards success, whether they are students,
+                <p class="center">Delta Circle is beneficial for anyone working towards success, whether they are
+                    students,
                     professionals, or business owners. It provides guidance on achieving objectives and personal growth.
                 </p>
 
                 <div class="center">
-                <a href="/delta" target="_blank" class="btn btn-default rounded-0">Read More</a>
+                    <a href="/delta" target="_blank" class="btn btn-default rounded-0">Read More</a>
                 </div>
 
                 <div class="mt-3">
@@ -375,41 +386,44 @@
                 }
             </style>
 
-          
+
         </div>
 
     </div>
     <div class="banner_shape">
-            <div class="shape1">
-                <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <img src="{{ asset('assets/images/Group-circle.png') }}" alt="image" class="r-link linear infinite" />
-                </div>
-            </div>
-            <div class="shape2">
-                <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <img src="{{ asset('assets/images/Group-blue.png') }}" alt="image" class="r-link linear infinite" />
-                </div>
+        <div class="shape1">
+            <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                <img src="{{ asset('assets/images/Group-circle.png') }}" alt="image" class="r-link linear infinite" />
             </div>
         </div>
-  
+        <div class="shape2">
+            <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                <img src="{{ asset('assets/images/Group-blue.png') }}" alt="image" class="r-link linear infinite" />
+            </div>
+        </div>
+    </div>
+
 </section>
 {{-- <!-- END SECTION ABOUT --> --}}
-
+@if($store)
 <section>
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
                 <div class="product_img">
-                    <a href="{{ route('stores.single', $store->id) }}"><img src="{{ $store->product_thumb }}"
-                            alt="store" /></a>
+                    <a href="{{ route('stores.single', $store->id) }}">
+                        <img src="{{ $store->product_thumb ?? asset('assets/images/image_load.png') }}" alt="store" />
+                    </a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="product_info">
                     <h3 class="product_title">{{ $store->product_name }}</h3>
                     <div class="prd-detail">
-                        <span
-                            class="price"><del>${{ $store->price }}</del><ins>${{ $store->price - $store->discount }}</ins></span>
+                        <span class="price">
+                            <del>${{ $store->price }}</del>
+                            <ins>${{ $store->price - $store->discount }}</ins>
+                        </span>
                         <div class="rating">
                             <div class="product_rate" style="width:80%"></div>
                         </div>
@@ -423,7 +437,7 @@
                         </div>
                     </div>
 
-                    <div class="cart_extra">
+                    <div class="cart_extra" style="margin-top: 50px;">
                         <div class="cart-product-quantity">
                             <div class="quantity">
                                 <input type="button" value="-" class="minus">
@@ -445,8 +459,9 @@
             </div>
         </div>
     </div>
-
 </section>
+@endif
+
 <section class="small_pt pb_70">
     <div class="container">
         <div class="row">
@@ -465,11 +480,13 @@
                             <span class="pr_flash">Sale</span>
                         @endif
                         <div class="product_img">
-                            <a href="{{ route('stores.single', $store->id) }}"><img src="{{ $store->product_thumb }}"
-                                    alt="store" /></a>
+                            <a href="{{ route('stores.single', $store->id) }}"><img src="{{ $store->product_thumb }}" 
+                                    alt="store" onerror="this.onerror=null;this.src='{{ asset('assets/images/image_load.png') }}';" /></a>
                             <div class="product_action_box">
                                 <ul class="list_none pr_action_btn">
-                                    <li><a href="#" class="btn btn-default rounded-0">Add To Cart</a></li>
+                                <li ><a href="{{ route('stores.single', $store->id) }}"
+                                            class="btn btn-default rounded-0 view-btn">View</a></li>
+                                    <li style="margin-top: 10px;"><a href="#" class="btn btn-default rounded-0">Add To Cart</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -1024,24 +1041,29 @@
                     <h2>We are available on</h2>
                 </div>
 
-                <p>Lorem ipsum dolor sit amet, consectetur blandit magna adipiscing elit ncididunt labore et dolore
-                    magna aliqua enim. </p>
+                <p>iOS, Android and web platforms for seamless access to your meditation journey anytime, anywhere."</p>
                 <div class="small_divider clearfix"></div>
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <img src="{{ asset('assets/images/phone.png') }}" alt="">
                     </div>
-                    <div class="col-lg-6">
-                        <h2>Get Mobile Application & Do Yoga Online!</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur blandit magna adipiscing elit ncididunt labore et
-                            dolore magna aliqua enim.</p>
-                        <h5>BeYoga Application</h5>
-                        <button class="btn btn-dark app-button apple-btn "><i
-                                class="fa-brands fa-app-store fa-2x"></i><span class="text-uppercase ml-2">Apple
-                                store</span></button>
-                        <button class="btn btn-dark app-button play-btn"><i class="fa fa-play fa-2x"></i><span
-                                class="text-uppercase ml-2">Google store</span></button>
+                    <div class="col-lg-6 d-flex flex-column align-items-center justify-content-center">
+                    <h2>Get Mobile Application &<br>Do Meditation Online !</h2>
+                        <p  style="margin-top: 10px;">A user-friendly app offering guided meditations, spiritual workshop, and progress tracking to support your journey toward inner peace</p>
+                        <h2>TEJAS Application</h2>
 
+                        <!-- <h5>BeYoga Application</h5> -->
+                        <div class="d-flex align-items-center justify-content-start" style="margin-top: 10px;">
+
+                        <a href="https://play.google.com/store" target="_blank" style="margin-right: 20px;">
+                                <img src="{{ asset('assets/images/ic_playstore.png') }}" alt="Apple App Store"
+                                    class="img-fluid store-btn" style="width: 250px; height: 70px;">
+                            </a>
+                            <a href="https://www.apple.com/app-store/" target="_blank">
+                                <img src="{{ asset('assets/images/ic_appstore.png') }}" alt="Google Play Store"
+                                    class="img-fluid store-btn" style="width: 250px; height: 70px;">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1135,7 +1157,7 @@
 {{-- <!-- END SECTION PRICING TABLE --> --}}
 
 {{-- <!-- START SECTION TESTIMONIAL --> --}}
-<section>
+<!-- <section>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-6 col-lg-8 col-md-10 text-center animation" data-animation="fadeInUp"
@@ -1218,7 +1240,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 {{-- <!-- END SECTION TESTIMONIAL --> --}}
 
 {{-- <!-- START SECTION TEACHER --> --}}
@@ -1305,7 +1327,7 @@
                     <div class="blog_post box_shadow4 animation" data-animation="fadeInUp" data-animation-delay="0.3s">
                         <div class="blog_img">
                             <a href="{{ route('blogs.single', $blog->id) }}">
-                                <img src="{{ $blog->thumb_image }}" alt="blog">
+                                <img src="{{ $blog->thumb_image }}" alt="blog" onerror="this.onerror=null;this.src='{{ asset('assets/images/ic_blog_loading.png') }}';" >
                             </a>
                         </div>
                         <div class="blog_content">
@@ -1313,7 +1335,7 @@
                             </h5>
                             <ul class="list_none blog_meta">
                                 <li><img src="{{ asset('assets/images/cl_teacher_img1.jpg') }}"
-                                        alt="image"><span>Dayna</span></li>
+                                        alt="image" ><span>Dayna</span></li>
                                 <li>
                                     <i class="far fa-calendar"></i>{{ $blog->formatted_date }}
                                 </li>

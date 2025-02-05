@@ -1,8 +1,7 @@
 @extends('frontend.layouts.app')
 @section('content')
     <!-- START SECTION BREADCRUMB -->
-    <section class="breadcrumb_section page-title-light background_bg overlay_bg_70"
-        data-img-src="{{ asset('assets/images/breadcrumb_bg4.jpg') }}">
+    <section class="bg_light_pink breadcrumb_section">
         <div class="abt-sec">
             <div class="container">
                 <div class="row align-items-center">
@@ -14,7 +13,7 @@
                                                                                                                                                                                             <ol class="breadcrumb justify-content-center">
                                                                                                                                                                                                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                                                                                                                                                                                                 <li class="breadcrumb-item active" aria-current="page">Events Details</li>
-                                                                                                                                                                                            </ol>
+                                                                                                                                                                 </ol>
                                                                                                                                                                                         </nav> -->
                     </div>
                 </div>

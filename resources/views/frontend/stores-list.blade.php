@@ -1,8 +1,7 @@
 @extends('frontend.layouts.app')
 @section('content')
     <!-- START SECTION BREADCRUMB -->
-    <section class="bg_light_pink breadcrumb_section"
-        data-img-src="{{ asset('assets/images/breadcrumb_bg2.jpg') }}">
+    <section class="bg_light_pink breadcrumb_section">
         <div class="abt-sec">
         <div class="container">
             <div class="row align-items-center">
@@ -43,16 +42,23 @@
                                 <div class="product">
                                     <span class="pr_flash">Sale</span>
                                     <div class="product_img">
-                                        <a href="{{ route('stores.single', $store->id) }}"><img
-                                                src="{{ $store->product_thumb }}" alt="store" /></a>
+                                        <a href="#"><img
+                                                src="{{ $store->product_thumb }}" alt="store" onerror="this.onerror=null;this.src='{{ asset('assets/images/image_load.png') }}';" /></a>
                                         <div class="product_action_box">
                                             <ul class="list_none pr_action_btn">
-                                                <li><a href="#" class="btn btn-default rounded-0 add-to-cart-btn"
+                                                <li><a href="{{ route('stores.single', $store->id) }}" class="btn btn-default rounded-0 view-btn"
+                                                        data-id="{{ $store->id }}" data-name="{{ $store->product_name }}"
+                                                        data-thumb="{{ $store->product_thumb }}"
+                                                        data-price="{{ $store->price }}"
+                                                        data-discount="{{ $store->discount }}">View</a>
+                                                </li>
+                                                <li style="margin-top: 10px;"><a href="#" class="btn btn-default rounded-0 add-to-cart-btn"
                                                         data-id="{{ $store->id }}" data-name="{{ $store->product_name }}"
                                                         data-thumb="{{ $store->product_thumb }}"
                                                         data-price="{{ $store->price }}"
                                                         data-discount="{{ $store->discount }}">Add To Cart</a>
                                                 </li>
+
                                             </ul>
                                         </div>
                                     </div>

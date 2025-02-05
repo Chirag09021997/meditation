@@ -28,11 +28,11 @@
                     <h5 class="widget_title">Quick Links</h5>
                     <ul class="list_none widget_links links_style2">
                         <!-- <li><a href="#">Join Us</a></li> -->
-                        <li><a href="#">About Us</a></li>
+                        <li><a href="/about">About Us</a></li>
                         <!-- <li><a href="#">Features</a></li> -->
                         <!-- <li><a href="#">Feedback</a></li> -->
                         <!-- <li><a href="#">Support center</a></li> -->
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="/contact">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-7 mb-4 mb-md-0">
@@ -59,7 +59,7 @@
                     </ul> -->
                 </div>
                 <div class="col-lg-4 col-md-5">
-                    <h5 class="widget_title">Subscribe Newsletter</h5>
+                    <!-- <h5 class="widget_title">Subscribe Newsletter</h5>
                     <div class="newsletter_form mb-4 mb-lg-5">
                         <form>
                             <input type="text" class="form-control rounded-0" required=""
@@ -67,7 +67,7 @@
                             <button type="submit" title="Subscribe" class="btn btn-default rounded-0" name="submit"
                                 value="Submit"><i class="ion-paper-airplane"></i></button>
                         </form>
-                    </div>
+                    </div> -->
                     <h5 class="widget_title">Stay Connected</h5>
                     <ul class="list_none social_icons radius_social">
                         <li><a href="#" class="sc_facebook"><i class="fab fa-facebook-f"></i></a></li>
