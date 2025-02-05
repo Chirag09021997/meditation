@@ -11,100 +11,108 @@
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
             @foreach ($sliderLists as $key => $slider)
-            @if ($slider->text_align == 'Left')
-            <div class="carousel-item bg_light_pink bg-content {{ $key == 0 ? 'active' : ''}}">
-                <div class="banner_slide_content">
-                    <div class="container">
-                        <div class="row justify-content-end align-items-center">
-                            <div class="col-xl-6 col-md-5">
-                                <div class="banner_img" data-animation="fadeIn" data-animation-delay="0.4s"
-                                    data-parallax='{"y": 30, "smoothness": 10}'>
-                                    <div>
-                                        <img src="{{ $slider->background }}" alt="image" />
-                                    </div>
 
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-md-7 ">
-                                <div class="d-section">
-                                    <img src="{{ asset('assets/images/bg.svg') }}" class="rotate linear infinite" />
-                                    <div class="banner_content animation slider-section" data-animation="zoomIn"
-                                        data-animation-delay="0.4s" data-parallax='{"y": 30, "smoothness": 10}'>
-                                        <h3 class="animation" data-animation="fadeInDown" data-animation-delay="0.5s">{{ $slider->title }}</h3>
-                                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.6s">{{ $slider->sub_description }}</p>
-                                        <a class="btn btn-default rounded-0 animation" href="{{ route('slider-detail.show',$slider->id) }}"
-                                            data-animation="fadeInUp" data-animation-delay="0.7s">Learn More</a>
-                                        <a class="btn btn-white rounded-0 animation" href="/contact" target="_blank"
-                                            data-animation="fadeInUp" data-animation-delay="0.8s">Contact Us</a>
-                                    </div>
+                @if ($slider->text_align == 'Left')
+                    <div class="carousel-item bg_light_pink bg-content {{ $key == 0 ? 'active' : ''}}">
 
-                                </div>
+                        <div class="banner_slide_content slider2"
+                            style="margin-top: 20px; background-image: url('{{ asset($slider->background) }}');">
+                            <div class="container">
+                                <div class="row justify-content-end align-items-center">
+                                    <div class="col-xl-6 col-md-5">
+                                        <div class="banner_img" data-animation="fadeIn" data-animation-delay="0.4s"
+                                            data-parallax='{"y": 30, "smoothness": 10}'>
+                                            <!-- <div>
+                                                <img src="{{ $slider->background }}" alt="image" />
+                                            </div> -->
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="banner_shape">
-                    <div class="shape_circle1">
-                        <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                            <img src="{{ asset('assets/images/Group-circle.png') }}" alt="image"
-                                class="rotate linear infinite" />
-                        </div>
-                    </div>
-                    <div class="shape_circle2">
-                        <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                            <img src="{{ asset('assets/images/Group-blue.png') }}" alt="image"
-                                class="rotate linear infinite" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @else
-            <div class="carousel-item bg_light_yellow {{ $key == 0 ? 'active' : ''}}">
-                <div class="banner_slide_content slider2">
-                    <div class="container">
-                        <div class="row align-items-center">
-                            <div class="col-lg-6 col-md-5">
-                                <div class="banner_img2 text-center">
-                                    <div class="animation border_img" data-animation="fadeInRight"
-                                            data-animation-delay="0.5s">
-                                            <img data-parallax='{"y": -30, "smoothness": 20}'
-                                                src="{{ $slider->background }}" alt="image" />
                                         </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-7 order-md-first">
-                                <div class="banner_content animation" data-animation="fadeIn"
-                                    data-animation-delay="0.4s" data-parallax='{"y": 30, "smoothness": 10}'>
-                                    <h3 class="animation mt-7 blue-text" data-animation="fadeInDown"
-                                        data-animation-delay="0.5s">{{ $slider->title }}</h3>
-                                    <p class="animation" data-animation="fadeInUp" data-animation-delay="0.6s">{{ $slider->sub_description }}</p>
-                                    <a class="btn btn-default rounded-0 animation" href="{{ route('slider-detail.show',$slider->id) }}"
-                                        data-animation="fadeInUp" data-animation-delay="0.7s">Learn More</a>
-                                    <a class="btn btn-white rounded-0 animation" href="/contact"
-                                        data-animation="fadeInUp" data-animation-delay="0.8s">Contact Us</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                    </div>
+                                    <div class="col-xl-6 col-md-7 ">
+                                        <div class="d-section">
+                                            <!-- <img src="{{ asset('assets/images/bg.svg') }}" class="rotate linear infinite" /> -->
+                                            <div class="banner_content animation slider-section" data-animation="zoomIn"
+                                                data-animation-delay="0.4s" data-parallax='{"y": 30, "smoothness": 10}'>
+                                                <h3 class="animation" data-animation="fadeInDown" data-animation-delay="0.5s">
+                                                    {{ $slider->title }}</h3>
+                                                <p class="animation" data-animation="fadeInUp" data-animation-delay="0.6s">
+                                                    {{ $slider->sub_description }}</p>
+                                                <a class="btn btn-default rounded-0 animation"
+                                                    href="{{ route('slider-detail.show', $slider->id) }}"
+                                                    data-animation="fadeInUp" data-animation-delay="0.7s">Learn More</a>
+                                                <a class="btn btn-white rounded-0 animation" href="/contact" target="_blank"
+                                                    data-animation="fadeInUp" data-animation-delay="0.8s">Contact Us</a>
+                                            </div>
 
-                <div class="banner_shape">
-                    <div class="shape_circle1">
-                        <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                            <img src="{{ asset('assets/images/Group-circle.png') }}" alt="image"
-                                class="rotate linear infinite" />
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="banner_shape">
+                            <div class="shape_circle1">
+                                <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                                    <img src="{{ asset('assets/images/Group-circle.png') }}" alt="image"
+                                        class="rotate linear infinite" />
+                                </div>
+                            </div>
+                            <div class="shape_circle2">
+                                <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                                    <img src="{{ asset('assets/images/Group-blue.png') }}" alt="image"
+                                        class="rotate linear infinite" />
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="shape_circle2">
-                        <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                            <img src="{{ asset('assets/images/Group-blue.png') }}" alt="image"
-                                class="rotate linear infinite" />
+                @else
+                    <div class="carousel-item bg_light_yellow {{ $key == 0 ? 'active' : ''}}">
+                        <div class="banner_slide_content slider2">
+                            <div class="container">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-6 col-md-5">
+                                        <div class="banner_img2 text-center">
+                                            <div class="animation border_img" data-animation="fadeInRight"
+                                                data-animation-delay="0.5s">
+                                                <img data-parallax='{"y": -30, "smoothness": 20}'
+                                                    src="{{ $slider->background }}" alt="image" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-7 order-md-first">
+                                        <div class="banner_content animation" data-animation="fadeIn"
+                                            data-animation-delay="0.4s" data-parallax='{"y": 30, "smoothness": 10}'>
+                                            <h3 class="animation mt-7 blue-text" data-animation="fadeInDown"
+                                                data-animation-delay="0.5s">{{ $slider->title }}</h3>
+                                            <p class="animation" data-animation="fadeInUp" data-animation-delay="0.6s">
+                                                {{ $slider->sub_description }}</p>
+                                            <a class="btn btn-default rounded-0 animation"
+                                                href="{{ route('slider-detail.show', $slider->id) }}" data-animation="fadeInUp"
+                                                data-animation-delay="0.7s">Learn More</a>
+                                            <a class="btn btn-white rounded-0 animation" href="/contact"
+                                                data-animation="fadeInUp" data-animation-delay="0.8s">Contact Us</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="banner_shape">
+                            <div class="shape_circle1">
+                                <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                                    <img src="{{ asset('assets/images/Group-circle.png') }}" alt="image"
+                                        class="rotate linear infinite" />
+                                </div>
+                            </div>
+                            <div class="shape_circle2">
+                                <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                                    <img src="{{ asset('assets/images/Group-blue.png') }}" alt="image"
+                                        class="rotate linear infinite" />
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            @endif
+                @endif
             @endforeach
         </div>
         <div class="carousel_nav">
@@ -346,60 +354,60 @@
 </section>
 {{-- <!-- END SECTION ABOUT --> --}}
 @if($store)
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="product_img">
-                    <a href="{{ route('stores.single', $store->id) }}">
-                        <img src="{{ $store->product_thumb ?? asset('assets/images/image_load.png') }}" alt="store" />
-                    </a>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="product_img">
+                        <a href="{{ route('stores.single', $store->id) }}">
+                            <img src="{{ $store->product_thumb ?? asset('assets/images/image_load.png') }}" alt="store" />
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="product_info">
-                    <h3 class="product_title">{{ $store->product_name }}</h3>
-                    <div class="prd-detail">
-                        <span class="price">
-                            <del>${{ $store->price }}</del>
-                            <ins>${{ $store->price - $store->discount }}</ins>
-                        </span>
-                        <div class="rating">
-                            <div class="product_rate" style="width:80%"></div>
-                        </div>
-                    </div>
-                    <div class="tab-content shop_info_tab">
-                        <div class="tab-pane fade show active" id="Description" role="tabpanel"
-                            aria-labelledby="Description-tab">
-                            <div>
-                                {!! $store->description !!}
+                <div class="col-lg-6">
+                    <div class="product_info">
+                        <h3 class="product_title">{{ $store->product_name }}</h3>
+                        <div class="prd-detail">
+                            <span class="price">
+                                <del>${{ $store->price }}</del>
+                                <ins>${{ $store->price - $store->discount }}</ins>
+                            </span>
+                            <div class="rating">
+                                <div class="product_rate" style="width:80%"></div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="cart_extra" style="margin-top: 50px;">
-                        <div class="cart-product-quantity">
-                            <div class="quantity">
-                                <input type="button" value="-" class="minus">
-                                <input type="text" name="quantity" id="quantity" value="1" title="Qty" class="qty"
-                                    size="4">
-                                <input type="button" value="+" class="plus">
+                        <div class="tab-content shop_info_tab">
+                            <div class="tab-pane fade show active" id="Description" role="tabpanel"
+                                aria-labelledby="Description-tab">
+                                <div>
+                                    {!! $store->description !!}
+                                </div>
                             </div>
                         </div>
-                        <div class="cart_btn">
-                            <button class="btn btn-default rounded-0 btn-addtocart add-to-cart-btn" type="button"
-                                data-id="{{ $store->id }}" data-name="{{ $store->product_name }}"
-                                data-thumb="{{ $store->product_thumb }}" data-price="{{ $store->price }}"
-                                data-discount="{{ $store->discount }}">Add to
-                                cart</button>
-                        </div>
-                    </div>
 
+                        <div class="cart_extra" style="margin-top: 50px;">
+                            <div class="cart-product-quantity">
+                                <div class="quantity">
+                                    <input type="button" value="-" class="minus">
+                                    <input type="text" name="quantity" id="quantity" value="1" title="Qty" class="qty"
+                                        size="4">
+                                    <input type="button" value="+" class="plus">
+                                </div>
+                            </div>
+                            <div class="cart_btn">
+                                <button class="btn btn-default rounded-0 btn-addtocart add-to-cart-btn" type="button"
+                                    data-id="{{ $store->id }}" data-name="{{ $store->product_name }}"
+                                    data-thumb="{{ $store->product_thumb }}" data-price="{{ $store->price }}"
+                                    data-discount="{{ $store->discount }}">Add to
+                                    cart</button>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 @endif
 
 <section class="small_pt pb_70">
@@ -421,12 +429,14 @@
                         @endif
                         <div class="product_img">
                             <a href="{{ route('stores.single', $store->id) }}"><img src="{{ $store->product_thumb }}"
-                                    alt="store" onerror="this.onerror=null;this.src='{{ asset('assets/images/image_load.png') }}';" /></a>
+                                    alt="store"
+                                    onerror="this.onerror=null;this.src='{{ asset('assets/images/image_load.png') }}';" /></a>
                             <div class="product_action_box">
                                 <ul class="list_none pr_action_btn">
-                                <li ><a href="{{ route('stores.single', $store->id) }}"
+                                    <li><a href="{{ route('stores.single', $store->id) }}"
                                             class="btn btn-default rounded-0 view-btn">View</a></li>
-                                    <li style="margin-top: 10px;"><a href="#" class="btn btn-default rounded-0">Add To Cart</a></li>
+                                    <li style="margin-top: 10px;"><a href="#" class="btn btn-default rounded-0">Add To
+                                            Cart</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -988,14 +998,15 @@
                         <img src="{{ asset('assets/images/phone.png') }}" alt="">
                     </div>
                     <div class="col-lg-6 d-flex flex-column align-items-center justify-content-center">
-                    <h2>Get Mobile Application &<br>Do Meditation Online !</h2>
-                        <p  style="margin-top: 10px;">A user-friendly app offering guided meditations, spiritual workshop, and progress tracking to support your journey toward inner peace</p>
+                        <h2>Get Mobile Application &<br>Do Meditation Online !</h2>
+                        <p style="margin-top: 10px;">A user-friendly app offering guided meditations, spiritual
+                            workshop, and progress tracking to support your journey toward inner peace</p>
                         <h2>TEJAS Application</h2>
 
                         <!-- <h5>BeYoga Application</h5> -->
                         <div class="d-flex align-items-center justify-content-start" style="margin-top: 10px;">
 
-                        <a href="https://play.google.com/store" target="_blank" style="margin-right: 20px;">
+                            <a href="https://play.google.com/store" target="_blank" style="margin-right: 20px;">
                                 <img src="{{ asset('assets/images/ic_playstore.png') }}" alt="Apple App Store"
                                     class="img-fluid store-btn" style="width: 250px; height: 70px;">
                             </a>
@@ -1267,7 +1278,8 @@
                     <div class="blog_post box_shadow4 animation" data-animation="fadeInUp" data-animation-delay="0.3s">
                         <div class="blog_img">
                             <a href="{{ route('blogs.single', $blog->id) }}">
-                                <img src="{{ $blog->thumb_image }}" alt="blog" onerror="this.onerror=null;this.src='{{ asset('assets/images/ic_blog_loading.png') }}';" >
+                                <img src="{{ $blog->thumb_image }}" alt="blog"
+                                    onerror="this.onerror=null;this.src='{{ asset('assets/images/ic_blog_loading.png') }}';">
                             </a>
                         </div>
                         <div class="blog_content">
@@ -1275,7 +1287,7 @@
                             </h5>
                             <ul class="list_none blog_meta">
                                 <li><img src="{{ asset('assets/images/cl_teacher_img1.jpg') }}"
-                                        alt="image" ><span>Dayna</span></li>
+                                        alt="image"><span>Dayna</span></li>
                                 <li>
                                     <i class="far fa-calendar"></i>{{ $blog->formatted_date }}
                                 </li>
