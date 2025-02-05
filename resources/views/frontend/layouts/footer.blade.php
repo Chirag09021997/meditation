@@ -11,15 +11,15 @@
                     </div>
                     <ul class="contact_info list_none">
                         <li>
-                            <span class="fa fa-map-marker-alt "></span>
+                            <i class="fas fa-map-marker-alt "></i>
                             <address>256 Mohra Rd, North London, UK</address>
                         </li>
                         <li>
-                            <span class="fa fa-mobile-alt"></span>
+                            <i class="fas fa-mobile-alt"></i>
                             <p>+123 456 7890</p>
                         </li>
                         <li>
-                            <span class="fa fa-envelope"></span>
+                            <i class="fas fa-envelope"></i>
                             <a href="mailto:info@yourmail.com">info@yourmail.com</a>
                         </li>
                     </ul>
