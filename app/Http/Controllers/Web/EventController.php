@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Event;
+use App\Models\Host;
+use App\Models\OurTeam;
 use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
 use App\Models\CustomerEvents;
@@ -24,7 +26,8 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view('event.create');
+        $team = OurTeam::select('id','name')->get();
+        return view('event.create',compact('team'));
     }
 
     /**
@@ -33,16 +36,83 @@ class EventController extends Controller
     public function store(StoreEventRequest $request)
     {
         $validated = $request->validated();
-        if ($request->hasFile('thumb_image')) {
+        if ($request->hasFile('thumb_image')) 
+        {
             $image = $request->file('thumb_image');
             $fileName = time() . '_' . str_replace(' ', '_', $image->getClientOriginalName());
             $filePath = $image->storeAs('public/uploads/event', $fileName);
             $validated['thumb_image'] = str_replace('public/', 'storage/', $filePath);
         }
+
+
+
+        if ($request->hasFile('event_image')) 
+        {
+            $image = $request->file('event_image');
+            $fileName = time() . '_' . str_replace(' ', '_', $image->getClientOriginalName());
+            $filePath = $image->storeAs('public/uploads/eventImage', $fileName);
+            $validated['event_image'] = str_replace('public/', 'storage/', $filePath);
+        }
+
         if ($validated['fees'] == null) {
             unset($validated['fees']);
         }
-        Event::create($validated);
+        $finalValues = [];
+        $teachValues = [];
+        $inTitle = $validated['include_title'];
+        $teacTitle = $validated['teaching_title'];
+
+        foreach ($inTitle as $i => $val) 
+        {
+            if($val != null)
+            {
+             
+            $finalValues[$i]['title'] = $val;
+            $finalValues[$i]['description'] = $validated['include_description'][$i];
+            if ($request->hasFile('include_image')) 
+                {
+                
+                    $image = $request->file('include_image');
+                    $fileName = time() . '_' . str_replace(' ', '_', $image[$i]->getClientOriginalName());
+                    $filePath = $image[$i]->storeAs('public/uploads/Include', $fileName);
+                    $finalValues[$i]['image'] = str_replace('public/', 'storage/', $filePath);
+                    
+                }
+            }
+            
+        } 
+        foreach ($teacTitle as $i => $val) 
+        {
+            if($val != null)
+            {
+                $teachValues[$i]['title'] = $val;
+                $teachValues[$i]['description'] = $validated['teaching_description'][$i];
+                if ($request->hasFile('teaching_image')) 
+                    {
+                    
+                        $image = $request->file('teaching_image');
+                        $fileName = time() . '_' . str_replace(' ', '_', $image[$i]->getClientOriginalName());
+                        $filePath = $image[$i]->storeAs('public/uploads/Teaching', $fileName);
+                        $teachValues[$i]['image'] = str_replace('public/', 'storage/', $filePath);
+                        
+                    }
+            }
+            
+        } 
+
+        $validated['include'] = json_encode($finalValues);
+        $validated['teaching'] = json_encode($teachValues);
+
+        $event = Event::create($validated);
+        if($request->has('host_id')) 
+        {
+            foreach ($validated['host_id'] as $host)
+            {
+                $team =  array('event_id' => $event->id,'host_id' =>  $host );
+                Host::create($team);
+            }
+        }
+
         return redirect()->route('event.index')->with('success', 'Event created successfully');
     }
 
@@ -60,7 +130,10 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        return view('event.edit', compact('event'));
+        $team = OurTeam::select('id','name')->get();
+        $oldHost = Host::select('host_id','event_id')->where('event_id',$event->id)->pluck('host_id')->toArray();
+
+        return view('event.edit', compact('event','team','oldHost'));
     }
 
     /**
@@ -69,6 +142,7 @@ class EventController extends Controller
     public function update(UpdateEventRequest $request, Event $event)
     {
         $validated = $request->validated();
+
         if ($request->hasFile('thumb_image')) {
             if ($event->thumb_image != null) {
                 $imagePath = storage_path(str_replace(config('app.url') . '/storage', 'app/public', $event->thumb_image));
@@ -81,10 +155,124 @@ class EventController extends Controller
             $filePath = $image->storeAs('public/uploads/event', $fileName);
             $validated['thumb_image'] = str_replace('public/', 'storage/', $filePath);
         }
+        if ($request->hasFile('event_image')) {
+            
+            $image = $request->file('event_image');
+            $fileName = time() . '_' . str_replace(' ', '_', $image->getClientOriginalName());
+            $filePath = $image->storeAs('public/uploads/eventImage', $fileName);
+            $validated['event_image'] = str_replace('public/', 'storage/', $filePath);
+        }
         if ($validated['fees'] == null || $validated['is_paid'] == 'Off') {
             $validated['fees'] = 0.00;
         }
+
+       
+        $finalValues = [];
+        $techValues = [];
+        $inTitle = $validated['include_title'];
+
+        if(isset($validated['include_image']))
+        {
+
+        }else{
+            $validated['include_image'] = [];
+        }
+
+        foreach ($inTitle as $i => $val) 
+        {
+            if($val != null)
+            {
+                $finalValues[$i]['title'] = $val;
+                $finalValues[$i]['description'] = $validated['include_description'][$i];
+
+                if(key($validated['include_image']) == $i && ($validated['include_image'] != []))
+                {
+                    next($validated['include_image']);
+
+                    if ($request->hasFile('include_image')) 
+                    {
+                    
+                        $image = $request->file('include_image');
+                        $fileName = time() . '_' . str_replace(' ', '_', $image[$i]->getClientOriginalName());
+                        $filePath = $image[$i]->storeAs('public/uploads/Include', $fileName);
+                        $finalValues[$i]['image'] = str_replace('public/', 'storage/', $filePath);
+                        
+                    }
+                }
+                else
+                {
+                    $oldImage = explode('storage',$event->include[$i]['image']);
+                    $finalValues[$i]['image'] = "storage".$oldImage[1];
+
+                }
+            }
+        } 
+        $tecTitle = $validated['teaching_title'];
+
+        if(isset($validated['teaching_image']))
+        {
+
+        }else{
+            $validated['teaching_image'] = [];
+        }
+        foreach ($tecTitle as $j => $val) 
+        {
+            if($val != null)
+            {
+                $techValues[$j]['title'] = $val;
+                $techValues[$j]['description'] = $validated['teaching_description'][$j];
+
+                
+                if(key($validated['teaching_image']) == $j && ($validated['teaching_image'] != []))
+                {
+                    next($validated['teaching_image']);
+
+                    if ($request->hasFile('teaching_image')) 
+                    {
+                    
+                        $image = $request->file('teaching_image');
+                        $fileName = time() . '_' . str_replace(' ', '_', $image[$j]->getClientOriginalName());
+                        $filePath = $image[$j]->storeAs('public/uploads/Teaching', $fileName);
+                        $techValues[$j]['image'] = str_replace('public/', 'storage/', $filePath);
+                        
+                    }
+                }
+                else
+                {
+                    $oldImage = explode('storage',$event->teaching[$j]['image']);
+                    $techValues[$j]['image'] = "storage".$oldImage[1];
+
+                }
+            }
+        } 
+        // exit;
+        $validated['include'] = $finalValues;
+        $validated['teaching'] = $techValues;
+
         $event->update($validated);
+        if($request->has('host_id')) 
+        {
+            foreach ($validated['host_id'] as $host)
+            {
+                $team =  array('event_id' => $event->id,'host_id' =>  $host);
+                $selteam = Host::where([
+                    'event_id' => $event->id,
+                    'host_id' => $host,
+                ])->get();
+
+                if(count($selteam) > 0 )
+                {
+                    Host::where([
+                        'event_id' => $event->id,
+                        'host_id' => $host,
+                    ])->update($team);
+
+                }else{
+                    Host::create($team);
+
+                }
+            }
+        }
         return redirect()->route('event.index')->with('success', 'Event updated successfully');
     }
 

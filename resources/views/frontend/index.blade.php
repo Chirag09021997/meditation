@@ -24,44 +24,52 @@
                                 </div>
                             </div>
                             <div class="col-xl-6 col-md-7 ">
-                                <div class="banner_content animation" data-animation="zoomIn"
-                                    data-animation-delay="0.4s" data-parallax='{"y": 30, "smoothness": 10}'>
-                                    <h3 class="animation" data-animation="fadeInDown" data-animation-delay="0.5s">
-                                        WELCOM TO DELTA CIRCLE MEDITATION</h3>
+                                <div class="d-section">
+                                    <img src="{{ asset('assets/images/bg.svg') }}" class="rotate linear infinite" />
+                                    <div class="banner_content animation slider-section" data-animation="zoomIn"
+                                        data-animation-delay="0.4s" data-parallax='{"y": 30, "smoothness": 10}'>
+                                        <h3 class="animation" data-animation="fadeInDown" data-animation-delay="0.5s">
+                                            WELCOM TO DELTA CIRCLE MEDITATION</h3>
                                         <p class="animation" data-animation="fadeInUp" data-animation-delay="0.6s">
-                                            Meditation is a practice that involves focusing the mind to achieve a state of mental clarity,
-                                            relaxation, and emotional stability. It has been used for centuries in various cultures and spiritual traditions,
-                                            but it has also gained popularity in modern wellness practices for its physical, mental, and emotional benefits.
+                                            Meditation is a practice that involves focusing the mind to achieve a state of
+                                            mental clarity,
+                                            relaxation, and emotional stability. It has been used for centuries in various
+                                            cultures and spiritual traditions,
+                                            but it has also gained popularity in modern wellness practices for its physical,
+                                            mental, and emotional benefits.
                                         </p>
                                         <a class="btn btn-default rounded-0 animation" href="/delta" target="_blank"
                                             data-animation="fadeInUp" data-animation-delay="0.7s">Learn More</a>
                                         <a class="btn btn-white rounded-0 animation" href="/contact" target="_blank"
                                             data-animation="fadeInUp" data-animation-delay="0.8s">Contact Us</a>
                                     </div>
+
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="banner_shape">
-                        <div class="shape1">
-                            <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                                <img src="{{ asset('assets/images/pattern21.svg') }}" alt="image" />
-                            </div>
-                        </div>
-                        <div class="shape2">
-                            <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                                <img src="{{ asset('assets/images/pattern1.svg') }}" alt="image" />
+                               
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item bg_light_yellow">
-                    <div class="banner_slide_content slider2">
-                        <div class="container">
-                            <div class="row align-items-center">
-                                <div class="col-lg-6 col-md-5">
-                                    <div class="banner_img2 text-center">
-                                        <!-- <div class="animation border_img" data-animation="fadeInRight"
+                <div class="banner_shape">
+                    <div class="shape_circle1">
+                        <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                            <img src="{{ asset('assets/images/Group-circle.png') }}" alt="image" class="rotate linear infinite"/>
+                        </div>
+                    </div>
+                    <div class="shape_circle2">
+                        <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                            <img src="{{ asset('assets/images/Group-blue.png') }}" alt="image" class="rotate linear infinite" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item bg_light_yellow">
+                <div class="banner_slide_content slider2">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 col-md-5">
+                                <div class="banner_img2 text-center">
+                                    <!-- <div class="animation border_img" data-animation="fadeInRight"
                                             data-animation-delay="0.5s">
                                             <img data-parallax='{"y": -30, "smoothness": 20}'
                                                 src="{{ asset('assets/images/banner_img2.png') }}" alt="image" />
@@ -90,14 +98,14 @@
                 </div>
 
                 <div class="banner_shape">
-                    <div class="shape3">
+                    <div class="shape_circle1">
                         <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                            <img src="{{ asset('assets/images/pattern21.svg') }}" alt="image" />
+                            <img src="{{ asset('assets/images/Group-circle.png') }}" alt="image" class="rotate linear infinite"/>
                         </div>
                     </div>
-                    <div class="shape4">
+                    <div class="shape_circle2">
                         <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                            <img src="{{ asset('assets/images/pattern1.svg') }}" alt="image" />
+                            <img src="{{ asset('assets/images/Group-blue.png') }}" alt="image" class="rotate linear infinite" />
                         </div>
                     </div>
                 </div>
@@ -162,116 +170,116 @@
 </section>
 {{-- <!-- END SECTION BANNER --> --}}
 
-    {{-- <!-- START SECTION BENIFIT --> --}}
-    <section class="pb_70 bg-yoga">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-6 col-lg-8 col-md-10 text-center animation" data-animation="fadeInUp"
+{{-- <!-- START SECTION BENIFIT --> --}}
+<section class="pb_70 bg-yoga">
+    <div class="container ">
+        <div class="row justify-content-center">
+        <img src="{{ asset('assets/images/bg2.svg') }}" class="rotate  linear infinite circle-img" />
+            <div class="col-xl-6 col-lg-8 col-md-10 text-center animation" data-animation="fadeInUp"
+                data-animation-delay="0.2s">
+                <div class="heading_s1">
+                    <!-- <span class="sub_heading">What we do</span> -->
+                    <h2>Benefit Of Delta Meditaon</h2>
+                </div>
+                <p>Tejas Aura is an online and offline meditaon and spiritual educaon plaorm. We
+                    share meditaon and spiritual knowledge in easy-to-understand terms, such that you can
+                    actually apply it in your life.
+                </p>
+                <div class="small_divider clearfix"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-sm-6">
+                <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
                     data-animation-delay="0.2s">
-                    <div class="heading_s1">
-                        <!-- <span class="sub_heading">What we do</span> -->
-                        <h2>Benefit Of Delta Meditaon</h2>
+                    <div class="box_icon">
+                        <img src="{{ asset('assets/images/strong-body.png') }}" width="35" height="35"
+                            alt="strong-body">
                     </div>
-                    <p>Tejas Aura is an online and offline meditaon and spiritual educaon plaorm. We
-                        share meditaon and spiritual knowledge in easy-to-understand terms, such that you can
-                        actually apply it in your life.
-                    </p>
-                    <div class="small_divider clearfix"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-sm-6">
-                    <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
-                        data-animation-delay="0.2s">
-                        <div class="box_icon">
-                            <img src="{{ asset('assets/images/strong-body.png') }}" width="35" height="35"
-                                alt="strong-body">
-                        </div>
-                        <div class="intro_desc">
-                            <h5>Reduces Stress</h5>
-                            <p> Meditation helps lower cortisol levels, which are associated with stress. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
-                        data-animation-delay="0.3s">
-                        <div class="box_icon">
-                            <img src="{{ asset('assets/images/flexibility.png') }}" width="35" height="35"
-                                alt="flexibility">
-                        </div>
-                        <div class="intro_desc">
-                            <h5>Improves Focus</h5>
-                            <p> Regular practice enhances attention and concentration. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
-                        data-animation-delay="0.4s">
-                        <div class="box_icon">
-                            <img src="{{ asset('assets/images/healthy-lifestyle.png') }}" width="35" height="35"
-                                alt="healthy-lifestyle">
-                        </div>
-                        <div class="intro_desc">
-                            <h5>Increases Self-Awareness</h5>
-                            <p> Encourages mindfulness and helps develop a deeper understanding of oneself. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
-                        data-animation-delay="0.2s">
-                        <div class="box_icon">
-                            <img src="{{ asset('assets/images/blood-flow.png') }}" width="35" height="35"
-                                alt="blood-flow">
-                        </div>
-                        <div class="intro_desc">
-                            <h5>Reduces Anxiety </h5>
-                            <p> Can decrease symptoms of anxiety and promote emotional stability. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
-                        data-animation-delay="0.3s">
-                        <div class="box_icon">
-                            <img src="{{ asset('assets/images/drops-blood.png') }}" width="35" height="35"
-                                alt="drops-blood">
-                        </div>
-                        <div class="intro_desc">
-                            <h5>Boosts Creativity</h5>
-                            <p> Encourages out-of-the-box thinking and problem-solving skills. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
-                        data-animation-delay="0.4s">
-                        <div class="box_icon">
-                            <img src="{{ asset('assets/images/adrenal-gland.png') }}" width="35" height="35"
-                                alt="adrenal-gland">
-                        </div>
-                        <div class="intro_desc">
-                            <h5>Enhances Memory</h5>
-                            <p> Improves working memory and cognitive clarity. </p>
-                        </div>
+                    <div class="intro_desc">
+                        <h5>Reduces Stress</h5>
+                        <p> Meditation helps lower cortisol levels, which are associated with stress. </p>
                     </div>
                 </div>
             </div>
-            <div class="banner_shape">
-                <div class="shape1">
-                    <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                        <img src="{{ asset('assets/images/pattern21.svg') }}" alt="image" />
+            <div class="col-lg-4 col-sm-6">
+                <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
+                    data-animation-delay="0.3s">
+                    <div class="box_icon">
+                        <img src="{{ asset('assets/images/flexibility.png') }}" width="35" height="35"
+                            alt="flexibility">
+                    </div>
+                    <div class="intro_desc">
+                        <h5>Improves Focus</h5>
+                        <p> Regular practice enhances attention and concentration. </p>
                     </div>
                 </div>
-                <div class="shape2">
-                    <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                        <img src="{{ asset('assets/images/pattern1.svg') }}" alt="image" />
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
+                    data-animation-delay="0.4s">
+                    <div class="box_icon">
+                        <img src="{{ asset('assets/images/healthy-lifestyle.png') }}" width="35" height="35"
+                            alt="healthy-lifestyle">
+                    </div>
+                    <div class="intro_desc">
+                        <h5>Increases Self-Awareness</h5>
+                        <p> Encourages mindfulness and helps develop a deeper understanding of oneself. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
+                    data-animation-delay="0.2s">
+                    <div class="box_icon">
+                        <img src="{{ asset('assets/images/blood-flow.png') }}" width="35" height="35" alt="blood-flow">
+                    </div>
+                    <div class="intro_desc">
+                        <h5>Reduces Anxiety </h5>
+                        <p> Can decrease symptoms of anxiety and promote emotional stability. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
+                    data-animation-delay="0.3s">
+                    <div class="box_icon">
+                        <img src="{{ asset('assets/images/drops-blood.png') }}" width="35" height="35"
+                            alt="drops-blood">
+                    </div>
+                    <div class="intro_desc">
+                        <h5>Boosts Creativity</h5>
+                        <p> Encourages out-of-the-box thinking and problem-solving skills. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
+                    data-animation-delay="0.4s">
+                    <div class="box_icon">
+                        <img src="{{ asset('assets/images/adrenal-gland.png') }}" width="35" height="35"
+                            alt="adrenal-gland">
+                    </div>
+                    <div class="intro_desc">
+                        <h5>Enhances Memory</h5>
+                        <p> Improves working memory and cognitive clarity. </p>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="banner_shape">
+            <div class="shape1">
+                <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                    <img src="{{ asset('assets/images/Group-circle.png') }}" alt="image" class="r-link linear infinite" />
+                </div>
+            </div>
+            <div class="shape2">
+                <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                    <img src="{{ asset('assets/images/Group-blue.png') }}" alt="image" class="r-link linear infinite" />
+                </div>
+            </div>
+        </div>
+    </div>
 
 </section>
 {{-- <!-- END SECTION BENIFIT --> --}}
@@ -279,23 +287,26 @@
 {{-- <!-- START SECTION ABOUT --> --}}
 <section class="bg_gray bg-yoga">
     <div class="container">
-        <div class="row align-items-center text-center">
+        <div class="row justify-content-center">
+        <img src="{{ asset('assets/images/bg2.svg') }}" class="rotate linear infinite circle-img2" />
             <div class="col-md-12 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
-                <div class="heading_s1">
+                <div class="heading_s1 center">
                     <h2>Better Life With Delta Circle</h2>
                 </div>
-                <p>We all get up and go to work, but when we are asked why, we all have different answers. However, the
+                <p class="center">We all get up and go to work, but when we are asked why, we all have different answers. However, the
                     common goal is happiness, peace, prosperity, and success. Despite our daily efforts, we often feel
                     something is missing in life. Delta Circle helps fill this void.</p>
-                <p>So, what is the Delta Circle? It is a source of happiness, peace, prosperity, and success that guides
+                <p class="center">So, what is the Delta Circle? It is a source of happiness, peace, prosperity, and success that guides
                     our lives. The seven layers of the Delta Circle help evaluate our life and provide the right
                     direction to achieve true fulfillment.</p>
-                <p><b>Who can use Delta Circle?</b></p>
-                <p>Delta Circle is beneficial for anyone working towards success, whether they are students,
+                <p class="center"><b>Who can use Delta Circle?</b></p>
+                <p class="center">Delta Circle is beneficial for anyone working towards success, whether they are students,
                     professionals, or business owners. It provides guidance on achieving objectives and personal growth.
                 </p>
 
+                <div class="center">
                 <a href="/delta" target="_blank" class="btn btn-default rounded-0">Read More</a>
+                </div>
 
                 <div class="mt-3">
                     <div class="animation image-container" data-animation="fadeInLeft" data-animation-delay="0.5s">
@@ -339,9 +350,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    /* Centers images horizontally */
                     flex-wrap: wrap;
-                    /* Ensures images stay responsive */
                     gap: 15px;
                 }
 
@@ -366,54 +375,28 @@
                 }
             </style>
 
-            <!-- <div class="col-md-6">
-                    <div class="about_img animation" data-animation="fadeInUp" data-animation-delay="0.2s">
-                        <img data-parallax='{"y": -30, "smoothness": 20}'
-                            src="{{ asset('assets/images/about_img.png') }}" alt="about_img" />
-                    </div>
-                </div> -->
+          
+        </div>
+
+    </div>
+    <div class="banner_shape">
+            <div class="shape1">
+                <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                    <img src="{{ asset('assets/images/Group-circle.png') }}" alt="image" class="r-link linear infinite" />
+                </div>
+            </div>
+            <div class="shape2">
+                <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                    <img src="{{ asset('assets/images/Group-blue.png') }}" alt="image" class="r-link linear infinite" />
+                </div>
             </div>
         </div>
-        <div class="banner_shape">
-                <div class="shape1">
-                    <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                        <img src="{{ asset('assets/images/pattern21.svg') }}" alt="image" />
-                    </div>
-                </div>
-                <div class="shape2">
-                    <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                        <img src="{{ asset('assets/images/pattern1.svg') }}" alt="image" />
-                    </div>
-                </div>
-            </div>
-        <!-- <div class="shape_img">
-            <div class="ol_shape1">
-                <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <img src="{{ asset('assets/images/shape1.png') }}" alt="image" />
-                </div>
-            </div>
-            <div class="ol_shape2">
-                <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <img src="{{ asset('assets/images/shape2.png') }}" alt="image" />
-                </div>
-            </div>
-            <div class="ol_shape3">
-                <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <img src="{{ asset('assets/images/shape3.png') }}" alt="image" />
-                </div>
-            </div>
-            <div class="ol_shape4">
-                <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <img src="{{ asset('assets/images/shape4.png') }}" alt="image" />
-                </div>
-            </div>
-        </div> -->
+  
 </section>
 {{-- <!-- END SECTION ABOUT --> --}}
 
 <section>
     <div class="container">
-        @if ($store)
         <div class="row">
             <div class="col-lg-6">
                 <div class="product_img">
@@ -462,7 +445,6 @@
             </div>
         </div>
     </div>
-    @endif
 
 </section>
 <section class="small_pt pb_70">
@@ -671,135 +653,7 @@
             </div>
         </div>
     </section> -->
-    <section class="bg_gray ess-sect">
-        <div class="container">
-            <div class="row align-items-center text-center">
-                <div class="col-md-12 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
-                    <div class="heading_s1 ">
-                        <!-- <span class="sub_heading">Welcome to Dhyana</span> -->
-                        <h2>Essenals for everyday life </h2>
-                    </div>
-                    <p> A joyful and peaceful life from the experience of our life. Due to which the productivity and success in every work of life increased, he made it the principal of life and decided to work on it for people.
-                    </p>
-                </div>
-
-            </div>
-            <div class="row">
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
-                            data-animation-delay="0.2s">
-                            <div class="box_icon">
-                                <img src="{{ asset('assets/images/strong-body.png') }}" width="35" height="35"
-                                    alt="strong-body">
-                            </div>
-                            <div class="intro_desc">
-                                <h5>Meditation</h5>
-                                <p> We believe that meditation can transform everyone, so we teach people to meditate. </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
-                            data-animation-delay="0.3s">
-                            <div class="box_icon">
-                                <img src="{{ asset('assets/images/flexibility.png') }}" width="35" height="35"
-                                    alt="flexibility">
-                            </div>
-                            <div class="intro_desc">
-                                <h5>Aura</h5>
-                                <p> Helping people to have a holy and pure aura give people well-being in their lives. </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
-                            data-animation-delay="0.4s">
-                            <div class="box_icon">
-                                <img src="{{ asset('assets/images/healthy-lifestyle.png') }}" width="35" height="35"
-                                    alt="healthy-lifestyle">
-                            </div>
-                            <div class="intro_desc">
-                                <h5>Thoughts</h5>
-                                <p> Unnecessary thoughts reduce the productivity of human life, so teach a method for managing thoughts. </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-1 col-sm-6"></div>
-
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
-                            data-animation-delay="0.2s">
-                            <div class="box_icon">
-                                <img src="{{ asset('assets/images/blood-flow.png') }}" width="35" height="35"
-                                    alt="blood-flow">
-                            </div>
-                            <div class="intro_desc">
-                                <h5>Energy </h5>
-                                <p> Understanding and awareness of inner energy is helpful in making life successful so act on inner energy and spread it. </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-sm-6"> </div>
-
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="icon_box box_shadow4 text-center icon_box_style1 animation" data-animation="fadeInUp"
-                            data-animation-delay="0.4s">
-                            <div class="box_icon">
-                                <img src="{{ asset('assets/images/adrenal-gland.png') }}" width="35" height="35"
-                                    alt="adrenal-gland">
-                            </div>
-                            <div class="intro_desc">
-                                <h5>Vibration</h5>
-                                <p> Do practical and theoretical work on topics like vibration, frequency. </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-1 col-sm-6"></div>
-                </div>
-        </div>
-        <div class="banner_shape">
-                <div class="shape1">
-                    <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                        <img src="{{ asset('assets/images/pattern21.svg') }}" alt="image" />
-                    </div>
-                </div>
-                <div class="shape2">
-                    <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                        <img src="{{ asset('assets/images/pattern1.svg') }}" alt="image" />
-                    </div>
-                </div>
-            </div>
-    </section>
-    {{-- <!-- END SECTION CLASSES --> --}}
-
-    {{-- <!-- START SECTION CALL TO ACTION --> --}}
-    <section class="bg_light_pink">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-8 col-lg-6 text-center animation" data-animation="fadeInUp"
-                    data-animation-delay="0.2s">
-                    <div class="heading_s1">
-                        <h2>Get <span class="text_default">25%</span> Discount for all Classes</h2>
-                    </div>
-                    <p>Lorem ipsum dolor amet consectetur adipiscing elit. Phasellus blandit massa enim.</p>
-                    <a href="#" class="btn btn-default rounded-0 mt-md-2">Join Now</a>
-                </div>
-            </div>
-        </div>
-        <div class="shape_img">
-            <div class="ol_shape5">
-                <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <img src="{{ asset('assets/images/shape5.png') }}" alt="image" />
-                </div>
-            </div>
-            <div class="ol_shape6">
-                <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <img src="{{ asset('assets/images/shape6.png') }}" alt="image" />
-                </div>
-            </div>
-        </div>
-    </section>
-    {{-- <!-- END SECTION CALL TO ACTION --> --}}
+{{-- <!-- END SECTION CLASSES --> --}}
 
 {{-- <!-- START SECTION CLASSES TIMETABLE --> --}}
 <!-- <section>
@@ -1415,20 +1269,20 @@
                                 </div>
                             </div>
 
-                                    <div class="team_info text-center">
-                                        <div class="team_title">
-                                            <h5><a href="{{route('our-team-single', $ourTeam->id )}}">{{ $ourTeam->name }}</a></h5>
-                                            <span>{{ $ourTeam->post }}</span>
-                                        </div>
-                                    </div>
+                            <div class="team_info text-center">
+                                <div class="team_title">
+                                    <h5><a href="{{route('our-team-single', $ourTeam)}}">{{ $ourTeam->name }}</a></h5>
+                                    <span>{{ $ourTeam->post }}</span>
                                 </div>
-                            @endforeach
-                    </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
-    </section>
-    {{-- <!-- END SECTION TEACHER --> --}}
+    </div>
+</section>
+{{-- <!-- END SECTION TEACHER --> --}}
 
 {{-- <!-- START SECTION BLOG --> --}}
 <section class="pb_70">

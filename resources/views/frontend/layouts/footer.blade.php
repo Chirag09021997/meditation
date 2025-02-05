@@ -36,7 +36,7 @@
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-7 mb-4 mb-md-0">
-                    <h5 class="widget_title">Letest Post</h5>
+                    <!-- <h5 class="widget_title">Letest Post</h5>
                     <ul class="recent_post border_bottom_dash list_none">
                         <li>
                             <div class="post_footer">
@@ -56,7 +56,7 @@
                                 </div>
                             </div>
                         </li>
-                    </ul>
+                    </ul> -->
                 </div>
                 <div class="col-lg-4 col-md-5">
                     <h5 class="widget_title">Subscribe Newsletter</h5>
