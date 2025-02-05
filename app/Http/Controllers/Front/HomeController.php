@@ -12,6 +12,7 @@ use App\Models\CustomerEvents;
 use App\Models\Event;
 use App\Models\Order;
 use App\Models\OurTeam;
+use App\Models\SliderItem;
 use App\Models\Store;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -30,7 +31,8 @@ class HomeController extends Controller
             return $blog;
         });
         $outTeams = OurTeam::all();
-        return view('frontend.index', compact('blogs','outTeams','latestStore','store'));
+        $sliderLists = SliderItem::get();
+        return view('frontend.index', compact('blogs', 'outTeams', 'latestStore', 'store', 'sliderLists'));
     }
 
     public function about()
@@ -38,9 +40,10 @@ class HomeController extends Controller
         return view('frontend.about');
     }
 
-    public function delta()
+    public function sliderShow(string $id)
     {
-        return view('frontend.delta');
+        $slider = SliderItem::findOrFail($id);
+        return view('frontend.sliderDetail', compact('slider'));
     }
 
     public function life()

@@ -10,7 +10,9 @@
     @endif
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active bg_light_pink bg-content">
+            @foreach ($sliderLists as $key => $slider)
+            @if ($slider->text_align == 'Left')
+            <div class="carousel-item bg_light_pink bg-content {{ $key == 0 ? 'active' : ''}}">
                 <div class="banner_slide_content">
                     <div class="container">
                         <div class="row justify-content-end align-items-center">
@@ -18,7 +20,7 @@
                                 <div class="banner_img" data-animation="fadeIn" data-animation-delay="0.4s"
                                     data-parallax='{"y": 30, "smoothness": 10}'>
                                     <div>
-                                        <img src="{{ asset('assets/images/delta.png') }}" alt="image" />
+                                        <img src="{{ $slider->background }}" alt="image" />
                                     </div>
 
                                 </div>
@@ -28,20 +30,9 @@
                                     <img src="{{ asset('assets/images/bg.svg') }}" class="rotate linear infinite" />
                                     <div class="banner_content animation slider-section" data-animation="zoomIn"
                                         data-animation-delay="0.4s" data-parallax='{"y": 30, "smoothness": 10}'>
-                                        <h3 class="animation" data-animation="fadeInDown" data-animation-delay="0.5s">
-                                            WELCOM TO DELTA CIRCLE MEDITATION</h3>
-                                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.6s">
-                                            Meditation is a practice that involves focusing the mind to achieve a state
-                                            of
-                                            mental clarity,
-                                            relaxation, and emotional stability. It has been used for centuries in
-                                            various
-                                            cultures and spiritual traditions,
-                                            but it has also gained popularity in modern wellness practices for its
-                                            physical,
-                                            mental, and emotional benefits.
-                                        </p>
-                                        <a class="btn btn-default rounded-0 animation" href="/delta" target="_blank"
+                                        <h3 class="animation" data-animation="fadeInDown" data-animation-delay="0.5s">{{ $slider->title }}</h3>
+                                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.6s">{{ $slider->sub_description }}</p>
+                                        <a class="btn btn-default rounded-0 animation" href="{{ route('slider-detail.show',$slider->id) }}"
                                             data-animation="fadeInUp" data-animation-delay="0.7s">Learn More</a>
                                         <a class="btn btn-white rounded-0 animation" href="/contact" target="_blank"
                                             data-animation="fadeInUp" data-animation-delay="0.8s">Contact Us</a>
@@ -68,33 +59,29 @@
                     </div>
                 </div>
             </div>
-            <div class="carousel-item bg_light_yellow">
+            @else
+            <div class="carousel-item bg_light_yellow {{ $key == 0 ? 'active' : ''}}">
                 <div class="banner_slide_content slider2">
                     <div class="container">
                         <div class="row align-items-center">
                             <div class="col-lg-6 col-md-5">
                                 <div class="banner_img2 text-center">
-                                    <!-- <div class="animation border_img" data-animation="fadeInRight"
+                                    <div class="animation border_img" data-animation="fadeInRight"
                                             data-animation-delay="0.5s">
                                             <img data-parallax='{"y": -30, "smoothness": 20}'
-                                                src="{{ asset('assets/images/banner_img2.png') }}" alt="image" />
-                                        </div> -->
+                                                src="{{ $slider->background }}" alt="image" />
+                                        </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-7 order-md-first">
                                 <div class="banner_content animation" data-animation="fadeIn"
                                     data-animation-delay="0.4s" data-parallax='{"y": 30, "smoothness": 10}'>
                                     <h3 class="animation mt-7 blue-text" data-animation="fadeInDown"
-                                        data-animation-delay="0.5s">FIND LIFE STYLE TO THE
-                                        <br /> DELTA MEDITATION
-                                    </h3>
-                                    <p class="animation" data-animation="fadeInUp" data-animation-delay="0.6s">Through
-                                        and through we were trying to make our Yoga studio a peaceful, meditational
-                                        place of tranquility, which according to our ever-growing list of attendees
-                                        we've succeeded at.</p>
-                                    <a class="btn btn-default rounded-0 animation" href="/delta" target="_blank"
+                                        data-animation-delay="0.5s">{{ $slider->title }}</h3>
+                                    <p class="animation" data-animation="fadeInUp" data-animation-delay="0.6s">{{ $slider->sub_description }}</p>
+                                    <a class="btn btn-default rounded-0 animation" href="{{ route('slider-detail.show',$slider->id) }}"
                                         data-animation="fadeInUp" data-animation-delay="0.7s">Learn More</a>
-                                    <a class="btn btn-white rounded-0 animation" href="/contact" target="_blank"
+                                    <a class="btn btn-white rounded-0 animation" href="/contact"
                                         data-animation="fadeInUp" data-animation-delay="0.8s">Contact Us</a>
                                 </div>
                             </div>
@@ -117,55 +104,8 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="carousel-item bg_light_gold">
-                    <div class="banner_slide_content">
-                        <div class="container">
-                            <div class="row align-items-center">
-                                <div class="col-lg-6 col-md-5">
-                                    <div class="banner_img3 text-center">
-                                        <div class="animation" data-animation="fadeInRight" data-animation-delay="0.5s">
-                                            <img data-parallax='{"y": -30, "smoothness": 20}'
-                                                src="{{ asset('assets/images/banner_img3.png') }}" alt="image" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-7 order-md-first">
-                                    <div class="banner_content animation" data-animation="fadeIn"
-                                        data-animation-delay="0.4s" data-parallax='{"y": 30, "smoothness": 10}'>
-                                        <h2 class="animation" data-animation="fadeInDown" data-animation-delay="0.5s">
-                                            Yoga Studio for Everyone</h2>
-                                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.6s">Our
-                                            Yoga studio has become one of the most popular yoga venues in USA. It is time to
-                                            go beyond your limits and discover your passion. </p>
-                                        <a class="btn btn-default rounded-0 animation" href="#"
-                                            data-animation="fadeInUp" data-animation-delay="0.7s">Learn More</a>
-                                        <a class="btn btn-white rounded-0 animation" href="#"
-                                            data-animation="fadeInUp" data-animation-delay="0.8s">Contact Us</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="banner_shape">
-                        <div class="shape5">
-                            <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                                <img src="{{ asset('assets/images/slider_pattern5.png') }}" alt="image" />
-                            </div>
-                        </div>
-                        <div class="shape6">
-                            <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                                <img data-parallax='{"y": 30, "smoothness": 20}'
-                                    src="{{ asset('assets/images/slider_pattern6.png') }}" alt="image" />
-                            </div>
-                        </div>
-                        <div class="shape7">
-                            <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                                <img data-parallax='{"y": -30, "smoothness": 20}'
-                                    src="{{ asset('assets/images/slider_pattern7.png') }}" alt="image" />
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
+            @endif
+            @endforeach
         </div>
         <div class="carousel_nav">
             <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev"><i
@@ -480,7 +420,7 @@
                             <span class="pr_flash">Sale</span>
                         @endif
                         <div class="product_img">
-                            <a href="{{ route('stores.single', $store->id) }}"><img src="{{ $store->product_thumb }}" 
+                            <a href="{{ route('stores.single', $store->id) }}"><img src="{{ $store->product_thumb }}"
                                     alt="store" onerror="this.onerror=null;this.src='{{ asset('assets/images/image_load.png') }}';" /></a>
                             <div class="product_action_box">
                                 <ul class="list_none pr_action_btn">

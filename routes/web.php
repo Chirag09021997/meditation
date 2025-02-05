@@ -41,7 +41,7 @@ use Illuminate\Support\Facades\Route;
 // fronted routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
-Route::get('/delta', [HomeController::class, 'delta'])->name('delta');
+Route::get('/slider-detail/{id}', [HomeController::class, 'sliderShow'])->name('slider-detail.show');
 Route::get('/life', [HomeController::class, 'life'])->name('life');
 Route::get('/events', [HomeController::class, 'eventsList'])->name('events');
 Route::get('/events/{id}', [HomeController::class, 'eventSingle'])->name('events.single');
