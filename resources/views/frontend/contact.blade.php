@@ -36,15 +36,15 @@
                     <ul class="contact_info contact_info_style2 list_none">
                         <li>
                             <span class="fa-solid fa-mobile"></span>
-                            <p>+123 456 7890</p>
+                            <a href="tel:{{ $settings['mobile_no'] ?? '' }}">{{ $settings['mobile_no'] ?? '' }}</a>
                         </li>
                         <li>
                             <span class="fa-regular fa-envelope"></span>
-                            <a href="mailto:info@yourmail.com">info@yourmail.com</a>
+                            <a href="mailto:{{ $settings['mail'] ?? '' }}">{{ $settings['mail'] ?? '' }}</a>
                         </li>
                         <li>
                             <span class="fa-solid fa-location-pin"></span>
-                            <address>256 Mohra Rd, North London, UK</address>
+                            <address>{{ $settings['address'] }}</address>
                         </li>
                     </ul>
                 </div>
@@ -130,9 +130,9 @@
             <div class="row">
                 <div class="col-12 p-0">
                     <div class="contact_map animation" data-animation="fadeInUp" data-animation-delay="0.2s">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193229.77301255226!2d-74.05531241936525!3d40.823236500441624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2f613438663b5%3A0xce20073c8862af08!2sW+123rd+St%2C+New+York%2C+NY%2C+USA!5e0!3m2!1sen!2sin!4v1533565007513"
-                            allowfullscreen=""></iframe>
+                        @if (isset($settings['map_url']))
+                            <iframe src="{{ $settings['map_url'] }}" allowfullscreen=""></iframe>
+                        @endif
                     </div>
                 </div>
             </div>

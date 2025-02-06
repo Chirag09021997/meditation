@@ -11,15 +11,15 @@
                     <ul class="contact_info list_none">
                         <li>
                             <i class="fas fa-map-marker-alt "></i>
-                            <address>256 Mohra Rd, North London, UK</address>
+                            <address>{{ $settings['address'] ?? '' }}</address>
                         </li>
                         <li>
                             <i class="fas fa-mobile-alt"></i>
-                            <p>+123 456 7890</p>
+                            <a href="tel:{{ $settings['mobile_no'] ?? '' }}">{{ $settings['mobile_no'] ?? '' }}</a>
                         </li>
                         <li>
                             <i class="fas fa-envelope"></i>
-                            <a href="mailto:info@yourmail.com">info@yourmail.com</a>
+                            <a href="mailto:{{ $settings['mail'] ?? '' }}">{{ $settings['mail'] ?? '' }}</a>
                         </li>
                     </ul>
                 </div>
@@ -69,11 +69,31 @@
                     </div> -->
                     <h5 class="widget_title">Stay Connected</h5>
                     <ul class="list_none social_icons radius_social">
-                        <li><a href="#" class="sc_facebook"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#" class="sc_twitter"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#" class="sc_google"><i class="fab fa-google-plus-g"></i></a></li>
-                        <li><a href="#" class="sc_instagram"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="#" class="sc_pinterest"><i class="fab fa-pinterest"></i></a></li>
+                        <li>
+                            <a href="{{ $settings['facebook_url'] ?? '' }}" class="sc_facebook" target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ $settings['twitter_url'] ?? '' }}" class="sc_twitter" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ $settings['google_url'] ?? '' }}" class="sc_google" target="_blank">
+                                <i class="fab fa-google-plus-g"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ $settings['instagram_url'] ?? '' }}" class="sc_instagram" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ $settings['pinterest_url'] ?? '' }}" class="sc_pinterest" target="_blank">
+                                <i class="fab fa-pinterest"></i>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

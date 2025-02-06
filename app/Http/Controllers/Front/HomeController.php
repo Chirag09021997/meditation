@@ -16,6 +16,7 @@ use App\Models\OurTeam;
 use App\Models\SliderItem;
 use App\Models\Store;
 use App\Models\Host;
+use App\Models\Setting;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -89,7 +90,8 @@ class HomeController extends Controller
 
     public function contact()
     {
-        return view('frontend.contact');
+        $settings = Setting::pluck('value', 'key')->toArray();
+        return view('frontend.contact', compact('settings'));
     }
 
     public function blogsList(Request $request)

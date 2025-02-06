@@ -21,6 +21,7 @@ use App\Http\Controllers\Web\NotificationController;
 use App\Http\Controllers\Web\OrderController;
 use App\Http\Controllers\Web\OurTeamController;
 use App\Http\Controllers\Web\PremiumPlanController;
+use App\Http\Controllers\Web\SettingController;
 use App\Http\Controllers\Web\SliderController;
 use App\Http\Controllers\Web\StoreController;
 use App\Http\Controllers\Web\WorkshopCategoryController;
@@ -174,6 +175,9 @@ Route::middleware('auth')->group(function () {
     Route::get('certificate/data', [CertificateController::class, 'getData'])->name('certificate.data');
     Route::post('certificate/status/{certificate}', [CertificateController::class, 'changeStatus'])->name('certificate.changeStatus');
     Route::resource('certificate', CertificateController::class);
+
+    Route::get('setting', [SettingController::class, 'index'])->name('setting.index');
+    Route::put('setting', [SettingController::class, 'update'])->name('setting.update');
 });
 
 require __DIR__ . '/auth.php';
