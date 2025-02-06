@@ -138,7 +138,7 @@
             <div class="col-lg-1 col-sm-6"></div>
         </div>
     </div>
-    <div class="banner_shape">
+    <!-- <div class="banner_shape">
         <div class="shape1">
             <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
                 <img src="{{ asset('assets/images/pattern2.svg') }}" alt="image" />
@@ -149,7 +149,7 @@
                 <img src="{{ asset('assets/images/pattern1.svg') }}" alt="image" />
             </div>
         </div>
-    </div>
+    </div> -->
 </section>
     {{-- <!-- END SECTION BENIFIT --> --}}
 
@@ -301,7 +301,7 @@
                         <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.2s">
                             <div class="team_bor">
                                 <div class="team_img">
-                                    <img src="{{ $ourTeam->profile }}" alt="{{ $ourTeam->name }}">
+                                    <img src="{{ $ourTeam->profile }}" alt="{{ $ourTeam->name }}" onerror="this.onerror=null;this.src='{{ asset('assets/images/event_loading.png') }}';" >
                                     <ul class="list_none social_icons social_style1 rounded_social">
                                         @if ($ourTeam->facebook_url)
                                             <li><a href="{{ $ourTeam->facebook_url }}"><i class="fab fa-facebook-f"></i></a>
