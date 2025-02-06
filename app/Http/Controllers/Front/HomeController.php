@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactUsRequest;
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Certificate;
 use App\Models\ContactUs;
 use App\Models\CouponSystem;
 use App\Models\CustomerEvents;
@@ -33,14 +34,15 @@ class HomeController extends Controller
         });
         $outTeams = OurTeam::all();
         $sliderLists = SliderItem::get();
-        return view('frontend.index', compact('blogs', 'outTeams', 'latestStore', 'store', 'sliderLists'));
+        $certificates = Certificate::where('status', 'Active')->get();
+        return view('frontend.index', compact('blogs', 'outTeams', 'latestStore', 'store', 'sliderLists', 'certificates'));
     }
 
     public function about()
     {
         $outTeams = OurTeam::all();
 
-        return view('frontend.about',compact( 'outTeams'));
+        return view('frontend.about', compact('outTeams'));
     }
 
     public function sliderShow(string $id)
@@ -71,9 +73,9 @@ class HomeController extends Controller
         $event->formatted_date = Carbon::parse($event->starting_date)->format('M d, Y');
         $event->formatted_time = Carbon::parse($event->starting_date)->format('h:i A');
 
-        $oldHost = Host::select('host_id','event_id')->where('event_id',$event->id)->pluck('host_id')->toArray();
+        $oldHost = Host::select('host_id', 'event_id')->where('event_id', $event->id)->pluck('host_id')->toArray();
 
-        $team = OurTeam::select('id','name','about','profile')->whereIn('id',$oldHost)->get();
+        $team = OurTeam::select('id', 'name', 'about', 'profile')->whereIn('id', $oldHost)->get();
 
 
         $events = Event::where('status', 'Active')->select('id', 'name', 'thumb_image', 'starting_date', 'location')->latest()->take(5)->get();
@@ -82,7 +84,7 @@ class HomeController extends Controller
             $event->formatted_time = Carbon::parse($event->starting_date)->format('H:i');
             return $event;
         });
-        return view('frontend.events-detail', compact('event', 'events','team'));
+        return view('frontend.events-detail', compact('event', 'events', 'team'));
     }
 
     public function contact()

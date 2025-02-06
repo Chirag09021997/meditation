@@ -1313,23 +1313,13 @@
     <div class="relative overflow-hidden bg-gray-100 py-10">
         <div class="logo-carousel">
             <div class="logo-track">
-                @php
-                    $logos = ['logo1.svg', 'logo2.svg', 'logo3.svg', 'logo4.svg','logo5.svg', 'logo6.svg', 'logo7.svg']; // Add more logos if needed
-                    
-                @endphp
-
-                @if (count($logos) === 1)
-                    <!-- Centered logo when only one -->
+                @if (count($certificates) === 1)
                     <div class="single-logo">
-                        <img src="{{ asset('assets/images/' . $logos[0]) }}" class="logo-item" alt="Brand Logo">
+                        <img src="{{ $certificates[0]->image }}" class="logo-item" alt="Brand Logo">
                     </div>
                 @else
-                    <!-- Duplicate logos for smooth infinite scrolling -->
-                    @foreach ($logos as $logo)
-                        <img src="{{ asset('assets/images/' . $logo) }}" class="logo-item" alt="Brand Logo">
-                    @endforeach
-                    @foreach ($logos as $logo)
-                        <img src="{{ asset('assets/images/' . $logo) }}" class="logo-item" alt="Brand Logo">
+                    @foreach ($certificates as $img)
+                        <img src="{{ $img->image }}" class="logo-item"  class="logo-item"  alt="Brand Logo">
                     @endforeach
                 @endif
             </div>

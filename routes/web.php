@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Web\BlogController;
 use App\Http\Controllers\Web\BusinessController;
 use App\Http\Controllers\Web\CategoryController;
+use App\Http\Controllers\Web\CertificateController;
 use App\Http\Controllers\Web\ContactUsController;
 use App\Http\Controllers\Web\CouponSystemController;
 use App\Http\Controllers\Web\CustomerController;
@@ -29,7 +30,7 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes    
+| Web Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -169,6 +170,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/slider/data', [SliderController::class, 'getData'])->name('slider.data');
     Route::resource('slider', SliderController::class);
+
+    Route::get('certificate/data', [CertificateController::class, 'getData'])->name('certificate.data');
+    Route::post('certificate/status/{certificate}', [CertificateController::class, 'changeStatus'])->name('certificate.changeStatus');
+    Route::resource('certificate', CertificateController::class);
 });
 
 require __DIR__ . '/auth.php';
