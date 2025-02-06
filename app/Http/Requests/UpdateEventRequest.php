@@ -27,10 +27,23 @@ class UpdateEventRequest extends FormRequest
             'short_description' => 'nullable|string',
             'description' => 'nullable|string',
             'starting_date' => 'nullable|date_format:Y-m-d H:i:s',
+            'end_date' => 'nullable',
+            'duration' => 'nullable|integer',
             'location' => 'nullable|string|max:255',
+            'language' => 'required|string',
+            'question' => 'nullable|string',
+            'event_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'is_paid' => 'required|in:On,Off',
+            'include_title' => 'nullable',
+            'include_image' => 'nullable',
+            'include_description' => 'nullable',
+            'teaching_title' => 'nullable',
+            'teaching_image' => 'nullable',
+            'teaching_description' => 'nullable',
+            'curriculum' => 'required',
             'fees' => 'required_if:is_paid,On|numeric|min:0',
             'total_joining' => 'required|integer|min:0',
+            'host_id' => 'nullable'
         ];
     }
 }

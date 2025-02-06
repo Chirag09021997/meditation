@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::table('events', function (Blueprint $table) {
             //
             $table->dateTime('end_date')->nullable();
-            $table->integer('duration');
+            $table->integer('duration')->default(0);
 
 
         });

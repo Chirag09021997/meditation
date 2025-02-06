@@ -35,13 +35,11 @@
                 </div>
                 <div class="col-md-6 animation" data-animation="fadeInUp" data-animation-delay="0.3s">
                     <div class="heading_s1">
-                        <span class="sub_heading">Welcome to Dhyana</span>
-                        <h2>Better Life With Perfect Body</h2>
+                        <span class="sub_heading">Welcome to Tejas Aura</span>
+                        <h2>Meditation & Spirituality Meet Innovation</h2>
                     </div>
-                    <p> Lorem ipsum dolor sit amet, consectetur blandit magna adipiscing elit ncididunt labore et dolore
-                        magna aliqua enim. </p>
-                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
-                        classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                    <p> We are dedicated to guiding individuals on their journey to inner peace, spiritual growth, and self-discovery. At Tejas Aura, we blend ancient wisdom with modern tools, offering a holistic approach to meditation and spiritual teaching that empowers you to cultivate harmony in every aspect of your life.</p>
+                    <!-- <p>Tejas Aur established in February 2016 and Tejas Aur Consultant Pvt. Ltd. incorporate in February 2021. The main objective of this company is to help people engaged in and seeking meditation and spiritual practice. Tejas Aura Consultant Company works to be the necessary teaching and product for such people. So far more than 5000 people have benefited through more than 200 seminars and workshops by this company. Currently the company is also operating in Canada under the name Tej Aura Consultants Ltd. Different countries of the world e.g. Delta meditation sheets are also being used by people in the US, Australia, New Zealand, Canada and Nepal.</p> -->
                     <a href="/life"  target="_blank" class="btn btn-default rounded-0">Read More</a>
                 </div>
             </div>
@@ -57,7 +55,7 @@
             <div class="col-md-12 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
                 <div class="heading_s1 ">
                     <!-- <span class="sub_heading">Welcome to Dhyana</span> -->
-                    <h2>Essenals for everyday life </h2>
+                    <h2>Our Principles</h2>
                 </div>
                 <p> A joyful and peaceful life from the experience of our life. Due to which the productivity and
                     success in every work of life increased, he made it the principal of life and decided to work on it
@@ -156,7 +154,7 @@
     {{-- <!-- END SECTION BENIFIT --> --}}
 
     {{-- <!-- START SECTION TESTIMONIAL --> --}}
-    <section>
+    <!-- <section>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-8 col-md-10 text-center animation" data-animation="fadeInUp"
@@ -205,7 +203,7 @@
                                     Nullam varius nunc.Lorem ipsum doloramet consectetur adipiscing</p>
                             </div>
                         </div>
-                        <!-- <div class="testimonial_box">
+                        <div class="testimonial_box">
                             <div class="testi_meta">
                                 <div class="testimonial_img">
                                     <img src="{{ asset('assets/images/client_img3.jpg') }}" alt="client">
@@ -234,12 +232,12 @@
                                 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Phasellus blandit massa enim
                                     Nullam varius nunc.Lorem ipsum doloramet consectetur adipiscing</p>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     {{-- <!-- END SECTION TESTIMONIAL --> --}}
 
     {{-- <!-- START SECTION COUNTER --> --}}
@@ -279,108 +277,67 @@
     </section>
     {{-- <!-- END SECTION COUNTER --> --}}
 
+    
     {{-- <!-- START SECTION TEACHER --> --}}
-    <section class="bg_light_pink pb_70">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-6 col-lg-8 col-md-10 text-center animation" data-animation="fadeInUp"
-                    data-animation-delay="0.2s">
-                    <div class="heading_s1">
-                        <span class="sub_heading">Yoga teacher</span>
-                        <h2>Our Awesome Team</h2>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur blandit magna adipiscing elit ncididunt labore et dolore
-                        magna aliqua enim. </p>
-                    <div class="small_divider clearfix"></div>
+<section class="bg_light_pink pb_70">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-6 col-lg-8 col-md-10 text-center animation" data-animation="fadeInUp"
+                data-animation-delay="0.2s">
+                <div class="heading_s1">
+                    <!-- <span class="sub_heading">Yoga teacher</span> -->
+                    <h2>Our Tejas Team</h2>
                 </div>
+                <p>Our Tejas Team is passionate about innovation and excellence, working together to create impactful solutions with trust and quality. 🚀</p>
+                <div class="small_divider clearfix"></div>
             </div>
-            <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.2s">
-                        <div class="team_bor">
-                            <div class="team_img">
-                                <img src="{{ asset('assets/images/team1.jpg') }}" alt="team1">
-                                <ul class="list_none social_icons social_style1 rounded_social">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                </ul>
+        </div>
+        <div class="row">
+            <div class="col-12 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
+                <div class="testimonial_slider testimonial_style1 carousel_slider owl-carousel owl-theme"
+                    data-margin="15" data-loop="true" data-autoplay="true"
+                    data-responsive='{"0":{"items": "1"}, "768":{"items": "2"}, "1199":{"items": "3"}}'>
+                    @foreach ($outTeams as $ourTeam)
+                        <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.2s">
+                            <div class="team_bor">
+                                <div class="team_img">
+                                    <img src="{{ $ourTeam->profile }}" alt="{{ $ourTeam->name }}">
+                                    <ul class="list_none social_icons social_style1 rounded_social">
+                                        @if ($ourTeam->facebook_url)
+                                            <li><a href="{{ $ourTeam->facebook_url }}"><i class="fab fa-facebook-f"></i></a>
+                                            </li>
+                                        @endif
+                                        @if ($ourTeam->twitter_url)
+                                            <li><a href="{{ $ourTeam->twitter_url }}"><i class="fab fa-twitter"></i></a></li>
+                                        @endif
+                                        @if ($ourTeam->google_url)
+                                            <li><a href="{{ $ourTeam->google_url }}"><i class="fab fa-google-plus-g"></i></a>
+                                            </li>
+                                        @endif
+                                        @if ($ourTeam->instagram_url)
+                                            <li><a href="{{ $ourTeam->instagram_url }}"><i class="fab fa-instagram"></i></a>
+                                            </li>
+                                        @endif
+                                        @if ($ourTeam->youtube_url)
+                                            <li><a href="{{ $ourTeam->youtube_url }}"><i class="fab fa-youtube"></i></a></li>
+                                        @endif
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="team_info text-center">
+                                <div class="team_title">
+                                    <h5><a href="{{route('our-team-single', $ourTeam)}}">{{ $ourTeam->name }}</a></h5>
+                                    <span>{{ $ourTeam->post }}</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="team_info text-center">
-                            <div class="team_title">
-                                <h5><a href="#">Elena Mark</a></h5>
-                                <span>Yoga Teacher</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.3s">
-                        <div class="team_bor">
-                            <div class="team_img">
-                                <img src="{{ asset('assets/images/team2.jpg') }}" alt="team2">
-                                <ul class="list_none social_icons social_style1 rounded_social">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="team_info text-center">
-                            <div class="team_title">
-                                <h5><a href="#">Grace Wong</a></h5>
-                                <span>Yoga Teacher</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.4s">
-                        <div class="team_bor">
-                            <div class="team_img">
-                                <img src="{{ asset('assets/images/team3.jpg') }}" alt="team3">
-                                <ul class="list_none social_icons social_style1 rounded_social">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="team_info text-center">
-                            <div class="team_title">
-                                <h5><a href="#">Maria Redwood</a></h5>
-                                <span>Yoga Teacher</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.5s">
-                        <div class="team_bor">
-                            <div class="team_img">
-                                <img src="{{ asset('assets/images/team4.jpg') }}" alt="team4">
-                                <ul class="list_none social_icons social_style1 rounded_social">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="team_info text-center">
-                            <div class="team_title">
-                                <h5><a href="#">Merry Walter</a></h5>
-                                <span>Yoga Teacher</span>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
-    </section>
-    {{-- <!-- END SECTION TEACHER --> --}}
+    </div>
+</section>
+{{-- <!-- END SECTION TEACHER --> --}}
+
 @endsection

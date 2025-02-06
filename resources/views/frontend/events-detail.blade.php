@@ -303,11 +303,10 @@
                                 <h4 class="brown_heading text-center py-3">About the Hosts</h4>
                                 <div class="row">
                                     @foreach($team as $team)
-                                    
                                     <div class="col-lg-6 pe-3 pe-sm-3 mt-sm-0">
                                         <img loading="lazy" class="about_img w-100"
                                             src="{{$team->profile}}"
-                                            alt="{{$team->name}}">
+                                            alt="{{$team->name}}" onerror="this.onerror=null;this.src='{{ asset('assets/images/event_loading.png') }}';" >
                                         <h3 class="brown_heading mt-0 mt-sm-4 mb-3" id="{{$team->name}}"
                                             style="font-size: 30px !important;">{{$team->name}}</h3>
                                         <p class="aboput_text">

@@ -14,6 +14,7 @@ use App\Models\Order;
 use App\Models\OurTeam;
 use App\Models\SliderItem;
 use App\Models\Store;
+use App\Models\Host;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,7 +38,9 @@ class HomeController extends Controller
 
     public function about()
     {
-        return view('frontend.about');
+        $outTeams = OurTeam::all();
+
+        return view('frontend.about',compact( 'outTeams'));
     }
 
     public function sliderShow(string $id)
@@ -68,13 +71,18 @@ class HomeController extends Controller
         $event->formatted_date = Carbon::parse($event->starting_date)->format('M d, Y');
         $event->formatted_time = Carbon::parse($event->starting_date)->format('h:i A');
 
+        $oldHost = Host::select('host_id','event_id')->where('event_id',$event->id)->pluck('host_id')->toArray();
+
+        $team = OurTeam::select('id','name','about','profile')->whereIn('id',$oldHost)->get();
+
+
         $events = Event::where('status', 'Active')->select('id', 'name', 'thumb_image', 'starting_date', 'location')->latest()->take(5)->get();
         $events->transform(function ($event) {
             $event->formatted_date = Carbon::parse($event->starting_date)->format('d M');
             $event->formatted_time = Carbon::parse($event->starting_date)->format('H:i');
             return $event;
         });
-        return view('frontend.events-detail', compact('event', 'events'));
+        return view('frontend.events-detail', compact('event', 'events','team'));
     }
 
     public function contact()

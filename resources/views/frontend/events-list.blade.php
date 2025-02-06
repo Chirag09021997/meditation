@@ -53,7 +53,7 @@
                             <a href="/events/{{$event->id}}" style="display:contents">
                                 <div class="row">
                                     <div class="col-lg-4 col-md-6">
-                                        <img src="{{ $event->thumb_image }}" alt="{{ $event->name }}" class="img-evt" />
+                                        <img src="{{ $event->thumb_image }}" alt="{{ $event->name }}" class="img-evt" onerror="this.onerror=null;this.src='{{ asset('assets/images/event_loading.png') }}';" />
                                         <!-- <img  class="img-evt" src="https://tejas.codeshopstudio.com/storage/uploads/event/1732810956_Screenshot_20220910-203023_Google.jpg" alt="{{ $event->name }}" /> -->
                                     </div>
                                     <div class="d-none d-md-block  col-md-8 pl-4 pb-2 pt-4 pb-2">

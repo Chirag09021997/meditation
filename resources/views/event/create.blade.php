@@ -76,6 +76,18 @@
             </div>
 
             <div class="mt-4">
+                <x-input-label for="name" :value="__('Select Host Name')" />
+                <select multiple id="host_id" name="host_id[]"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option disabled>Choose host</option>
+                    @foreach ($team as $team)
+                        <option value="{{ $team->id }}">
+                            {{ $team->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="mt-4">
                 <x-input-label for="question" :value="__('Question')" />
                 <textarea id="question" name="question" rows="4"
                     class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"

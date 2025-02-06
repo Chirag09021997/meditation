@@ -17,7 +17,7 @@
                         <th>Speciality</th>
                         <th>Experience</th>
                         <th>Phone No</th>
-                        <th>Trainers Skill</th>
+                        <th>Skill</th>
                     </tr>
                 </thead>
             </table>

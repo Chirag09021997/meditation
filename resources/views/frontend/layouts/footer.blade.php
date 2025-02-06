@@ -6,8 +6,7 @@
                 <div class="col-lg-3 col-sm-7 mb-4 mb-lg-0">
                     <h5 class="widget_title">Abouts us</h5>
                     <div class="footer_desc">
-                        <p>Phasellus blandit massa enim. elit id varius nunc. Lorems ipsum dolor sit consectetur. If you
-                            are going to use a passage of Lorem Ipsum.</p>
+                        <p>We are committed to excellence, innovation, and growth. Our team strives to deliver quality and value in everything we do.</p>
                     </div>
                     <ul class="contact_info list_none">
                         <li>
@@ -104,7 +103,7 @@
     </div>
     <div class="shape_img">
         <div class="ol_shape10">
-            <img src="assets/images/shape10.png" alt="shape36" />
+        <img src="assets/images/shape7.png" alt="shape36" />
         </div>
     </div>
 </footer>

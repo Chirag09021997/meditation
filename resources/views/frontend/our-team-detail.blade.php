@@ -86,7 +86,7 @@
                                 </ul>
                             </div>
                             <div class="col-md-6 mb-4 mb-md-0">
-                                <h5>Trainers Skill:</h5>
+                                <h5>Skill:</h5>
                                 <hr>
                                 <div class="progress_content">
                                     <div class="progrees_bar_text">

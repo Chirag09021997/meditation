@@ -10,8 +10,8 @@
     @endif
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
-            @foreach ($sliderLists as $key => $slider)
 
+            @foreach ($sliderLists as $key => $slider)
                 @if ($slider->text_align == 'Left')
                     <div class="carousel-item bg_light_pink bg-content {{ $key == 0 ? 'active' : ''}}">
 
@@ -23,8 +23,8 @@
                                         <div class="banner_img" data-animation="fadeIn" data-animation-delay="0.4s"
                                             data-parallax='{"y": 30, "smoothness": 10}'>
                                             <!-- <div>
-                                                <img src="{{ $slider->background }}" alt="image" />
-                                            </div> -->
+                                                        <img src="{{ $slider->background }}" alt="image" />
+                                                    </div> -->
 
                                         </div>
                                     </div>
@@ -34,9 +34,11 @@
                                             <div class="banner_content animation slider-section" data-animation="zoomIn"
                                                 data-animation-delay="0.4s" data-parallax='{"y": 30, "smoothness": 10}'>
                                                 <h3 class="animation" data-animation="fadeInDown" data-animation-delay="0.5s">
-                                                    {{ $slider->title }}</h3>
+                                                    {{ $slider->title }}
+                                                </h3>
                                                 <p class="animation" data-animation="fadeInUp" data-animation-delay="0.6s">
-                                                    {{ $slider->sub_description }}</p>
+                                                    {{ $slider->sub_description }}
+                                                </p>
                                                 <a class="btn btn-default rounded-0 animation"
                                                     href="{{ route('slider-detail.show', $slider->id) }}"
                                                     data-animation="fadeInUp" data-animation-delay="0.7s">Learn More</a>
@@ -67,16 +69,16 @@
                     </div>
                 @else
                     <div class="carousel-item bg_light_yellow {{ $key == 0 ? 'active' : ''}}">
-                    <div class="banner_slide_content slider2"
+                        <div class="banner_slide_content slider2"
                             style="margin-top: 20px; background-image: url('{{ asset($slider->background) }}');">
                             <div class="container">
                                 <div class="row align-items-center">
                                     <div class="col-lg-6 col-md-5">
                                         <div class="banner_img2 text-center">
                                             <!-- <div class="animation border_img" data-animation="fadeInRight"
-                                                data-animation-delay="0.5s"> -->
-                                                <!-- <img data-parallax='{"y": -30, "smoothness": 20}'
-                                                    src="{{ $slider->background }}" alt="image" /> -->
+                                                        data-animation-delay="0.5s"> -->
+                                            <!-- <img data-parallax='{"y": -30, "smoothness": 20}'
+                                                            src="{{ $slider->background }}" alt="image" /> -->
                                             <!-- </div> -->
                                         </div>
                                     </div>
@@ -86,7 +88,8 @@
                                             <h3 class="animation mt-7 blue-text" data-animation="fadeInDown"
                                                 data-animation-delay="0.5s">{{ $slider->title }}</h3>
                                             <p class="animation" data-animation="fadeInUp" data-animation-delay="0.6s">
-                                                {{ $slider->sub_description }}</p>
+                                                {{ $slider->sub_description }}
+                                            </p>
                                             <a class="btn btn-default rounded-0 animation"
                                                 href="{{ route('slider-detail.show', $slider->id) }}" data-animation="fadeInUp"
                                                 data-animation-delay="0.7s">Learn More</a>
@@ -135,7 +138,7 @@
                 data-animation-delay="0.2s">
                 <div class="heading_s1">
                     <!-- <span class="sub_heading">What we do</span> -->
-                    <h2>Benefit Of Delta Meditaon</h2>
+                    <h2>Benefits Of Delta Meditation</h2>
                 </div>
                 <p>Tejas Aura is an online and offline meditaon and spiritual educaon plaorm. We
                     share meditaon and spiritual knowledge in easy-to-understand terms, such that you can
@@ -223,8 +226,8 @@
                 </div>
             </div>
         </div>
-        <div class="banner_shape">
-            <div class="shape1">
+        <div class="banner_shape"  >
+            <div class="shape1" style="margin-top: 200px;">
                 <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
                     <img src="{{ asset('assets/images/Group-circle.png') }}" alt="image"
                         class="r-link linear infinite" />
@@ -1205,8 +1208,8 @@
                     <!-- <span class="sub_heading">Yoga teacher</span> -->
                     <h2>Our Tejas Team</h2>
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur blandit magna adipiscing elit ncididunt labore et dolore
-                    magna aliqua enim. </p>
+                <p>Our Tejas Team is passionate about innovation and excellence, working together to create impactful
+                    solutions with trust and quality. 🚀</p>
                 <div class="small_divider clearfix"></div>
             </div>
         </div>
@@ -1219,7 +1222,7 @@
                         <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.2s">
                             <div class="team_bor">
                                 <div class="team_img">
-                                    <img src="{{ $ourTeam->profile }}" alt="{{ $ourTeam->name }}">
+                                    <img src="{{ $ourTeam->profile }}" alt="{{ $ourTeam->name }}" onerror="this.onerror=null;this.src='{{ asset('assets/images/event_loading.png') }}';">
                                     <ul class="list_none social_icons social_style1 rounded_social">
                                         @if ($ourTeam->facebook_url)
                                             <li><a href="{{ $ourTeam->facebook_url }}"><i class="fab fa-facebook-f"></i></a>
@@ -1266,10 +1269,10 @@
                 data-animation-delay="0.2s">
                 <div class="heading_s1">
                     <span class="sub_heading">Our Letest Articles</span>
-                    <h2>From Our Blog & News</h2>
+                    <h2>From Our Blog</h2>
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur blandit magna adipiscing elit ncididunt labore et dolore
-                    magna aliqua enim. </p>
+                <p>Discover insights, trends, and expert tips from our Tejas Team. Stay informed and inspired with every
+                    post!</p>
                 <div class="small_divider clearfix"></div>
             </div>
         </div>
@@ -1303,4 +1306,91 @@
     </div>
 </section>
 {{-- <!-- END SECTION BLOG --> --}}
+
+{{-- <!-- START SECTION Scroll --> --}}
+
+<section class="pb_70">
+    <div class="relative overflow-hidden bg-gray-100 py-10">
+        <div class="logo-carousel">
+            <div class="logo-track">
+                @php
+                    $logos = ['logo1.svg', 'logo2.svg', 'logo3.svg', 'logo4.svg','logo5.svg', 'logo6.svg', 'logo7.svg']; // Add more logos if needed
+                    
+                @endphp
+
+                @if (count($logos) === 1)
+                    <!-- Centered logo when only one -->
+                    <div class="single-logo">
+                        <img src="{{ asset('assets/images/' . $logos[0]) }}" class="logo-item" alt="Brand Logo">
+                    </div>
+                @else
+                    <!-- Duplicate logos for smooth infinite scrolling -->
+                    @foreach ($logos as $logo)
+                        <img src="{{ asset('assets/images/' . $logo) }}" class="logo-item" alt="Brand Logo">
+                    @endforeach
+                    @foreach ($logos as $logo)
+                        <img src="{{ asset('assets/images/' . $logo) }}" class="logo-item" alt="Brand Logo">
+                    @endforeach
+                @endif
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Container */
+.logo-carousel {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background-color: #f8f9fa;
+    white-space: nowrap;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* If only one logo, center it */
+.single-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Logo track for multiple logos */
+.logo-track {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Adjust space between logos */
+    width: max-content;
+    animation: marquee 20s linear infinite;
+}
+
+/* Stop scrolling on hover */
+.logo-carousel:hover .logo-track {
+    animation-play-state: paused;
+}
+
+/* Logo size */
+.logo-item {
+    height: 60px; /* Adjust logo size */
+    width: auto;
+    object-fit: contain;
+}
+
+/* Scrolling animation for multiple logos */
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+</style>
+
+{{-- <!-- END SECTION Scrol --> --}}
+
 @endsection

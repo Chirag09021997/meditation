@@ -93,6 +93,18 @@
             </div>
 
             <div class="mt-4">
+                <x-input-label for="name" :value="__('Select Host Name')" />
+                <select multiple id="host_id" name="host_id[]"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option disabled>Choose host</option>
+                    @foreach ($team as $team)
+                        <option value="{{ $team->id }}" @selected(in_array($team->id, $oldHost))>
+                            {{ $team->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="mt-4">
                 <x-input-label for="question" :value="__('Question')" />
                 <textarea id="question" name="question" rows="4"
                     class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
@@ -140,6 +152,28 @@
 
         <h2 class="mt-3">Include</h2>
         <div class="grid md:grid-cols-3 gap-4" id="include">
+            @if(count($event->include) == 0)
+                <div class="mt-4" id="include">
+                    <x-input-label for="include-text" :value="__('Title')" />
+                    <x-text-input id="include_title[]" class="block mt-1 w-full" type="text" name="include_title[]" 
+                        placeholder="Enter Title" step="0.01" min="0" />
+                    <x-input-error :messages="$errors->get('include-title')" class="mt-2" />
+                </div>
+                <div class="mt-4" id="include-description">
+                    <x-input-label for="include-description" :value="__('Description')" />
+                    <x-text-input id="include_description[]" class="block mt-1 w-full" type="text" name="include_description[]"
+                        placeholder="Enter Title" step="0.01" min="0" />
+                    <x-input-error :messages="$errors->get('include-description')" class="mt-2" />
+                </div>
+
+                <div class="mt-4">
+                    <x-input-label for="include_image" :value="__('Image')" />
+                    <x-text-input id="include_image"
+                        class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
+                        type="file" name="include_image[]" accept="image/*"  />
+                    <x-input-error :messages="$errors->get('include_image')" class="mt-2" />
+                </div>
+            @endif
             @foreach($event->include as $include)
                 <div class="mt-4" id="include-title">
                     <x-input-label for="include-text" :value="__('Title')" />
@@ -169,6 +203,28 @@
 
         <h2 class="mt-3">Teaching</h2>
         <div class="grid md:grid-cols-3 gap-4" id="teaching">
+            @if(count($event->teaching) == 0)
+                <div class="mt-4" id="teaching_title">
+                    <x-input-label for="include-text" :value="__('Title')" />
+                    <x-text-input id="teaching_title[]" class="block mt-1 w-full" type="text" name="teaching_title[]" 
+                        placeholder="Enter Title" step="0.01" min="0" />
+                    <x-input-error :messages="$errors->get('teaching_title')" class="mt-2" />
+                </div>
+                <div class="mt-4" id="teaching-description">
+                    <x-input-label for="teaching-description" :value="__('Description')" />
+                    <x-text-input id="teaching_description[]" class="block mt-1 w-full" type="text" name="teaching_description[]"
+                        placeholder="Enter Title" step="0.01" min="0" />
+                    <x-input-error :messages="$errors->get('teaching-description')" class="mt-2" />
+                </div>
+
+                <div class="mt-4">
+                    <x-input-label for="teaching_image" :value="__('Image')" />
+                    <x-text-input id="teaching_image"
+                        class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
+                        type="file" name="teaching_image[]" accept="image/*"  />
+                    <x-input-error :messages="$errors->get('teaching_image')" class="mt-2" />
+                </div>
+            @endif
             @foreach($event->teaching as $teaching)
                 <div class="mt-4" id="teaching-title">
                     <x-input-label for="teaching-text" :value="__('Title')" />
