@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $blogs = Blog::where('status', 'Active')->latest()->take(3)->get();
-        $latestStore = Store::where('status', 'Active')->select('id', 'product_name', 'product_thumb',  'price', 'discount')->latest()->take(4)->get();
+        $latestStore = Store::where('status', 'Active')->select('id', 'product_name', 'product_thumb', 'price', 'discount')->latest()->take(4)->get();
         $store = Store::where('add_home_status', 'Active')->select('*')->first();
         $blogs->transform(function ($blog) {
             $blog->formatted_date = Carbon::parse($blog->starting_date)->format('d M');
@@ -70,7 +70,9 @@ class HomeController extends Controller
 
     public function eventSingle(string $id)
     {
-        $event = Event::where('status', 'Active')->select('id', 'name', 'thumb_image', 'short_description', 'description', 'starting_date', 'location', 'total_joining', 'is_paid', 'fees')->findOrFail($id);
+        $event = Event::where('status', 'Active')->select('id', 'name', 'thumb_image', 'short_description', 'description', 'starting_date', 'location', 'total_joining', 'is_paid', 'fees', 'language', 'end_date', 'duration', 'question', 'event_image', 'include', 'teaching', 'curriculum')->findOrFail($id);
+
+        // $event = Event::where('status', 'Active')->select(columns: 'id', 'name', 'thumb_image', 'short_description', 'description', 'starting_date', 'location', 'total_joining', 'is_paid', 'fees')->findOrFail($id);
         $event->formatted_date = Carbon::parse($event->starting_date)->format('M d, Y');
         $event->formatted_time = Carbon::parse($event->starting_date)->format('h:i A');
 
@@ -129,15 +131,15 @@ class HomeController extends Controller
 
     public function storeList()
     {
-        $stores = Store::where('status', 'Active')->select('id', 'product_name', 'product_thumb',  'price', 'discount')->latest()->paginate(9);
-        $latestStore = Store::where('status', 'Active')->select('id', 'product_name', 'product_thumb',  'price', 'discount')->latest()->take(3)->get();
+        $stores = Store::where('status', 'Active')->select('id', 'product_name', 'product_thumb', 'price', 'discount')->latest()->paginate(9);
+        $latestStore = Store::where('status', 'Active')->select('id', 'product_name', 'product_thumb', 'price', 'discount')->latest()->take(3)->get();
         return view('frontend.stores-list', compact('stores', 'latestStore'));
     }
 
     public function storeSingle(string $id)
     {
         $store = Store::where('status', 'Active')->select('id', 'product_name', 'short_description', 'description', 'product_thumb', 'video_preview', 'price', 'total_stock', 'total_sale', 'discount', 'tags')->findOrFail($id);
-        $latestStore = Store::where('status', 'Active')->select('id', 'product_name', 'product_thumb',  'price', 'discount')->latest()->take(4)->get();
+        $latestStore = Store::where('status', 'Active')->select('id', 'product_name', 'product_thumb', 'price', 'discount')->latest()->take(4)->get();
         return view('frontend.stores-detail', compact('store', 'latestStore'));
     }
 

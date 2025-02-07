@@ -58,3 +58,11 @@
     max-width: 100%;  /* Ensures the image doesn't overflow its container */
     height: auto;      /* Keeps the aspect ratio */
 }
+
+
+@media (max-width: 768px) {
+    .shape_circle1 img, 
+    .shape_circle2 img {
+        display: none;
+    }
+}

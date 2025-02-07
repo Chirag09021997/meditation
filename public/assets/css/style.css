@@ -2841,6 +2841,20 @@ body.active {
     z-index: 1;
    
 }
+@media (max-width: 768px) {
+    .shape1 img, 
+    .shape2 img, 
+    .shape_circle1 img, 
+    .shape_circle2 img {
+        display: none;
+    }
+    /* playstore button */
+    .store-btn {
+        width: 180px !important;  /* Reduce width for mobile */
+        height: auto !important; /* Maintain aspect ratio */
+    }
+}
+
 .shape_circle1 
 {
     left: -80px;
