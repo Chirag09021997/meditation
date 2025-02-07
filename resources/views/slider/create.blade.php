@@ -9,7 +9,10 @@
         <div class="grid md:grid-cols-2 gap-4">
             <!-- title -->
             <div class="mt-4">
-                <x-input-label for="title" :value="__('Title')" />
+                <div class="flex items-center space-x-1">
+                    <x-input-label for="title" :value="__('Title')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')"
                     placeholder="Enter title" required autofocus />
                 <x-input-error :messages="$errors->get('title')" class="mt-2" />
@@ -17,7 +20,11 @@
 
             <!-- background -->
             <div class="mt-4">
-                <x-input-label for="background" :value="__('Background')" />
+            <div class="flex items-center space-x-1">
+                    <x-input-label for="background" :value="__('Background')" />
+                    <span class="text-red-500">*</span>
+                </div>
+
                 <x-text-input id="background"
                     class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
                     type="file" name="background" accept="image/*" :value="old('background')" />
@@ -31,14 +38,19 @@
                 </label>
                 <select id="text_align" name="text_align"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value="Left" {{ old('text_align', $model->text_align ?? '') == 'Left' ? 'selected' : '' }}>Left</option>
-                    <option value="Right" {{ old('text_align', $model->text_align ?? '') == 'Right' ? 'selected' : '' }}>Right</option>
+                    <option value="Left" {{ old('text_align', $model->text_align ?? '') == 'Left' ? 'selected' : '' }}>
+                        Left</option>
+                    <option value="Right" {{ old('text_align', $model->text_align ?? '') == 'Right' ? 'selected' : '' }}>
+                        Right</option>
                 </select>
             </div>
 
             <!-- sub_description -->
             <div class="mt-4">
-                <x-input-label for="sub_description" :value="__('Short Description')" />
+                <div class="flex items-center space-x-1">
+                    <x-input-label for="sub_description" :value="__('Short Description')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <textarea id="sub_description" name="sub_description" rows="4"
                     class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
                     placeholder="Enter sub description...">{{ old('sub_description') }}</textarea>
@@ -48,7 +60,10 @@
 
         <!-- description -->
         <div class="mt-4">
-            <x-input-label for="description" :value="__('Description')" />
+        <div class="flex items-center space-x-1">
+                    <x-input-label for="description" :value="__('Description')" />
+                    <span class="text-red-500">*</span>
+                </div>
             <textarea id="description" name="description" rows="4"
                 class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
                 placeholder="Enter description...">{{ old('description') }}</textarea>

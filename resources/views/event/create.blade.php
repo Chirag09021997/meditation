@@ -15,7 +15,10 @@
         <div class="grid md:grid-cols-2 gap-4">
             <!-- name -->
             <div class="mt-4">
-                <x-input-label for="name" :value="__('Name')" />
+                <div class="flex items-center space-x-1">
+                    <x-input-label for="name" :value="__('Name')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')"
                     placeholder="Enter name" required autofocus />
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
@@ -23,7 +26,10 @@
 
             <!-- total_joining -->
             <div class="mt-4">
-                <x-input-label for="total_joining" :value="__('Total Joining')" />
+                <div class="flex items-center space-x-1">
+                    <x-input-label for="total_joining" :value="__('Total Joining')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="total_joining" class="block mt-1 w-full" type="number" name="total_joining"
                     :value="old('total_joining')" placeholder="Enter total joining" />
                 <x-input-error :messages="$errors->get('total_joining')" class="mt-2" />
@@ -45,7 +51,10 @@
             </div>
 
             <div class="mt-4">
-                <x-input-label for="end_date" :value="__('Duration')" />
+            <div class="flex items-center space-x-1">
+                    <x-input-label for="duration" :value="__('Duration')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="duration" class="block mt-1 w-full" type="text" name="duration"
                     :value="old('duration')" placeholder="Enter Duration" />
                 <x-input-error :messages="$errors->get('duration')" class="mt-2" />
@@ -63,15 +72,18 @@
             <!-- location -->
             <div class="mt-4">
                 <x-input-label for="location" :value="__('Location')" />
-                <x-text-input id="location" class="block mt-1 w-full" type="text" name="location" :value="old('location')"
-                    placeholder="Enter location" />
+                <x-text-input id="location" class="block mt-1 w-full" type="text" name="location"
+                    :value="old('location')" placeholder="Enter location" />
                 <x-input-error :messages="$errors->get('location')" class="mt-2" />
             </div>
 
             <div class="mt-4">
-                <x-input-label for="language" :value="__('Language')" />
-                <x-text-input id="language" class="block mt-1 w-full" type="text" name="language" :value="old('language')"
-                    placeholder="Enter Language" />
+                <div class="flex items-center space-x-1">
+                    <x-input-label for="language" :value="__('Language')" />
+                    <span class="text-red-500">*</span>
+                </div>
+                <x-text-input id="language" class="block mt-1 w-full" type="text" name="language"
+                    :value="old('language')" placeholder="Enter Language" />
                 <x-input-error :messages="$errors->get('language')" class="mt-2" />
             </div>
 
@@ -82,7 +94,8 @@
                     <option disabled>Choose host</option>
                     @foreach ($team as $team)
                         <option value="{{ $team->id }}">
-                            {{ $team->name }}</option>
+                            {{ $team->name }}
+                        </option>
                     @endforeach
                 </select>
             </div>
@@ -115,7 +128,10 @@
 
             <!-- fees -->
             <div class="mt-4" id="fees-container">
-                <x-input-label for="fees" :value="__('Fees')" />
+            <div class="flex items-center space-x-1">
+                    <x-input-label for="fees" :value="__('Fees')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="fees" class="block mt-1 w-full" type="number" name="fees" :value="old('fees')"
                     placeholder="Enter fees" step="0.01" min="0" />
                 <x-input-error :messages="$errors->get('fees')" class="mt-2" />
@@ -134,55 +150,57 @@
         <h2 class="mt-3">Include</h2>
 
         <div class="grid md:grid-cols-3 gap-4" id="include">
-                <div class="mt-4" id="include">
-                    <x-input-label for="include-text" :value="__('Title')" />
-                    <x-text-input id="include_title[]" class="block mt-1 w-full" type="text" name="include_title[]" 
-                        placeholder="Enter Title" step="0.01" min="0" />
-                    <x-input-error :messages="$errors->get('include-title')" class="mt-2" />
-                </div>
-                <div class="mt-4" id="include-description">
-                    <x-input-label for="include-description" :value="__('Description')" />
-                    <x-text-input id="include_description[]" class="block mt-1 w-full" type="text" name="include_description[]"
-                        placeholder="Enter Title" step="0.01" min="0" />
-                    <x-input-error :messages="$errors->get('include-description')" class="mt-2" />
-                </div>
+            <div class="mt-4" id="include">
+                <x-input-label for="include-text" :value="__('Title')" />
+                <x-text-input id="include_title[]" class="block mt-1 w-full" type="text" name="include_title[]"
+                    placeholder="Enter Title" step="0.01" min="0" />
+                <x-input-error :messages="$errors->get('include-title')" class="mt-2" />
+            </div>
+            <div class="mt-4" id="include-description">
+                <x-input-label for="include-description" :value="__('Description')" />
+                <x-text-input id="include_description[]" class="block mt-1 w-full" type="text"
+                    name="include_description[]" placeholder="Enter Title" step="0.01" min="0" />
+                <x-input-error :messages="$errors->get('include-description')" class="mt-2" />
+            </div>
 
-                <div class="mt-4">
-                    <x-input-label for="include_image" :value="__('Image')" />
-                    <x-text-input id="include_image"
-                        class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
-                        type="file" name="include_image[]" accept="image/*"  />
-                    <x-input-error :messages="$errors->get('include_image')" class="mt-2" />
-                </div>
+            <div class="mt-4">
+                <x-input-label for="include_image" :value="__('Image')" />
+                <x-text-input id="include_image"
+                    class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
+                    type="file" name="include_image[]" accept="image/*" />
+                <x-input-error :messages="$errors->get('include_image')" class="mt-2" />
+            </div>
         </div>
-        <button id="add-include" class="mt-3 text-white hover:text-blue-900 bg-blue-900 border border-blue-300 focus:outline-none hover:bg-blue-100 focus:ring-4 focus:ring-blue-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 ">{{ __('Add') }}</button>
+        <button id="add-include"
+            class="mt-3 text-white hover:text-blue-900 bg-blue-900 border border-blue-300 focus:outline-none hover:bg-blue-100 focus:ring-4 focus:ring-blue-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 ">{{ __('Add') }}</button>
 
         <h2>Teaching</h2>
 
         <div class="grid md:grid-cols-3 gap-4" id="teaching">
-                <div class="mt-4" id="teaching_title">
-                    <x-input-label for="include-text" :value="__('Title')" />
-                    <x-text-input id="teaching_title[]" class="block mt-1 w-full" type="text" name="teaching_title[]" 
-                        placeholder="Enter Title" step="0.01" min="0" />
-                    <x-input-error :messages="$errors->get('teaching_title')" class="mt-2" />
-                </div>
-                <div class="mt-4" id="teaching-description">
-                    <x-input-label for="teaching-description" :value="__('Description')" />
-                    <x-text-input id="teaching_description[]" class="block mt-1 w-full" type="text" name="teaching_description[]"
-                        placeholder="Enter Title" step="0.01" min="0" />
-                    <x-input-error :messages="$errors->get('teaching-description')" class="mt-2" />
-                </div>
+            <div class="mt-4" id="teaching_title">
+                <x-input-label for="include-text" :value="__('Title')" />
+                <x-text-input id="teaching_title[]" class="block mt-1 w-full" type="text" name="teaching_title[]"
+                    placeholder="Enter Title" step="0.01" min="0" />
+                <x-input-error :messages="$errors->get('teaching_title')" class="mt-2" />
+            </div>
+            <div class="mt-4" id="teaching-description">
+                <x-input-label for="teaching-description" :value="__('Description')" />
+                <x-text-input id="teaching_description[]" class="block mt-1 w-full" type="text"
+                    name="teaching_description[]" placeholder="Enter Title" step="0.01" min="0" />
+                <x-input-error :messages="$errors->get('teaching-description')" class="mt-2" />
+            </div>
 
-                <div class="mt-4">
-                    <x-input-label for="teaching_image" :value="__('Image')" />
-                    <x-text-input id="teaching_image"
-                        class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
-                        type="file" name="teaching_image[]" accept="image/*"  />
-                    <x-input-error :messages="$errors->get('teaching_image')" class="mt-2" />
-                </div>
+            <div class="mt-4">
+                <x-input-label for="teaching_image" :value="__('Image')" />
+                <x-text-input id="teaching_image"
+                    class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
+                    type="file" name="teaching_image[]" accept="image/*" />
+                <x-input-error :messages="$errors->get('teaching_image')" class="mt-2" />
+            </div>
         </div>
 
-        <button id="add-teaching" class="mt-3 text-white hover:text-blue-900 bg-blue-900 border border-blue-300 focus:outline-none hover:bg-blue-100 focus:ring-4 focus:ring-blue-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 ">{{ __('Add') }}</button>
+        <button id="add-teaching"
+            class="mt-3 text-white hover:text-blue-900 bg-blue-900 border border-blue-300 focus:outline-none hover:bg-blue-100 focus:ring-4 focus:ring-blue-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 ">{{ __('Add') }}</button>
 
         <!-- description -->
         <div class="mt-4">
@@ -192,7 +210,7 @@
                 placeholder="Enter description...">{{ old('description') }}</textarea>
             <x-input-error :messages="$errors->get('description')" class="mt-2" />
         </div>
-        
+
 
         <div class="mt-4">
             <x-input-label for="curriculum" :value="__('Curriculum')" />
@@ -223,7 +241,7 @@
         CKEDITOR.replace('curriculum', {
             height: 200,
         });
-        $(function() {
+        $(function () {
             $('input[name="starting_date"]').daterangepicker({
                 singleDatePicker: true,
                 timePicker: true,
@@ -234,9 +252,9 @@
                 }
             });
 
-         
 
-            $('form').on('submit', function(e) {
+
+            $('form').on('submit', function (e) {
                 e.preventDefault();
                 var startingDateDisplay = $('input[name="starting_date"]').val();
                 var startingDate = moment(startingDateDisplay, 'DD-MM-YYYY HH:mm:ss').format(
@@ -247,10 +265,10 @@
             });
         });
 
-        $(document).on('click', '#add-include', function(e) {
+        $(document).on('click', '#add-include', function (e) {
             e.preventDefault();
             $("#include").append(
-                        `<div class="mt-4" id="include-title">
+                `<div class="mt-4" id="include-title">
                     <x-input-label for="include-text" :value="__('Title')" />
                     <x-text-input id="include_title[]" class="block mt-1 w-full" type="text" name="include_title[]" :value="old('title')"
                         placeholder="Enter Title" step="0.01" min="0" />
@@ -272,10 +290,10 @@
                 `);
         });
 
-        $(document).on('click', '#add-teaching', function(e) {
+        $(document).on('click', '#add-teaching', function (e) {
             e.preventDefault();
             $("#teaching").append(
-                        `<div class="mt-4" id="teaching_title">
+                `<div class="mt-4" id="teaching_title">
                     <x-input-label for="include-text" :value="__('Title')" />
                     <x-text-input id="teaching_title[]" class="block mt-1 w-full" type="text" name="teaching_title[]" 
                         placeholder="Enter Title" step="0.01" min="0" />
@@ -298,7 +316,7 @@
                 `);
         });
 
-        $(document).ready(function() {
+        $(document).ready(function () {
             function toggleFeesVisibility() {
                 if ($('#is_paid').val() === 'On') {
                     $('#fees-container').show();
@@ -307,7 +325,7 @@
                 }
             }
             toggleFeesVisibility();
-            $('#is_paid').change(function() {
+            $('#is_paid').change(function () {
                 toggleFeesVisibility();
             });
         });

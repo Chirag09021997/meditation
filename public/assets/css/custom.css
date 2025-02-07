@@ -60,9 +60,4 @@
 }
 
 
-@media (max-width: 768px) {
-    .shape_circle1 img, 
-    .shape_circle2 img {
-        display: none;
-    }
-}
+

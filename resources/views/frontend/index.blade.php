@@ -1199,13 +1199,13 @@
 {{-- <!-- END SECTION TESTIMONIAL --> --}}
 
 {{-- <!-- START SECTION TEACHER --> --}}
+@if ($outTeams->count() > 0)
 <section class="bg_light_pink pb_70">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-6 col-lg-8 col-md-10 text-center animation" data-animation="fadeInUp"
                 data-animation-delay="0.2s">
                 <div class="heading_s1">
-                    <!-- <span class="sub_heading">Yoga teacher</span> -->
                     <h2>Our Tejas Team</h2>
                 </div>
                 <p>Our Tejas Team is passionate about innovation and excellence, working together to create impactful
@@ -1259,6 +1259,7 @@
         </div>
     </div>
 </section>
+@endif
 {{-- <!-- END SECTION TEACHER --> --}}
 
 {{-- <!-- START SECTION BLOG --> --}}

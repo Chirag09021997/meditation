@@ -25,7 +25,7 @@ class UpdateOurTeamRequest extends FormRequest
             'name' => 'required|string|max:255',
             'post' => 'required|string|max:255',
             'profile' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-            'email' => 'nullable|email',
+            'email' => 'required|email',
             'speciality' => 'nullable|string',
             'experience' => 'nullable|string',
             'phone_no' => 'nullable|string',

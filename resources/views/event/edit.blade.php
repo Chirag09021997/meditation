@@ -15,7 +15,10 @@
         <div class="grid md:grid-cols-2 gap-4">
             <!-- name -->
             <div class="mt-4">
-                <x-input-label for="name" :value="__('Name')" />
+            <div class="flex items-center space-x-1">
+                    <x-input-label for="name" :value="__('Name')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $event->name)"
                     placeholder="Enter name" required autofocus />
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
@@ -23,8 +26,11 @@
 
             <!-- total_joining -->
             <div class="mt-4">
-                <x-input-label for="total_joining" :value="__('Total Joining')" />
-                <x-text-input id="total_joining" class="block mt-1 w-full" type="number" name="total_joining"
+            <div class="flex items-center space-x-1">
+                    <x-input-label for="total_joining" :value="__('Total Joining')" />
+                    <span class="text-red-500">*</span>
+                </div>
+                                <x-text-input id="total_joining" class="block mt-1 w-full" type="number" name="total_joining"
                     :value="old('total_joining', $event->total_joining)" placeholder="Enter total joining" />
                 <x-input-error :messages="$errors->get('total_joining')" class="mt-2" />
             </div>
@@ -60,8 +66,11 @@
             @endif
 
             <div class="mt-4">
-                <x-input-label for="end_date" :value="__('Duration')" />
-                <x-text-input id="duration" class="block mt-1 w-full" type="text" name="duration"
+            <div class="flex items-center space-x-1">
+                    <x-input-label for="duration" :value="__('Duration')" />
+                    <span class="text-red-500">*</span>
+                </div>
+                                <x-text-input id="duration" class="block mt-1 w-full" type="text" name="duration"
                     :value="old('duration',$event->duration)" placeholder="Enter Duration" />
                 <x-input-error :messages="$errors->get('duration')" class="mt-2" />
             </div>
@@ -86,8 +95,11 @@
             
 
             <div class="mt-4">
-                <x-input-label for="language" :value="__('Language')" />
-                <x-text-input id="language" class="block mt-1 w-full" type="text" name="language" :value="old('language',$event->language)"
+            <div class="flex items-center space-x-1">
+                    <x-input-label for="language" :value="__('Language')" />
+                    <span class="text-red-500">*</span>
+                </div>
+                                <x-text-input id="language" class="block mt-1 w-full" type="text" name="language" :value="old('language',$event->language)"
                     placeholder="Enter Language" />
                 <x-input-error :messages="$errors->get('language')" class="mt-2" />
             </div>
@@ -133,8 +145,11 @@
 
             <!-- fees -->
             <div class="mt-4" id="fees-container">
-                <x-input-label for="fees" :value="__('Fees')" />
-                <x-text-input id="fees" class="block mt-1 w-full" type="number" name="fees" :value="old('fees', $event->fees)"
+            <div class="flex items-center space-x-1">
+                    <x-input-label for="fees" :value="__('Fees')" />
+                    <span class="text-red-500">*</span>
+                </div>
+                                <x-text-input id="fees" class="block mt-1 w-full" type="number" name="fees" :value="old('fees', $event->fees)"
                     placeholder="Enter fees" step="0.01" min="0" />
                 <x-input-error :messages="$errors->get('fees')" class="mt-2" />
             </div>

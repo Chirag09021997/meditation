@@ -9,27 +9,39 @@
         <div class="grid md:grid-cols-2 gap-4">
             <!-- name -->
             <div class="mt-4">
-                <x-input-label for="name" :value="__('Name')" />
+                <div class="flex items-center space-x-1">
+                    <x-input-label for="name" :value="__('Name')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')"
                     placeholder="Enter name" required autofocus />
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
 
+
             <!-- email -->
+
             <div class="mt-4">
-                <x-input-label for="email" :value="__('Email')" />
+                <div class="flex items-center space-x-1">
+                    <x-input-label for="email" :value="__('Email')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
-                    placeholder="Enter email" />
+                    placeholder="Enter email" required autofocus />
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
 
             <!-- post -->
             <div class="mt-4">
-                <x-input-label for="post" :value="__('Post')" />
+                <div class="flex items-center space-x-1">
+                    <x-input-label for="post" :value="__('Post')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="post" class="block mt-1 w-full" type="text" name="post" :value="old('post')"
-                    placeholder="Enter post" required />
+                    placeholder="Enter post" required autofocus />
                 <x-input-error :messages="$errors->get('post')" class="mt-2" />
             </div>
+
 
             <!-- profile -->
             <div class="mt-4">
@@ -59,8 +71,8 @@
             <!-- phone_no -->
             <div class="mt-4">
                 <x-input-label for="phone_no" :value="__('Phone No')" />
-                <x-text-input id="phone_no" class="block mt-1 w-full" type="text" name="phone_no" :value="old('phone_no')"
-                    placeholder="Enter phone no" />
+                <x-text-input id="phone_no" class="block mt-1 w-full" type="text" name="phone_no"
+                    :value="old('phone_no')" placeholder="Enter phone no" />
                 <x-input-error :messages="$errors->get('phone_no')" class="mt-2" />
             </div>
 

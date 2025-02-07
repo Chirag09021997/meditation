@@ -297,7 +297,7 @@
                             </div>
                         </div>
                     @endif
-                        
+                    @if ($team->count() > 0)
                         <div id="about" class="white_block_no_padding about mt-5">
                             <div id="about-1" class="white_block about-1 text-center">
                                 <h4 class="brown_heading text-center py-3">About the Hosts</h4>
@@ -317,6 +317,7 @@
                                 </div>
                             </div>
                         </div>
+                    @endif
                         <div id="register_form" class="register_form text-center">
                             <br /><br />
                             <h3 class="register_tag">Register Now</h3>
