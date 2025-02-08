@@ -23,8 +23,8 @@
                                         <div class="banner_img" data-animation="fadeIn" data-animation-delay="0.4s"
                                             data-parallax='{"y": 30, "smoothness": 10}'>
                                             <!-- <div>
-                                                        <img src="{{ $slider->background }}" alt="image" />
-                                                    </div> -->
+                                                                <img src="{{ $slider->background }}" alt="image" />
+                                                            </div> -->
 
                                         </div>
                                     </div>
@@ -76,9 +76,9 @@
                                     <div class="col-lg-6 col-md-5">
                                         <div class="banner_img2 text-center">
                                             <!-- <div class="animation border_img" data-animation="fadeInRight"
-                                                        data-animation-delay="0.5s"> -->
+                                                                data-animation-delay="0.5s"> -->
                                             <!-- <img data-parallax='{"y": -30, "smoothness": 20}'
-                                                            src="{{ $slider->background }}" alt="image" /> -->
+                                                                    src="{{ $slider->background }}" alt="image" /> -->
                                             <!-- </div> -->
                                         </div>
                                     </div>
@@ -226,7 +226,7 @@
                 </div>
             </div>
         </div>
-        <div class="banner_shape"  >
+        <div class="banner_shape">
             <div class="shape1" style="margin-top: 200px;">
                 <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
                     <img src="{{ asset('assets/images/Group-circle.png') }}" alt="image"
@@ -1200,186 +1200,192 @@
 
 {{-- <!-- START SECTION TEACHER --> --}}
 @if ($outTeams->count() > 0)
-<section class="bg_light_pink pb_70">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-xl-6 col-lg-8 col-md-10 text-center animation" data-animation="fadeInUp"
-                data-animation-delay="0.2s">
-                <div class="heading_s1">
-                    <h2>Our Tejas Team</h2>
+    <section class="bg_light_pink pb_70">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-6 col-lg-8 col-md-10 text-center animation" data-animation="fadeInUp"
+                    data-animation-delay="0.2s">
+                    <div class="heading_s1">
+                        <h2>Our Tejas Team</h2>
+                    </div>
+                    <p>Our Tejas Team is passionate about innovation and excellence, working together to create impactful
+                        solutions with trust and quality. 🚀</p>
+                    <div class="small_divider clearfix"></div>
                 </div>
-                <p>Our Tejas Team is passionate about innovation and excellence, working together to create impactful
-                    solutions with trust and quality. 🚀</p>
-                <div class="small_divider clearfix"></div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
-                <div class="testimonial_slider testimonial_style1 carousel_slider owl-carousel owl-theme"
-                    data-margin="15" data-loop="true" data-autoplay="true"
-                    data-responsive='{"0":{"items": "1"}, "768":{"items": "2"}, "1199":{"items": "3"}}'>
-                    @foreach ($outTeams as $ourTeam)
-                        <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.2s">
-                            <div class="team_bor">
-                                <div class="team_img">
-                                    <img src="{{ $ourTeam->profile }}" alt="{{ $ourTeam->name }}" onerror="this.onerror=null;this.src='{{ asset('assets/images/event_loading.png') }}';">
-                                    <ul class="list_none social_icons social_style1 rounded_social">
-                                        @if ($ourTeam->facebook_url)
-                                            <li><a href="{{ $ourTeam->facebook_url }}"><i class="fab fa-facebook-f"></i></a>
-                                            </li>
-                                        @endif
-                                        @if ($ourTeam->twitter_url)
-                                            <li><a href="{{ $ourTeam->twitter_url }}"><i class="fab fa-twitter"></i></a></li>
-                                        @endif
-                                        @if ($ourTeam->google_url)
-                                            <li><a href="{{ $ourTeam->google_url }}"><i class="fab fa-google-plus-g"></i></a>
-                                            </li>
-                                        @endif
-                                        @if ($ourTeam->instagram_url)
-                                            <li><a href="{{ $ourTeam->instagram_url }}"><i class="fab fa-instagram"></i></a>
-                                            </li>
-                                        @endif
-                                        @if ($ourTeam->youtube_url)
-                                            <li><a href="{{ $ourTeam->youtube_url }}"><i class="fab fa-youtube"></i></a></li>
-                                        @endif
-                                    </ul>
-                                </div>
-                            </div>
+            <div class="row justify-content-center">
+        <div class="col-12 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
+            <div class="testimonial_slider testimonial_style1 carousel_slider owl-carousel owl-theme d-flex 
+                {{ $outTeams->count() <= 2 ? 'justify-content-center' : 'justify-content-start' }}"
+                data-margin="15" data-loop="{{ $outTeams->count() > 1 ? 'true' : 'false' }}" 
+                data-autoplay="{{ $outTeams->count() > 1 ? 'true' : 'false' }}"
+                data-responsive='{"0":{"items": "1"}, "768":{"items": "2"}, "1199":{"items": "3"}}'>
 
-                            <div class="team_info text-center">
-                                <div class="team_title">
-                                    <h5><a href="{{route('our-team-single', $ourTeam)}}">{{ $ourTeam->name }}</a></h5>
-                                    <span>{{ $ourTeam->post }}</span>
-                                </div>
+                @foreach ($outTeams->unique('id') as $ourTeam) 
+                    <div class="team_box animation" data-animation="fadeInUp" data-animation-delay="0.2s">
+                        <div class="team_bor">
+                            <div class="team_img">
+                                <img src="{{ $ourTeam->profile }}" alt="{{ $ourTeam->name }}"
+                                    onerror="this.onerror=null;this.src='{{ asset('assets/images/event_loading.png') }}';">
+                                <ul class="list_none social_icons social_style1 rounded_social">
+                                    @if ($ourTeam->facebook_url)
+                                        <li><a href="{{ $ourTeam->facebook_url }}"><i class="fab fa-facebook-f"></i></a></li>
+                                    @endif
+                                    @if ($ourTeam->twitter_url)
+                                        <li><a href="{{ $ourTeam->twitter_url }}"><i class="fab fa-twitter"></i></a></li>
+                                    @endif
+                                    @if ($ourTeam->google_url)
+                                        <li><a href="{{ $ourTeam->google_url }}"><i class="fab fa-google-plus-g"></i></a></li>
+                                    @endif
+                                    @if ($ourTeam->instagram_url)
+                                        <li><a href="{{ $ourTeam->instagram_url }}"><i class="fab fa-instagram"></i></a></li>
+                                    @endif
+                                    @if ($ourTeam->youtube_url)
+                                        <li><a href="{{ $ourTeam->youtube_url }}"><i class="fab fa-youtube"></i></a></li>
+                                    @endif
+                                </ul>
                             </div>
                         </div>
-                    @endforeach
-                </div>
+                        <div class="team_info text-center">
+                            <div class="team_title">
+                                <h5><a href="{{ route('our-team-single', $ourTeam) }}">{{ $ourTeam->name }}</a></h5>
+                                <span>{{ $ourTeam->post }}</span>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
-</section>
+        </div>
+    </section>
 @endif
 {{-- <!-- END SECTION TEACHER --> --}}
 
 {{-- <!-- START SECTION BLOG --> --}}
-<section class="pb_70">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-xl-6 col-lg-8 col-md-10 text-center animation" data-animation="fadeInUp"
-                data-animation-delay="0.2s">
-                <div class="heading_s1">
-                    <span class="sub_heading">Our Letest Articles</span>
-                    <h2>From Our Blog</h2>
+@if ($blogs->count() > 0)
+    <section class="pb_70">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-6 col-lg-8 col-md-10 text-center animation" data-animation="fadeInUp"
+                    data-animation-delay="0.2s">
+                    <div class="heading_s1">
+                        <span class="sub_heading">Our Letest Articles</span>
+                        <h2>From Our Blog</h2>
+                    </div>
+                    <p>Discover insights, trends, and expert tips from our Tejas Team. Stay informed and inspired with every
+                        post!</p>
+                    <div class="small_divider clearfix"></div>
                 </div>
-                <p>Discover insights, trends, and expert tips from our Tejas Team. Stay informed and inspired with every
-                    post!</p>
-                <div class="small_divider clearfix"></div>
             </div>
-        </div>
-        <div class="row justify-content-center">
-            @foreach ($blogs as $blog)
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog_post box_shadow4 animation" data-animation="fadeInUp" data-animation-delay="0.3s">
-                        <div class="blog_img">
-                            <a href="{{ route('blogs.single', $blog->id) }}">
-                                <img src="{{ $blog->thumb_image }}" alt="blog"
-                                    onerror="this.onerror=null;this.src='{{ asset('assets/images/ic_blog_loading.png') }}';">
-                            </a>
-                        </div>
-                        <div class="blog_content">
-                            <h5 class="blog_title"><a href="{{ route('blogs.single', $blog->id) }}">{{ $blog->name }}</a>
-                            </h5>
-                            <ul class="list_none blog_meta">
-                                <li><img src="{{ asset('assets/images/cl_teacher_img1.jpg') }}"
-                                        alt="image"><span>Dayna</span></li>
-                                <li>
-                                    <i class="far fa-calendar"></i>{{ $blog->formatted_date }}
-                                </li>
-                            </ul>
-                            <p>{{ $blog->short_description }}</p>
-                            <a href="{{ route('blogs.single', $blog->id) }}" class="blog_link">Read More</a>
+            <div class="row justify-content-center">
+                @foreach ($blogs as $blog)
+                    <div class="col-lg-4 col-md-6">
+                        <div class="blog_post box_shadow4 animation" data-animation="fadeInUp" data-animation-delay="0.3s">
+                            <div class="blog_img">
+                                <a href="{{ route('blogs.single', $blog->id) }}">
+                                    <img src="{{ $blog->thumb_image }}" alt="blog"
+                                        onerror="this.onerror=null;this.src='{{ asset('assets/images/ic_blog_loading.png') }}';">
+                                </a>
+                            </div>
+                            <div class="blog_content">
+                                <h5 class="blog_title"><a href="{{ route('blogs.single', $blog->id) }}">{{ $blog->name }}</a>
+                                </h5>
+                                <ul class="list_none blog_meta">
+                                    <li><img src="{{ asset('assets/images/cl_teacher_img1.jpg') }}"
+                                            alt="image"><span>Dayna</span></li>
+                                    <li>
+                                        <i class="far fa-calendar"></i>{{ $blog->formatted_date }}
+                                    </li>
+                                </ul>
+                                <p>{{ $blog->short_description }}</p>
+                                <a href="{{ route('blogs.single', $blog->id) }}" class="blog_link">Read More</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+@endif
 {{-- <!-- END SECTION BLOG --> --}}
 
 {{-- <!-- START SECTION Scroll --> --}}
-
-<section class="pb_70">
-    <div class="relative overflow-hidden bg-gray-100 py-10">
-        <div class="logo-carousel">
-            <div class="logo-track">
-                @if (count($certificates) === 1)
-                    <div class="single-logo">
-                        <img src="{{ $certificates[0]->image }}" class="logo-item" alt="Brand Logo">
-                    </div>
-                @else
-                    @foreach ($certificates as $img)
-                        <img src="{{ $img->image }}" class="logo-item"  class="logo-item"  alt="Brand Logo">
-                    @endforeach
-                @endif
+@if ($certificates->count() > 0)
+    <section class="pb_70">
+        <div class="relative overflow-hidden bg-gray-100 py-10">
+            <div class="logo-carousel">
+                <div class="logo-track">
+                    @if (count($certificates) === 1)
+                        <div class="single-logo">
+                            <img src="{{ $certificates[0]->image }}" class="logo-item" alt="Brand Logo">
+                        </div>
+                    @else
+                        @foreach ($certificates as $img)
+                            <img src="{{ $img->image }}" class="logo-item" class="logo-item" alt="Brand Logo">
+                        @endforeach
+                    @endif
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+@endif
 
 <style>
-/* Container */
-.logo-carousel {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    background-color: #f8f9fa;
-    white-space: nowrap;
-    padding: 10px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* If only one logo, center it */
-.single-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-/* Logo track for multiple logos */
-.logo-track {
-    display: flex;
-    align-items: center;
-    gap: 40px; /* Adjust space between logos */
-    width: max-content;
-    animation: marquee 20s linear infinite;
-}
-
-/* Stop scrolling on hover */
-.logo-carousel:hover .logo-track {
-    animation-play-state: paused;
-}
-
-/* Logo size */
-.logo-item {
-    height: 60px; /* Adjust logo size */
-    width: auto;
-    object-fit: contain;
-}
-
-/* Scrolling animation for multiple logos */
-@keyframes marquee {
-    from {
-        transform: translateX(0);
+    /* Container */
+    .logo-carousel {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        background-color: #f8f9fa;
+        white-space: nowrap;
+        padding: 10px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-    to {
-        transform: translateX(-50%);
+
+    /* If only one logo, center it */
+    .single-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
     }
-}
+
+    /* Logo track for multiple logos */
+    .logo-track {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        /* Adjust space between logos */
+        width: max-content;
+        animation: marquee 20s linear infinite;
+    }
+
+    /* Stop scrolling on hover */
+    .logo-carousel:hover .logo-track {
+        animation-play-state: paused;
+    }
+
+    /* Logo size */
+    .logo-item {
+        height: 60px;
+        /* Adjust logo size */
+        width: auto;
+        object-fit: contain;
+    }
+
+    /* Scrolling animation for multiple logos */
+    @keyframes marquee {
+        from {
+            transform: translateX(0);
+        }
+
+        to {
+            transform: translateX(-50%);
+        }
+    }
 </style>
 
 {{-- <!-- END SECTION Scrol --> --}}

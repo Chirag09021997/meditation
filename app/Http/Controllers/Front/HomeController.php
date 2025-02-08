@@ -35,7 +35,7 @@ class HomeController extends Controller
         });
         $outTeams = OurTeam::all();
         $sliderLists = SliderItem::get();
-        $certificates = Certificate::where('status', 'Active')->get();
+        $certificates = Certificate::whereNull('deleted_at')->where('status', 'Active')->get();
         return view('frontend.index', compact('blogs', 'outTeams', 'latestStore', 'store', 'sliderLists', 'certificates'));
     }
 
