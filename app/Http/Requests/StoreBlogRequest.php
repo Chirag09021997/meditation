@@ -25,7 +25,7 @@ class StoreBlogRequest extends FormRequest
             'name' => 'required|string|max:255',
             'short_description' => 'nullable|string',
             'description' => 'nullable|string',
-            'thumb_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'thumb_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'total_view' => 'required|integer|min:0',
             'categories' => 'nullable|array',
         ];

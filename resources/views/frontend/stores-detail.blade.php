@@ -97,6 +97,7 @@
         </div>
     </div>
 </section>
+@if ($latestStore->count() > 0)
 <section class="small_pt pb_70">
     <div class="container">
         <div class="row">
@@ -142,5 +143,6 @@
         </div>
     </div>
 </section>
+@endif
 <!-- END SECTION SHOP DETAIL -->
 @endsection

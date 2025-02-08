@@ -22,7 +22,7 @@ class StoreCertificateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048', // 2MB max file size
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048', // 2MB max file size
         ];
     }
 }

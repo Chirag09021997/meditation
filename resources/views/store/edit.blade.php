@@ -11,7 +11,10 @@
         <div class="grid md:grid-cols-2 gap-4">
             <!-- product_name -->
             <div class="mt-4">
-                <x-input-label for="product_name" :value="__('Product Name')" />
+            <div class="flex items-center space-x-1">
+                    <x-input-label for="product_name" :value="__('Product Name')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="product_name" class="block mt-1 w-full" type="text" name="product_name"
                     :value="old('product_name', $store->product_name)" placeholder="Enter product name" required autofocus />
                 <x-input-error :messages="$errors->get('product_name')" class="mt-2" />
@@ -19,7 +22,10 @@
 
             <!-- product_thumb -->
             <div class="mt-4">
-                <x-input-label for="product_thumb" :value="__('Product Thumb')" />
+            <div class="flex items-center space-x-1">
+                    <x-input-label for="product_thumb" :value="__('Product Thumb')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="product_thumb"
                     class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
                     type="file" name="product_thumb" accept="image/*" />
@@ -58,7 +64,10 @@
 
             <!-- price -->
             <div class="mt-4">
-                <x-input-label for="price" :value="__('Price')" />
+            <div class="flex items-center space-x-1">
+                    <x-input-label for="price" :value="__('Price')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="price" class="block mt-1 w-full" type="number" name="price" :value="old('price', $store->price)"
                     placeholder="Enter price" step="0.01" min="0" required />
                 <x-input-error :messages="$errors->get('price')" class="mt-2" />

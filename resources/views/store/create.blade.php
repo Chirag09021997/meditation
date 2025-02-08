@@ -10,7 +10,10 @@
         <div class="grid md:grid-cols-2 gap-4">
             <!-- product_name -->
             <div class="mt-4">
-                <x-input-label for="product_name" :value="__('Product Name')" />
+                <div class="flex items-center space-x-1">
+                    <x-input-label for="product_name" :value="__('Product Name')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="product_name" class="block mt-1 w-full" type="text" name="product_name"
                     :value="old('product_name')" placeholder="Enter product name" required autofocus />
                 <x-input-error :messages="$errors->get('product_name')" class="mt-2" />
@@ -18,7 +21,10 @@
 
             <!-- product_thumb -->
             <div class="mt-4">
-                <x-input-label for="product_thumb" :value="__('Product Thumb')" />
+                <div class="flex items-center space-x-1">
+                    <x-input-label for="product_thumb" :value="__('Product Thumb')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="product_thumb"
                     class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
                     type="file" name="product_thumb" accept="image/*" />
@@ -44,23 +50,30 @@
 
             <!-- price -->
             <div class="mt-4">
-                <x-input-label for="price" :value="__('Price')" />
+                <div class="flex items-center space-x-1">
+                    <x-input-label for="price" :value="__('Price')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="price" class="block mt-1 w-full" type="number" name="price" :value="old('price')"
                     placeholder="Enter price" step="0.01" min="0" required />
                 <x-input-error :messages="$errors->get('price')" class="mt-2" />
+
             </div>
 
             <!-- discount -->
             <div class="mt-4">
                 <x-input-label for="discount" :value="__('Discount')" />
-                <x-text-input id="discount" class="block mt-1 w-full" type="number" name="discount" :value="old('discount')"
-                    placeholder="Enter discount" step="0.01" min="0" required />
+                <x-text-input id="discount" class="block mt-1 w-full" type="number" name="discount"
+                    :value="old('discount', 0)" placeholder="Enter discount" step="0.01" min="0" required />
                 <x-input-error :messages="$errors->get('discount')" class="mt-2" />
             </div>
 
             <!-- total_stock -->
             <div class="mt-4">
-                <x-input-label for="total_stock" :value="__('Total Stock')" />
+            <div class="flex items-center space-x-1">
+                    <x-input-label for="total_stock" :value="__('Total Stock')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="total_stock" class="block mt-1 w-full" type="number" name="total_stock"
                     :value="old('total_stock')" placeholder="Enter total stock" />
                 <x-input-error :messages="$errors->get('total_stock')" class="mt-2" />
@@ -70,7 +83,7 @@
             <div class="mt-4">
                 <x-input-label for="total_sale" :value="__('Total Sale')" />
                 <x-text-input id="total_sale" class="block mt-1 w-full" type="number" name="total_sale"
-                    :value="old('total_sale')" placeholder="Enter total sale" />
+                    :value="old('total_sale',0)" placeholder="Enter total sale" />
                 <x-input-error :messages="$errors->get('total_sale')" class="mt-2" />
             </div>
 

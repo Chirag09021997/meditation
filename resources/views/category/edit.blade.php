@@ -10,7 +10,10 @@
         <div class="grid gap-4">
             <!-- name -->
             <div class="mt-4">
-                <x-input-label for="name" :value="__('Name')" />
+            <div class="flex items-center space-x-1">
+                    <x-input-label for="name" :value="__('Name')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $category->name)"
                     placeholder="Enter name" required autofocus />
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />

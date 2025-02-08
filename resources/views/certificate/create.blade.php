@@ -9,7 +9,10 @@
         <div class="grid md:grid-cols-2 gap-4">
             <!-- image -->
             <div class="mt-4">
-                <x-input-label for="image" :value="__('Image')" />
+                <div class="flex items-center space-x-1">
+                    <x-input-label for="image" :value="__('Image')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="image"
                     class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
                     type="file" name="image" accept="image/*" />

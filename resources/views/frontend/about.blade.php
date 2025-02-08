@@ -28,8 +28,8 @@
         <div class="row align-items-center">
             <div class="col-md-6 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
                 <div class="video_box overlay_bg_30 mb-3 mb-sm-4 mb-md-0">
-                    <img src="{{ asset('assets/images/about_video.jpg') }}" alt="about_img11">
-                    <a href="https://www.youtube.com/watch?v=7e90gBu4pas" class="video_popup video_play"><span
+                    <img src="{{ $settings['about_thumb'] ?? '' }}" alt="about_img11">
+                    <a href="{{ $settings['youtube_url'] ?? '' }}" class="video_popup video_play"><span
                             class="ripple"><i class="fa-solid fa-play"></i></span></a>
                 </div>
             </div>
