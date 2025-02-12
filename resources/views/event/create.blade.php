@@ -42,7 +42,6 @@
                     :value="old('starting_date')" placeholder="Enter starting date" />
                 <x-input-error :messages="$errors->get('starting_date')" class="mt-2" />
             </div>
-
             <div class="mt-4">
                 <x-input-label for="end_date" :value="__('End Date')" />
                 <x-text-input id="end_date" class="block mt-1 w-full" type="text" name="end_date"

@@ -1640,9 +1640,17 @@ button:focus {
 }
 
 .header_wrap:not([class*="bg_"]):not([class*="bg-"]).transparent_header.nav-fixed.no-sticky {
-    background-color: transparent;
+    background-color: #fff;
     box-shadow: none;
 }
+.header_wrap:not([class*="bg_"]):not([class*="bg-"]).transparent_header {
+    background-color: #fff;
+}
+
+/* .header_wrap:not([class*="bg_"]):not([class*="bg-"]).transparent_header.nav-fixed.no-sticky {
+    background-color: transparent;
+    box-shadow: none;
+} */
 
 .bg-dark.light_skin.nav-fixed .logo_dark {
     display: none;

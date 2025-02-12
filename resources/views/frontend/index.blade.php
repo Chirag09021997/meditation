@@ -8,8 +8,8 @@
             localStorage.removeItem('coupon');
         </script>
     @endif
-    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-        <div class="carousel-inner">
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" >
+        <div class="carousel-inner" >
 
             @foreach ($sliderLists as $key => $slider)
                 @if ($slider->text_align == 'Left')
