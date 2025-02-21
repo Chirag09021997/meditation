@@ -21,7 +21,10 @@
 
             <!-- coupon_code -->
             <div class="mt-4">
-                <x-input-label for="coupon_code" :value="__('Coupon Code')" />
+            <div class="flex items-center space-x-1">
+                    <x-input-label for="coupon_code" :value="__('Coupon Code')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="coupon_code" class="block mt-1 w-full" type="text" name="coupon_code"
                     :value="old('coupon_code', $couponSystem->coupon_code)" placeholder="Enter coupon code" required autofocus />
                 <x-input-error :messages="$errors->get('coupon_code')" class="mt-2" />
@@ -29,7 +32,10 @@
 
             <!-- value -->
             <div class="mt-4">
-                <x-input-label for="value" :value="__('Value')" />
+            <div class="flex items-center space-x-1">
+                    <x-input-label for="value" :value="__('Value')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="value" class="block mt-1 w-full" type="number" name="value" :value="old('value', $couponSystem->value)"
                     placeholder="Enter value" step="0.01" min="0" required />
                 <x-input-error :messages="$errors->get('value')" class="mt-2" />
@@ -37,7 +43,10 @@
 
             <!-- start_date -->
             <div class="mt-4">
-                <x-input-label for="start_date" :value="__('Start Date')" />
+            <div class="flex items-center space-x-1">
+                    <x-input-label for="start_date" :value="__('Start Date')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="start_date" class="block mt-1 w-full" type="date" name="start_date"
                     :value="old('start_date', $couponSystem->start_date)" placeholder="Enter start date" required />
                 <x-input-error :messages="$errors->get('start_date')" class="mt-2" />
@@ -45,7 +54,10 @@
 
             <!-- end_date -->
             <div class="mt-4">
-                <x-input-label for="end_date" :value="__('End Date')" />
+            <div class="flex items-center space-x-1">
+                    <x-input-label for="end_date" :value="__('End Date')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="end_date" class="block mt-1 w-full" type="date" name="end_date" :value="old('end_date', $couponSystem->end_date)"
                     placeholder="Enter end date" required />
                 <x-input-error :messages="$errors->get('end_date')" class="mt-2" />

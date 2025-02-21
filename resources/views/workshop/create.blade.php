@@ -8,7 +8,10 @@
         <div class="grid md:grid-cols-2 gap-4">
             <!-- name -->
             <div class="mt-4">
-                <x-input-label for="name" :value="__('Name')" />
+            <div class="flex items-center space-x-1">
+                    <x-input-label for="name" :value="__('Name')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')"
                     placeholder="Enter name" required autofocus />
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
@@ -18,13 +21,16 @@
             <div class="mt-4">
                 <x-input-label for="total_view" :value="__('Total View')" />
                 <x-text-input id="total_view" class="block mt-1 w-full" type="number" name="total_view"
-                    :value="old('total_view')" placeholder="Enter total view" step="0.01" min="0" />
+                    :value="old('total_view',0)" placeholder="Enter total view" step="0.01" min="0" />
                 <x-input-error :messages="$errors->get('total_view')" class="mt-2" />
             </div>
 
             <!-- thumb_image -->
             <div class="mt-4">
-                <x-input-label for="thumb_image" :value="__('Thumb Image')" />
+            <div class="flex items-center space-x-1">
+                    <x-input-label for="thumb_image" :value="__('Thumb Image')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="thumb_image"
                     class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
                     type="file" name="thumb_image" accept="image/*" />

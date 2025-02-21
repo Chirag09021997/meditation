@@ -319,12 +319,32 @@
             }, function(start) {
                 console.log("A new date selection was made: " + start.format('YYYY-MM-DD HH:mm:ss'));
             });
+
+            $('input[name="end_date"]').daterangepicker({
+                singleDatePicker: true,
+                timePicker: true,
+                timePickerIncrement: 1,
+                timePicker24Hour: true,
+                locale: {
+                    format: 'DD-MM-YYYY HH:mm:ss'
+                }
+            });
+
             $('form').on('submit', function(e) {
                 e.preventDefault();
                 var startingDateDisplay = $('input[name="starting_date"]').val();
+                var EndDateDisplay = $('input[name="end_date"]').val();
+
+
                 var startingDate = moment(startingDateDisplay, 'DD-MM-YYYY HH:mm:ss').format(
                     'YYYY-MM-DD HH:mm:ss');
+
+                var EndDate = moment(EndDateDisplay, 'DD-MM-YYYY HH:mm:ss').format(
+                        'YYYY-MM-DD HH:mm:ss');
+
                 $('input[name="starting_date"]').val(startingDate);
+                $('input[name="end_date"]').val(EndDate);
+
                 this.submit();
             });
         });

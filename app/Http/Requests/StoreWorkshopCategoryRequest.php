@@ -23,7 +23,7 @@ class StoreWorkshopCategoryRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'thumb_image' => 'nullable|file|mimes:jpeg,png,jpg,gif|max:2048'
+            'thumb_image' => 'required|file|mimes:jpeg,png,jpg,gif|max:2048'
         ];
     }
 }

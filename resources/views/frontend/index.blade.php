@@ -84,7 +84,7 @@
                                     </div>
                                     <div class="col-lg-6 col-md-7 order-md-first">
                                         <div class="banner_content animation" data-animation="fadeIn"
-                                            data-animation-delay="0.4s" data-parallax='{"y": 30, "smoothness": 10}'>
+                                            data-animation-delay="0.4s" data-parallax='{"y": 30, "smoothness": 10}' style="height:600px; min-height: 10em;display: table-cell;vertical-align: middle">
                                             <h3 class="animation mt-7 blue-text" data-animation="fadeInDown"
                                                 data-animation-delay="0.5s">{{ $slider->title }}</h3>
                                             <p class="animation" data-animation="fadeInUp" data-animation-delay="0.6s">

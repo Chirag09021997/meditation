@@ -11,9 +11,11 @@
 
             <!-- name -->
             <div class="mt-4">
-                <x-input-label for="name" :value="__('Name')" />
-                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $meditationAudio->name)"
-                    placeholder="Enter name" required autofocus />
+                <div class="flex items-center space-x-1">
+                    <x-input-label for="name" :value="__('Name')" />
+                    <span class="text-red-500">*</span>
+                </div>
+                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $meditationAudio->name)" placeholder="Enter name" required autofocus />
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
 
@@ -24,7 +26,8 @@
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     @foreach ($meditationTypes as $type)
                         <option value="{{ $type->id }}" @selected(old('meditation_type_id', $meditationAudio->meditation_type_id) == $type->id)>
-                            {{ $type->name }}</option>
+                            {{ $type->name }}
+                        </option>
                     @endforeach
                 </select>
                 <x-input-error :messages="$errors->get('meditation_type_id')" class="mt-2" />
@@ -34,13 +37,17 @@
             <div class="mt-4">
                 <x-input-label for="total_view" :value="__('Total View')" />
                 <x-text-input id="total_view" class="block mt-1 w-full" type="number" name="total_view"
-                    :value="old('total_view', $meditationAudio->total_view)" placeholder="Enter total view" step="0.01" min="0" />
+                    :value="old('total_view', $meditationAudio->total_view)" placeholder="Enter total view" step="0.01"
+                    min="0" />
                 <x-input-error :messages="$errors->get('total_view')" class="mt-2" />
             </div>
 
             <!-- audio_thumb -->
             <div class="mt-4">
-                <x-input-label for="audio_thumb" :value="__('Audio Thumb')" />
+            <div class="flex items-center space-x-1">
+                    <x-input-label for="audio_thumb" :value="__('Audio Thumb')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="audio_thumb"
                     class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
                     type="file" name="audio_thumb" accept="image/*" />
@@ -50,7 +57,10 @@
 
             <!-- audio_upload -->
             <div class="mt-4">
-                <x-input-label for="audio_upload" :value="__('Audio Upload')" />
+            <div class="flex items-center space-x-1">
+                    <x-input-label for="audio_upload" :value="__('Audio Upload')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="audio_upload"
                     class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
                     type="file" name="audio_upload" accept=".mp3,.wav,.ogg" />
@@ -80,7 +90,8 @@
                     <option disabled>Choose premium plans</option>
                     @foreach ($premiumPlans as $plan)
                         <option value="{{ $plan->id }}" @selected(in_array($plan->id, $oldPremiumPlans))>
-                            {{ $plan->name }}</option>
+                            {{ $plan->name }}
+                        </option>
                     @endforeach
                 </select>
             </div>
@@ -93,7 +104,8 @@
                     <option disabled>Choose interest</option>
                     @foreach ($interestList as $interest)
                         <option value="{{ $interest->id }}" @selected(in_array($interest->id, $oldInterest))>
-                            {{ $interest->name }}</option>
+                            {{ $interest->name }}
+                        </option>
                     @endforeach
                 </select>
             </div>

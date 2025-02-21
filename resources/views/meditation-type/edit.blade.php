@@ -3,16 +3,18 @@
         {{ __('Meditation Type Edit') }}
     </x-head-lable>
 
-    <form method="POST" action="{{ route('meditation-type.update', $meditationType->id) }}" enctype="multipart/form-data"
-        class="border-4 border-white rounded-lg p-2 sm:p-4 ">
+    <form method="POST" action="{{ route('meditation-type.update', $meditationType->id) }}"
+        enctype="multipart/form-data" class="border-4 border-white rounded-lg p-2 sm:p-4 ">
         @csrf
         @method('PUT')
         <div class="grid md:grid-cols-2 gap-4">
             <!-- name -->
             <div class="mt-4">
-                <x-input-label for="name" :value="__('Name')" />
-                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $meditationType->name)"
-                    placeholder="Enter name" required autofocus />
+                <div class="flex items-center space-x-1">
+                    <x-input-label for="name" :value="__('Name')" />
+                    <span class="text-red-500">*</span>
+                </div>
+                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $meditationType->name)" placeholder="Enter name" required autofocus />
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
 

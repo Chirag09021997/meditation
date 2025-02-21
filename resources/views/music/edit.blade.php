@@ -11,7 +11,10 @@
 
             <!-- name -->
             <div class="mt-4">
-                <x-input-label for="name" :value="__('Name')" />
+            <div class="flex items-center space-x-1">
+                    <x-input-label for="name" :value="__('Name')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $music->name)"
                     placeholder="Enter name" required autofocus />
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
@@ -27,7 +30,10 @@
 
             <!-- audio_thumb -->
             <div class="mt-4">
-                <x-input-label for="audio_thumb" :value="__('Audio Thumb')" />
+            <div class="flex items-center space-x-1">
+                    <x-input-label for="audio_thumb" :value="__('Audio Thumb')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="audio_thumb"
                     class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
                     type="file" name="audio_thumb" accept="image/*" />
@@ -37,7 +43,10 @@
 
             <!-- audio_upload -->
             <div class="mt-4">
-                <x-input-label for="audio_upload" :value="__('Audio Upload')" />
+            <div class="flex items-center space-x-1">
+                    <x-input-label for="audio_upload" :value="__('Audio Upload')" />
+                    <span class="text-red-500">*</span>
+                </div>
                 <x-text-input id="audio_upload"
                     class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
                     type="file" name="audio_upload" accept=".mp3,.wav,.ogg" />
