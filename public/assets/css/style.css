@@ -2861,6 +2861,11 @@ body.active {
         width: 180px !important;  /* Reduce width for mobile */
         height: auto !important; /* Maintain aspect ratio */
     }
+    .banner_slider {
+        position: relative;
+        margin-top: 50px; /* Adjust as needed */
+    }
+
 }
 
 .shape_circle1 
