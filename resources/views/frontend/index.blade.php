@@ -9,7 +9,7 @@
         </script>
     @endif
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" >
-        <div class="carousel-inner" >
+        <div class="carousel-inner" style="margin-top: 20px;>
 
             @foreach ($sliderLists as $key => $slider)
                 @if ($slider->text_align == 'Left')
@@ -39,11 +39,11 @@
                                                 <p class="animation" data-animation="fadeInUp" data-animation-delay="0.6s">
                                                     {{ $slider->sub_description }}
                                                 </p>
-                                                <a class="btn btn-default rounded-0 animation"
+                                                <!-- <a class="btn btn-default rounded-0 animation"
                                                     href="{{ route('slider-detail.show', $slider->id) }}"
                                                     data-animation="fadeInUp" data-animation-delay="0.7s">Learn More</a>
                                                 <a class="btn btn-white rounded-0 animation" href="/contact" target="_blank"
-                                                    data-animation="fadeInUp" data-animation-delay="0.8s">Contact Us</a>
+                                                    data-animation="fadeInUp" data-animation-delay="0.8s">Contact Us</a> -->
                                             </div>
 
                                         </div>

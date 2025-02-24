@@ -12,7 +12,6 @@
             <div class="mt-4">
                 <div class="flex items-center space-x-1">
                     <x-input-label for="title" :value="__('Title')" />
-                    <span class="text-red-500">*</span>
                 </div>
                 <x-text-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title', $sliderItem->title)" placeholder="Enter title" required />
                 <x-input-error :messages="$errors->get('title')" class="mt-2" />
@@ -47,7 +46,6 @@
             <div class="mt-4">
                 <div class="flex items-center space-x-1">
                     <x-input-label for="sub_description" :value="__('Short Description')" />
-                    <span class="text-red-500">*</span>
                 </div>
                 <textarea id="sub_description" name="sub_description" rows="4"
                     class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
@@ -61,7 +59,6 @@
 
             <div class="flex items-center space-x-1">
                 <x-input-label for="description" :value="__('Description')" />
-                <span class="text-red-500">*</span>
             </div>
             <textarea id="description" name="description" rows="4"
                 class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"

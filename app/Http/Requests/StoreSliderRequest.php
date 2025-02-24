@@ -22,9 +22,9 @@ class StoreSliderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255',
-            'sub_description' => 'required|string|max:500',
-            'description' => 'required|string',
+            'title' => 'nullable|string|max:255',
+            'sub_description' => 'nullable|string|max:500',
+            'description' => 'nullable|string',
             'background' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'text_align' => 'nullable|in:Left,Right'
         ];
