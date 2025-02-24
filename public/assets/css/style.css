@@ -2865,11 +2865,7 @@ body.active {
         position: relative;
         margin-top: 40px; /* Adjust as needed */
     }
-    .banner_slide_content {
-        background-size: contain !important; /* Ensures full image visibility */
-        background-position: center center !important;
-        background-repeat: no-repeat !important;
-    }
+
 }
 
 .shape_circle1 
