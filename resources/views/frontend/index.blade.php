@@ -9,11 +9,11 @@
         </script>
     @endif
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" >
-        <div class="carousel-inner" style="margin-top: 20px;>
+        <div class="carousel-inner" >
 
             @foreach ($sliderLists as $key => $slider)
                 @if ($slider->text_align == 'Left')
-                    <div class="carousel-item bg_light_pink bg-content {{ $key == 0 ? 'active' : ''}}">
+                <div class="carousel-item bg_light_pink bg-content {{ $key == 0 ? 'active' : ''}} mt-3 mt-md-0">
 
                         <div class="banner_slide_content slider2"
                             style="margin-top: 20px; background-image: url('{{ asset($slider->background) }}');">
