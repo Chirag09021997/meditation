@@ -2434,6 +2434,7 @@ body.active {
     background-size: cover;
     width: 100%;
     height: 80%;
+    margin-top: 20px; 
 }
 
 .slide_content_wrap {
@@ -7129,6 +7130,9 @@ body.switch-open {
     }
 }
 @media only screen and (max-width: 480px) {
+    .slider2{
+        margin-top:40px;
+    }
     .shape2{
         right: 0px !important;
     }
