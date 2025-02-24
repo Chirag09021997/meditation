@@ -2863,33 +2863,9 @@ body.active {
     }
     .banner_slider {
         position: relative;
-        margin-top: 50px; /* Adjust as needed */
-    }
-    .banner_slide_content {
-        padding: 30px 10px;
-        text-align: center;
+        margin-top: 40px; /* Adjust as needed */
     }
 
-    .row {
-        flex-direction: column-reverse;
-    }
-
-    .col-md-5, .col-md-7 {
-        width: 100%;
-    }
-
-    .banner_img {
-        margin-bottom: 15px;
-    }
-
-    .banner_content h3 {
-        font-size: 20px;
-        margin-bottom: 10px;
-    }
-
-    .banner_content p {
-        font-size: 14px;
-    }
 }
 
 .shape_circle1 
