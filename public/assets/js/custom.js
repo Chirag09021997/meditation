@@ -353,4 +353,12 @@ $(document).ready(function () {
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".carousel-control-prev").style.backgroundColor = "#23579D";
     document.querySelector(".carousel-control-next").style.backgroundColor = "#23579D";
+    
+    let banner = document.querySelector(".banner_slide_content");
+    let img = new Image();
+    img.src = banner.style.backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/i, "$1"); // Extract image URL
+
+    img.onload = function () {
+        banner.style.height = img.height + "px";
+    };
 });
