@@ -128,7 +128,7 @@ mark {
 }
 
 section {
-    padding: 100px 0;
+    padding: 20px 0;
     position: relative;
     width: 100%;
     z-index: 1;
@@ -2703,6 +2703,53 @@ body.active {
     animation-delay: 1.5s;
 }
 
+.banner_shape
+{
+    width: 100%;
+    height: 10px;
+    position: relative;
+}
+.shape1{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -70px;
+    right:80px;
+}
+.shape2 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -70px;
+    left: 94%;
+}
+.shape1,.shape2{
+    z-index: 10;
+
+}
+#banner-sec {
+    width: 100%;
+    height: 10px;
+    position: relative;
+  }
+  #navi {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -70px;
+    right:80px;
+}
+  #infoi {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -70px;
+    left: 94%;
+}
+  #infoi,#navi {
+    z-index: 10;
+  }
+
 @-webkit-keyframes ripple {
     0% {
         -webkit-transform: scale(0.2);
@@ -2839,15 +2886,15 @@ body.active {
 }
 
 .shape1 {
-    left: -80px;
+    /* left: -80px;
     bottom: 0px;
-    z-index: 1;
+    z-index: 1; */
    
 }
 .shape2 {
-    right: -80px !important;
+    /* right: -80px !important;
     bottom: 0px;
-    z-index: 1;
+    z-index: 1; */
    
 }
 @media (max-width: 768px) {
@@ -7132,6 +7179,9 @@ body.switch-open {
 @media only screen and (max-width: 480px) {
     .slider2{
         margin-top:40px;
+    }
+    .banner_shape{
+        display: none;
     }
     .shape2{
         right: 0px !important;

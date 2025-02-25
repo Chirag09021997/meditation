@@ -52,20 +52,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="banner_shape">
-                                <div class="shape_circle1">
-                                    <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                                        <img src="{{ asset('assets/images/Group-circle.png') }}" alt="image"
-                                            class="rotate linear infinite" />
-                                    </div>
-                                </div>
-                                <div class="shape_circle2">
-                                    <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                                        <img src="{{ asset('assets/images/Group-blue.png') }}" alt="image"
-                                            class="rotate linear infinite" />
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     @else
                         <div class="carousel-item bg_light_yellow {{ $key == 0 ? 'active' : ''}}">
@@ -128,6 +115,20 @@
             </div>
         </div>
     </section>
+
+    <div class="banner_shape">
+        <div class="shape1" >
+            <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                        <img src="{{ asset('assets/images/Group-circle.png') }}" alt="image"
+                            class="r-link linear infinite" />
+            </div>
+        </div>
+        <div class="shape2">
+            <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                <img src="{{ asset('assets/images/Group-blue.png') }}" alt="image" class="r-link linear infinite" />
+            </div>
+        </div>
+    </div>
     {{-- <!-- END SECTION BANNER --> --}}
 
     {{-- <!-- START SECTION BENIFIT --> --}}
@@ -227,22 +228,23 @@
                     </div>
                 </div>
             </div>
-            <div class="banner_shape">
-                <div class="shape1" style="margin-top: 200px;">
-                    <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                        <img src="{{ asset('assets/images/Group-circle.png') }}" alt="image"
-                            class="r-link linear infinite" />
-                    </div>
-                </div>
-                <div class="shape2">
-                    <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                        <img src="{{ asset('assets/images/Group-blue.png') }}" alt="image" class="r-link linear infinite" />
-                    </div>
-                </div>
-            </div>
+            
         </div>
 
     </section>
+    <div class="banner_shape">
+        <div class="shape1" >
+            <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                        <img src="{{ asset('assets/images/Group-circle.png') }}" alt="image"
+                            class="r-link linear infinite" />
+            </div>
+        </div>
+        <div class="shape2">
+            <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                <img src="{{ asset('assets/images/Group-blue.png') }}" alt="image" class="r-link linear infinite" />
+            </div>
+        </div>
+    </div>
     {{-- <!-- END SECTION BENIFIT --> --}}
 
     {{-- <!-- START SECTION ABOUT --> --}}
@@ -343,20 +345,22 @@
             </div>
 
         </div>
-        <div class="banner_shape">
-            <div class="shape1">
-                <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <img src="{{ asset('assets/images/Group-circle.png') }}" alt="image" class="r-link linear infinite" />
-                </div>
-            </div>
-            <div class="shape2">
-                <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                    <img src="{{ asset('assets/images/Group-blue.png') }}" alt="image" class="r-link linear infinite" />
-                </div>
-            </div>
-        </div>
+       
 
     </section>
+    <div class="banner_shape">
+        <div class="shape1" >
+            <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                        <img src="{{ asset('assets/images/Group-circle.png') }}" alt="image"
+                            class="r-link linear infinite" />
+            </div>
+        </div>
+        <div class="shape2">
+            <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                <img src="{{ asset('assets/images/Group-blue.png') }}" alt="image" class="r-link linear infinite" />
+            </div>
+        </div>
+    </div>
     {{-- <!-- END SECTION ABOUT --> --}}
     @if($store)
         <section>
