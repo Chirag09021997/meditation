@@ -207,9 +207,11 @@
                     <x-input-label for="include_image" :value="__('Image')" />
                     <x-text-input id="include_image"
                         class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
-                        type="file" name="include_image[]" accept="image/*" :value="old('image',$include['image'])" />
+                        type="file" name="include_image[]" accept="image/*" />
                     <x-input-error :messages="$errors->get('include_image')" class="mt-2" />
-                    <img src="{{ $include['image'] }}" alt="thumb upload" class="w-16 my-2">
+                    @if (!empty($include['image']))  {{-- ✅ Check if 'image' key exists --}}
+                        <img src="{{ $include['image'] }}" alt="thumb upload" class="w-16 my-2">
+                    @endif
                 </div>
             @endforeach
 
@@ -255,13 +257,20 @@
                 </div>
 
                 <div class="mt-4">
-                    <x-input-label for="teaching_image" :value="__('Image')" />
-                    <x-text-input id="teaching_image"
-                        class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
-                        type="file" name="teaching_image[]" accept="image/*" :value="old('image',$teaching['image'])" />
-                    <x-input-error :messages="$errors->get('teaching_image')" class="mt-2" />
-                    <img src="{{ $teaching['image'] }}" alt="thumb upload" class="w-16 my-2">
-                </div>
+    <x-input-label for="teaching_image" :value="__('Image')" />
+    
+    <x-text-input id="teaching_image"
+        class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
+        type="file" name="teaching_image[]" accept="image/*"
+        :value="old('image', isset($teaching['image']) ? $teaching['image'] : '')" />
+
+    <x-input-error :messages="$errors->get('teaching_image')" class="mt-2" />
+
+    @if(isset($teaching['image']) && !empty($teaching['image']))
+        <img src="{{ $teaching['image'] }}" alt="thumb upload" class="w-16 my-2">
+    @endif
+</div>
+
             @endforeach
 
         </div>

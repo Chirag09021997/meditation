@@ -25,7 +25,7 @@ class UpdateSliderRequest extends FormRequest
             'title' => 'nullable|string|max:255',
             'sub_description' => 'nullable|string|max:500',
             'description' => 'nullable|string',
-            'background' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'background' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'text_align' => 'nullable|in:Left,Right'
         ];
     }

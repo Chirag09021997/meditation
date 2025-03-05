@@ -229,6 +229,8 @@
 
             // Loop through default countries and add rows
             defaultCountries.forEach(data => addFinanceRow(data.name, data.symbol));
+            console.log("Sagara  ::  ");
+            console.log(typeof jQuery);
         });
 
 

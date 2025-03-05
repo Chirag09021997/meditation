@@ -221,65 +221,72 @@
                 @endif
 
                 @if(count($event->include) > 0)
-                <div class="row">
-                    <div class="col-lg-9">
-                        <div class="white_block white_block_transparent count_block_whiteblock mt-0">
-                            <h3 class="brown_heading text-center">What's Included?</h3>
-                            @foreach ($event->include as $key => $include)
-                            <div class="include_details">
-                                <div class="row">
-                                    <div class="col-lg-3">
-                                        <img loading="lazy"
-                                            src="{{$include['image']}}"
-                                            alt="{{$include['title']}}" class="mb-0 mb-sm-2" width="180px">
-                                    </div>
-                                    <div class="col-lg-9 pr-3">
-                                        <div class="include_details_bg">
-                                            <h4>{{$include['title']}}</h4>
-                                            <div class="include_text">{{$include['description']}} </div>
-                                        </div>
-                                    </div>
-
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="white_block white_block_transparent count_block_whiteblock mt-0">
+                <h3 class="brown_heading text-center">What's Included?</h3>
+                @foreach ($event->include as $key => $include)
+                    <div class="include_details">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                @if(isset($include['image']) && !empty($include['image']))
+                                    <img loading="lazy"
+                                        src="{{ $include['image'] }}"
+                                        alt="{{ $include['title'] ?? 'Image' }}" 
+                                        class="mb-0 mb-sm-2" width="180px">
+                                @endif
+                            </div>
+                            <div class="col-lg-9 pr-3">
+                                <div class="include_details_bg">
+                                    <h4>{{ $include['title'] ?? 'No Title' }}</h4>
+                                    <div class="include_text">{{ $include['description'] ?? 'No Description' }} </div>
                                 </div>
                             </div>
-                            @endforeach
-                            
                         </div>
                     </div>
-                </div>
-                @endif
+                @endforeach
+            </div>
+        </div>
+    </div>
+@endif
             </div>
 
             <div class="container">
                 <div class="row">
                     <div class="col-lg-9">
-                    @if(count($event->teaching) > 0)
-                        <div id="benefits" class="white_block_mobile_adjust white_block text-center">
-                            <h3 class="brown_heading">Benefits You Will Gain <span class="gray">after following the
-                                    teachings</span></h3>
-                            <div class="benefits_block">
-                                <div class="row">
-                                @foreach ($event->teaching as $key => $tech)
-                                    <div class="col-lg-6 col-6">
-                                        <div class="benefits_block_content pt-4">
-                                            <img srcset="{{$tech['image']}}"
-                                                sizes="(max-width: 600px) 480px, 800px"
-                                                src="{{$tech['image']}}">
-                                        </div>
-                                        <div class="benefits_desc pt-2"><span><b>{{$tech['title']}}</b></span><span
-                                                class="benefits_desc_extra"><br>{{$include['description']}}</span></div>
-                                    </div>
-                                @endforeach
-                                    
-                                </div>
-                                <div class="pt-5">
-                                    <a href="#"
-                                        class="btn-get-started scrollto register-now-track-btn"
-                                        id="new_register_now_btn">Register Now</a>
-                                </div>
-                            </div>
+                    @if(!empty($event->teaching) && count($event->teaching) > 0)
+    <div id="benefits" class="white_block_mobile_adjust white_block text-center">
+        <h3 class="brown_heading">Benefits You Will Gain 
+            <span class="gray">after following the teachings</span>
+        </h3>
+        <div class="benefits_block">
+            <div class="row">
+                @foreach ($event->teaching as $key => $tech)
+                    <div class="col-lg-6 col-6">
+                        <div class="benefits_block_content pt-4">
+                            @if(isset($tech['image']) && !empty($tech['image']))
+                                <img srcset="{{ $tech['image'] }}"
+                                    sizes="(max-width: 600px) 480px, 800px"
+                                    src="{{ $tech['image'] }}">
+                            @endif
                         </div>
-                    @endif
+                        <div class="benefits_desc pt-2">
+                            <span><b>{{ $tech['title'] ?? 'No Title' }}</b></span>
+                            <span class="benefits_desc_extra">
+                                <br>{{ $tech['description'] ?? 'No Description' }}
+                            </span>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <div class="pt-5">
+                <a href="#" class="btn-get-started scrollto register-now-track-btn"
+                   id="new_register_now_btn">Register Now</a>
+            </div>
+        </div>
+    </div>
+@endif
+
                     @if(($event->curriculum) != null)
 
                         <div id="curriculum" class="white_block text-center curriculum mt-0 mb-sm-0">
