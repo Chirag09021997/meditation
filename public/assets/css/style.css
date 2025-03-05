@@ -1355,7 +1355,6 @@ button:focus {
 
 .header_wrap {
     transition: all 0.5s ease 0s;
-    margin-top: 40px; /* Adjust this value based on your top-bar height */
 }
 
 .header_wrap:not([class*="bg_"]):not([class*="bg-"]) {

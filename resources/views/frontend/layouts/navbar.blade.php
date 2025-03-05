@@ -1,73 +1,78 @@
-<!-- ✅ New Div Added Above Navbar -->
-<div class="fixed-top top-bar transparent_header">
-    <p class="offer-text">Special Offer: Get 20% Off on All Products! Limited Time Only.</p>
-    
-    <!-- ✅ Country Dropdown -->
-    <div class="country-dropdown">
-        <select id="countrySelect">
-            <option value="India">🇮🇳 India</option>
-            <option value="United States">🇺🇸 United States</option>
-            <option value="Canada">🇨🇦 Canada</option>
-        </select>
-    </div>
-</div>
 <script>
-// Function to set a cookie
-function setCookie(name, value, days) {
-    let expires = "";
-    if (days) {
-        let date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + value + "; path=/" + expires;
-}
+    function changeCountry(code) {
+        document.cookie = "selectedCountry=" + code + "; path=/; max-age=" + (60 * 60 * 24 * 30); // Store for 30 days
+        if (code == "India") {
+            code = "in";
+        } else if (code == "United States") {
+            code = "us";
+        } else if (code == "Canada") {
+            code = "ca";
+        }
+        document.getElementById("selectedFlag").src = "https://flagcdn.com/w40/" + code + ".png";
 
-// Function to get a cookie value
-function getCookie(name) {
-    let nameEQ = name + "=";
-    let ca = document.cookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-        let c = ca[i].trim();
-        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-    }
-    return null;
-}
+        let currentPage = window.location.pathname;
 
-// Set the selected country from cookie when page loads
-document.addEventListener("DOMContentLoaded", function() {
-    let savedCountry = getCookie("selectedCountry");
-
-    if (savedCountry) {
-        document.getElementById("countrySelect").value = savedCountry;
-    } else {
-        // Set a default country if no cookie exists
-        let defaultCountry = "India"; // Change this to your preferred default
-        document.getElementById("countrySelect").value = defaultCountry;
-        setCookie("selectedCountry", defaultCountry, 30); // Save the default selection
-    }
-});
-
-// Save selected country in cookies when changed
-document.getElementById("countrySelect").addEventListener("change", function() {
-    let selectedCountry = this.value;
-    setCookie("selectedCountry", selectedCountry, 30); // Save for 30 days
-    let currentPage = window.location.pathname;
-
-    // Define pages where the form should load
-    let allowedPages = ["/","/stores"];
+        // Define pages where the form should load
+        let allowedPages = ["/", "/stores"];
         if (allowedPages.includes(currentPage) || currentPage.startsWith("/stores/")) {
 
-        location.reload(); // Refresh the page
+            location.reload(); // Refresh the page
+        }
     }
-});
+
+    function getCookie(name) {
+        let matches = document.cookie.match(new RegExp(
+            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+        ));
+        return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+
+    // Set the selected country from cookie when page loads
+    document.addEventListener("DOMContentLoaded", function () {
+        let savedCountry = getCookie("selectedCountry") || "India";
+        let code = "in"
+        if (savedCountry === "India") {
+            code = "in";
+        } else if (savedCountry === "United States") {
+            code = "us";
+        } else if (savedCountry === "Canada") {
+            code = "ca";
+        } else {
+            code = "in"; // Default fallback
+        }
+
+        console.log("Selected Country:", savedCountry, "| Country Code:", code);
+
+        if (savedCountry) {
+            document.getElementById("selectedFlag").src = "https://flagcdn.com/w40/" + code + ".png";
+        } else {
+            // Set a default country if no cookie exists
+            let defaultCountry = "India"; // Change this to your preferred default
+            document.getElementById("selectedFlag").src = "https://flagcdn.com/w40/" + code + ".png";
+            setCookie("selectedCountry", defaultCountry, 30); // Save the default selection
+        }
+    });
+
+    // Save selected country in cookies when changed
+    document.getElementById("countrySelect").addEventListener("change", function () {
+        let selectedCountry = this.value;
+        setCookie("selectedCountry", selectedCountry, 30); // Save for 30 days
+        let currentPage = window.location.pathname;
+
+        // Define pages where the form should load
+        let allowedPages = ["/", "/stores"];
+        if (allowedPages.includes(currentPage) || currentPage.startsWith("/stores/")) {
+
+            location.reload(); // Refresh the page
+        }
+    });
 </script>
 
 <header class="header_wrap fixed-top dark_skin main_menu_uppercase main_menu_weight_600 transparent_header">
     <div class="container">
         <nav class="navbar navbar-expand-lg">
             <a class="navbar-brand" href="{{ route('home') }}">
-            <img class="logo_dark img-fluid" src="{{ asset('assets/images/tejas_logo.png') }}" alt="logo">
+                <img class="logo_dark img-fluid" src="{{ asset('assets/images/tejas_logo.png') }}" alt="logo">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span
@@ -115,8 +120,8 @@ document.getElementById("countrySelect").addEventListener("change", function() {
                     </div>
                 </li>
                 <li class="dropdown cart_wrap">
-                    <a class="nav-link" href="#" data-toggle="dropdown"><i
-                            class="fa-solid fa-cart-shopping"></i><span class="cart_count">2</span></a>
+                    <a class="nav-link" href="#" data-toggle="dropdown"><i class="fa-solid fa-cart-shopping"></i><span
+                            class="cart_count">2</span></a>
                     <div class="cart_box dropdown-menu dropdown-menu-right">
                         <ul class="cart_list">
                             <li>
@@ -160,12 +165,10 @@ document.getElementById("countrySelect").addEventListener("change", function() {
                             href="{{ route('user.orders') }}" title="Order-History"><i class="fas fa-receipt"></i></a>
                     </li>
                     <li>
-                        <a class="nav-link px-2" href="#" id="logoutBtn" title="Logout"><i
-                                class="fas fa-power-off"></i></a>
+                        <a class="nav-link px-2" href="#" id="logoutBtn" title="Logout"><i class="fas fa-power-off"></i></a>
                         <form id="logoutForm" action="{{ route('user.logout') }}" method="POST" class="d-none">
                             @csrf
-                            <button type="submit" class="nav-link btn btn-link"><i
-                                    class="fas fa-power-off"></i></button>
+                            <button type="submit" class="nav-link btn btn-link"><i class="fas fa-power-off"></i></button>
                         </form>
                     </li>
                 @else
@@ -173,6 +176,31 @@ document.getElementById("countrySelect").addEventListener("change", function() {
                         <a class="nav-link" href="{{ route('user.login') }}"><i class="fa-solid fa-user"></i></a>
                     </li>
                 @endif
+
+                <li class="dropdown">
+                    <a class="nav-link" href="#" data-toggle="dropdown">
+                        <img id="selectedFlag"
+                            src="https://flagcdn.com/w40/{{ isset($_COOKIE['selectedCountry']) ? strtolower($_COOKIE['selectedCountry']) : 'in' }}.png"
+                            style="width: 24px; height: 24px; object-fit: cover; border-radius: 3px;">
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#" onclick="changeCountry('India')">
+                            <img src="https://flagcdn.com/w40/in.png"
+                                style="width: 24px; height: 24px; object-fit: cover; margin-right: 8px;">
+                            India
+                        </a>
+                        <a class="dropdown-item" href="#" onclick="changeCountry('United States')">
+                            <img src="https://flagcdn.com/w40/us.png"
+                                style="width: 24px; height: 24px; object-fit: cover; margin-right: 8px;">
+                            United States
+                        </a>
+                        <a class="dropdown-item" href="#" onclick="changeCountry('Canada')">
+                            <img src="https://flagcdn.com/w40/ca.png"
+                                style="width: 24px; height: 24px; object-fit: cover; margin-right: 8px;">
+                            Canada
+                        </a>
+                    </div>
+                </li>
             </ul>
         </nav>
     </div>
