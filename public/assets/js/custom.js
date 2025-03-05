@@ -15,6 +15,7 @@ $(document).ready(function () {
         cart.forEach((item) => {
             let finalPrice = item.price - item.discount;
             totalAmount += finalPrice * item.quantity;
+
             cartList.append(`
                 <li data-id="${item.id}">
                     <a href="#" class="item_remove"><i class="fa fa-times"></i></a>
@@ -31,12 +32,19 @@ $(document).ready(function () {
 
     $(".add-to-cart-btn").on("click", function (e) {
         e.preventDefault();
+        console.log("click");
         const productId = $(this).data("id");
         const productName = $(this).data("name");
         const productThumb = $(this).data("thumb");
-        const productPrice = $(this).data("price");
-        const productDiscount = $(this).data("discount");
-        var quantity = $("#quantity").val() || 1;
+        
+        const financeProduct = $(this).data("finance_product"); 
+        let financeData = financeProduct ? JSON.parse(financeProduct) : {}; 
+
+        // Extract price and discount from finance data
+        let productPrice = parseFloat(financeData.price) || parseFloat($(this).data("price")) || 0;
+        let productDiscount = parseFloat(financeData.discount) || parseFloat($(this).data("discount")) || 0;
+        let discountAmount = (productPrice * productDiscount) / 100;
+        var quantity = parseInt($("#quantity").val()) || 1;
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
         let existingProduct = cart.find((item) => item.id === productId);
         if (existingProduct) {
@@ -47,7 +55,7 @@ $(document).ready(function () {
                 name: productName,
                 thumb: productThumb,
                 price: productPrice,
-                discount: productDiscount,
+                discount: discountAmount,
                 quantity: quantity,
             });
         }

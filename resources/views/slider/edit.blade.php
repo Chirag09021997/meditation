@@ -13,7 +13,7 @@
                 <div class="flex items-center space-x-1">
                     <x-input-label for="title" :value="__('Title')" />
                 </div>
-                <x-text-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title', $sliderItem->title)" placeholder="Enter title" required />
+                <x-text-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title', $sliderItem->title)" placeholder="Enter title" />
                 <x-input-error :messages="$errors->get('title')" class="mt-2" />
             </div>
 

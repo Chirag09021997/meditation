@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $blogs = Blog::where('status', 'Active')->latest()->take(3)->get();
-        $latestStore = Store::where('status', 'Active')->where('add_home_status', 'Inactive')->select('id', 'product_name', 'product_thumb', 'price', 'discount')->latest()->take(4)->get();
+        $latestStore = Store::where('status', 'Active')->where('add_home_status', 'Inactive')->select('id', 'product_name', 'product_thumb', 'finance_product')->latest()->take(4)->get();
         $store = Store::where('add_home_status', 'Active')->select('*')->first();
         $blogs->transform(function ($blog) {
             $blog->formatted_date = Carbon::parse($blog->starting_date)->format('d M');
@@ -131,15 +131,15 @@ class HomeController extends Controller
 
     public function storeList()
     {
-        $stores = Store::where('status', 'Active')->select('id', 'product_name', 'product_thumb', 'price', 'discount')->latest()->paginate(9);
-        $latestStore = Store::where('status', 'Active')->select('id', 'product_name', 'product_thumb', 'price', 'discount')->latest()->take(3)->get();
+        $stores = Store::where('status', 'Active')->select('id', 'product_name', 'product_thumb', 'finance_product')->latest()->paginate(9);
+        $latestStore = Store::where('status', 'Active')->select('id', 'product_name', 'product_thumb', 'finance_product')->latest()->take(3)->get();
         return view('frontend.stores-list', compact('stores', 'latestStore'));
     }
 
     public function storeSingle(string $id)
     {
-        $store = Store::where('status', 'Active')->select('id', 'product_name', 'short_description', 'description', 'product_thumb', 'video_preview', 'price', 'total_stock', 'total_sale', 'discount', 'tags')->findOrFail($id);
-        $latestStore = Store::where('status', 'Active')->where('id', '!=',$id)->select('id', 'product_name', 'product_thumb', 'price', 'discount')->latest()->take(4)->get();
+        $store = Store::where('status', 'Active')->select('id', 'product_name', 'short_description', 'description', 'product_thumb', 'video_preview', 'finance_product', 'total_stock', 'total_sale', 'tags')->findOrFail($id);
+        $latestStore = Store::where('status', 'Active')->where('id', '!=',$id)->select('id', 'product_name', 'product_thumb', 'finance_product')->latest()->take(4)->get();
         return view('frontend.stores-detail', compact('store', 'latestStore'));
     }
 

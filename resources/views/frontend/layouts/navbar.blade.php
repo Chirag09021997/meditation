@@ -1,3 +1,68 @@
+<!-- ✅ New Div Added Above Navbar -->
+<div class="fixed-top top-bar transparent_header">
+    <p class="offer-text">Special Offer: Get 20% Off on All Products! Limited Time Only.</p>
+    
+    <!-- ✅ Country Dropdown -->
+    <div class="country-dropdown">
+        <select id="countrySelect">
+            <option value="India">🇮🇳 India</option>
+            <option value="United States">🇺🇸 United States</option>
+            <option value="Canada">🇨🇦 Canada</option>
+        </select>
+    </div>
+</div>
+<script>
+// Function to set a cookie
+function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+        let date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + value + "; path=/" + expires;
+}
+
+// Function to get a cookie value
+function getCookie(name) {
+    let nameEQ = name + "=";
+    let ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i].trim();
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+// Set the selected country from cookie when page loads
+document.addEventListener("DOMContentLoaded", function() {
+    let savedCountry = getCookie("selectedCountry");
+
+    if (savedCountry) {
+        document.getElementById("countrySelect").value = savedCountry;
+    } else {
+        // Set a default country if no cookie exists
+        let defaultCountry = "India"; // Change this to your preferred default
+        document.getElementById("countrySelect").value = defaultCountry;
+        setCookie("selectedCountry", defaultCountry, 30); // Save the default selection
+    }
+});
+
+// Save selected country in cookies when changed
+document.getElementById("countrySelect").addEventListener("change", function() {
+    let selectedCountry = this.value;
+    setCookie("selectedCountry", selectedCountry, 30); // Save for 30 days
+    let currentPage = window.location.pathname;
+
+    // Define pages where the form should load
+    let allowedPages = ["/","/stores"];
+        if (allowedPages.includes(currentPage) || currentPage.startsWith("/stores/")) {
+
+        location.reload(); // Refresh the page
+    }
+});
+</script>
+
 <header class="header_wrap fixed-top dark_skin main_menu_uppercase main_menu_weight_600 transparent_header">
     <div class="container">
         <nav class="navbar navbar-expand-lg">

@@ -1318,9 +1318,44 @@ button:focus {
 .navbar {
     padding: 0;
 }
+.top-bar {
+    background-color: white; /* Background color */
+    color: white; /* Text color */
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Offer text */
+.offer-text {
+    margin: 0;
+}
+
+.country-dropdown select {
+    color: black;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Responsive: Stack elements on small screens */
+@media (max-width: 768px) {
+    .top-bar {
+        flex-direction: column;
+        text-align: center;
+    }
+    .country-dropdown {
+        margin-top: 5px;
+    }
+}
 
 .header_wrap {
     transition: all 0.5s ease 0s;
+    margin-top: 40px; /* Adjust this value based on your top-bar height */
 }
 
 .header_wrap:not([class*="bg_"]):not([class*="bg-"]) {
@@ -2716,13 +2751,41 @@ body.active {
     top: -70px;
     right:80px;
 }
+
 .shape2 {
     width: 100%;
     height: 100%;
     position: absolute;
     top: -70px;
-    left: 94%;
+    left: 95%; /* Adjust position for wider screens */
 }
+
+/* ✅ For Large Desktops (1440px and above) */
+@media screen and (min-width: 1920px) {
+    .shape2 {
+        left: 96%; /* Adjust position for wider screens */
+    }
+}
+
+/* ✅ For Laptops & Small Desktops (1024px - 1439px) */
+@media screen and (max-width: 1440px) {
+    .shape2 {
+        left: 95%; /* Adjust position */
+    }
+}
+
+/* ✅ For Tablets (768px - 1023px) */
+@media screen and (max-width: 1023px) {
+    .shape2 {
+        left: 80%; /* Move closer */
+        top: -30px;
+        width: 80%; /* Adjust width */
+        height: auto;
+    }
+}
+
+
+
 .shape1,.shape2{
     z-index: 10;
 
@@ -2885,18 +2948,6 @@ body.active {
     right: 0;
 }
 
-.shape1 {
-    /* left: -80px;
-    bottom: 0px;
-    z-index: 1; */
-   
-}
-.shape2 {
-    /* right: -80px !important;
-    bottom: 0px;
-    z-index: 1; */
-   
-}
 @media (max-width: 768px) {
     .shape1 img, 
     .shape2 img, 

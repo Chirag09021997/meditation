@@ -38,6 +38,22 @@
                     </div>
                     <div class="row shop_container grid_view">
                         @foreach ($stores as $store)
+                        @php
+                                // Decode finance product JSON
+                                $financeProducts = json_decode($store->finance_product, true) ?? [];
+
+                                // Default country (modify as needed)
+                                $countryName = $_COOKIE['selectedCountry'] ?? 'India';
+
+                                // Find finance data for the selected country
+                                $financeData = collect($financeProducts)->firstWhere('country_name', $countryName);
+
+                                // Extract price details
+                                $originalPrice = $financeData['price'] ?? $store->price;
+                                $discount = $financeData['discount'] ?? 0;
+                                $finalPrice = $originalPrice - ($originalPrice * $discount / 100);
+                                $symbol = $financeData['symbol'];
+                            @endphp
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product">
                                     <span class="pr_flash">Sale</span>
@@ -52,13 +68,13 @@
                                                         data-price="{{ $store->price }}"
                                                         data-discount="{{ $store->discount }}">View</a>
                                                 </li>
-                                                <li style="margin-top: 10px;"><a href="#" class="btn btn-default rounded-0 add-to-cart-btn"
+                                                <li style="margin-top: 10px;">
+                                                    <button class="btn btn-default rounded-0 add-to-cart-btn"
                                                         data-id="{{ $store->id }}" data-name="{{ $store->product_name }}"
                                                         data-thumb="{{ $store->product_thumb }}"
-                                                        data-price="{{ $store->price }}"
-                                                        data-discount="{{ $store->discount }}">Add To Cart</a>
+                                                        data-price="{{ $originalPrice }}" data-discount="{{ $discount }}"
+                                                        data-finalprice="{{ $finalPrice }}">Add To Cart</button>
                                                 </li>
-
                                             </ul>
                                         </div>
                                     </div>
@@ -66,8 +82,10 @@
                                         <h6 class="product_title"><a
                                                 href="{{ route('stores.single', $store->id) }}">{{ $store->product_name }}</a>
                                         </h6>
-                                        <span
-                                            class="price"><del>${{ $store->price }}</del><ins>${{ $store->price - $store->discount }}</ins></span>
+                                        <span class="price">
+                                            <del>{{ $symbol.$originalPrice }}</del>
+                                            <ins>{{ $symbol.$finalPrice}}</ins>
+                                        </span>
                                         <div class="rating">
                                             <div class="product_rate" style="width:80%"></div>
                                         </div>
@@ -144,6 +162,22 @@
                             <h5 class="widget_title">Latest Items</h5>
                             <ul class="recent_post border_bottom_dash list_none">
                                 @foreach ($latestStore as $store)
+                                @php
+                                // Decode finance product JSON
+                                $financeProducts = json_decode($store->finance_product, true) ?? [];
+
+                                // Default country (modify as needed)
+                                $countryName = $_COOKIE['selectedCountry'] ?? 'India';
+
+                                // Find finance data for the selected country
+                                $financeData = collect($financeProducts)->firstWhere('country_name', $countryName);
+
+                                // Extract price details
+                                $originalPrice = $financeData['price'] ?? $store->price;
+                                $discount = $financeData['discount'] ?? 0;
+                                $finalPrice = $originalPrice - ($originalPrice * $discount / 100);
+                                $symbol = $financeData['symbol'];
+                            @endphp
                                     <li>
                                         <div class="post_img">
                                             <a href="{{ route('stores.single', $store->id) }}"><img
@@ -152,9 +186,10 @@
                                         <div class="post_content">
                                             <h6><a href="#">{{ $store->product_name }}</a></h6>
                                             <div class="product_price">
-                                                <span
-                                                    class="price"><del>${{ $store->price }}</del><ins>${{ $store->price - $store->discount }}</ins>
-                                                </span>
+                                            <span class="price">
+                                            <del>{{ $symbol.$originalPrice }}</del>
+                                            <ins>{{ $symbol.$finalPrice}}</ins>
+                                        </span>
                                                 <div class="rating">
                                                     <div class="product_rate" style="width:80%"></div>
                                                 </div>

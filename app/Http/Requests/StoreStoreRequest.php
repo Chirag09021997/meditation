@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Requests;
-
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreStoreRequest extends FormRequest
@@ -27,12 +26,15 @@ class StoreStoreRequest extends FormRequest
             'description' => 'nullable|string',
             'product_thumb' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'video_preview' => 'nullable|string',
-            'price' => 'required|numeric|min:0',
-            'discount' => 'nullable|numeric|min:0|max:100',
             'total_stock' => 'required|integer|min:0',
             'total_sale' => 'nullable|integer|min:0',
             'tags' => 'nullable|string|max:255',
             'product_photos.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'finance_country' => 'nullable',
+            'finance_price' => 'nullable',
+            'finance_discount' => 'nullable',
+            'finance_deliverycharge' => 'nullable',
+            'currency_symbol' => 'nullable',
         ];
     }
 }

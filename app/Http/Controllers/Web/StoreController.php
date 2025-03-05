@@ -40,6 +40,23 @@ class StoreController extends Controller
             $filePath = $image->storeAs('public/uploads/store', $fileName);
             $validated['product_thumb'] = str_replace('public/', 'storage/', $filePath);
         }
+
+        $financeValues = [];
+        $countryObj = $validated['finance_country'];
+
+        foreach ($countryObj as $i => $val) {
+            if ($val != null) {
+                $financeValues[$i]['country_name'] = $val;
+                $financeValues[$i]['price'] = $validated['finance_price'][$i];
+                $financeValues[$i]['discount'] = $validated['finance_discount'][$i];
+                $financeValues[$i]['delivery_charge'] = $validated['finance_deliverycharge'][$i];
+                $financeValues[$i]['symbol'] = $validated['currency_symbol'][$i];
+
+            }
+        }
+
+        $validated['finance_product'] = json_encode($financeValues);
+
         $store = Store::create($validated);
         if ($request->hasFile('product_photos')) {
             foreach ($request->file('product_photos') as $photo) {
@@ -51,6 +68,7 @@ class StoreController extends Controller
                 ]);
             }
         }
+
         return redirect()->route('store.index')->with('success', 'Store created successfully.');
     }
 
@@ -77,7 +95,7 @@ class StoreController extends Controller
      */
     public function update(UpdateStoreRequest $request, Store $store)
     {
-        $validated =  $request->validated();
+        $validated = $request->validated();
         if ($request->hasFile('product_thumb')) {
             if ($store->product_thumb != null) {
                 $imagePath = storage_path(str_replace(config('app.url') . '/storage', 'app/public', $store->product_thumb));
@@ -100,6 +118,23 @@ class StoreController extends Controller
                 ]);
             }
         }
+
+        $financeValues = [];
+        $inTitle = $validated['finance_country'];
+        foreach ($inTitle as $i => $val) 
+        {
+            if($val != null)
+            {
+                $financeValues[$i]['country_name'] = $val;
+                $financeValues[$i]['price'] = $validated['finance_price'][$i];
+                $financeValues[$i]['discount'] = $validated['finance_discount'][$i];
+                $financeValues[$i]['delivery_charge'] = $validated['finance_deliverycharge'][$i];
+                $financeValues[$i]['symbol'] = $validated['currency_symbol'][$i];
+            }
+        } 
+
+        $validated['finance_product'] = $financeValues;
+        
         $store->update($validated);
         return redirect()->route('store.index')->with('success', 'Store updated successfully.');
     }
@@ -116,7 +151,7 @@ class StoreController extends Controller
 
     public function getData(Request $request)
     {
-        $store = Store::select(['id', 'product_name', 'product_thumb', 'price', 'total_stock', 'total_sale', 'discount', 'status', 'add_home_status'])->orderByDesc('created_at');
+        $store = Store::select(['id', 'product_name', 'product_thumb', 'total_stock', 'total_sale', 'status', 'add_home_status'])->orderByDesc('created_at');
 
         return DataTables::of($store)
             ->addColumn('action', function ($data) {
@@ -145,14 +180,14 @@ class StoreController extends Controller
     {
         $store->status = ($store->status == 'Active') ? 'Inactive' : 'Active';
         $store->save();
-        echo  1;
+        echo 1;
     }
 
     public function changeHomeStatus(Store $store)
     {
         $store->add_home_status = ($store->add_home_status == 'Active') ? 'Inactive' : 'Active';
         $store->save();
-        echo  1;
+        echo 1;
     }
 
     public function deleteProductPhoto(Request $request)
