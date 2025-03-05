@@ -37,62 +37,74 @@
                         </div>
                     </div>
                     <div class="row shop_container grid_view">
-                        @foreach ($stores as $store)
-                        @php
-                                // Decode finance product JSON
-                                $financeProducts = json_decode($store->finance_product, true) ?? [];
+                    @foreach ($stores as $store)
+    @php
+        // Decode finance product JSON safely
+        $financeProducts = json_decode($store->finance_product, true) ?? [];
 
-                                // Default country (modify as needed)
-                                $countryName = $_COOKIE['selectedCountry'] ?? 'India';
+        // Get selected country from cookie or set default
+        $countryName = $_COOKIE['selectedCountry'] ?? 'India';
 
-                                // Find finance data for the selected country
-                                $financeData = collect($financeProducts)->firstWhere('country_name', $countryName);
+        // Find finance data for the selected country
+        $financeData = collect($financeProducts)->firstWhere('country_name', $countryName);
 
-                                // Extract price details
-                                $originalPrice = $financeData['price'] ?? $store->price;
-                                $discount = $financeData['discount'] ?? 0;
-                                $finalPrice = $originalPrice - ($originalPrice * $discount / 100);
-                                $symbol = $financeData['symbol'];
-                            @endphp
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product">
-                                    <span class="pr_flash">Sale</span>
-                                    <div class="product_img">
-                                        <a href="#"><img
-                                                src="{{ $store->product_thumb }}" alt="store" onerror="this.onerror=null;this.src='{{ asset('assets/images/image_load.png') }}';" /></a>
-                                        <div class="product_action_box">
-                                            <ul class="list_none pr_action_btn">
-                                                <li><a href="{{ route('stores.single', $store->id) }}" class="btn btn-default rounded-0 view-btn"
-                                                        data-id="{{ $store->id }}" data-name="{{ $store->product_name }}"
-                                                        data-thumb="{{ $store->product_thumb }}"
-                                                        data-price="{{ $store->price }}"
-                                                        data-discount="{{ $store->discount }}">View</a>
-                                                </li>
-                                                <li style="margin-top: 10px;">
-                                                    <button class="btn btn-default rounded-0 add-to-cart-btn"
-                                                        data-id="{{ $store->id }}" data-name="{{ $store->product_name }}"
-                                                        data-thumb="{{ $store->product_thumb }}"
-                                                        data-price="{{ $originalPrice }}" data-discount="{{ $discount }}"
-                                                        data-finalprice="{{ $finalPrice }}">Add To Cart</button>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product_info">
-                                        <h6 class="product_title"><a
-                                                href="{{ route('stores.single', $store->id) }}">{{ $store->product_name }}</a>
-                                        </h6>
-                                        <span class="price">
-                                            <del>{{ $symbol.$originalPrice }}</del>
-                                            <ins>{{ $symbol.$finalPrice}}</ins>
-                                        </span>
-                                        <div class="rating">
-                                            <div class="product_rate" style="width:80%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
+        // Set default values to avoid null errors
+        $originalPrice = $store->price;
+        $discount = 0;
+        $finalPrice = $originalPrice;
+        $symbol = '';
+
+        if (!is_null($financeData) && is_array($financeData)) {
+            $originalPrice = $financeData['price'] ?? $store->price;
+            $discount = $financeData['discount'] ?? 0;
+            $symbol = $financeData['symbol'] ?? '';
+            $finalPrice = $originalPrice - ($originalPrice * $discount / 100);
+        }
+    @endphp
+
+    <div class="col-lg-4 col-sm-6">
+        <div class="product">
+            <span class="pr_flash">Sale</span>
+            <div class="product_img">
+                <a href="#">
+                    <img src="{{ $store->product_thumb }}" alt="store"
+                        onerror="this.onerror=null;this.src='{{ asset('assets/images/image_load.png') }}';" />
+                </a>
+                <div class="product_action_box">
+                    <ul class="list_none pr_action_btn">
+                        <li>
+                            <a href="{{ route('stores.single', $store->id) }}" class="btn btn-default rounded-0 view-btn"
+                                data-id="{{ $store->id }}" data-name="{{ $store->product_name }}"
+                                data-thumb="{{ $store->product_thumb }}"
+                                data-price="{{ $store->price }}"
+                                data-discount="{{ $store->discount }}">View</a>
+                        </li>
+                        <li style="margin-top: 10px;">
+                            <button class="btn btn-default rounded-0 add-to-cart-btn"
+                                data-id="{{ $store->id }}" data-name="{{ $store->product_name }}"
+                                data-thumb="{{ $store->product_thumb }}"
+                                data-price="{{ $originalPrice }}" data-discount="{{ $discount }}"
+                                data-finalprice="{{ $finalPrice }}">Add To Cart</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="product_info">
+                <h6 class="product_title">
+                    <a href="{{ route('stores.single', $store->id) }}">{{ $store->product_name }}</a>
+                </h6>
+                <span class="price">
+                    <del>{{ $symbol.number_format($originalPrice, 2) }}</del>
+                    <ins>{{ $symbol.number_format($finalPrice, 2) }}</ins>
+                </span>
+                <div class="rating">
+                    <div class="product_rate" style="width:80%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endforeach
+
                     </div>
                     <div class="row">
                         <div class="col-12 mt-3 mt-lg-4">

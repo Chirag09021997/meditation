@@ -35,59 +35,66 @@
                 </div>
                 <div class="col-md-6">
                 @php
-                            // Decode finance product JSON
-                            $financeProducts = json_decode($store->finance_product, true) ?? [];
+    // Decode finance product JSON safely
+    $financeProducts = json_decode($store->finance_product, true) ?? [];
 
-                            // Default country (modify as needed)
-                            $countryName = $_COOKIE['selectedCountry'] ?? 'India';
+    // Get selected country from cookie or set default
+    $countryName = $_COOKIE['selectedCountry'] ?? 'India';
 
-                            // Find finance data for the selected country
-                            $financeData = collect($financeProducts)->firstWhere('country_name', $countryName);
+    // Find finance data for the selected country
+    $financeData = collect($financeProducts)->firstWhere('country_name', $countryName);
 
-                           // Extract price details
-                            $originalPrice = $financeData['price'] ?? $store->price;
-                            $discount = $financeData['discount'] ?? 0;
-                            $finalPrice = $originalPrice - ($originalPrice * $discount / 100);
-                            $symbol = $financeData['symbol'];
-                        @endphp
+    // Set default values to avoid null errors
+    $originalPrice = $store->price;
+    $discount = 0;
+    $finalPrice = $originalPrice;
+    $symbol = '';
 
+    if (!is_null($financeData) && is_array($financeData)) {
+        $originalPrice = $financeData['price'] ?? $store->price;
+        $discount = $financeData['discount'] ?? 0;
+        $symbol = $financeData['symbol'] ?? '';
+        $finalPrice = $originalPrice - ($originalPrice * $discount / 100);
+    }
+@endphp
 
-                    <div class="pr_detail">
-                        <div class="product-description">
-                            <h4 class="product_title"><a href="#">{{ $store->product_name }}</a></h4>
-                            <div class="product_price float-left">
-                                <span class="price">
-                                    <del>{{ $symbol.$originalPrice }}</del>
-                                    <ins>{{ $symbol.$finalPrice}}</ins>
-                                </span>
-                            </div>
-                            <div class="rating mt-2 float-right">
-                                <div class="product_rate" style="width:80%"></div>
-                            </div>
-                            <div class="clearfix"></div>
-                            <hr>
-                            <p>{{ $store->short_description }}</p>
-                        </div>
-                        <hr>
-                        <div class="cart_extra">
-                            <div class="cart-product-quantity">
-                                <div class="quantity">
-                                    <input type="button" value="-" class="minus">
-                                    <input type="text" name="quantity" id="quantity" value="1" title="Qty" class="qty"
-                                        size="4">
-                                    <input type="button" value="+" class="plus">
-                                </div>
-                            </div>
-                            <div class="cart_btn">
-                                <button class="btn btn-default rounded-0 add-to-cart-btn" type="button"
-                                    data-id="{{ $store->id }}" data-name="{{ $store->product_name }}"
-                                    data-thumb="{{ $store->product_thumb }}" data-price="{{ $originalPrice }}" data-discount="{{ $discount }}"
-                                    data-finalprice="{{ $finalPrice }}">Add to
-                                    cart</button>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
+<div class="pr_detail">
+    <div class="product-description">
+        <h4 class="product_title"><a href="#">{{ $store->product_name }}</a></h4>
+        <div class="product_price float-left">
+            <span class="price">
+                <del>{{ $symbol.number_format($originalPrice, 2) }}</del>
+                <ins>{{ $symbol.number_format($finalPrice, 2) }}</ins>
+            </span>
+        </div>
+        <div class="rating mt-2 float-right">
+            <div class="product_rate" style="width:80%"></div>
+        </div>
+        <div class="clearfix"></div>
+        <hr>
+        <p>{{ $store->short_description }}</p>
+    </div>
+    <hr>
+    <div class="cart_extra">
+        <div class="cart-product-quantity">
+            <div class="quantity">
+                <input type="button" value="-" class="minus">
+                <input type="text" name="quantity" id="quantity" value="1" title="Qty" class="qty" size="4">
+                <input type="button" value="+" class="plus">
+            </div>
+        </div>
+        <div class="cart_btn">
+            <button class="btn btn-default rounded-0 add-to-cart-btn" type="button"
+                data-id="{{ $store->id }}" data-name="{{ $store->product_name }}"
+                data-thumb="{{ $store->product_thumb }}" data-price="{{ $originalPrice }}"
+                data-discount="{{ $discount }}" data-finalprice="{{ $finalPrice }}">
+                Add to cart
+            </button>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
                 </div>
             </div>
             <div class="row">
