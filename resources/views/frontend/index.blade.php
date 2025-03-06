@@ -1063,14 +1063,14 @@
                         <div class="col-lg-6">
                             <img src="{{ asset('assets/images/phone.png') }}" alt="">
                         </div>
-                        <div class="col-lg-6 d-flex flex-column align-items-center justify-content-center">
-                            <h2>Get Mobile Application &<br>Do Meditation Online !</h2>
+                        <div class="col-lg-6 d-flex flex-column align-items-center justify-content-center mb-4 mb-lg-0">
+                        <h2>Get Mobile Application &<br>Do Meditation Online !</h2>
                             <p style="margin-top: 10px;">A user-friendly app offering guided meditations, spiritual
                                 workshop, and progress tracking to support your journey toward inner peace</p>
                             <h2>TEJAS Application</h2>
 
                             <!-- <h5>BeYoga Application</h5> -->
-                            <div class="d-flex align-items-center justify-content-start" style="margin-top: 10px;">
+                            <div class="d-flex align-items-center justify-content-start " style="margin-top: 10px;">
 
                                 <a href="https://play.google.com/store" target="_blank" style="margin-right: 20px;">
                                     <img src="{{ asset('assets/images/ic_playstore.png') }}" alt="Apple App Store"
@@ -1262,7 +1262,7 @@
 
     {{-- <!-- START SECTION TEACHER --> --}}
     @if ($outTeams->count() > 0)
-        <section class="bg_light_pink pb_70">
+        <section class="bg_light_pink pb_70 section-application">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-lg-8 col-md-10 text-center animation" data-animation="fadeInUp"
