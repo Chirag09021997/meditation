@@ -177,36 +177,29 @@
                     </li>
                 @endif
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="countryDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                <li class="dropdown">
+                    <a class="nav-link position-relative" href="#" data-toggle="dropdown">
                         <img id="selectedFlag"
                             src="https://flagcdn.com/w40/{{ isset($_COOKIE['selectedCountry']) ? strtolower($_COOKIE['selectedCountry']) : 'in' }}.png"
                             style="width: 24px; height: 24px; object-fit: cover; border-radius: 3px;">
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="countryDropdown">
-                        <li>
-                            <a class="dropdown-item" href="#" onclick="changeCountry('India')">
-                                <img src="https://flagcdn.com/w40/in.png"
-                                    style="width: 24px; height: 24px; object-fit: cover; margin-right: 8px;">
-                                India
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#" onclick="changeCountry('United States')">
-                                <img src="https://flagcdn.com/w40/us.png"
-                                    style="width: 24px; height: 24px; object-fit: cover; margin-right: 8px;">
-                                United States
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#" onclick="changeCountry('Canada')">
-                                <img src="https://flagcdn.com/w40/ca.png"
-                                    style="width: 24px; height: 24px; object-fit: cover; margin-right: 8px;">
-                                Canada
-                            </a>
-                        </li>
-                    </ul>
+                    <div class="dropdown-menu dropdown-menu-right right-0 z-1 position-absolute">
+                        <a class="dropdown-item" href="#" onclick="changeCountry('India')">
+                            <img src="https://flagcdn.com/w40/in.png"
+                                style="width: 24px; height: 24px; object-fit: cover; margin-right: 8px;">
+                            India
+                        </a>
+                        <a class="dropdown-item" href="#" onclick="changeCountry('United States')">
+                            <img src="https://flagcdn.com/w40/us.png"
+                                style="width: 24px; height: 24px; object-fit: cover; margin-right: 8px;">
+                            United States
+                        </a>
+                        <a class="dropdown-item" href="#" onclick="changeCountry('Canada')">
+                            <img src="https://flagcdn.com/w40/ca.png"
+                                style="width: 24px; height: 24px; object-fit: cover; margin-right: 8px;">
+                            Canada
+                        </a>
+                    </div>
                 </li>
             </ul>
         </nav>

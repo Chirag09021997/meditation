@@ -61,34 +61,3 @@
 
 
 
-@media (max-width: 768px) {
-    .dropdown-menu {
-        position: absolute !important;
-        width: auto;
-        min-width: 150px; /* Adjust width if necessary */
-    }
-
-    .dropdown-menu-right {
-        right: 0;
-        left: auto;
-    }
-
-    .dropdown-item img {
-        width: 20px; /* Adjust flag size */
-        height: 20px;
-    }
-
-    .dropdown .nav-link {
-        display: flex;
-        align-items: center;
-        padding: 5px;
-    }
-
-    #selectedFlag {
-        width: 20px;
-        height: 20px;
-    }
-}
-
-
-
