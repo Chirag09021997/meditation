@@ -79,6 +79,16 @@
                     class="fa-solid fa-bars"></span> </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav">
+                    @if (Auth::guard('customer')->check())
+                        <li>
+                            <a class="nav-link {{ request()->is('user.profile') ? 'active' : '' }}"
+                                href="{{ route('user.profile') }}" title="Profile">My Profile<i class="fas"></i></a>
+                        </li>
+                        <li>
+                            <a class="nav-link {{ request()->is('user.orders') ? 'active' : '' }}"
+                                href="{{ route('user.orders') }}" title="Order-History">Orders<i class="fas"></i></a>
+                        </li>
+                    @endif
                     <li>
                         <a class="nav-link {{ request()->is('home') ? 'active' : '' }}"
                             href="{{ route('home') }}">Home</a>
@@ -103,6 +113,18 @@
                         <a class="nav-link {{ request()->is('contact') ? 'active' : '' }}"
                             href="{{ route('contact') }}">Contact Us</a>
                     </li>
+                    @if (Auth::guard('customer')->check())
+                        <li>
+                            <a class="nav-link" href="#" id="logoutBtn" title="Logout">Logout<i class="fas"></i></a>
+                            <form id="logoutForm" action="{{ route('user.logout') }}" method="POST" class="d-none">
+                                @csrf
+                                <button type="submit" class="nav-link btn btn-link"><i
+                                        class="fas fa-power-off"></i></button>
+                            </form>
+                        </li>
+                    @endif
+
+
                 </ul>
             </div>
             <ul class="navbar-nav attr-nav align-items-center">
@@ -155,23 +177,7 @@
                     </div>
                 </li>
 
-                @if (Auth::guard('customer')->check())
-                    <li>
-                        <a class="nav-link px-2 {{ request()->is('user.profile') ? 'active' : '' }}"
-                            href="{{ route('user.profile') }}" title="Profile"><i class="fas fa-user-edit"></i></a>
-                    </li>
-                    <li>
-                        <a class="nav-link px-2 {{ request()->is('user.orders') ? 'active' : '' }}"
-                            href="{{ route('user.orders') }}" title="Order-History"><i class="fas fa-receipt"></i></a>
-                    </li>
-                    <li>
-                        <a class="nav-link px-2" href="#" id="logoutBtn" title="Logout"><i class="fas fa-power-off"></i></a>
-                        <form id="logoutForm" action="{{ route('user.logout') }}" method="POST" class="d-none">
-                            @csrf
-                            <button type="submit" class="nav-link btn btn-link"><i class="fas fa-power-off"></i></button>
-                        </form>
-                    </li>
-                @else
+                @if (!Auth::guard('customer')->check())
                     <li>
                         <a class="nav-link" href="{{ route('user.login') }}"><i class="fa-solid fa-user"></i></a>
                     </li>
