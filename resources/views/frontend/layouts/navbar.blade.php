@@ -106,7 +106,7 @@
                 </ul>
             </div>
             <ul class="navbar-nav attr-nav align-items-center">
-                <li><a href="javascript:void(0);" class="nav-link search_trigger" title="search"><i
+                <!-- <li><a href="javascript:void(0);" class="nav-link search_trigger" title="search"><i
                             class="fa fa-search"></i></a>
                     <div class="search-overlay">
                         <div class="search_wrap">
@@ -118,7 +118,7 @@
                             </form>
                         </div>
                     </div>
-                </li>
+                </li> -->
                 <li class="dropdown cart_wrap">
                     <a class="nav-link" href="#" data-toggle="dropdown"><i class="fa-solid fa-cart-shopping"></i><span
                             class="cart_count">2</span></a>
