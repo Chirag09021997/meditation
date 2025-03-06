@@ -59,5 +59,10 @@
     height: auto;      /* Keeps the aspect ratio */
 }
 
+@media (max-width: 768px) {
+    .store-btn {
+        margin-bottom: 20px;
+    }
+}
 
 
