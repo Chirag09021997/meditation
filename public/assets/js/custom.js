@@ -238,7 +238,9 @@ $(document).ready(function () {
         var finalTotal = prices - finalDiscount;
         $("#checkout-sub-total").text(prices.toFixed(2));
         $("#checkout-total").text(finalTotal.toFixed(2));
+        $("#checkout-delivery-charge").text(finalDiscount.toFixed(2));
         $("#checkout-discount-total").text(finalDiscount.toFixed(2));
+
     }
     checkoutProduct();
 

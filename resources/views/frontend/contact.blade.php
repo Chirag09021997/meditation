@@ -3,21 +3,21 @@
     <!-- START SECTION BREADCRUMB -->
     <section class="bg_light_pink breadcrumb_section">
         <div class="abt-sec">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-sm-12 text-center">
-                    <div class="page-title space">
-                        <h1>Contact Us</h1>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-sm-12 text-center">
+                        <div class="page-title space">
+                            <h1>Contact Us</h1>
+                        </div>
+                        <!-- <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Contact</li>
+                            </ol>
+                        </nav> -->
                     </div>
-                    <!-- <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Contact</li>
-                        </ol>
-                    </nav> -->
                 </div>
             </div>
-        </div>
         </div>
     </section>
     <!-- END SECTION BREADCRUMB -->
@@ -44,7 +44,7 @@
                         </li>
                         <li>
                             <span class="fa-solid fa-location-pin"></span>
-                            <address>{{ $settings['address'] }}</address>
+                            <address>{{ $settings['address'] ?? 'Not Available' }}</address>
                         </li>
                     </ul>
                 </div>
@@ -58,8 +58,8 @@
                                         <span>
                                             <i class="fa-regular fa-user"></i>
                                         </span>
-                                        <input placeholder="Enter Name *" id="first-name" class="form-control"
-                                            name="name" type="text">
+                                        <input placeholder="Enter Name *" id="first-name" class="form-control" name="name"
+                                            type="text">
                                         @if ($errors->has('name'))
                                             <p class="text-danger font_style1">{{ $errors->first('name') }}</p>
                                         @endif
@@ -94,8 +94,8 @@
                                         <span>
                                             <i class="fa-regular fa-folder"></i>
                                         </span>
-                                        <input placeholder="Enter Subject" id="subject" class="form-control"
-                                            name="subject" type="text">
+                                        <input placeholder="Enter Subject" id="subject" class="form-control" name="subject"
+                                            type="text">
                                         @if ($errors->has('subject'))
                                             <p class="text-danger font_style1">{{ $errors->first('subject') }}</p>
                                         @endif
@@ -106,7 +106,8 @@
                                         <span>
                                             <i class="fa-regular fa-comment"></i>
                                         </span>
-                                        <textarea required placeholder="Message *" id="description" class="form-control" name="message" rows="5"></textarea>
+                                        <textarea required placeholder="Message *" id="description" class="form-control"
+                                            name="message" rows="5"></textarea>
                                         @if ($errors->has('message'))
                                             <p class="text-danger font_style1">{{ $errors->first('message') }}</p>
                                         @endif
