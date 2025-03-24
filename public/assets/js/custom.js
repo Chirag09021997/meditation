@@ -208,9 +208,6 @@ $(document).ready(function () {
             return;
         }
         
-        // let currencySymbol = "<?php echo $symbol; ?>"; 
-        let currencySymbol = "{{$symbol}}";
-
         let discount = 0;
         let prices = 0;
         let couponDiscount = 0;

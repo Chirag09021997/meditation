@@ -1,4 +1,7 @@
 @extends('frontend.layouts.app')
+<script>
+    let currencySymbol = "{{$symbol}}";
+</script>
 @section('content')
     <!-- START SECTION BREADCRUMB -->
     <section class="breadcrumb_section page-title-light background_bg overlay_bg_blue_70"
