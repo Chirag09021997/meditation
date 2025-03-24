@@ -3,9 +3,7 @@
 
 <head>
     @include('frontend.layouts.head')
-    <script>
-    let currencySymbol = "{{$symbol}}";
-</script>
+ 
 </head>
 
 <body>
