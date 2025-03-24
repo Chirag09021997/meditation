@@ -250,6 +250,20 @@
                         <div class="xs_divider clearfix"></div>
                     </div>
                 </div>
+                <script>
+    let currencySymbol = "{{$symbol}}";
+</script>
+    @php
+
+        // Get selected country from cookie or set default
+        $countryName = $_COOKIE['selectedCountry'] ?? 'India';
+        $symbol="₹";
+        if($countryName=="India"){
+            $symbol="₹";
+        }else {
+            $symbol="$";
+        }
+    @endphp
                 <div class="row">
                     <div class="col-12">
                         <div class="heading_s2">
