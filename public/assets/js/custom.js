@@ -208,8 +208,7 @@ $(document).ready(function () {
             return;
         }
         
-        $countryName = $_COOKIE['selectedCountry'] ?? 'India';
-        $symbol = ($countryName == "India") ? "₹" : "$";
+        let currencySymbol = "<?php echo $symbol; ?>"; 
 
         let discount = 0;
         let prices = 0;
@@ -222,7 +221,7 @@ $(document).ready(function () {
             $("#checkout_product_list").append(
                 `<tr>
                 <td>${item.name} <span class="product-qty">x ${item.quantity}</span></td>
-                <td>${symbol}${discountedPrice}</td>
+                <td>${currencySymbol}${discountedPrice}</td>
             </tr>`
             );
         });
