@@ -22,30 +22,6 @@
     </section>
     <!-- END SECTION BREADCRUMB -->
 
-    @php
-        // Decode finance product JSON safely
-        $financeProducts = json_decode($store->finance_product, true) ?? [];
-
-        // Get selected country from cookie or set default
-        $countryName = $_COOKIE['selectedCountry'] ?? 'India';
-
-        // Find finance data for the selected country
-        $financeData = collect($financeProducts)->firstWhere('country_name', $countryName);
-
-        // Set default values to avoid null errors
-        $originalPrice = $store->price;
-        $discount = 0;
-        $finalPrice = $originalPrice;
-        $symbol = '';
-
-        if (is_array($financeData)) {
-            $originalPrice = $financeData['price'] ?? $store->price;
-            $discount = $financeData['discount'] ?? 0;
-            $symbol = $financeData['symbol'] ?? '';
-            $finalPrice = $originalPrice - ($originalPrice * $discount / 100);
-        }
-    @endphp
-
     <!-- START SECTION CHECKOUT -->
     <section>
         <div class="container">
@@ -273,6 +249,17 @@
                         <div class="xs_divider clearfix"></div>
                     </div>
                 </div>
+    @php
+
+        // Get selected country from cookie or set default
+        $countryName = $_COOKIE['selectedCountry'] ?? 'India';
+        $symbol="₹";
+        if($countryName=="India"){
+            $symbol="₹";
+        }else {
+            $symbol="$";
+        }
+    @endphp
                 <div class="row">
                     <div class="col-12">
                         <div class="heading_s2">
@@ -288,23 +275,18 @@
                                 </thead>
                                 <tbody id="checkout_product_list">
                                 </tbody>
-                                
                                 <tfoot>
                                     <tr>
                                         <td>SubTotal</td>
-                                        <td>$symbol.<span id="checkout-sub-total">0.00</span></td>
+                                        <td>{{$symbol}}.<span id="checkout-sub-total">0.00</span></td>
                                     </tr>
                                     <tr>
                                         <td>Discount</td>
-                                        <td>$symbol.<span id="checkout-discount-total">0.00</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Delivery Charge</td>
-                                        <td>$symbol.<span id="checkout-delivery-charge">0.00</span></td>
+                                        <td>{{$symbol}}.<span id="checkout-discount-total">0.00</span></td>
                                     </tr>
                                     <tr>
                                         <td class="product-subtotal">Total</td>
-                                        <td class="product-subtotal">$symbol.<span id="checkout-total">0.00</span></td>
+                                        <td class="product-subtotal">{{$symbol}}.<span id="checkout-total">0.00</span></td>
                                     </tr>
                                 </tfoot>
                             </table>
