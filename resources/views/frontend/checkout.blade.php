@@ -1,7 +1,5 @@
 @extends('frontend.layouts.app')
-<script>
-    let currencySymbol = "{{$symbol}}";
-</script>
+
 @section('content')
     <!-- START SECTION BREADCRUMB -->
     <section class="breadcrumb_section page-title-light background_bg overlay_bg_blue_70"
@@ -252,17 +250,6 @@
                         <div class="xs_divider clearfix"></div>
                     </div>
                 </div>
-    @php
-
-        // Get selected country from cookie or set default
-        $countryName = $_COOKIE['selectedCountry'] ?? 'India';
-        $symbol="₹";
-        if($countryName=="India"){
-            $symbol="₹";
-        }else {
-            $symbol="$";
-        }
-    @endphp
                 <div class="row">
                     <div class="col-12">
                         <div class="heading_s2">

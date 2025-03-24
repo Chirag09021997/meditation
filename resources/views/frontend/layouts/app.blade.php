@@ -3,6 +3,9 @@
 
 <head>
     @include('frontend.layouts.head')
+    <script>
+    let currencySymbol = "{{$symbol}}";
+</script>
 </head>
 
 <body>
@@ -22,7 +25,17 @@
 
     {{-- <!-- START FOOTER --> --}}
     @include('frontend.layouts.footer')
+    @php
 
+        // Get selected country from cookie or set default
+        $countryName = $_COOKIE['selectedCountry'] ?? 'India';
+        $symbol="₹";
+        if($countryName=="India"){
+            $symbol="₹";
+        }else {
+            $symbol="$";
+        }
+    @endphp
 </body>
 
 </html>
