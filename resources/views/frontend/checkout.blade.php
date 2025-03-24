@@ -1,5 +1,4 @@
 @extends('frontend.layouts.app')
-
 @section('content')
     <!-- START SECTION BREADCRUMB -->
     <section class="breadcrumb_section page-title-light background_bg overlay_bg_blue_70"
@@ -250,9 +249,6 @@
                         <div class="xs_divider clearfix"></div>
                     </div>
                 </div>
-                <script>
-    let currencySymbol = "{{$symbol}}";
-</script>
     @php
 
         // Get selected country from cookie or set default
@@ -282,7 +278,7 @@
                                 <tfoot>
                                     <tr>
                                         <td>SubTotal</td>
-                                        <td>{{$symbol}}<span id="checkout-sub-total">0.00</span></td>
+                                        <td>{{$symbol}}.<span id="checkout-sub-total">0.00</span></td>
                                     </tr>
                                     <tr>
                                         <td>Discount</td>

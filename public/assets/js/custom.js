@@ -207,7 +207,7 @@ $(document).ready(function () {
             );
             return;
         }
-        
+        let currencySymbol="";
         let discount = 0;
         let prices = 0;
         let couponDiscount = 0;
