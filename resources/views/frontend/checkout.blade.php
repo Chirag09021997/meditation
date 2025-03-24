@@ -278,15 +278,15 @@
                                 <tfoot>
                                     <tr>
                                         <td>SubTotal</td>
-                                        <td>{{$symbol}}.<span id="checkout-sub-total">0.00</span></td>
+                                        <td>{{$symbol}}<span id="checkout-sub-total">0.00</span></td>
                                     </tr>
                                     <tr>
                                         <td>Discount</td>
-                                        <td>{{$symbol}}.<span id="checkout-discount-total">0.00</span></td>
+                                        <td>{{$symbol}}<span id="checkout-discount-total">0.00</span></td>
                                     </tr>
                                     <tr>
                                         <td class="product-subtotal">Total</td>
-                                        <td class="product-subtotal">{{$symbol}}.<span id="checkout-total">0.00</span></td>
+                                        <td class="product-subtotal">{{$symbol}} <span id="checkout-total">0.00</span></td>
                                     </tr>
                                 </tfoot>
                             </table>

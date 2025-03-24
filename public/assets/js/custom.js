@@ -36,9 +36,9 @@ $(document).ready(function () {
         const productId = $(this).data("id");
         const productName = $(this).data("name");
         const productThumb = $(this).data("thumb");
-        
-        const financeProduct = $(this).data("finance_product"); 
-        let financeData = financeProduct ? JSON.parse(financeProduct) : {}; 
+
+        const financeProduct = $(this).data("finance_product");
+        let financeData = financeProduct ? JSON.parse(financeProduct) : {};
 
         // Extract price and discount from finance data
         let productPrice = parseFloat(financeData.price) || parseFloat($(this).data("price")) || 0;
@@ -93,23 +93,21 @@ $(document).ready(function () {
             discount += item.discount * item.quantity;
             $("#cart-items").append(`
                 <tr>
-                    <td class="product-thumbnail"><img src="${
-                        item.thumb
-                    }" alt="${item.name}" style="width:70px;height:70px;"></td>
+                    <td class="product-thumbnail"><img src="${item.thumb
+                }" alt="${item.name}" style="width:70px;height:70px;"></td>
                     <td class="product-name">${item.name}</td>
                     <td class="product-price">$${discountedPrice.toFixed(
-                        2
-                    )}</td>
+                    2
+                )}</td>
                     <td class="product-quantity">
                         <button class="minus" data-index="${index}">-</button>
-                        <input type="text" value="${
-                            item.quantity
-                        }" class="qty w-25" min="1" readonly>
+                        <input type="text" value="${item.quantity
+                }" class="qty w-25" min="1" readonly>
                         <button class="plus" data-index="${index}">+</button>
                     </td>
                     <td class="product-subtotal">$${(
-                        discountedPrice * item.quantity
-                    ).toFixed(2)}</td>
+                    discountedPrice * item.quantity
+                ).toFixed(2)}</td>
                     <td class="product-remove"><button class="remove" data-index="${index}">×</button></td>
                 </tr>
             `);
@@ -209,6 +207,10 @@ $(document).ready(function () {
             );
             return;
         }
+        
+        $countryName = $_COOKIE['selectedCountry'] ?? 'India';
+        $symbol = ($countryName == "India") ? "₹" : "$";
+
         let discount = 0;
         let prices = 0;
         let couponDiscount = 0;
@@ -220,7 +222,7 @@ $(document).ready(function () {
             $("#checkout_product_list").append(
                 `<tr>
                 <td>${item.name} <span class="product-qty">x ${item.quantity}</span></td>
-                <td>$${discountedPrice}</td>
+                <td>${symbol}${discountedPrice}</td>
             </tr>`
             );
         });
@@ -363,5 +365,5 @@ $(document).ready(function () {
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".carousel-control-prev").style.backgroundColor = "#23579D";
     document.querySelector(".carousel-control-next").style.backgroundColor = "#23579D";
-    
+
 });
