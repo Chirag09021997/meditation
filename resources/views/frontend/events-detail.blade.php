@@ -357,14 +357,14 @@
                                             <label class="d-none">Name</label>
                                             <input type="text" class="form-control" placeholder="Name*"
                                                 name="name" required id="name" autocomplete="off"
-                                                value="">
+                                                value="{{ old('name', Auth::guard('customer')->user()->name) }}">
                                             <div id="name_error"></div>
                                         </div>
                                         <div class="col-sm-12 col-lg-6 mb-3 mb-sm-0">
                                             <label class="d-none">Email</label>
                                             <input type="email" class="form-control" placeholder="Email*"
                                                 name="email" required id="email" autocomplete="off"
-                                                value="">
+                                                value="{{ old('email', Auth::guard('customer')->user()->email) }}">
                                             <div id="email_error"></div>
                                         </div>
                                     </div>
@@ -619,7 +619,7 @@
                                             <div class="d-block w-100">
                                                 <input type="text" class="form-control phone"
                                                     placeholder="Whatsapp Number*" name="mobile" required
-                                                    id="phone" autocomplete="off" value="">
+                                                    id="phone" autocomplete="off" value="{{ old('mobile', Auth::guard('customer')->user()->mobile_no) }}">
                                                 <div class="mob_code d-none">(People outside India, please add your ISD
                                                     code)</div>
                                             </div>
@@ -668,10 +668,6 @@
         </div>
     </main>
    
-
-
-    
-  
     <script>
         function youtubeVideoPlay(id, link) {
             if (id == 0) {
@@ -700,6 +696,4 @@
         }
 
     </script>
-    </body>
-
-    </html>
+@endsection

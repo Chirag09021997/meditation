@@ -67,7 +67,7 @@
         }
     });
 </script>
-
+<!-- bg-dark -->
 <header class="header_wrap fixed-top dark_skin main_menu_uppercase main_menu_weight_600 transparent_header">
     <div class="container">
         <nav class="navbar navbar-expand-lg">
@@ -127,7 +127,7 @@
 
                 </ul>
             </div>
-            <ul class="navbar-nav attr-nav align-items-center">
+            <ul class="navbar-nav attr-nav align-items-center h-50px mt-1 mt-sm-0" >
                 <!-- <li><a href="javascript:void(0);" class="nav-link search_trigger" title="search"><i
                             class="fa fa-search"></i></a>
                     <div class="search-overlay">
@@ -187,7 +187,7 @@
                     <a class="nav-link position-relative" href="#" data-toggle="dropdown">
                         <img id="selectedFlag"
                             src="https://flagcdn.com/w40/{{ isset($_COOKIE['selectedCountry']) ? strtolower($_COOKIE['selectedCountry']) : 'in' }}.png"
-                            style="width: 24px; height: 24px; object-fit: cover; border-radius: 3px;">
+                            style="width: 20px; height: 20px; object-fit: cover; border-radius: 3px;margin-top:-5px !important;">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right right-0 z-1 position-absolute">
                         <a class="dropdown-item" href="#" onclick="changeCountry('India')">

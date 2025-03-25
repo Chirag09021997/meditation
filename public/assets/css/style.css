@@ -1456,7 +1456,7 @@ button:focus {
 
 .navbar .navbar-nav>li>.nav-link {
     font-weight: 500;
-    padding: 35px 10px;
+    padding: 15px 10px;
     text-transform: capitalize;
     font-size: 14px;
     color: #28579b !important;
@@ -2452,7 +2452,7 @@ body.active {
     left: 0;
     position: absolute;
     right: 0;
-    top: 35%;
+    top: 31%;
     -moz-transform: translateY(-30%);
     -webkit-transform: translateY(-30%);
     transform: translateY(-30%);
@@ -2468,7 +2468,7 @@ body.active {
     background-size: cover;
     width: 100%;
     height: 80%;
-    margin-top: 20px; 
+    /* margin-top: 20px;  */
 }
 
 .slide_content_wrap {
@@ -2764,12 +2764,28 @@ body.active {
     .shape2 {
         left: 96%; /* Adjust position for wider screens */
     }
+    .shape2-top {
+        margin-top: -50px;
+    }
+    .shape1-top {
+        margin-top: -50px;
+    }
 }
 
 /* ✅ For Laptops & Small Desktops (1024px - 1439px) */
 @media screen and (max-width: 1440px) {
     .shape2 {
         left: 95%; /* Adjust position */
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .shape2-top {
+        left: 95%; /* Adjust position */
+        top: -180px;
+    }
+    .shape1-top {
+        top: -180px;
     }
 }
 
@@ -7218,9 +7234,14 @@ body.switch-open {
     }
     .slider2{
         width: 100%;
-        height: 90%;
+        height: 100%;
+        /* margin-top: 57px; */
+    }
+    .banner_slider:not(.full_screen) .carousel-item, .banner_slider:not(.full_screen){
+        height: 900px;
     }
 }
+
 @media (min-width: 768px) {
     .d-md-block {
         display: block !important;
@@ -7228,7 +7249,7 @@ body.switch-open {
 }
 @media only screen and (max-width: 480px) {
     .slider2{
-        margin-top:40px;
+        margin-top:9px;
     }
     .banner_shape{
         display: none;
@@ -7292,4 +7313,13 @@ body.switch-open {
         -webkit-transform: translateX(-270px);
         transform: translateX(-270px);
     }
+}
+
+.h-50px{
+    height: 50px !important;
+}
+
+.wh-15{
+    width: 10px !important;
+    height: 10px !important;
 }

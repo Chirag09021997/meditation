@@ -117,12 +117,12 @@
     </section>
 
     <div class="banner_shape">
-        <div class="shape1">
+        <div class="shape1 shape1-top">
             <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
                 <img src="{{ asset('assets/images/Group-circle.png') }}" alt="image" class="r-link linear infinite" />
             </div>
         </div>
-        <div class="shape2">
+        <div class="shape2 shape2-top">
             <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
                 <img src="{{ asset('assets/images/Group-blue.png') }}" alt="image" class="r-link linear infinite" />
             </div>
@@ -131,7 +131,7 @@
     {{-- <!-- END SECTION BANNER --> --}}
 
     {{-- <!-- START SECTION BENIFIT --> --}}
-    <section class="pb_70 bg-yoga">
+    <section class="pb_70 bg-yoga pt-0">
         <div class="container ">
             <div class="row justify-content-center">
                 <img src="{{ asset('assets/images/bg2.svg') }}" class="rotate  linear infinite circle-img" />
