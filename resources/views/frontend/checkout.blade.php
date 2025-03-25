@@ -278,7 +278,7 @@
                                 <tfoot>
                                     <tr>
                                         <td>SubTotal</td>
-                                        <td>{{$symbol}}.<span id="checkout-sub-total">0.00</span></td>
+                                        <td>{{$symbol}}<span id="checkout-sub-total">0.00</span></td>
                                     </tr>
                                     <tr>
                                         <td>Discount</td>

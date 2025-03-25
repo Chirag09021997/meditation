@@ -61,7 +61,8 @@
                                             <div class="col-md-10 pl-0">
                                                 <h5 class="font-weight-bold">{{ $event->name }}</h5>
                                                 <div class="description relative cursor-pointer text-muted">
-                                                    If you want to reach your ultimate peak health, then this workshop is for you. Learn 7 revolutionary habits over a span of 21 days!                            			</div><br>
+                                                {{ $event->short_description }}        
+                                                                       			</div><br>
                                             </div>
                                         </div>
                                         <div class="row  pl-3 pb-4 pr-3">
@@ -111,7 +112,7 @@
                                                                 </div>
                                                                     <div class="col-sm-8 pt-0 pl-2 m-0 pr-0">
                                                                         <span class="text-muted" style=" "><b>Language</b></span><br>
-                                                                        <span class="text-muted" style=" ">  {{$event->language}}</span>
+                                                                        <span class="text-muted" style=" "> {{$event->language}}</span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -143,7 +144,7 @@
                                                 <div class="pt-1">
                                                 <span class="text-muted" style="font-family: Nunito;">
                                                     <img class="text-muted float-left img-event" loading="lazy" src="{{ asset('assets/images/Duration.png') }}" alt="Global">
-                                                    <b>Duration:</b>  7 Days
+                                                    <b>Duration:</b>{{ $event->duration }}
                                                 </span><br>
                                                 </div>
                                                 <div class="pt-1">
@@ -151,11 +152,13 @@
                                                     <img class="text-muted float-left img-event" loading="lazy" src="{{ asset('assets/images/time.png') }}" alt="Global">
                                                     <b>Timing:</b>  <!-- 8 - 9:15 pm -->
                                                     {{ $event->formatted_time }}
+                                                    {{$event->formatted_time}}
                                                 </div>
                                                 <div class="pt-1">
                                                 <span class="text-muted" style="font-family: Nunito;">
                                                     <img class="text-muted float-left img-event" loading="lazy" src="{{ asset('assets/images/language.png') }}" alt="Global">
-                                                    <b>Language:</b>  English
+                                                    <b>Language:</b>{{ $event->language }}
+
                                                 </span><br>
                                                 </div>
                                                 <div class="relative cursor-pointer text-muted mt-3">

@@ -183,9 +183,9 @@
                                     <img loading="lazy"
                                         src="{{ asset('assets/images/group.png') }}"
                                         alt="Date">
-                                    <span>
+                                    <span >
                                         <strong>
-                                            731 </strong> people have already joined</span>
+                                        {{$event->total_joining}} </strong> people have already joined</span>
                                 </div>
                             </div>
                             <div class="register_mobile" style="display: none;">
@@ -290,7 +290,7 @@
                     @if(($event->curriculum) != null)
 
                         <div id="curriculum" class="white_block text-center curriculum mt-0 mb-sm-0">
-                            <h3 class="brown_heading">Curriculum For <br>The 7 Days</h3>
+                            <h3 class="brown_heading">Curriculum For <br>The {{$event->duration}} Days</h3>
                             <div class="content">
                                 <div class="content-item active">
                                     <div class="grid gtc curr-sm-2 curr-md-2 curr-lg-2 curr_grid" >

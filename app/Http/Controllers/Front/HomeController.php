@@ -59,13 +59,13 @@ class HomeController extends Controller
 
     public function eventsList()
     {
-        $events = Event::where('status', 'Active')->select('id', 'name', 'thumb_image', 'starting_date', 'location')->orderByDesc('created_at')->paginate(9);
+        $events = Event::where('status', 'Active')->select('id', 'name', 'thumb_image', 'starting_date','short_description', 'duration', 'language', 'location')->orderByDesc('created_at')->paginate(9);
         $events->getCollection()->transform(function ($event) {
-            $event->formatted_date = Carbon::parse($event->starting_date)->format('d M');
-            $event->formatted_time = Carbon::parse($event->starting_date)->format('H:i');
+            $event->formatted_date = Carbon::parse($event->starting_date)->format('M d, Y');
+            $event->formatted_time = Carbon::parse($event->starting_date)->format('h:i A');
             return $event;
         });
-        return view('frontend.events-list', compact('events'));
+        return view('frontend.events-list', compact(var_name: 'events'));
     }
 
     public function eventSingle(string $id)
@@ -139,7 +139,7 @@ class HomeController extends Controller
     public function storeSingle(string $id)
     {
         $store = Store::where('status', 'Active')->select('id', 'product_name', 'short_description', 'description', 'product_thumb', 'video_preview', 'finance_product', 'total_stock', 'total_sale', 'tags')->findOrFail($id);
-        $latestStore = Store::where('status', 'Active')->where('id', '!=',$id)->select('id', 'product_name', 'product_thumb', 'finance_product')->latest()->take(4)->get();
+        $latestStore = Store::where('status', 'Active')->where('id', '!=', $id)->select('id', 'product_name', 'product_thumb', 'finance_product')->latest()->take(4)->get();
         return view('frontend.stores-detail', compact('store', 'latestStore'));
     }
 
@@ -252,6 +252,7 @@ class HomeController extends Controller
             'total_fees' => 'nullable|numeric|min:0',
         ]);
         CustomerEvents::create($validated);
+        Event::where('id', $validated['event_id'])->increment('total_joining');
         return redirect()->route('home')->with('success', 'Event Join SuccessFully.');
     }
 
