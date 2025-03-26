@@ -2761,22 +2761,18 @@ body.active {
 
 /* ✅ Ensure same layout on 18-inch laptop & 22-inch LCD */
 @media screen and (min-width: 1366px) {
-    .shape2 {
-        left: 92vw; /* Fine-tuned position for larger screens */
-    }
+   
     .shape2-top {
-        margin-top: -75px;
+        margin-top: -130px;
     }
     .shape1-top {
-        margin-top: -70px;
+        margin-top: -120px;
     }
 }
 
 /* ✅ For Large Desktops (1440px and above) */
 @media screen and (min-width: 1920px) {
-    .shape2 {
-        left: 96%; /* Adjust position for wider screens */
-    }
+ 
     .shape2-top {
         margin-top: -20px;
     }
@@ -2787,9 +2783,7 @@ body.active {
 
 /* ✅ For Laptops & Small Desktops (1024px - 1439px) */
 @media screen and (max-width: 1440px) {
-    .shape2 {
-        left: 95%; /* Adjust position */
-    }
+  
     .shape2-top {
         left: 96%; /* Adjust position */
         top: -183px;
@@ -2802,10 +2796,10 @@ body.active {
 @media screen and (min-width: 1440px) {
     .shape2-top {
         left: 96%; /* Adjust position */
-        top: -103px;
+        top: -53px;
     }
     .shape1-top {
-        top: -113px;
+        top: -70px;
     }
 }
 
@@ -7257,9 +7251,9 @@ body.switch-open {
         height: 100%;
         /* margin-top: 57px; */
     }
-    .banner_slider:not(.full_screen) .carousel-item, .banner_slider:not(.full_screen){
+    /* .banner_slider:not(.full_screen) .carousel-item, .banner_slider:not(.full_screen){
         height: 900px;
-    }
+    } */
 }
 
 @media (min-width: 768px) {
