@@ -2759,16 +2759,29 @@ body.active {
     left: 95%; /* Adjust position for wider screens */
 }
 
+/* ✅ Ensure same layout on 18-inch laptop & 22-inch LCD */
+@media screen and (min-width: 1366px) {
+    .shape2 {
+        left: 92vw; /* Fine-tuned position for larger screens */
+    }
+    .shape2-top {
+        margin-top: -75px;
+    }
+    .shape1-top {
+        margin-top: -70px;
+    }
+}
+
 /* ✅ For Large Desktops (1440px and above) */
 @media screen and (min-width: 1920px) {
     .shape2 {
         left: 96%; /* Adjust position for wider screens */
     }
     .shape2-top {
-        margin-top: -50px;
+        margin-top: -20px;
     }
     .shape1-top {
-        margin-top: -50px;
+        margin-top: -10px;
     }
 }
 
@@ -2777,15 +2790,22 @@ body.active {
     .shape2 {
         left: 95%; /* Adjust position */
     }
+    .shape2-top {
+        left: 96%; /* Adjust position */
+        top: -183px;
+    }
+    .shape1-top {
+        top: -183px;
+    }
 }
 
 @media screen and (min-width: 1440px) {
     .shape2-top {
-        left: 95%; /* Adjust position */
-        top: -180px;
+        left: 96%; /* Adjust position */
+        top: -103px;
     }
     .shape1-top {
-        top: -180px;
+        top: -113px;
     }
 }
 
