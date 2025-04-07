@@ -6,25 +6,73 @@
  *
  * ---------------------------------------------------------------------------- */
 
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+}
+
+
 $(document).ready(function () {
     function navbarCartItems() {
         const cart = JSON.parse(localStorage.getItem("cart")) || [];
         const cartList = $(".cart_list");
         cartList.empty();
         let totalAmount = 0;
+        let price = 0, discount = 0, symbol = "";
+        const selectedCountry = getCookie("selectedCountry") || "India";
+
+
+        // id: productId,
+        // name: productName,
+        // thumb: productThumb,
+        // inrprice: inrPrice,
+        // inrdiscount: inrDiscount,
+        // inrdelivery_charge: inrDeliveryCharge,
+        // inrsymbol: inrSymbol,
+        // usdprice: usdPrice,
+        // usddiscount: usdDiscount,
+        // usddelivery_charge: usdDeliveryCharge,
+        // usdsymbol: usdSymbol,
+        // canadaprice: canadaPrice,
+        // canadadiscount: canadaDiscount,
+        // canadadelivery_charge: canadaDeliveryCharge,
+        // canadasymbol: canadaSymbol,
+        // quantity: quantity,
+
         cart.forEach((item) => {
-            let finalPrice = item.price - item.discount;
+
+            if (selectedCountry === "India") {
+                price = item.inrprice;
+                discount = item.inrdiscount;
+                symbol = item.inrsymbol;
+            } else if (selectedCountry === "United States") {
+                price = item.usdprice;
+                discount = item.usddiscount;
+                symbol = item.usdsymbol;
+            } else if (selectedCountry === "Canada") {
+                price = item.canadaprice;
+                discount = item.canadadiscount;
+                symbol = item.canadasymbol;
+            } else {
+                // Default case if no country matches
+                price = item.inrprice || 0;
+                discount = item.inrdiscount || 0;
+                symbol = item.inrsymbol || "₹";
+            }
+            let finalPrice = price - item.inrdiscount;
             totalAmount += finalPrice * item.quantity;
 
             cartList.append(`
                 <li data-id="${item.id}">
                     <a href="#" class="item_remove"><i class="fa fa-times"></i></a>
                     <a href="#"><img src="${item.thumb}" alt="cart_thumb"> ${item.name}</a>
-                    <span class="cart_quantity">${item.quantity} x <span class="cart_amount"> <span class="price_symbole">$</span>${finalPrice}</span></span>
+                    <span class="cart_quantity">${item.quantity} x <span class="cart_amount"> <span class="price_symbole">${symbol}</span>${finalPrice}</span></span>
                 </li>
             `);
         });
-        $(".cart_total .cart_amount").text(`$${totalAmount.toFixed(2)}`);
+        $(".cart_total .cart_amount").text(`${symbol}${totalAmount.toFixed(2)}`);
         $(".cart_count").text(cart.length);
     }
 
@@ -32,19 +80,36 @@ $(document).ready(function () {
 
     $(".add-to-cart-btn").on("click", function (e) {
         e.preventDefault();
-        console.log("click");
-        const productId = $(this).data("id");
-        const productName = $(this).data("name");
-        const productThumb = $(this).data("thumb");
+        const store = $(this).data("store");
 
-        const financeProduct = $(this).data("finance_product");
-        let financeData = financeProduct ? JSON.parse(financeProduct) : {};
+        const productId = store.id;
+        const productName = store.product_name;
+        const productThumb = store.product_thumb;
+
+        const financeList = JSON.parse(store.finance_product);
+        const indiaFinance = financeList.find(item => item.country_name === "India");
+        const usdFinance = financeList.find(item => item.country_name === "United States");
+        const canadaFinance = financeList.find(item => item.country_name === "Canada");
 
         // Extract price and discount from finance data
-        let productPrice = parseFloat(financeData.price) || parseFloat($(this).data("price")) || 0;
-        let productDiscount = parseFloat(financeData.discount) || parseFloat($(this).data("discount")) || 0;
-        let discountAmount = (productPrice * productDiscount) / 100;
+        let inrPrice = parseFloat(indiaFinance.price) || 0;
+        let inrDiscount = parseFloat(indiaFinance.discount) || 0;
+        let inrDeliveryCharge = parseFloat(indiaFinance.delivery_charge) || 0;
+        let inrSymbol = indiaFinance.symbol;
+
+        let usdPrice = parseFloat(usdFinance.price) || 0;
+        let usdDiscount = parseFloat(usdFinance.discount) || 0;
+        let usdDeliveryCharge = parseFloat(usdFinance.delivery_charge) || 0;
+        let usdSymbol = usdFinance.symbol;
+
+        let canadaPrice = parseFloat(canadaFinance.price) || 0;
+        let canadaDiscount = parseFloat(canadaFinance.discount) || 0;
+        let canadaDeliveryCharge = parseFloat(canadaFinance.delivery_charge) || 0;
+        let canadaSymbol = canadaFinance.symbol;
+
+        // let discountAmount = (inrPrice * productDiscount) / 100;
         var quantity = parseInt($("#quantity").val()) || 1;
+
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
         let existingProduct = cart.find((item) => item.id === productId);
         if (existingProduct) {
@@ -54,8 +119,18 @@ $(document).ready(function () {
                 id: productId,
                 name: productName,
                 thumb: productThumb,
-                price: productPrice,
-                discount: discountAmount,
+                inrprice: inrPrice,
+                inrdiscount: inrDiscount,
+                inrdelivery_charge: inrDeliveryCharge,
+                inrsymbol: inrSymbol,
+                usdprice: usdPrice,
+                usddiscount: usdDiscount,
+                usddelivery_charge: usdDeliveryCharge,
+                usdsymbol: usdSymbol,
+                canadaprice: canadaPrice,
+                canadadiscount: canadaDiscount,
+                canadadelivery_charge: canadaDeliveryCharge,
+                canadasymbol: canadaSymbol,
                 quantity: quantity,
             });
         }
@@ -207,15 +282,42 @@ $(document).ready(function () {
             );
             return;
         }
-        let currencySymbol="";
+        let currencySymbol = "";
         let discount = 0;
         let prices = 0;
         let couponDiscount = 0;
+        let deliveryCharge = 0;
+
+        const selectedCountry = getCookie("selectedCountry") || "India";
+
         cartItems.forEach((item, index) => {
-            const discountedPrice =
-                (item.price - item.discount) * item.quantity;
-            prices += item.price * item.quantity;
-            discount += item.discount * item.quantity;
+
+            if (selectedCountry === "India") {
+                prices = item.inrprice;
+                discount = item.inrdiscount;
+                currencySymbol = item.inrsymbol;
+                deliveryCharge=item.inrdelivery_charge;
+            } else if (selectedCountry === "United States") {
+                prices = item.usdprice;
+                discount = item.usddiscount;
+                currencySymbol = item.usdsymbol;
+                deliveryCharge = item.usddelivery_charge;
+            } else if (selectedCountry === "Canada") {
+                prices = item.canadaprice;
+                discount = item.canadadiscount;
+                currencySymbol = item.canadasymbol;
+                deliveryCharge = item.canadadelivery_charge;
+            } else {
+                // Default case if no country matches
+                prices = item.inrprice || 0;
+                discount = item.inrdiscount || 0;
+                currencySymbol = item.inrsymbol || "₹";
+                deliveryCharge = item.inrdelivery_charge;
+            }
+
+            const discountedPrice = (prices - discount) * item.quantity;
+            prices += prices * item.quantity;
+            discount += discount * item.quantity;
             $("#checkout_product_list").append(
                 `<tr>
                 <td>${item.name} <span class="product-qty">x ${item.quantity}</span></td>
@@ -234,12 +336,13 @@ $(document).ready(function () {
         }
 
         var finalDiscount = discount + couponDiscount;
-        var finalTotal = prices - finalDiscount;
+        var finalTotal = (prices - finalDiscount)+deliveryCharge;
+        
         $("#checkout-sub-total").text(prices.toFixed(2));
         $("#checkout-total").text(finalTotal.toFixed(2));
         $("#checkout-delivery-charge").text(finalDiscount.toFixed(2));
-        $("#checkout-discount-total").text(finalDiscount.toFixed(2));
-
+        $("#checkout-discount-total").text(`- ${currencySymbol}${finalDiscount.toFixed(2)}`);
+        $("#checkout-delivery-charges").text(`+ ${currencySymbol}${deliveryCharge.toFixed(2)}`);
     }
     checkoutProduct();
 

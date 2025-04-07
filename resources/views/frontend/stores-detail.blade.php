@@ -87,7 +87,7 @@
             <button class="btn btn-default rounded-0 add-to-cart-btn" type="button"
                 data-id="{{ $store->id }}" data-name="{{ $store->product_name }}"
                 data-thumb="{{ $store->product_thumb }}" data-price="{{ $originalPrice }}"
-                data-discount="{{ $discount }}" data-finalprice="{{ $finalPrice }}">
+                data-discount="{{ $discount }}" data-finalprice="{{ $finalPrice }}" data-store="{{ $store }}" >
                 Add to cart
             </button>
         </div>
@@ -182,7 +182,7 @@
                                 data-id="{{ $store->id }}" data-name="{{ $store->product_name }}"
                                 data-thumb="{{ $store->product_thumb }}" 
                                 data-price="{{ $originalPrice }}" data-discount="{{ $discount }}"
-                                data-finalprice="{{ $finalPrice }}">
+                                data-finalprice="{{ $finalPrice }}" data-store="{{ $store }}">
                                 Add To Cart
                             </button>
                         </li>

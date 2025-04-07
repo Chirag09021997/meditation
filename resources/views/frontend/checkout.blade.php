@@ -282,7 +282,11 @@
                                     </tr>
                                     <tr>
                                         <td>Discount</td>
-                                        <td>{{$symbol}}<span id="checkout-discount-total">0.00</span></td>
+                                        <td><span id="checkout-discount-total">0.00</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Delivery Charges</td>
+                                        <td><span id="checkout-delivery-charges">0.00</span></td>
                                     </tr>
                                     <tr>
                                         <td class="product-subtotal">Total</td>

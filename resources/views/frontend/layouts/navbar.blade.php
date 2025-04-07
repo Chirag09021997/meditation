@@ -13,7 +13,7 @@
         let currentPage = window.location.pathname;
 
         // Define pages where the form should load
-        let allowedPages = ["/", "/stores"];
+        let allowedPages = ["/", "/stores", "/checkout"];
         if (allowedPages.includes(currentPage) || currentPage.startsWith("/stores/")) {
 
             location.reload(); // Refresh the page

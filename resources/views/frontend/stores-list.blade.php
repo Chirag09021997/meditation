@@ -84,7 +84,7 @@
                                 data-id="{{ $store->id }}" data-name="{{ $store->product_name }}"
                                 data-thumb="{{ $store->product_thumb }}"
                                 data-price="{{ $originalPrice }}" data-discount="{{ $discount }}"
-                                data-finalprice="{{ $finalPrice }}">Add To Cart</button>
+                                data-finalprice="{{ $finalPrice }}" data-store="{{ $store }}" >Add To Cart</button>
                         </li>
                     </ul>
                 </div>
