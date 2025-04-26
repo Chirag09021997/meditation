@@ -26,11 +26,7 @@
                 <div class="col-lg-2 col-sm-5 mb-4 mb-lg-0">
                     <h5 class="widget_title">Quick Links</h5>
                     <ul class="list_none widget_links links_style2">
-                        <!-- <li><a href="#">Join Us</a></li> -->
                         <li><a href="/about">About Us</a></li>
-                        <!-- <li><a href="#">Features</a></li> -->
-                        <!-- <li><a href="#">Feedback</a></li> -->
-                        <!-- <li><a href="#">Support center</a></li> -->
                         <li><a href="/contact">Contact Us</a></li>
                     </ul>
                 </div>

@@ -2560,7 +2560,7 @@ fieldset:disabled a.btn {
 
 .btn-primary {
     color: #fff;
-    background-color: #007bff;
+    background-color: rgb(40, 87, 155);
     border-color: #007bff
 }
 

@@ -7,6 +7,7 @@ use App\Http\Requests\ContactUsRequest;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Certificate;
+use App\Models\Customer;
 use App\Models\ContactUs;
 use App\Models\CouponSystem;
 use App\Models\CustomerEvents;
@@ -42,8 +43,11 @@ class HomeController extends Controller
     public function about()
     {
         $outTeams = OurTeam::all();
+        $cirtificateCounter = Certificate::count();
+        $customerCounter = Customer::count();
+        $eventCounter = Event::count();
 
-        return view('frontend.about', compact('outTeams'));
+        return view('frontend.about', compact('outTeams','cirtificateCounter','customerCounter','eventCounter'));
     }
 
     public function sliderShow(string $id)

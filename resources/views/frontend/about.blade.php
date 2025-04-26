@@ -244,35 +244,36 @@
 {{-- <!-- END SECTION TESTIMONIAL --> --}}
 
 {{-- <!-- START SECTION COUNTER --> --}}
-<section class="overlay_bg_70 parallax_bg" data-parallax-bg-image="{{ asset('assets/images/counter_bg.jpg') }}">
+<!-- <section class="overlay_bg_70 parallax_bg" data-parallax-bg-image="{{ asset('assets/images/counter_bg.jpg') }}"> -->
+<section style="background-color: rgb(40, 87, 155);">
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-6 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
                 <div class="box_counter counter_white text-center">
                     <i class="fa-solid fa-child"></i>
-                    <h3 class="counter_text"><span class="counter">18</span>+</h3>
+                    <h3 class="counter_text"><span class="counter">{{ $outTeams->count() }}</span>+</h3>
                     <p>Our Trainers</p>
                 </div>
             </div>
             <div class="col-md-3 col-6 animation" data-animation="fadeInUp" data-animation-delay="0.3s">
                 <div class="box_counter counter_white text-center">
                     <i class="fa-solid fa-trophy"></i>
-                    <h3 class="counter_text"><span class="counter">15</span>+</h3>
-                    <p>Win Awards</p>
+                    <h3 class="counter_text"><span class="counter">{{ $cirtificateCounter }}</span>+</h3>
+                    <p>Win Certificate</p>
                 </div>
             </div>
             <div class="col-md-3 col-6 animation" data-animation="fadeInUp" data-animation-delay="0.4s">
                 <div class="box_counter counter_white text-center">
                     <i class="fa-solid fa-users"></i>
-                    <h3 class="counter_text"><span class="counter">1800</span>+</h3>
+                    <h3 class="counter_text"><span class="counter">{{ $customerCounter }}</span>+</h3>
                     <p>Happy Member</p>
                 </div>
             </div>
             <div class="col-md-3 col-6 animation" data-animation="fadeInUp" data-animation-delay="0.5s">
                 <div class="box_counter counter_white text-center">
                     <i class="fa-solid fa-school"></i>
-                    <h3 class="counter_text"><span class="counter">45</span>+</h3>
-                    <p>Monthly Classes</p>
+                    <h3 class="counter_text"><span class="counter">{{ $eventCounter }}</span>+</h3>
+                    <p>Completed Events</p>
                 </div>
             </div>
         </div>

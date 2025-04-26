@@ -370,7 +370,7 @@
   }
   
   a.btn-get-started.scrollto,.pagination_block .page-link.active,a.btn-get-started.scrollto.right_register,div#register_form,#registration_closed_form,.countdown_mobile  {
-          background: linear-gradient(to right,#28579b 0,#47126b 100%)!important;
+          background: linear-gradient(to right,#28579b 0,#28579b 100%)!important;
   }
   a.nav-link.scrollto.register-now:hover {
       /* color: #fff !important;
@@ -387,7 +387,7 @@
       border: 2px solid #28579b !important;
   }
   #register_form .btn-get-started:hover,#registration_closed_form .btn-get-started:hover  {
-    background: linear-gradient(to right,#473652 0,#47126b 100%)!important;
+    background: linear-gradient(to right,#28579b 0,#28579b 100%)!important;
     color:#fff !important;
   }
    .form-check-input[type=checkbox]{
@@ -553,7 +553,7 @@
     padding-left: 20px;
 }
 a.btn-get-started.scrollto, .pagination_block .page-link.active, a.btn-get-started.scrollto.right_register, div#register_form, #registration_closed_form, .countdown_mobile {
-    background: linear-gradient(to right, #28579b 0, #47126b 100%) !important;
+    background: linear-gradient(to right, #28579b 0, #28579b 100%) !important;
 }
 .pagination_block .page-link.active {
     background: #b79d74;
@@ -572,7 +572,7 @@ a.btn-get-started.scrollto, .pagination_block .page-link.active, a.btn-get-start
     font-weight: 700;
 }
 a.btn-get-started.scrollto, .pagination_block .page-link.active, a.btn-get-started.scrollto.right_register, div#register_form, #registration_closed_form, .countdown_mobile {
-    background: linear-gradient(to right, #28579b 0, #47126b 100%) !important;
+    background: linear-gradient(to right, #28579b 0, #28579b 100%) !important;
 }
 .register_mobile_details {
     display: none;
@@ -812,7 +812,7 @@ a.btn-get-started.scrollto, .pagination_block .page-link.active, a.btn-get-start
       border: 2px solid #fff!important;
   }
   #register_form .btn-get-started:hover {
-      background: linear-gradient(to right,#28579b 0,#47126b 100%)!important;
+      background: linear-gradient(to right,#28579b 0,#28579b 100%)!important;
       color: #fff !important;
       border: 2px solid #fff!important;
   }
@@ -1045,7 +1045,7 @@ a.btn-get-started.scrollto, .pagination_block .page-link.active, a.btn-get-start
       border-radius: 50px;
       font-family: 'Poppins', sans-serif;
       box-shadow: 0 10px 10px #f1e4d2;
-      background: linear-gradient(to right,#28579b 0,#47126b 100%)!important;
+      background: linear-gradient(to right,#28579b 0,#28579b 100%)!important;
   }
   .program_block_body img{
       width: 100%;
@@ -1185,7 +1185,7 @@ a.btn-get-started.scrollto, .pagination_block .page-link.active, a.btn-get-start
       color: #fff;
       border-radius: 50px;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right,#28579b 0,#47126b 100%)!important;
+      background: linear-gradient(to right,#28579b 0,#28579b 100%)!important;
       border: 1px solid #28579b;;
   }
   .footer_column_5 .links a{

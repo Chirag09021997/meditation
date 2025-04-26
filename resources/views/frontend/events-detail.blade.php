@@ -46,14 +46,15 @@
                     <h1 id='title'>{{$event->name}}</h1>
                     <div class="here2">{{$event->short_description}}</div>
                     <div>
-                        <a href="#register_form" class="btn btn-primary reg-btn block">Register Now</a>
+                        <a href="#register_form" class="btn btn-primary reg-btn block">Register Now1</a>
                     </div>
                     <div class="people_joined"><span id="user_count">
                             {{$event->total_joining}}</span> people have already joined
                     </div>
                 </div>
-                <div class="col-lg-6 pt-4 mt-2 main_video pe-0 pe-sm-3 ">
-                    <div class="video_container top_video p-0" id="thumb_0">
+
+                <div class="col-lg-6 pt-4 mt-2 main_video pe-0 pe-sm-3">
+                    <div class="video_container top_video p-0" id="thumb_0"  style="border-radius: 16px; width:100%;height: 80%; cursor:pointer; text-align: center;">
                         <picture>
                             <source
                                 srcset="https://heal-satvicmovement-org.b-cdn.net/resources/img/Thumbnail/Thumbnail_3.webp"
@@ -94,7 +95,7 @@
                                 <div class="col-lg-3 col-md-2 gtc col-sm-1 mt-4">
                                     <div class="item date_time">
                                         <img loading="lazy"
-                                            src="{{ asset('assets/images/cal.webp') }}"
+                                            src="{{ asset('assets/images/start_date.png') }}"
                                             alt="Appointment">
                                         <div class="stdate">Start Date</div>
                                         <div class="fulldate" id="workshop_date">
@@ -106,7 +107,7 @@
                                 <div class="col-lg-3 col-md-2 gtc col-sm-1 mt-4">
                                     <div class="item date_time">
                                         <img loading="lazy"
-                                            src="{{ asset('assets/images/time1.webp') }}"
+                                            src="{{ asset('assets/images/time.png') }}"
                                             alt="Time">
                                         <div class="stdate">Timings</div>
                                         <div class="fulldate">
@@ -118,7 +119,7 @@
                                 <div class="col-lg-3 col-md-2 gtc col-sm-1 mt-4">
                                     <div class="item date_time">
                                         <img loading="lazy"
-                                            src="{{ asset('assets/images/global.webp') }}"
+                                            src="{{ asset('assets/images/language.png') }}"
                                             alt="Global" width="50px" height="50px">
                                         <div class="stdate">Language</div>
                                         <div class="fulldate">{{$event->language}}</div>
@@ -128,7 +129,7 @@
                                 <div class="col-lg-3 col-md-2 gtc col-sm-1 mt-4">
                                     <div class="item date_time duaration_time">
                                         <img loading="lazy"
-                                            src="{{ asset('assets/images/dur.webp') }}"
+                                            src="{{ asset('assets/images/time.png') }}"
                                             alt="Duration">
                                         <div class="stdate">Duration</div>
                                         <div class="fulldate">
@@ -140,7 +141,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>  
                     <div class="col-lg-3">
                         <div class="right_block_container">
                             <div class="right_block register_desktop mt-4" style="">
@@ -153,7 +154,7 @@
                                 </span>
                                 <span class="date-and-time d-flex">
                                     <img loading="lazy"
-                                        src="{{ asset('assets/images/time-blue.png') }}"
+                                        src="{{ asset('assets/images/time.png') }}"
                                         alt="Date" width="100" height="100" />
                                         {{$event->formatted_time}}
                                 </span>
@@ -165,20 +166,20 @@
                                 </span>
 
                                 <a href="#register_form"
-                                    class="reg btn-get-started scrollto right_register register-now-track-btn"
+                                    class="reg btn-primary block"
                                     id="register_right_button">Register<img loading="lazy" class="btn_arrow"
                                         id="right_register_arrow"
                                         src="{{ asset('assets/images/btn-arrow.png') }}"
                                         alt="Arrow" width="20px" height="14px" style="display: none;" /></a>
-                                <span class="date-and-time gray mt-4"><img loading="lazy"
+                                        @foreach ($event->include as $key => $include)
+
+
+                                        <span class="date-and-time gray mt-4"><img loading="lazy"
                                         src="{{ asset('assets/images/green-tick.png') }}"
-                                        alt="Date" width="100" height="100" />Heal chronic diseases </span>
-                                <span class="date-and-time gray"><img loading="lazy"
-                                        src="{{ asset('assets/images/green-tick.png') }}"
-                                        alt="Date" width="100" height="100" />Reduce dependency on pills</span>
-                                <span class="date-and-time gray"><img loading="lazy"
-                                        src="{{ asset('assets/images/green-tick.png') }}"
-                                        alt="Date" width="100" height="100" />Strengthen your immunity</span>
+                                        alt="Date" width="100" height="100" />{{ $include['description'] ?? 'No Description' }}</span>
+                                @endforeach
+
+                               
                                 <div class="people_joined_right">
                                     <img loading="lazy"
                                         src="{{ asset('assets/images/group.png') }}"
@@ -653,7 +654,7 @@
                                     </div>
 
                                   
-                                    <button type="submit" class="btn-get-started">Pay Now<img loading="lazy"
+                                    <button type="submit" class="btn-get-started" style="color:#28579b;">Pay Now<img loading="lazy"
                                             class="btn_arrow"
                                             src="{{ asset('assets/images/brown.png') }}"
                                             alt="arrow" width="20" height="17" /></button>
