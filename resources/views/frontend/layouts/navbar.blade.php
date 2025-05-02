@@ -106,8 +106,8 @@
                             href="{{ route('blogs') }}">Blog</a>
                     </li>
                     <li>
-                        <a class="nav-link {{ request()->is('events') ? 'active' : '' }}"
-                            href="{{ route('events') }}">Programs</a>
+                        <a class="nav-link {{ request()->is(patterns: 'events') ? 'active' : '' }}"
+                            href="{{ route('events') }}">Events</a>
                     </li>
                     <li>
                         <a class="nav-link {{ request()->is('contact') ? 'active' : '' }}"

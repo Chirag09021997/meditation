@@ -46,7 +46,7 @@
                     <h1 id='title'>{{$event->name}}</h1>
                     <div class="here2">{{$event->short_description}}</div>
                     <div>
-                        <a href="#register_form" class="btn btn-primary reg-btn block">Register Now1</a>
+                        <a href="#register_form" class="btn btn-primary reg-btn block">Register Now</a>
                     </div>
                     <div class="people_joined"><span id="user_count">
                             {{$event->total_joining}}</span> people have already joined
