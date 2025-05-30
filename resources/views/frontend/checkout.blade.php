@@ -262,6 +262,10 @@
     @endphp
                 <div class="row">
                     <div class="col-12">
+                        <input type="hidden" name="symbol" value="{{ $symbol }}">
+                        <input type="hidden" name="country_name" value="{{ $countryName }}">
+
+
                         <div class="heading_s2">
                             <h5>Your Orders</h5>
                         </div>
@@ -277,16 +281,18 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td>SubTotal</td>
-                                        <td>{{$symbol}}<span id="checkout-sub-total">0.00</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Discount</td>
-                                        <td><span id="checkout-discount-total">0.00</span></td>
-                                    </tr>
-                                    <tr>
                                         <td>Delivery Charges</td>
                                         <td><span id="checkout-delivery-charges">0.00</span></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td><b>Sub Total</b></td>
+                                        <td>{{$symbol}}<span id="checkout-sub-total">0.00</span></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Coupon Code</td>
+                                        <td><span id="coupon-code">0.00</span></td>
                                     </tr>
                                     <tr>
                                         <td class="product-subtotal">Total</td>

@@ -62,6 +62,21 @@
                     @endforeach
                 </select>
             </div>
+
+              <!-- Blog Profile (Single Select) -->
+            <div class="mt-4">
+                <x-input-label for="blog_profile_id" :value="__('Select Profile')" />
+                <select id="blog_profile_id" name="blog_profile_id"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option disabled selected>Choose Profile</option>
+                    @foreach ($blogprofiles as $blogprofile)
+                        <option value="{{ $blogprofile->id }}" {{ old('blog_profile_id', $blog->blog_profile_id) == $blogprofile->id ? 'selected' : '' }}>
+                            {{ $blogprofile->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            
         </div>
 
         <!-- description -->

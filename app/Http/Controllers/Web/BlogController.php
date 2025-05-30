@@ -7,6 +7,7 @@ use App\Models\Blog;
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
 use App\Models\Category;
+use App\Models\BlogProfile;
 use Yajra\DataTables\Facades\DataTables;
 
 class BlogController extends Controller
@@ -25,7 +26,9 @@ class BlogController extends Controller
     public function create()
     {
         $categories = Category::where('status', 'Active')->get();
-        return view('blog.create', compact('categories'));
+        $blogprofiles = BlogProfile::whereNull('deleted_at')->get();
+
+        return view('blog.create', compact('categories', 'blogprofiles'));
     }
 
     /**
@@ -40,6 +43,7 @@ class BlogController extends Controller
             $filePath = $image->storeAs('public/uploads/blog', $fileName);
             $validated['thumb_image'] = str_replace('public/', 'storage/', $filePath);
         }
+
         $blog = Blog::create($validated);
         if ($request->has('categories')) {
             $blog->categories()->attach($request->input('categories'));
@@ -63,7 +67,8 @@ class BlogController extends Controller
     {
         $categories = Category::where('status', 'Active')->get();
         $oldCategoryList = $blog->categories()->pluck('id')->toArray();
-        return view('blog.edit', compact('blog', 'categories', 'oldCategoryList'));
+        $blogprofiles = BlogProfile::whereNull('deleted_at')->get();
+        return view('blog.edit', compact('blog', 'categories', 'oldCategoryList', 'blogprofiles'));
     }
 
     /**
@@ -127,6 +132,6 @@ class BlogController extends Controller
     {
         $blog->status = ($blog->status == 'Active') ? 'Inactive' : 'Active';
         $blog->save();
-        echo  1;
+        echo 1;
     }
 }

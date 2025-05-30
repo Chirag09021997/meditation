@@ -23,7 +23,6 @@ $(document).ready(function () {
         let price = 0, discount = 0, symbol = "";
         const selectedCountry = getCookie("selectedCountry") || "India";
 
-
         // id: productId,
         // name: productName,
         // thumb: productThumb,
@@ -43,25 +42,29 @@ $(document).ready(function () {
 
         cart.forEach((item) => {
 
+
             if (selectedCountry === "India") {
-                price = item.inrprice;
-                discount = item.inrdiscount;
+                price = item.inrprice * item.quantity;
+                discount = (item.inrprice * item.inrdiscount / 100) * item.quantity;
                 symbol = item.inrsymbol;
             } else if (selectedCountry === "United States") {
-                price = item.usdprice;
-                discount = item.usddiscount;
+                price = item.usdprice * item.usddiscount;
+                discount = (item.usdprice * item.usddiscount / 100) * item.quantity;
                 symbol = item.usdsymbol;
             } else if (selectedCountry === "Canada") {
-                price = item.canadaprice;
-                discount = item.canadadiscount;
+                price = item.canadaprice * item.canadadiscount;
+                discount = (item.canadaprice * item.canadadiscount / 100) * item.quantity;
                 symbol = item.canadasymbol;
             } else {
                 // Default case if no country matches
-                price = item.inrprice || 0;
-                discount = item.inrdiscount || 0;
+                price = item.inrprice * item.quantity || 0;
+                discount = (item.inrprice * item.inrdiscount / 100) * item.quantity || 0;
                 symbol = item.inrsymbol || "₹";
             }
-            let finalPrice = price - item.inrdiscount;
+
+            // let discountPrice = price - (price * item.inrdiscount / 100);
+
+            let finalPrice = price - discount;
             totalAmount += finalPrice * item.quantity;
 
             cartList.append(`
@@ -150,7 +153,7 @@ $(document).ready(function () {
     function renderCart() {
         let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
         let coupon = JSON.parse(localStorage.getItem("coupon")) || {};
-
+        
         $("#cart-items").empty();
         if (cartItems.length === 0) {
             $("#cart-items").append(
@@ -163,6 +166,7 @@ $(document).ready(function () {
         let prices = 0;
         let couponDiscount = 0;
         cartItems.forEach((item, index) => {
+
             const discountedPrice = item.price - item.discount;
             prices += item.price * item.quantity;
             discount += item.discount * item.quantity;
@@ -283,66 +287,88 @@ $(document).ready(function () {
             return;
         }
         let currencySymbol = "";
-        let discount = 0;
         let prices = 0;
+        let discount = 0;
+        let totalDiscount = 0;
+        let totalPrice = 0;
         let couponDiscount = 0;
         let deliveryCharge = 0;
-
+        let totalDeliveryCharge = 0;
+        let persionatageOff = 0;
         const selectedCountry = getCookie("selectedCountry") || "India";
-
         cartItems.forEach((item, index) => {
 
             if (selectedCountry === "India") {
-                prices = item.inrprice;
-                discount = item.inrdiscount;
+                prices = item.inrprice * item.quantity;
+                discount = (item.inrprice * item.inrdiscount / 100) * item.quantity;
+                persionatageOff = item.inrdiscount;
                 currencySymbol = item.inrsymbol;
-                deliveryCharge=item.inrdelivery_charge;
+                deliveryCharge = item.inrdelivery_charge * item.quantity;
             } else if (selectedCountry === "United States") {
-                prices = item.usdprice;
-                discount = item.usddiscount;
+                prices = item.usdprice * item.quantity;
+                discount = (item.usdprice * item.usddiscount / 100) * item.quantity;
+                persionatageOff = item.usddiscount;
                 currencySymbol = item.usdsymbol;
-                deliveryCharge = item.usddelivery_charge;
+                deliveryCharge = item.usddelivery_charge * item.quantity;
             } else if (selectedCountry === "Canada") {
-                prices = item.canadaprice;
-                discount = item.canadadiscount;
+
+                prices = item.canadaprice * item.quantity;
+                discount = (item.canadaprice * item.canadadiscount / 100) * item.quantity;
+                persionatageOff = item.canadadiscount;
                 currencySymbol = item.canadasymbol;
-                deliveryCharge = item.canadadelivery_charge;
+                deliveryCharge = item.canadadelivery_charge * item.quantity;
+
             } else {
-                // Default case if no country matches
-                prices = item.inrprice || 0;
-                discount = item.inrdiscount || 0;
-                currencySymbol = item.inrsymbol || "₹";
-                deliveryCharge = item.inrdelivery_charge;
+
+                prices = item.inrprice * item.quantity;
+                discount = (item.inrprice * item.inrdiscount / 100) * item.quantity;
+                persionatageOff = item.inrdiscount;
+                currencySymbol = item.inrsymbol;
+                deliveryCharge = item.inrdelivery_charge * item.quantity;
+
             }
 
-            const discountedPrice = (prices - discount) * item.quantity;
-            prices += prices * item.quantity;
-            discount += discount * item.quantity;
+
+
             $("#checkout_product_list").append(
                 `<tr>
                 <td>${item.name} <span class="product-qty">x ${item.quantity}</span></td>
-                <td>${currencySymbol}${discountedPrice}</td>
+                <td>${currencySymbol}${prices - discount} <b> ( ${persionatageOff}% Off)</b></td>
             </tr>`
             );
+
+            totalDiscount += discount;
+            totalPrice += prices;
+            totalDeliveryCharge += deliveryCharge;
+
         });
+
+
+        var finalDiscount = totalDiscount;
+        var afterRemoveDiscount = totalPrice - finalDiscount;
+
+        var totalPayableAmount = afterRemoveDiscount + totalDeliveryCharge
 
         if (coupon?.id > 0) {
             if (coupon?.type == "Percentage") {
-                couponDiscount += (finalTotal * coupon?.value) / 100;
+                couponDiscount += (totalPayableAmount * coupon?.value) / 100;
             } else {
                 couponDiscount += coupon?.value;
             }
             $("#coupon_code").val(coupon?.coupon_code);
         }
 
-        var finalDiscount = discount + couponDiscount;
-        var finalTotal = (prices - finalDiscount)+deliveryCharge;
-        
-        $("#checkout-sub-total").text(prices.toFixed(2));
+        var finalTotal = totalPayableAmount - couponDiscount;
+
+
+
+        // let discountedPrice = (prices - (prices * item.inrdiscount / 100)) * item.quantity;
+
+        $("#checkout-sub-total").text(totalPayableAmount.toFixed(2));
         $("#checkout-total").text(finalTotal.toFixed(2));
         $("#checkout-delivery-charge").text(finalDiscount.toFixed(2));
-        $("#checkout-discount-total").text(`- ${currencySymbol}${finalDiscount.toFixed(2)}`);
-        $("#checkout-delivery-charges").text(`+ ${currencySymbol}${deliveryCharge.toFixed(2)}`);
+        $("#coupon-code").text(`- ${currencySymbol}${couponDiscount.toFixed(2)}`);
+        $("#checkout-delivery-charges").text(`+ ${currencySymbol}${totalDeliveryCharge.toFixed(2)}`);
     }
     checkoutProduct();
 

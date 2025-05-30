@@ -43,7 +43,7 @@
                                     <tr>
                                         <td>{{ $order['date'] }}</td>
                                         <td>#{{ $order['id'] }}</td>
-                                        <td>{{ $order['final_price'] }}</td>
+                                        <td>{{  $order['symbol'].number_format($order['final_price'],2) }}</td>
                                         <td>{{ $order['status'] }}</td>
                                         <td>
                                             @if ($order['status'] == 'Pending')

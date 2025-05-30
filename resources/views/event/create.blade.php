@@ -170,10 +170,11 @@
                 <x-input-error :messages="$errors->get('include_image')" class="mt-2" />
             </div>
         </div>
-        <button id="add-include"
-            class="mt-3 text-white hover:text-blue-900 bg-blue-900 border border-blue-300 focus:outline-none hover:bg-blue-100 focus:ring-4 focus:ring-blue-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 ">{{ __('Add') }}</button>
-
-        <h2>Teaching</h2>
+<!-- Add Button -->
+        <button type="button" id="add-include"
+            class="mt-3 text-white hover:text-blue-900 bg-blue-900 border border-blue-300 focus:outline-none hover:bg-blue-100 focus:ring-4 focus:ring-blue-100 font-medium rounded-full text-sm px-5 py-2.5">
+            {{ __('Add') }}
+        </button>        <h2>Teaching</h2>
 
         <div class="grid md:grid-cols-3 gap-4" id="teaching">
             <div class="mt-4" id="teaching_title">

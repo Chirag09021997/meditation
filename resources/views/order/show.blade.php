@@ -1,6 +1,6 @@
 <x-app-layout>
     @php
-        $totalPrice = $totalDiscount = 0;
+        $totalPrice = $totalDiscount = $discountToAmount = $totalDeliveryCharge = 0;
     @endphp
     <x-head-lable backhref="{{ route('order.index') }}">
         {{ __('Order Show') }}
@@ -65,7 +65,9 @@
                                     @foreach ($order?->orderItem as $item)
                                         @php
                                             $totalPrice += $item->price * $item->quantity;
-                                            $totalDiscount += $item->discount * $item->quantity;
+                                            $discountToAmount=(($item->price *$item->discount)/100);
+                                            $totalDiscount += ($item->price * $item->discount)/ 100;
+                                            $totalDeliveryCharge += $item->delivery_charge;
                                         @endphp
                                         <tr>
                                             <td class="whitespace-nowrap py-4 md:w-[384px]">
@@ -82,8 +84,8 @@
                                                                 class="block text-left">{{ $item->store->product_name }}</span>
                                                         </a>
                                                         <span class="block text-sm text-gray-600"><del
-                                                                class="me-2">${{ $item->price }}</del>
-                                                            ${{ number_format($item->price - $item->discount, 2) }}</span>
+                                                                class="me-2">{{$order->symbol}}{{ $item->price }}</del>
+                                                            {{$order->symbol}}{{ number_format($item->price - $discountToAmount, 2) }}</span>
                                                     </div>
                                                 </div>
                                             </td>
@@ -93,7 +95,7 @@
 
                                             <td
                                                 class="p-4 text-right text-base font-bold text-gray-900 dark:text-white">
-                                                ${{ number_format(($item->price - $item->discount) * $item->quantity, 2) }}
+                                                {{$order->symbol}}{{ number_format(($item->price - $discountToAmount) * $item->quantity, 2) }}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -108,29 +110,36 @@
                             <div class="space-y-4">
                                 <div class="space-y-2">
                                     @php
-                                        $couponDiscount =
-                                            $order->coupon_type == 'Percentage'
-                                                ? ($totalPrice * $order->coupon_value) / 100
-                                                : $order->coupon_value;
+                                     if ($order?->coupon_type == "Percentage") {
+                                        $couponDiscount = ( (($totalPrice - $totalDiscount) + $totalDeliveryCharge)* $order->coupon_value)/100;
+                                    }else{
+                                         $couponDiscount = $order->coupon_value;
+                                    }
                                     @endphp
                                     <dl class="flex items-center justify-between gap-4">
                                         <dt class="text-gray-500 dark:text-gray-400">Original price</dt>
                                         <dd class="text-base font-medium text-gray-900 dark:text-white">
-                                            ${{ number_format($totalPrice, 2) }}</dd>
+                                            {{$order->symbol}}{{ number_format($totalPrice, 2) }}</dd>
                                     </dl>
-
-                                    <dl class="flex items-center justify-between gap-4">
+ <dl class="flex items-center justify-between gap-4">
                                         <dt class="text-gray-500 dark:text-gray-400">Savings</dt>
                                         <dd class="text-base font-medium text-green-500">
-                                            - ${{ number_format($totalDiscount, 2) }}</dd>
+                                            - {{$order->symbol}}{{ number_format($totalDiscount, 2) }}</dd>
                                     </dl>
+                                    <dl class="flex items-center justify-between gap-4">
+                                        <dt class="text-gray-500 dark:text-gray-400">Delivery Charges</dt>
+                                        <dd class="text-base font-medium text-gray-900 dark:text-white">
+                                            + {{$order->symbol}}{{ number_format($totalDeliveryCharge, 2) }}</dd>
+                                    </dl>
+
+                                   
 
                                     <dl class="flex items-center justify-between gap-4">
                                         <dt class="text-gray-500 dark:text-gray-400">Coupon code :
                                             <b>{{ $order?->coupon_code }}</b>
                                         </dt>
                                         <dd class="text-base font-medium text-green-500 dark:text-white">
-                                            - ${{ number_format($couponDiscount, 2) }}
+                                            - {{$order->symbol}}{{ number_format($couponDiscount, 2) }}
                                         </dd>
                                     </dl>
                                 </div>
@@ -139,7 +148,7 @@
                                     class="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 dark:border-gray-700">
                                     <dt class="text-lg font-bold text-gray-900 dark:text-white">Total</dt>
                                     <dd class="text-lg font-bold text-gray-900 dark:text-white">
-                                        ${{ number_format($totalPrice - $totalDiscount - $couponDiscount, 2) }}</dd>
+                                        {{$order->symbol}}{{ number_format((($totalPrice - $totalDiscount) + $totalDeliveryCharge) - $couponDiscount, 2) }}</dd>
                                 </dl>
                             </div>
                         </div>

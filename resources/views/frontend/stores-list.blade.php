@@ -97,9 +97,9 @@
                     <del>{{ $symbol.number_format($originalPrice, 2) }}</del>
                     <ins>{{ $symbol.number_format($finalPrice, 2) }}</ins>
                 </span>
-                <div class="rating">
+                <!-- <div class="rating">
                     <div class="product_rate" style="width:80%"></div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -211,9 +211,9 @@
                         <del>{{ $symbol.number_format($originalPrice, 2) }}</del>
                         <ins>{{ $symbol.number_format($finalPrice, 2) }}</ins>
                     </span>
-                    <div class="rating">
+                    <!-- <div class="rating">
                         <div class="product_rate" style="width:80%"></div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </li>

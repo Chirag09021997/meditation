@@ -7,7 +7,7 @@
                 <div class="row align-items-center">
                     <div class="col-sm-12 text-center">
                         <div class="page-title space">
-                            <h1>Contact Us</h1>
+                            <h1>Contact</h1>
                         </div>
                         <!-- <nav aria-label="breadcrumb">
                             <ol class="breadcrumb justify-content-center">
@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
                     <div class="heading_s2">
-                        <span class="sub_heading">Contact Us</span>
+                        <span class="sub_heading">Contact</span>
                         <h3>Get In touch</h3>
                     </div>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id

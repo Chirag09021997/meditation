@@ -7,7 +7,7 @@
             <div class="row align-items-center">
                 <div class="col-sm-12 text-center">
                     <div class="page-title space">
-                        <h1>Programs</h1>
+                        <h1>Events</h1>
                     </div>
                     <!-- <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center">

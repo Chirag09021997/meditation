@@ -6,24 +6,47 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use function Laravel\Prompts\alert;
 
 class OrderController extends Controller
 {
     public function index()
     {
         $user = Auth::guard('customer')->user();
-        $orders = Order::with(['orderItem', 'orderAddress'])->where('customer_id', $user->id)->get();
+        $orders = Order::with(['orderItem', 'orderAddress'])
+            ->where('customer_id', $user->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
         $ordersList = [];
         foreach ($orders as $order) {
-            $totalPrice = $totalDiscount = 0;
+            $totalPrice = 0;
+            $totalDiscount = 0;
+            $discount = 0;
+            
+            $totalDeliveryCharge = 0;
             foreach ($order?->orderItem as $item) {
-                $totalPrice += $item->price * $item->quantity;
-                $totalDiscount += $item->discount * $item->quantity;
+                $price = $item->price * $item->quantity;
+                $totalPrice += $price;
+                $discount = ($price * $item->discount) /100;
+                $totalDiscount += $discount;
+                $totalDeliveryCharge +=$item->delivery_charge;
             }
+
+            $curruntBill = $totalPrice-$totalDiscount;
+            $curruntBillAddDeliveryCarge=$curruntBill + $totalDeliveryCharge;
+            if($order->coupon_type == "Percentage"){
+                $copenCodeAmount = ($curruntBillAddDeliveryCarge * $order->coupon_value)/100 ;
+            }else{
+                $copenCodeAmount = $order->coupon_value;
+            }
+
+            $totalPrice = $curruntBillAddDeliveryCarge-$copenCodeAmount;
+            
             $ordersList[] = [
                 'id' => $order->id,
-                'date' =>  $order->created_at->format('d-m-Y'),
-                'final_price' => $totalPrice - $totalDiscount,
+                'date' => $order->created_at->format('d-m-Y'),
+                'final_price' => $totalPrice,
+                'symbol' => $order->symbol,
                 'status' => $order->status
             ];
         }
@@ -46,14 +69,29 @@ class OrderController extends Controller
     {
         $user = Auth::guard('customer')->user();
         $order = Order::with(['orderItem', 'orderAddress'])->where('customer_id', $user->id)->findOrFail($id);
-        $totalPrice = $totalDiscount = 0;
+        $totalPrice = $totalDiscount = $grandDiscount =$deleveryCharge= 0;
         foreach ($order?->orderItem as $item) {
             $totalPrice += $item->price * $item->quantity;
-            $totalDiscount += $item->discount * $item->quantity;
+            $price = $item->price * $item->quantity;
+            $deleveryCharge += $item->delivery_charge * $item->quantity;
+            $totalDiscount = ($price*$item->discount) /100;
+            $grandDiscount += $totalDiscount;
         }
         $order['total_price'] = $totalPrice;
-        $order['total_discount'] = $totalDiscount;
-        $order['final_price'] = $totalPrice - $totalDiscount;
+        $order['total_discount'] = $grandDiscount;
+        $order['delevery_charge'] = $deleveryCharge;
+        $coupenDiscount=0;
+        $priceTotal=($totalPrice - $grandDiscount)+$deleveryCharge;
+
+        if($order->coupon_type == 'Percentage'){
+            $coupenDiscount = ($priceTotal*$order->coupon_value)/100;
+        }else{
+            $coupenDiscount = $order->coupon_value;
+        }
+
+
+        $order['coupon_discount'] = $coupenDiscount;
+        $order['final_price'] = $priceTotal-$coupenDiscount;
         return view('frontend.order-show', compact('order'));
     }
 

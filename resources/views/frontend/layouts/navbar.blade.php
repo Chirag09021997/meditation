@@ -41,8 +41,6 @@
             code = "in"; // Default fallback
         }
 
-        console.log("Selected Country:", savedCountry, "| Country Code:", code);
-
         if (savedCountry) {
             document.getElementById("selectedFlag").src = "https://flagcdn.com/w40/" + code + ".png";
         } else {
@@ -111,7 +109,7 @@
                     </li>
                     <li>
                         <a class="nav-link {{ request()->is('contact') ? 'active' : '' }}"
-                            href="{{ route('contact') }}">Contact Us</a>
+                            href="{{ route('contact') }}">Contact</a>
                     </li>
                     @if (Auth::guard('customer')->check())
                         <li>

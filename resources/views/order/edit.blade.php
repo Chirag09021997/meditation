@@ -1,6 +1,6 @@
 <x-app-layout>
     @php
-        $totalPrice = $totalDiscount = 0;
+        $totalPrice = $totalDiscount = $deleveryCharge =$grandTotal = $couponAmount = 0;
     @endphp
     <x-head-lable backhref="{{ route('order.index') }}">
         {{ __('Order Edit') }}
@@ -10,6 +10,44 @@
         @csrf
         @method('PUT')
         <div class="border-4 border-white rounded-lg p-2 sm:p-4 my-2">
+            <div class="card-body p-4">
+          
+
+                               <div class="d-flex justify-content-between w-100">
+    <p class="mb-0"><strong>Invoice Number:</strong> #{{ $order->id }}</p>
+    <p class="mb-0"><strong>Invoice Date:</strong> {{ $order->created_at->format('d-m-Y') }}</p>
+</div>
+
+ @foreach ($order?->orderItem as $item)
+                            @php
+                                $totalPrice += $item->price * $item->quantity;
+                                $totalDiscount += ($item->price * $item->discount) / 100;
+                                $deleveryCharge += $item->delivery_charge*$item->quantity;
+                            @endphp
+              @endforeach
+              @php
+                $grandTotal = ($totalPrice - $totalDiscount) + $deleveryCharge;
+
+                if ($order?->coupon_type == "Percentage") {
+                    $couponAmount = ($grandTotal * $order->coupon_value)/100;
+                }else{
+                    $couponAmount = $order->coupon_value;
+                }
+
+             @endphp
+             
+      <div class="d-flex justify-content-between pt-2">
+            <p class="mb-0"><strong>Total:</strong>{{ $order?->symbol. ($totalPrice-$totalDiscount) }}</p>
+             <p class="mb-0"><strong>Delivery Charges:</strong>{{ $order?->symbol. $deleveryCharge }}</p>
+            
+             <p class="mb-0"><strong>Coupon Code:</strong>{{ $order?->symbol. $couponAmount }}</p>
+            </div>
+      <div class="d-flex justify-content-between pt-2">
+            <p class="mb-0"><strong>Grand Total:</strong>
+        
+                {{ $order?->symbol}}{{$grandTotal - $couponAmount}}
+            </p>
+            </div>
             <h1 class="font-bold my-3 text-lg">Billing Information:</h1>
             <div class="grid md:grid-cols-2 gap-4">
                 <!-- b_fname -->
@@ -172,7 +210,7 @@
                             <th class="p-2">Img</th>
                             <th class="p-2">Store Name</th>
                             <th class="p-2">Price</th>
-                            <th class="p-2">Discount</th>
+                            <th class="p-2">Discount(%)</th>
                             <th class="p-2">Quantity</th>
                             <th class="p-2">Final Price</th>
                             <th class="p-2">Delete</th>
@@ -223,7 +261,7 @@
                                 <!-- Final Price -->
                                 <td
                                     class="p-2 text-right text-base font-bold text-gray-900 dark:text-white final-price">
-                                    ${{ number_format(($item->price - $item->discount) * $item->quantity, 2) }}
+                                    {{$order?->symbol}}{{ number_format((($item->price - (($item->price *$item->discount)/100))) * $item->quantity, 2) }}
                                 </td>
                                 <!-- Delete Button -->
                                 <td class="p-2 text-center">
@@ -289,14 +327,47 @@
         </div>
     </form>
     <script>
-        function updateFinalPrice(element) {
-            let row = $(element).closest('tr');
-            let price = parseFloat(row.find('[name="price[]"]').val()) || 0;
-            let discount = parseFloat(row.find('[name="discount[]"]').val()) || 0;
-            let quantity = parseInt(row.find('[name="quantity[]"]').val()) || 0;
-            let finalPrice = (price - discount) * quantity;
-            row.find('.final-price').text("$" + finalPrice.toFixed(2));
+       function updateFinalPrice(input) {
+        const row = input.closest('tr');
+
+        const price = parseFloat(row.querySelector('input[name="price[]"]').value) || 0;
+        const discount = parseFloat(row.querySelector('input[name="discount[]"]').value) || 0;
+        const quantity = parseInt(row.querySelector('input[name="quantity[]"]').value) || 1;
+
+        const discountedPrice = price - (price * discount / 100);
+        const finalPrice = discountedPrice * quantity;
+
+        const finalPriceElement = row.querySelector('.final-price');
+        const symbol = finalPriceElement.getAttribute('data-symbol') || '₹';
+
+        finalPriceElement.textContent = symbol + finalPrice.toFixed(2);
+
+        // Optional: update total at the bottom
+        updateGrandTotal();
+    }
+    function updateGrandTotal() {
+        let grandTotal = 0;
+        document.querySelectorAll('tr').forEach(row => {
+            const priceInput = row.querySelector('input[name="price[]"]');
+            const discountInput = row.querySelector('input[name="discount[]"]');
+            const quantityInput = row.querySelector('input[name="quantity[]"]');
+
+            if (priceInput && discountInput && quantityInput) {
+                const price = parseFloat(priceInput.value) || 0;
+                const discount = parseFloat(discountInput.value) || 0;
+                const quantity = parseInt(quantityInput.value) || 1;
+
+                const discountedPrice = price - (price * discount / 100);
+                grandTotal += discountedPrice * quantity;
+                
+            }
+        });
+
+        const totalDisplay = document.getElementById('grand-total');
+        if (totalDisplay) {
+            totalDisplay.textContent = grandTotal.toFixed(2);
         }
+    }
 
         // Delete the item row
         function deleteItem(button) {

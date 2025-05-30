@@ -8,7 +8,7 @@
         <div class="grid md:grid-cols-2 gap-4">
             <!-- name -->
             <div class="mt-4">
-            <div class="flex items-center space-x-1">
+                <div class="flex items-center space-x-1">
                     <x-input-label for="name" :value="__('Name')" />
                     <span class="text-red-500">*</span>
                 </div>
@@ -21,13 +21,13 @@
             <div class="mt-4">
                 <x-input-label for="total_view" :value="__('Total View')" />
                 <x-text-input id="total_view" class="block mt-1 w-full" type="number" name="total_view"
-                    :value="old('total_view',0)" placeholder="Enter total view" step="0.01" min="0" />
+                    :value="old('total_view', 0)" placeholder="Enter total view" step="0.01" min="0" />
                 <x-input-error :messages="$errors->get('total_view')" class="mt-2" />
             </div>
 
             <!-- thumb_image -->
             <div class="mt-4">
-            <div class="flex items-center space-x-1">
+                <div class="flex items-center space-x-1">
                     <x-input-label for="thumb_image" :value="__('Thumb Image')" />
                     <span class="text-red-500">*</span>
                 </div>
@@ -54,7 +54,21 @@
                     <option disabled>Choose Categories</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}" @selected(old('categories[]') == $category->id)>
-                            {{ $category->name }}</option>
+                            {{ $category->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <!-- Blog Profile (Single Select) -->
+            <div class="mt-4">
+                <x-input-label for="blog_profile_id" :value="__('Select Profile')" />
+                <select id="blog_profile_id" name="blog_profile_id"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option disabled selected>Choose Profile</option>
+                    @foreach ($blogprofiles as $blogprofile)
+                        <option value="{{ $blogprofile->id }}" {{ old('blog_profile_id') == $blogprofile->id ? 'selected' : '' }}>
+                            {{ $blogprofile->name }}
+                        </option>
                     @endforeach
                 </select>
             </div>

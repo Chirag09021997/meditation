@@ -67,9 +67,9 @@
                 <ins>{{ $symbol.number_format($finalPrice, 2) }}</ins>
             </span>
         </div>
-        <div class="rating mt-2 float-right">
+        <!-- <div class="rating mt-2 float-right">
             <div class="product_rate" style="width:80%"></div>
-        </div>
+        </div> -->
         <div class="clearfix"></div>
         <hr>
         <p>{{ $store->short_description }}</p>
@@ -197,9 +197,9 @@
                     <del>{{ $symbol.number_format($originalPrice, 2) }}</del>
                     <ins>{{ $symbol.number_format($finalPrice, 2) }}</ins>
                 </span>
-                <div class="rating">
+                <!-- <div class="rating">
                     <div class="product_rate" style="width:80%"></div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

@@ -21,6 +21,7 @@ use App\Models\Setting;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use function Laravel\Prompts\alert;
 
 class HomeController extends Controller
 {
@@ -30,8 +31,8 @@ class HomeController extends Controller
         $latestStore = Store::where('status', 'Active')->where('add_home_status', 'Inactive')->select('id', 'product_name', 'product_thumb', 'finance_product')->latest()->take(4)->get();
         $store = Store::where('add_home_status', 'Active')->select('*')->first();
         $blogs->transform(function ($blog) {
-            $blog->formatted_date = Carbon::parse($blog->starting_date)->format('d M');
-            $blog->formatted_time = Carbon::parse($blog->starting_date)->format('H:i');
+            $blog->formatted_date = Carbon::parse($blog->starting_date)->format('M d, Y h:i A');
+            $blog->formatted_time = Carbon::parse($blog->starting_date)->format('M d, Y h:i A');
             return $blog;
         });
         $outTeams = OurTeam::all();
@@ -47,7 +48,7 @@ class HomeController extends Controller
         $customerCounter = Customer::count();
         $eventCounter = Event::count();
 
-        return view('frontend.about', compact('outTeams','cirtificateCounter','customerCounter','eventCounter'));
+        return view('frontend.about', compact('outTeams', 'cirtificateCounter', 'customerCounter', 'eventCounter'));
     }
 
     public function sliderShow(string $id)
@@ -63,7 +64,7 @@ class HomeController extends Controller
 
     public function eventsList()
     {
-        $events = Event::where('status', 'Active')->select('id', 'name', 'thumb_image', 'starting_date','short_description', 'duration', 'language', 'location')->orderByDesc('created_at')->paginate(9);
+        $events = Event::where('status', 'Active')->select('id', 'name', 'thumb_image', 'starting_date', 'short_description', 'duration', 'language', 'location')->orderByDesc('created_at')->paginate(9);
         $events->getCollection()->transform(function ($event) {
             $event->formatted_date = Carbon::parse($event->starting_date)->format('M d, Y');
             $event->formatted_time = Carbon::parse($event->starting_date)->format('h:i A');
@@ -103,9 +104,9 @@ class HomeController extends Controller
     public function blogsList(Request $request)
     {
         $categoryId = $request->input('category_id', null);
-        $blogs = Blog::with(['users:id,name,profile', 'categories:id,name'])
+        $blogs = Blog::with(['users:id,name,profile', 'categories:id,name', 'profile:id,id,name,profile'])
             ->where('status', 'Active')
-            ->select('id', 'name', 'short_description', 'thumb_image')
+            ->select('id', 'name', 'short_description', 'thumb_image', 'blog_profile_id')
             ->when($categoryId, function ($query) use ($categoryId) {
                 return $query->whereHas('categories', function ($q) use ($categoryId) {
                     $q->where('id', $categoryId);
@@ -114,9 +115,10 @@ class HomeController extends Controller
             ->orderByDesc('created_at')
             ->paginate(9);
         $blogs->getCollection()->transform(function ($blog) {
-            $blog->formatted_date = Carbon::parse($blog->created_at)->format('M d, Y');
+            $blog->formatted_date = Carbon::parse($blog->created_at)->format('M d, Y h:i A');
             return $blog;
         });
+
         $categories = Category::where('status', 'Active')
             ->get()
             ->map(function ($category) {
@@ -128,8 +130,14 @@ class HomeController extends Controller
 
     public function blogSingle(string $id)
     {
-        $blog = Blog::with(['users:id,name,profile'])->where('status', 'Active')->select('id', 'name', 'short_description', 'description', 'thumb_image', 'total_view', 'created_by')->findOrFail($id);
-        $blog->formatted_date = Carbon::parse($blog->created_at)->format('M d, Y');
+        $blog = Blog::with(['profile:id,id,name,profile']) // Load blog_profile data
+            ->where('status', 'Active')
+            ->select('id', 'name', 'short_description', 'description', 'thumb_image', 'total_view', 'created_by', 'blog_profile_id')
+            ->findOrFail($id);
+
+        // $blog = Blog::with(['users:id,name,profile'])->where('status', 'Active')->select('id', 'name', 'short_description', 'description', 'thumb_image', 'total_view', 'created_by')->findOrFail($id);
+        $blog->formatted_date = Carbon::parse($blog->created_at)->format('M d, Y h:i A');
+
         return view('frontend.blogs-detail', compact('blog'));
     }
 
@@ -161,6 +169,7 @@ class HomeController extends Controller
 
     public function checkoutStore(Request $request)
     {
+
         $cartItems = json_decode($request->input('cartItems'), true);
         $request->merge(['cartItems' => $cartItems]);
         $validatedData = $request->validate([
@@ -189,6 +198,7 @@ class HomeController extends Controller
         ]);
         $customer = Auth::guard('customer')->user();
         $coupon = CouponSystem::whereNull('deleted_at')->where('coupon_code', $request->coupon_code)->where('start_date', '<=', now())->where('end_date', '>=', now())->select('id', 'type', 'coupon_code', 'value')->first();
+
         $order = Order::create([
             'payment_option' => $request->input('payment_option'),
             'note' => $request->input('note'),
@@ -196,18 +206,32 @@ class HomeController extends Controller
             'coupon_code' => $coupon?->coupon_code,
             'coupon_value' => $coupon?->value,
             'customer_id' => $customer->id,
+            'symbol' => $request->symbol
         ]);
 
         $order->orderAddress()->create(array_merge($validatedData, ['customer_id' => auth()->id()]));
 
         foreach ($validatedData['cartItems'] as $cart) {
             $store = Store::find($cart['id']);
-            $order->orderItem()->create([
-                'store_id' => $cart['id'],
-                'quantity' => $cart['quantity'],
-                'price' => $store->price,
-                'discount' => $store->discount
-            ]);
+            $dataArray = json_decode($store->finance_product, true);
+            $mData = collect($dataArray)->firstWhere('country_name', $request->country_name);
+
+            if ($mData) {
+                $price = $mData['price'];
+                $discount = $mData['discount'];
+                $delivery_charge = $mData['delivery_charge'];
+                $symbol = $mData['symbol'];
+                $order->orderItem()->create([
+                    'store_id' => $cart['id'],
+                    'quantity' => $cart['quantity'],
+                    'price' => $price,
+                    'discount' => $discount,
+                    'delivery_charge' => $delivery_charge
+                ]);
+            } else {
+                echo "India data not found.";
+            }
+
         }
         return redirect()->route('home')->with('success', "Order created successFully.");
     }

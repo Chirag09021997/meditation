@@ -28,6 +28,7 @@ class UpdateBlogRequest extends FormRequest
             'thumb_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'total_view' => 'required|integer|min:0',
             'categories' => 'nullable|array',
+            'blog_profile_id' => 'required|integer',
         ];
     }
 }

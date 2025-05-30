@@ -35,8 +35,8 @@
                             <div class="blog_text">
                                 <h2 class="blog_title">{{ $blog->name }}</h2>
                                 <ul class="list_none blog_meta">
-                                    <li><img src="{{ isset($blog->users) ? $blog->users->profile : '' }}"
-                                            alt="img"><span>{{ isset($blog->users) ? $blog->users->name : '' }}</span>
+                                    <li><img src="{{ $blog->profile->profile ?? asset('assets/images/cl_teacher_img1.jpg') }}"
+                                            alt="img"><span>{{ $blog->profile->name ?? 'N/A' }}</span>
                                     </li>
                                     <li><i class="far fa-calendar"></i>{{ $blog->formatted_date }}</li>
                                 </ul>

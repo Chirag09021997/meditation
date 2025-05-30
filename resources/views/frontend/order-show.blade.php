@@ -49,8 +49,8 @@
                                                 <div
                                                     class="col-md-3 text-center d-flex justify-content-center align-items-center">
                                                     <p class="text-muted mb-0 small">
-                                                        <del class="mx-2">{{ $item->price }}</del>
-                                                        <b class="mx-2">{{ $item->price - $item->discount }}</b>
+                                                        <del class="mx-2">{{ $order->symbol.$item->price }}</del>
+                                                        <b class="mx-2">{{ $order->symbol.($item->price - (($item->price * $item->discount)/100)) }}</b>
                                                     </p>
                                                 </div>
                                                 <div
@@ -60,7 +60,7 @@
                                                 <div
                                                     class="col-md-2 text-center d-flex justify-content-center align-items-center">
                                                     <p class="text-muted mb-0 small">
-                                                        ${{ ($item->price - $item->discount) * $item->quantity }}</p>
+                                                        {{ $order->symbol.($item->price - (($item->price * $item->discount)/100)) * $item->quantity }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -109,14 +109,26 @@
 
                                 <div class="d-flex justify-content-between pt-2">
                                     <p class="fw-bold mb-0">Order Details</p>
-                                    <p class="text-muted mb-0"><span class="fw-bold me-4">Total : </span>
-                                        ${{ $order->total_price }}</p>
+                                    <p class="text-muted mb-0"><span class="fw-bold me-4">Original price : </span>
+                                        {{ $order->symbol.$order->total_price }}</p>
+                                </div>
+
+                                <div class="d-flex justify-content-between pt-2">
+                                    <p class="fw-bold mb-0"></p>
+                                    <p class="text-muted mb-0"><span class="fw-bold me-4">Savings : </span>
+                                        {{ $order->symbol.$order->total_discount }}</p>
+                                </div>
+
+                                <div class="d-flex justify-content-between pt-2">
+                                    <p class="fw-bold mb-0"></p>
+                                    <p class="text-muted mb-0"><span class="fw-bold me-4">Delivery Charges : </span>
+                                        {{ $order->symbol.$order->delevery_charge }}</p>
                                 </div>
 
                                 <div class="d-flex justify-content-between pt-2">
                                     <p class="text-muted mb-0">Invoice Number : #{{ $order->id }}</p>
-                                    <p class="text-muted mb-0"><span class="fw-bold me-4">Discount : </span>
-                                        ${{ $order->total_discount }}</p>
+                                    <p class="text-muted mb-0"><span class="fw-bold me-4">Coupon Discount : </span>
+                                        {{ $order->symbol.$order->coupon_discount }}</p>
                                 </div>
 
                                 <div class="d-flex justify-content-between">
@@ -127,7 +139,7 @@
                             <div class="card-footer border-0 px-4 py-5"
                                 style="background-color: #5db2d6; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
                                 <h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">
-                                    Total Paid : <span class="h2 mb-0 mx-2">${{ $order->final_price }}</span></h5>
+                                    Total Paid : <span class="h2 mb-0 mx-2">{{ $order->symbol.$order->final_price }}</span></h5>
                             </div>
                         </div>
                     </div>

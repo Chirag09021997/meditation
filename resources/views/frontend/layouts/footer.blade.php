@@ -1,12 +1,48 @@
 {{-- <!-- START FOOTER --> --}}
 <footer class="bg_dark footer_dark">
+
+    <style>
+        .security {
+            display: flex;
+            gap: 20px;
+            /* spacing between icons */
+            justify-content: start;
+            margin-left: 30px;
+            margin-top: 20px;
+            /* center the icons horizontally */
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .security li {
+            list-style: none;
+        }
+
+        .security i {
+            font-size: 32px;
+            /* increase icon size */
+            color: #ffffff;
+            /* change this color as needed */
+            transition: transform 0.3s ease;
+        }
+
+        .security i:hover {
+            transform: scale(1.2);
+            /* optional hover effect */
+            color: #007bff;
+            /* optional hover color */
+        }
+    </style>
+
+
     <div class="top_footer">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-sm-7 mb-4 mb-lg-0">
                     <h5 class="widget_title">Abouts us</h5>
                     <div class="footer_desc">
-                        <p>We are committed to excellence, innovation, and growth. Our team strives to deliver quality and value in everything we do.</p>
+                        <p>We are committed to excellence, innovation, and growth. Our team strives to deliver quality
+                            and value in everything we do.</p>
                     </div>
                     <ul class="contact_info list_none">
                         <li>
@@ -91,6 +127,11 @@
                             </a>
                         </li>
                     </ul>
+                    <ul class="security list_none">
+                        <li><i class="fas fa-credit-card"></i></li>
+                        <li><i class="fab fa-paypal"></i></li>
+                        <li><i class="fas fa-lock"></i></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -101,7 +142,7 @@
                 <div class="bottom_footer border_top_transparent">
                     <div class="row">
                         <div class="col-md-6">
-                        <p class="copyright m-md-0 text-center text-md-left">
+                            <p class="copyright m-md-0 text-center text-md-left">
                                 Copyright © <span id="currentYear"></span> - Made By codeshopstudio</p>
                         </div>
                         <div class="col-md-6">
@@ -119,7 +160,7 @@
     </div>
     <div class="shape_img">
         <div class="ol_shape10">
-        <img src="assets/images/shape7.png" alt="shape36" />
+            <img src="assets/images/shape7.png" alt="shape36" />
         </div>
     </div>
 </footer>

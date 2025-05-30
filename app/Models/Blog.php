@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Blog extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $fillable = ['name', 'short_description', 'description', 'thumb_image', 'total_view', 'status', 'created_by', 'updated_by'];
+    protected $fillable = ['name', 'short_description', 'description', 'thumb_image', 'total_view', 'status', 'created_by', 'updated_by', 'blog_profile_id'];
 
     public function getThumbImageAttribute($value)
     {
@@ -37,4 +37,10 @@ class Blog extends Model
             $model->updated_by = isset(auth()->user()->id) ? auth()->user()->id : $model->updated_by;
         });
     }
+    
+    public function profile()
+    {
+        return $this->belongsTo(BlogProfile::class, 'blog_profile_id');
+    }
+
 }

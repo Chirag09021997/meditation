@@ -20,6 +20,7 @@ use App\Http\Controllers\Web\MusicController;
 use App\Http\Controllers\Web\NotificationController;
 use App\Http\Controllers\Web\OrderController;
 use App\Http\Controllers\Web\OurTeamController;
+use App\Http\Controllers\Web\BlogProfileController;
 use App\Http\Controllers\Web\PremiumPlanController;
 use App\Http\Controllers\Web\SettingController;
 use App\Http\Controllers\Web\SliderController;
@@ -168,6 +169,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/our-team/data', [OurTeamController::class, 'getData'])->name('our-team.data');
     Route::resource('our-team', OurTeamController::class);
+
+    Route::get('/blog-profile/data', [BlogProfileController::class, 'getData'])->name('blog-profile.data');
+    Route::resource('blog-profile', BlogProfileController::class);
 
     Route::get('/slider/data', [SliderController::class, 'getData'])->name('slider.data');
     Route::resource('slider', SliderController::class);
