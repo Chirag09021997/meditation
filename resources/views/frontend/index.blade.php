@@ -280,20 +280,20 @@
                     <div class="mt-3">
                         <div class="animation image-container" data-animation="fadeInLeft" data-animation-delay="0.5s">
                             <img src="{{ asset('assets/images/group1.svg') }}" alt="image" class="zoom-img"
-                                data-sound="{{ asset('assets/audio/oom.mp3') }}" />
+                                data-sound="{{ asset('assets/audio/lam.mpeg') }}" />
 
                             <img src="{{ asset('assets/images/group2.svg') }}" alt="image" class="zoom-img"
-                                data-sound="audio2.mp3" />
+                                data-sound="assets/audio/vam.mpeg" />
                             <img src="{{ asset('assets/images/group3.svg') }}" alt="image" class="zoom-img"
-                                data-sound="audio3.mp3" />
+                                data-sound="assets/audio/ram.mpeg" />
                             <img src="{{ asset('assets/images/group4.svg') }}" alt="image" class="zoom-img"
-                                data-sound="audio4.mp3" />
+                                data-sound="assets/audio/yam.mpeg" />
                             <img src="{{ asset('assets/images/group5.svg') }}" alt="image" class="zoom-img"
-                                data-sound="audio5.mp3" />
+                                data-sound="assets/audio/ham.mpeg" />
                             <img src="{{ asset('assets/images/group6.svg') }}" alt="image" class="zoom-img"
-                                data-sound="audio6.mp3" />
+                                data-sound="assets/audio/aum.mpeg" />
                             <img src="{{ asset('assets/images/group7.svg') }}" alt="image" class="zoom-img"
-                                data-sound="audio7.mp3" />
+                                data-sound="assets/audio/om.mpeg" />
                         </div>
                     </div>
                 </div>
