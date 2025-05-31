@@ -24,8 +24,8 @@
                                                 <div class="banner_img" data-animation="fadeIn" data-animation-delay="0.4s"
                                                     data-parallax='{"y": 30, "smoothness": 10}'>
                                                     <!-- <div>
-                                                                                                                                                                                        <img src="{{ $slider->background }}" alt="image" />
-                                                                                                                                                                                    </div> -->
+                                                                                                                                                                                                    <img src="{{ $slider->background }}" alt="image" />
+                                                                                                                                                                                                </div> -->
 
                                                 </div>
                                             </div>
@@ -42,10 +42,10 @@
                                                             {{ $slider->sub_description }}
                                                         </p>
                                                         <!-- <a class="btn btn-default rounded-0 animation"
-                                                                                                                                                                            href="{{ route('slider-detail.show', $slider->id) }}"
-                                                                                                                                                                            data-animation="fadeInUp" data-animation-delay="0.7s">Learn More</a>
-                                                                                                                                                                        <a class="btn btn-white rounded-0 animation" href="/contact" target="_blank"
-                                                                                                                                                                            data-animation="fadeInUp" data-animation-delay="0.8s">Contact Us</a> -->
+                                                                                                                                                                                        href="{{ route('slider-detail.show', $slider->id) }}"
+                                                                                                                                                                                        data-animation="fadeInUp" data-animation-delay="0.7s">Learn More</a>
+                                                                                                                                                                                    <a class="btn btn-white rounded-0 animation" href="/contact" target="_blank"
+                                                                                                                                                                                        data-animation="fadeInUp" data-animation-delay="0.8s">Contact Us</a> -->
                                                     </div>
 
                                                 </div>
@@ -67,9 +67,9 @@
                                             <div class="col-lg-6 col-md-5">
                                                 <div class="banner_img2 text-center">
                                                     <!-- <div class="animation border_img" data-animation="fadeInRight"
-                                                                                                                                                                                        data-animation-delay="0.5s"> -->
+                                                                                                                                                                                                    data-animation-delay="0.5s"> -->
                                                     <!-- <img data-parallax='{"y": -30, "smoothness": 20}'
-                                                                                                                                                                                            src="{{ $slider->background }}" alt="image" /> -->
+                                                                                                                                                                                                        src="{{ $slider->background }}" alt="image" /> -->
                                                     <!-- </div> -->
                                                 </div>
                                             </div>
@@ -304,6 +304,7 @@
 
                         img.addEventListener('mouseenter', () => {
                             audio.src = img.getAttribute('data-sound');
+                            audio.loop = true; // 🔁 Loop audio infinitely
                             audio.play();
                         });
 
@@ -410,8 +411,8 @@
                                     <ins>{{ $symbol . number_format($finalPrice, 2) }}</ins>
                                 </span>
                                 <!-- <div class="rating">
-                                    <div class="product_rate" style="width:80%"></div>
-                                </div> -->
+                                            <div class="product_rate" style="width:80%"></div>
+                                        </div> -->
                             </div>
                             <div class="tab-content shop_info_tab">
                                 <div class="tab-pane fade show active" id="Description" role="tabpanel"
@@ -518,8 +519,8 @@
                                     <ins>{{ $symbol . number_format($finalPrice, 2) }}</ins>
                                 </span>
                                 <!-- <div class="rating">
-                                    <div class="product_rate" style="width:80%"></div>
-                                </div> -->
+                                            <div class="product_rate" style="width:80%"></div>
+                                        </div> -->
                             </div>
                         </div>
                     </div>
@@ -531,525 +532,525 @@
 
     {{-- <!-- START SECTION CLASSES --> --}}
     <!-- <section class="pb_70">
-                                                <div class="container">
-                                                    <div class="row justify-content-center">
-                                                        <div class="col-xl-6 col-lg-8 col-md-10 text-center animation" data-animation="fadeInUp"
-                                                            data-animation-delay="0.2s">
-                                                            <div class="heading_s1">
-                                                                <span class="sub_heading">Choose Your Level Best</span>
-                                                                <h2>Some Of Our Classes</h2>
+                                                    <div class="container">
+                                                        <div class="row justify-content-center">
+                                                            <div class="col-xl-6 col-lg-8 col-md-10 text-center animation" data-animation="fadeInUp"
+                                                                data-animation-delay="0.2s">
+                                                                <div class="heading_s1">
+                                                                    <span class="sub_heading">Choose Your Level Best</span>
+                                                                    <h2>Some Of Our Classes</h2>
+                                                                </div>
+                                                                <p>Lorem ipsum dolor sit amet, consectetur blandit magna adipiscing elit ncididunt labore et dolore
+                                                                    magna aliqua enim. </p>
+                                                                <div class="small_divider clearfix"></div>
                                                             </div>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur blandit magna adipiscing elit ncididunt labore et dolore
-                                                                magna aliqua enim. </p>
-                                                            <div class="small_divider clearfix"></div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-sm-6">
+                                                                <div class="classes_box box_shadow1 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
+                                                                    <div class="classes_img">
+                                                                        <img src="{{ asset('assets/images/classes_img1.jpg') }}" alt="image" />
+                                                                        <div class="link_container">
+                                                                            <a href="#"><i class="fa-solid fa-plus"></i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="classes_info">
+                                                                        <div class="classes_teacher">
+                                                                            <img src="{{ asset('assets/images/cl_teacher_img1.jpg') }}" alt="image" />
+                                                                            <span>Maria</span>
+                                                                        </div>
+                                                                        <div class="classes_title">
+                                                                            <span class="badge badge-pill badge-info">Hatha</span>
+                                                                            <h4><a href="#">Yoga For Beginners</a></h4>
+                                                                        </div>
+                                                                        <ul class="classes_schedule">
+                                                                            <li><i class="far fa-calendar"></i>Mon, Thu, Fri</li>
+                                                                            <li><i class="far fa-clock"></i>9:00 - 11:00</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4 col-sm-6">
+                                                                <div class="classes_box box_shadow1 animation" data-animation="fadeInUp" data-animation-delay="0.3s">
+                                                                    <div class="classes_img">
+                                                                        <img src="{{ asset('assets/images/classes_img2.jpg') }}" alt="image" />
+                                                                        <div class="link_container">
+                                                                            <a href="#"><i class="fa-solid fa-plus"></i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="classes_info">
+                                                                        <div class="classes_teacher">
+                                                                            <img src="{{ asset('assets/images/cl_teacher_img2.jpg') }}" alt="image" />
+                                                                            <span>Elena</span>
+                                                                        </div>
+                                                                        <div class="classes_title">
+                                                                            <span class="badge badge-pill badge-success">Kundalini</span>
+                                                                            <h4><a href="#">Balance Body & Mind</a></h4>
+                                                                        </div>
+                                                                        <ul class="classes_schedule">
+                                                                            <li><i class="far fa-calendar"></i>Tue, Wed, Sat</li>
+                                                                            <li><i class="far fa-clock"></i>9:00 - 11:00</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4 col-sm-6">
+                                                                <div class="classes_box box_shadow1 animation" data-animation="fadeInUp" data-animation-delay="0.4s">
+                                                                    <div class="classes_img">
+                                                                        <img src="{{ asset('assets/images/classes_img3.jpg') }}" alt="image" />
+                                                                        <div class="link_container">
+                                                                            <a href="#"><i class="fa-solid fa-plus"></i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="classes_info">
+                                                                        <div class="classes_teacher">
+                                                                            <img src="{{ asset('assets/images/cl_teacher_img3.jpg') }}" alt="image" />
+                                                                            <span>Regina</span>
+                                                                        </div>
+                                                                        <div class="classes_title">
+                                                                            <span class="badge badge-pill badge-danger">Pilates</span>
+                                                                            <h4><a href="#">Increased Flexibility</a></h4>
+                                                                        </div>
+                                                                        <ul class="classes_schedule">
+                                                                            <li><i class="far fa-calendar"></i>Mon, Thu, Fri</li>
+                                                                            <li><i class="far fa-clock"></i>11:00 - 12:00</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4 col-sm-6">
+                                                                <div class="classes_box box_shadow1 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
+                                                                    <div class="classes_img">
+                                                                        <img src="{{ asset('assets/images/classes_img4.jpg') }}" alt="image" />
+                                                                        <div class="link_container">
+                                                                            <a href="#"><i class="fa-solid fa-plus"></i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="classes_info">
+                                                                        <div class="classes_teacher">
+                                                                            <img src="{{ asset('assets/images/cl_teacher_img4.jpg') }}" alt="image" />
+                                                                            <span>Dayna</span>
+                                                                        </div>
+                                                                        <div class="classes_title">
+                                                                            <span class="badge badge-pill badge-success">vinyasa</span>
+                                                                            <h4><a href="#">Improves Body Posture</a></h4>
+                                                                        </div>
+                                                                        <ul class="classes_schedule">
+                                                                            <li><i class="far fa-calendar"></i>Tue, Wed, Fri</li>
+                                                                            <li><i class="far fa-clock"></i>12:00 - 01:00</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4 col-sm-6">
+                                                                <div class="classes_box box_shadow1 animation" data-animation="fadeInUp" data-animation-delay="0.3s">
+                                                                    <div class="classes_img">
+                                                                        <img src="{{ asset('assets/images/classes_img5.jpg') }}" alt="image" />
+                                                                        <div class="link_container">
+                                                                            <a href="#"><i class="fa-solid fa-plus"></i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="classes_info">
+                                                                        <div class="classes_teacher">
+                                                                            <img src="{{ asset('assets/images/cl_teacher_img1.jpg') }}" alt="image" />
+                                                                            <span>Maria</span>
+                                                                        </div>
+                                                                        <div class="classes_title">
+                                                                            <span class="badge badge-pill badge-danger">Alignment</span>
+                                                                            <h4><a href="#">Better Energy Flow</a></h4>
+                                                                        </div>
+                                                                        <ul class="classes_schedule">
+                                                                            <li><i class="far fa-calendar"></i>Mon, Thu, Fri</li>
+                                                                            <li><i class="far fa-clock"></i>11:00 - 12:00</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4 col-sm-6">
+                                                                <div class="classes_box box_shadow1 animation" data-animation="fadeInUp" data-animation-delay="0.4s">
+                                                                    <div class="classes_img">
+                                                                        <img src="{{ asset('assets/images/classes_img6.jpg') }}" alt="image" />
+                                                                        <div class="link_container">
+                                                                            <a href="#"><i class="fa-solid fa-plus"></i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="classes_info">
+                                                                        <div class="classes_teacher">
+                                                                            <img src="{{ asset('assets/images/cl_teacher_img2.jpg') }}" alt="image" />
+                                                                            <span>Elena</span>
+                                                                        </div>
+                                                                        <div class="classes_title">
+                                                                            <span class="badge badge-pill badge-info">Yoga Dance</span>
+                                                                            <h4><a href="#">Increased body awareness</a></h4>
+                                                                        </div>
+                                                                        <ul class="classes_schedule">
+                                                                            <li><i class="far fa-calendar"></i>Mon, Thu, Fri</li>
+                                                                            <li><i class="far fa-clock"></i>9:00 - 11:00</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-4 col-sm-6">
-                                                            <div class="classes_box box_shadow1 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
-                                                                <div class="classes_img">
-                                                                    <img src="{{ asset('assets/images/classes_img1.jpg') }}" alt="image" />
-                                                                    <div class="link_container">
-                                                                        <a href="#"><i class="fa-solid fa-plus"></i></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="classes_info">
-                                                                    <div class="classes_teacher">
-                                                                        <img src="{{ asset('assets/images/cl_teacher_img1.jpg') }}" alt="image" />
-                                                                        <span>Maria</span>
-                                                                    </div>
-                                                                    <div class="classes_title">
-                                                                        <span class="badge badge-pill badge-info">Hatha</span>
-                                                                        <h4><a href="#">Yoga For Beginners</a></h4>
-                                                                    </div>
-                                                                    <ul class="classes_schedule">
-                                                                        <li><i class="far fa-calendar"></i>Mon, Thu, Fri</li>
-                                                                        <li><i class="far fa-clock"></i>9:00 - 11:00</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-sm-6">
-                                                            <div class="classes_box box_shadow1 animation" data-animation="fadeInUp" data-animation-delay="0.3s">
-                                                                <div class="classes_img">
-                                                                    <img src="{{ asset('assets/images/classes_img2.jpg') }}" alt="image" />
-                                                                    <div class="link_container">
-                                                                        <a href="#"><i class="fa-solid fa-plus"></i></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="classes_info">
-                                                                    <div class="classes_teacher">
-                                                                        <img src="{{ asset('assets/images/cl_teacher_img2.jpg') }}" alt="image" />
-                                                                        <span>Elena</span>
-                                                                    </div>
-                                                                    <div class="classes_title">
-                                                                        <span class="badge badge-pill badge-success">Kundalini</span>
-                                                                        <h4><a href="#">Balance Body & Mind</a></h4>
-                                                                    </div>
-                                                                    <ul class="classes_schedule">
-                                                                        <li><i class="far fa-calendar"></i>Tue, Wed, Sat</li>
-                                                                        <li><i class="far fa-clock"></i>9:00 - 11:00</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-sm-6">
-                                                            <div class="classes_box box_shadow1 animation" data-animation="fadeInUp" data-animation-delay="0.4s">
-                                                                <div class="classes_img">
-                                                                    <img src="{{ asset('assets/images/classes_img3.jpg') }}" alt="image" />
-                                                                    <div class="link_container">
-                                                                        <a href="#"><i class="fa-solid fa-plus"></i></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="classes_info">
-                                                                    <div class="classes_teacher">
-                                                                        <img src="{{ asset('assets/images/cl_teacher_img3.jpg') }}" alt="image" />
-                                                                        <span>Regina</span>
-                                                                    </div>
-                                                                    <div class="classes_title">
-                                                                        <span class="badge badge-pill badge-danger">Pilates</span>
-                                                                        <h4><a href="#">Increased Flexibility</a></h4>
-                                                                    </div>
-                                                                    <ul class="classes_schedule">
-                                                                        <li><i class="far fa-calendar"></i>Mon, Thu, Fri</li>
-                                                                        <li><i class="far fa-clock"></i>11:00 - 12:00</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-sm-6">
-                                                            <div class="classes_box box_shadow1 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
-                                                                <div class="classes_img">
-                                                                    <img src="{{ asset('assets/images/classes_img4.jpg') }}" alt="image" />
-                                                                    <div class="link_container">
-                                                                        <a href="#"><i class="fa-solid fa-plus"></i></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="classes_info">
-                                                                    <div class="classes_teacher">
-                                                                        <img src="{{ asset('assets/images/cl_teacher_img4.jpg') }}" alt="image" />
-                                                                        <span>Dayna</span>
-                                                                    </div>
-                                                                    <div class="classes_title">
-                                                                        <span class="badge badge-pill badge-success">vinyasa</span>
-                                                                        <h4><a href="#">Improves Body Posture</a></h4>
-                                                                    </div>
-                                                                    <ul class="classes_schedule">
-                                                                        <li><i class="far fa-calendar"></i>Tue, Wed, Fri</li>
-                                                                        <li><i class="far fa-clock"></i>12:00 - 01:00</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-sm-6">
-                                                            <div class="classes_box box_shadow1 animation" data-animation="fadeInUp" data-animation-delay="0.3s">
-                                                                <div class="classes_img">
-                                                                    <img src="{{ asset('assets/images/classes_img5.jpg') }}" alt="image" />
-                                                                    <div class="link_container">
-                                                                        <a href="#"><i class="fa-solid fa-plus"></i></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="classes_info">
-                                                                    <div class="classes_teacher">
-                                                                        <img src="{{ asset('assets/images/cl_teacher_img1.jpg') }}" alt="image" />
-                                                                        <span>Maria</span>
-                                                                    </div>
-                                                                    <div class="classes_title">
-                                                                        <span class="badge badge-pill badge-danger">Alignment</span>
-                                                                        <h4><a href="#">Better Energy Flow</a></h4>
-                                                                    </div>
-                                                                    <ul class="classes_schedule">
-                                                                        <li><i class="far fa-calendar"></i>Mon, Thu, Fri</li>
-                                                                        <li><i class="far fa-clock"></i>11:00 - 12:00</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-sm-6">
-                                                            <div class="classes_box box_shadow1 animation" data-animation="fadeInUp" data-animation-delay="0.4s">
-                                                                <div class="classes_img">
-                                                                    <img src="{{ asset('assets/images/classes_img6.jpg') }}" alt="image" />
-                                                                    <div class="link_container">
-                                                                        <a href="#"><i class="fa-solid fa-plus"></i></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="classes_info">
-                                                                    <div class="classes_teacher">
-                                                                        <img src="{{ asset('assets/images/cl_teacher_img2.jpg') }}" alt="image" />
-                                                                        <span>Elena</span>
-                                                                    </div>
-                                                                    <div class="classes_title">
-                                                                        <span class="badge badge-pill badge-info">Yoga Dance</span>
-                                                                        <h4><a href="#">Increased body awareness</a></h4>
-                                                                    </div>
-                                                                    <ul class="classes_schedule">
-                                                                        <li><i class="far fa-calendar"></i>Mon, Thu, Fri</li>
-                                                                        <li><i class="far fa-clock"></i>9:00 - 11:00</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </section> -->
+                                                </section> -->
     {{-- <!-- END SECTION CLASSES --> --}}
 
     {{-- <!-- START SECTION CLASSES TIMETABLE --> --}}
     <!-- <section>
-                                                <div class="container">
-                                                    <div class="row justify-content-center">
-                                                        <div class="col-xl-6 col-lg-8 col-md-10 text-center animation" data-animation="fadeInUp"
-                                                            data-animation-delay="0.2s">
-                                                            <div class="heading_s1">
-                                                                <span class="sub_heading">Choose Your timing Schedule</span>
-                                                                <h2>Our Classes Timetable</h2>
-                                                            </div>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur blandit magna adipiscing elit ncididunt labore et dolore
-                                                                magna aliqua enim. </p>
-                                                            <div class="xs_divider clearfix"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-12 text-center">
-                                                            <ul class="classes_filter animation" data-animation="fadeInUp" data-animation-delay="0.2s">
-                                                                <li><a href="#" class="current" data-filter="all">All Classes</a></li>
-                                                                <li><a href="#" data-filter="hatha">Hatha</a></li>
-                                                                <li><a href="#" data-filter="kundalini">Kundalini</a></li>
-                                                                <li><a href="#" data-filter="pilates">Pilates</a></li>
-                                                                <li><a href="#" data-filter="alignment">Alignment</a></li>
-                                                                <li><a href="#" data-filter="yoga-dance">Yoga Dance</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <div class="schedule_table box_shadow1 table-responsive animation" data-animation="fadeInUp"
-                                                                data-animation-delay="0.3s">
-                                                                <table class="table table-bordered text-center">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <td>Time</td>
-                                                                            <td>Monday</td>
-                                                                            <td>Tuesday</td>
-                                                                            <td>Wednesday</td>
-                                                                            <td>Thursday</td>
-                                                                            <td>Friday</td>
-                                                                            <td>Saturday</td>
-                                                                            <td>Sunday</td>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <tr>
-                                                                            <td>9:00AM</td>
-                                                                            <td>
-                                                                                <div data-classes-schedule="hatha">
-                                                                                    <div class="classes_title">
-                                                                                        <h6>Hatha Yoga</h6>
-                                                                                    </div>
-                                                                                    <div class="classes_timing">
-                                                                                        <span>9:00 - 10:00</span>
-                                                                                    </div>
-                                                                                    <div class="cl_trainer">
-                                                                                        <span>Maria</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>&nbsp;</td>
-                                                                            <td>
-                                                                                <div data-classes-schedule="kundalini">
-                                                                                    <div class="classes_title">
-                                                                                        <h6>Kundalini Yoga</h6>
-                                                                                    </div>
-                                                                                    <div class="classes_timing">
-                                                                                        <span>9:00 - 10:00</span>
-                                                                                    </div>
-                                                                                    <div class="cl_trainer">
-                                                                                        <span>Elena</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>
-                                                                                <div data-classes-schedule="pilates">
-                                                                                    <div class="classes_title">
-                                                                                        <h6>Pilates Yoga</h6>
-                                                                                    </div>
-                                                                                    <div class="classes_timing">
-                                                                                        <span>9:00 - 10:00</span>
-                                                                                    </div>
-                                                                                    <div class="cl_trainer">
-                                                                                        <span>Regina</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>
-                                                                                <div data-classes-schedule="alignment">
-                                                                                    <div class="classes_title">
-                                                                                        <h6>Alignment Yoga</h6>
-                                                                                    </div>
-                                                                                    <div class="classes_timing">
-                                                                                        <span>9:00 - 10:00</span>
-                                                                                    </div>
-                                                                                    <div class="cl_trainer">
-                                                                                        <span>Maria</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>
-                                                                                <div data-classes-schedule="pilates">
-                                                                                    <div class="classes_title">
-                                                                                        <h6>Pilates Yoga</h6>
-                                                                                    </div>
-                                                                                    <div class="classes_timing">
-                                                                                        <span>9:00 - 10:00</span>
-                                                                                    </div>
-                                                                                    <div class="cl_trainer">
-                                                                                        <span>Regina</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>&nbsp;</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>10:00AM</td>
-                                                                            <td>
-                                                                                <div data-classes-schedule="pilates">
-                                                                                    <div class="classes_title">
-                                                                                        <h6>Pilates Yoga</h6>
-                                                                                    </div>
-                                                                                    <div class="classes_timing">
-                                                                                        <span>10:00 - 11:00</span>
-                                                                                    </div>
-                                                                                    <div class="cl_trainer">
-                                                                                        <span>Regina</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>
-                                                                                <div data-classes-schedule="alignment">
-                                                                                    <div class="classes_title">
-                                                                                        <h6>Alignment Yoga</h6>
-                                                                                    </div>
-                                                                                    <div class="classes_timing">
-                                                                                        <span>10:00 - 11:00</span>
-                                                                                    </div>
-                                                                                    <div class="cl_trainer">
-                                                                                        <span>Maria</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>
-                                                                                <div data-classes-schedule="yoga-dance">
-                                                                                    <div class="classes_title">
-                                                                                        <h6>Yoga Dance</h6>
-                                                                                    </div>
-                                                                                    <div class="classes_timing">
-                                                                                        <span>10:00 - 11:00</span>
-                                                                                    </div>
-                                                                                    <div class="cl_trainer">
-                                                                                        <span>Elena</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>&nbsp;</td>
-                                                                            <td>
-                                                                                <div data-classes-schedule="kundalini">
-                                                                                    <div class="classes_title">
-                                                                                        <h6>Kundalini Yoga</h6>
-                                                                                    </div>
-                                                                                    <div class="classes_timing">
-                                                                                        <span>10:00 - 11:00</span>
-                                                                                    </div>
-                                                                                    <div class="cl_trainer">
-                                                                                        <span>Elena</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>
-                                                                                <div data-classes-schedule="hatha">
-                                                                                    <div class="classes_title">
-                                                                                        <h6>Hatha Yoga</h6>
-                                                                                    </div>
-                                                                                    <div class="classes_timing">
-                                                                                        <span>10:00 - 11:00</span>
-                                                                                    </div>
-                                                                                    <div class="cl_trainer">
-                                                                                        <span>Maria</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>
-                                                                                <div data-classes-schedule="yoga-dance">
-                                                                                    <div class="classes_title">
-                                                                                        <h6>Yoga Dance</h6>
-                                                                                    </div>
-                                                                                    <div class="classes_timing">
-                                                                                        <span>10:00 - 11:00</span>
-                                                                                    </div>
-                                                                                    <div class="cl_trainer">
-                                                                                        <span>Elena</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>11:00AM</td>
-                                                                            <td>
-                                                                                <div data-classes-schedule="hatha">
-                                                                                    <div class="classes_title">
-                                                                                        <h6>Hatha Yoga</h6>
-                                                                                    </div>
-                                                                                    <div class="classes_timing">
-                                                                                        <span>11:00 - 12:00</span>
-                                                                                    </div>
-                                                                                    <div class="cl_trainer">
-                                                                                        <span>Maria</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>&nbsp;</td>
-                                                                            <td>
-                                                                                <div data-classes-schedule="pilates">
-                                                                                    <div class="classes_title">
-                                                                                        <h6>Pilates Yoga</h6>
-                                                                                    </div>
-                                                                                    <div class="classes_timing">
-                                                                                        <span>11:00 - 12:00</span>
-                                                                                    </div>
-                                                                                    <div class="cl_trainer">
-                                                                                        <span>Regina</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>
-                                                                                <div data-classes-schedule="alignment">
-                                                                                    <div class="classes_title">
-                                                                                        <h6>Alignment Yoga</h6>
-                                                                                    </div>
-                                                                                    <div class="classes_timing">
-                                                                                        <span>11:00 - 12:00</span>
-                                                                                    </div>
-                                                                                    <div class="cl_trainer">
-                                                                                        <span>Maria</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>
-                                                                                <div data-classes-schedule="yoga-dance">
-                                                                                    <div class="classes_title">
-                                                                                        <h6>Yoga Dance</h6>
-                                                                                    </div>
-                                                                                    <div class="classes_timing">
-                                                                                        <span>11:00 - 12:00</span>
-                                                                                    </div>
-                                                                                    <div class="cl_trainer">
-                                                                                        <span>Elena</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>
-                                                                                <div data-classes-schedule="kundalini">
-                                                                                    <div class="classes_title">
-                                                                                        <h6>Kundalini Yoga</h6>
-                                                                                    </div>
-                                                                                    <div class="classes_timing">
-                                                                                        <span>11:00 - 12:00</span>
-                                                                                    </div>
-                                                                                    <div class="cl_trainer">
-                                                                                        <span>Elena</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>&nbsp; </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>12:00AM</td>
-                                                                            <td>
-                                                                                <div data-classes-schedule="pilates">
-                                                                                    <div class="classes_title">
-                                                                                        <h6>Pilates Yoga</h6>
-                                                                                    </div>
-                                                                                    <div class="classes_timing">
-                                                                                        <span>12:00 - 01:00</span>
-                                                                                    </div>
-                                                                                    <div class="cl_trainer">
-                                                                                        <span>Regina</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>
-                                                                                <div data-classes-schedule="kundalini">
-                                                                                    <div class="classes_title">
-                                                                                        <h6>Kundalini Yoga</h6>
-                                                                                    </div>
-                                                                                    <div class="classes_timing">
-                                                                                        <span>12:00 - 01:00</span>
-                                                                                    </div>
-                                                                                    <div class="cl_trainer">
-                                                                                        <span>Elena</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>
-                                                                                <div data-classes-schedule="hatha">
-                                                                                    <div class="classes_title">
-                                                                                        <h6>Hatha Yoga</h6>
-                                                                                    </div>
-                                                                                    <div class="classes_timing">
-                                                                                        <span>12:00 - 01:00</span>
-                                                                                    </div>
-                                                                                    <div class="cl_trainer">
-                                                                                        <span>Maria</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>&nbsp;</td>
-                                                                            <td>
-                                                                                <div data-classes-schedule="pilates">
-                                                                                    <div class="classes_title">
-                                                                                        <h6>Pilates Yoga</h6>
-                                                                                    </div>
-                                                                                    <div class="classes_timing">
-                                                                                        <span>12:00 - 01:00</span>
-                                                                                    </div>
-                                                                                    <div class="cl_trainer">
-                                                                                        <span>Regina</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>
-                                                                                <div data-classes-schedule="alignment">
-                                                                                    <div class="classes_title">
-                                                                                        <h6>Alignment Yoga</h6>
-                                                                                    </div>
-                                                                                    <div class="classes_timing">
-                                                                                        <span>12:00 - 01:00</span>
-                                                                                    </div>
-                                                                                    <div class="cl_trainer">
-                                                                                        <span>Maria</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>
-                                                                                <div data-classes-schedule="yoga-dance">
-                                                                                    <div class="classes_title">
-                                                                                        <h6>Yoga Dance</h6>
-                                                                                    </div>
-                                                                                    <div class="classes_timing">
-                                                                                        <span>12:00 - 01:00</span>
-                                                                                    </div>
-                                                                                    <div class="cl_trainer">
-                                                                                        <span>Elena</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
+                                                    <div class="container">
+                                                        <div class="row justify-content-center">
+                                                            <div class="col-xl-6 col-lg-8 col-md-10 text-center animation" data-animation="fadeInUp"
+                                                                data-animation-delay="0.2s">
+                                                                <div class="heading_s1">
+                                                                    <span class="sub_heading">Choose Your timing Schedule</span>
+                                                                    <h2>Our Classes Timetable</h2>
+                                                                </div>
+                                                                <p>Lorem ipsum dolor sit amet, consectetur blandit magna adipiscing elit ncididunt labore et dolore
+                                                                    magna aliqua enim. </p>
+                                                                <div class="xs_divider clearfix"></div>
                                                             </div>
                                                         </div>
+                                                        <div class="row">
+                                                            <div class="col-12 text-center">
+                                                                <ul class="classes_filter animation" data-animation="fadeInUp" data-animation-delay="0.2s">
+                                                                    <li><a href="#" class="current" data-filter="all">All Classes</a></li>
+                                                                    <li><a href="#" data-filter="hatha">Hatha</a></li>
+                                                                    <li><a href="#" data-filter="kundalini">Kundalini</a></li>
+                                                                    <li><a href="#" data-filter="pilates">Pilates</a></li>
+                                                                    <li><a href="#" data-filter="alignment">Alignment</a></li>
+                                                                    <li><a href="#" data-filter="yoga-dance">Yoga Dance</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="schedule_table box_shadow1 table-responsive animation" data-animation="fadeInUp"
+                                                                    data-animation-delay="0.3s">
+                                                                    <table class="table table-bordered text-center">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <td>Time</td>
+                                                                                <td>Monday</td>
+                                                                                <td>Tuesday</td>
+                                                                                <td>Wednesday</td>
+                                                                                <td>Thursday</td>
+                                                                                <td>Friday</td>
+                                                                                <td>Saturday</td>
+                                                                                <td>Sunday</td>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>9:00AM</td>
+                                                                                <td>
+                                                                                    <div data-classes-schedule="hatha">
+                                                                                        <div class="classes_title">
+                                                                                            <h6>Hatha Yoga</h6>
+                                                                                        </div>
+                                                                                        <div class="classes_timing">
+                                                                                            <span>9:00 - 10:00</span>
+                                                                                        </div>
+                                                                                        <div class="cl_trainer">
+                                                                                            <span>Maria</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>&nbsp;</td>
+                                                                                <td>
+                                                                                    <div data-classes-schedule="kundalini">
+                                                                                        <div class="classes_title">
+                                                                                            <h6>Kundalini Yoga</h6>
+                                                                                        </div>
+                                                                                        <div class="classes_timing">
+                                                                                            <span>9:00 - 10:00</span>
+                                                                                        </div>
+                                                                                        <div class="cl_trainer">
+                                                                                            <span>Elena</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div data-classes-schedule="pilates">
+                                                                                        <div class="classes_title">
+                                                                                            <h6>Pilates Yoga</h6>
+                                                                                        </div>
+                                                                                        <div class="classes_timing">
+                                                                                            <span>9:00 - 10:00</span>
+                                                                                        </div>
+                                                                                        <div class="cl_trainer">
+                                                                                            <span>Regina</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div data-classes-schedule="alignment">
+                                                                                        <div class="classes_title">
+                                                                                            <h6>Alignment Yoga</h6>
+                                                                                        </div>
+                                                                                        <div class="classes_timing">
+                                                                                            <span>9:00 - 10:00</span>
+                                                                                        </div>
+                                                                                        <div class="cl_trainer">
+                                                                                            <span>Maria</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div data-classes-schedule="pilates">
+                                                                                        <div class="classes_title">
+                                                                                            <h6>Pilates Yoga</h6>
+                                                                                        </div>
+                                                                                        <div class="classes_timing">
+                                                                                            <span>9:00 - 10:00</span>
+                                                                                        </div>
+                                                                                        <div class="cl_trainer">
+                                                                                            <span>Regina</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>&nbsp;</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>10:00AM</td>
+                                                                                <td>
+                                                                                    <div data-classes-schedule="pilates">
+                                                                                        <div class="classes_title">
+                                                                                            <h6>Pilates Yoga</h6>
+                                                                                        </div>
+                                                                                        <div class="classes_timing">
+                                                                                            <span>10:00 - 11:00</span>
+                                                                                        </div>
+                                                                                        <div class="cl_trainer">
+                                                                                            <span>Regina</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div data-classes-schedule="alignment">
+                                                                                        <div class="classes_title">
+                                                                                            <h6>Alignment Yoga</h6>
+                                                                                        </div>
+                                                                                        <div class="classes_timing">
+                                                                                            <span>10:00 - 11:00</span>
+                                                                                        </div>
+                                                                                        <div class="cl_trainer">
+                                                                                            <span>Maria</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div data-classes-schedule="yoga-dance">
+                                                                                        <div class="classes_title">
+                                                                                            <h6>Yoga Dance</h6>
+                                                                                        </div>
+                                                                                        <div class="classes_timing">
+                                                                                            <span>10:00 - 11:00</span>
+                                                                                        </div>
+                                                                                        <div class="cl_trainer">
+                                                                                            <span>Elena</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>&nbsp;</td>
+                                                                                <td>
+                                                                                    <div data-classes-schedule="kundalini">
+                                                                                        <div class="classes_title">
+                                                                                            <h6>Kundalini Yoga</h6>
+                                                                                        </div>
+                                                                                        <div class="classes_timing">
+                                                                                            <span>10:00 - 11:00</span>
+                                                                                        </div>
+                                                                                        <div class="cl_trainer">
+                                                                                            <span>Elena</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div data-classes-schedule="hatha">
+                                                                                        <div class="classes_title">
+                                                                                            <h6>Hatha Yoga</h6>
+                                                                                        </div>
+                                                                                        <div class="classes_timing">
+                                                                                            <span>10:00 - 11:00</span>
+                                                                                        </div>
+                                                                                        <div class="cl_trainer">
+                                                                                            <span>Maria</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div data-classes-schedule="yoga-dance">
+                                                                                        <div class="classes_title">
+                                                                                            <h6>Yoga Dance</h6>
+                                                                                        </div>
+                                                                                        <div class="classes_timing">
+                                                                                            <span>10:00 - 11:00</span>
+                                                                                        </div>
+                                                                                        <div class="cl_trainer">
+                                                                                            <span>Elena</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>11:00AM</td>
+                                                                                <td>
+                                                                                    <div data-classes-schedule="hatha">
+                                                                                        <div class="classes_title">
+                                                                                            <h6>Hatha Yoga</h6>
+                                                                                        </div>
+                                                                                        <div class="classes_timing">
+                                                                                            <span>11:00 - 12:00</span>
+                                                                                        </div>
+                                                                                        <div class="cl_trainer">
+                                                                                            <span>Maria</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>&nbsp;</td>
+                                                                                <td>
+                                                                                    <div data-classes-schedule="pilates">
+                                                                                        <div class="classes_title">
+                                                                                            <h6>Pilates Yoga</h6>
+                                                                                        </div>
+                                                                                        <div class="classes_timing">
+                                                                                            <span>11:00 - 12:00</span>
+                                                                                        </div>
+                                                                                        <div class="cl_trainer">
+                                                                                            <span>Regina</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div data-classes-schedule="alignment">
+                                                                                        <div class="classes_title">
+                                                                                            <h6>Alignment Yoga</h6>
+                                                                                        </div>
+                                                                                        <div class="classes_timing">
+                                                                                            <span>11:00 - 12:00</span>
+                                                                                        </div>
+                                                                                        <div class="cl_trainer">
+                                                                                            <span>Maria</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div data-classes-schedule="yoga-dance">
+                                                                                        <div class="classes_title">
+                                                                                            <h6>Yoga Dance</h6>
+                                                                                        </div>
+                                                                                        <div class="classes_timing">
+                                                                                            <span>11:00 - 12:00</span>
+                                                                                        </div>
+                                                                                        <div class="cl_trainer">
+                                                                                            <span>Elena</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div data-classes-schedule="kundalini">
+                                                                                        <div class="classes_title">
+                                                                                            <h6>Kundalini Yoga</h6>
+                                                                                        </div>
+                                                                                        <div class="classes_timing">
+                                                                                            <span>11:00 - 12:00</span>
+                                                                                        </div>
+                                                                                        <div class="cl_trainer">
+                                                                                            <span>Elena</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>&nbsp; </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>12:00AM</td>
+                                                                                <td>
+                                                                                    <div data-classes-schedule="pilates">
+                                                                                        <div class="classes_title">
+                                                                                            <h6>Pilates Yoga</h6>
+                                                                                        </div>
+                                                                                        <div class="classes_timing">
+                                                                                            <span>12:00 - 01:00</span>
+                                                                                        </div>
+                                                                                        <div class="cl_trainer">
+                                                                                            <span>Regina</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div data-classes-schedule="kundalini">
+                                                                                        <div class="classes_title">
+                                                                                            <h6>Kundalini Yoga</h6>
+                                                                                        </div>
+                                                                                        <div class="classes_timing">
+                                                                                            <span>12:00 - 01:00</span>
+                                                                                        </div>
+                                                                                        <div class="cl_trainer">
+                                                                                            <span>Elena</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div data-classes-schedule="hatha">
+                                                                                        <div class="classes_title">
+                                                                                            <h6>Hatha Yoga</h6>
+                                                                                        </div>
+                                                                                        <div class="classes_timing">
+                                                                                            <span>12:00 - 01:00</span>
+                                                                                        </div>
+                                                                                        <div class="cl_trainer">
+                                                                                            <span>Maria</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>&nbsp;</td>
+                                                                                <td>
+                                                                                    <div data-classes-schedule="pilates">
+                                                                                        <div class="classes_title">
+                                                                                            <h6>Pilates Yoga</h6>
+                                                                                        </div>
+                                                                                        <div class="classes_timing">
+                                                                                            <span>12:00 - 01:00</span>
+                                                                                        </div>
+                                                                                        <div class="cl_trainer">
+                                                                                            <span>Regina</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div data-classes-schedule="alignment">
+                                                                                        <div class="classes_title">
+                                                                                            <h6>Alignment Yoga</h6>
+                                                                                        </div>
+                                                                                        <div class="classes_timing">
+                                                                                            <span>12:00 - 01:00</span>
+                                                                                        </div>
+                                                                                        <div class="cl_trainer">
+                                                                                            <span>Maria</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div data-classes-schedule="yoga-dance">
+                                                                                        <div class="classes_title">
+                                                                                            <h6>Yoga Dance</h6>
+                                                                                        </div>
+                                                                                        <div class="classes_timing">
+                                                                                            <span>12:00 - 01:00</span>
+                                                                                        </div>
+                                                                                        <div class="cl_trainer">
+                                                                                            <span>Elena</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </section> -->
+                                                </section> -->
     {{-- <!-- END SECTION CLASSES TIMETABLE --> --}}
 
     {{-- <!-- START SECTION PRICING TABLE --> --}}
@@ -1092,178 +1093,178 @@
                 </div>
             </div>
             <!-- <div class="row">
-                                                        <div class="col-lg-4">
-                                                            <div class="pricing_box pricing_style1 animation" data-animation="fadeInUp"
-                                                                data-animation-delay="0.2s">
-                                                                <div class="pr_title_wrap border-bottom">
-                                                                    <h4 class="pr_title">regular member</h4>
-                                                                    <div class="price_tage">
-                                                                        <h2>$49<span>/ Month</span></h2>
+                                                            <div class="col-lg-4">
+                                                                <div class="pricing_box pricing_style1 animation" data-animation="fadeInUp"
+                                                                    data-animation-delay="0.2s">
+                                                                    <div class="pr_title_wrap border-bottom">
+                                                                        <h4 class="pr_title">regular member</h4>
+                                                                        <div class="price_tage">
+                                                                            <h2>$49<span>/ Month</span></h2>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="pr_content pt-3">
-                                                                    <ul class="list_none pr_list">
-                                                                        <li>Basic Options</li>
-                                                                        <li>Full Access</li>
-                                                                        <li>Customers Support</li>
-                                                                        <li>Free Updates</li>
-                                                                        <li>Advanced Options</li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="pr_footer">
-                                                                    <a href="#" class="btn btn-dark rounded-0">Buy Now</a>
+                                                                    <div class="pr_content pt-3">
+                                                                        <ul class="list_none pr_list">
+                                                                            <li>Basic Options</li>
+                                                                            <li>Full Access</li>
+                                                                            <li>Customers Support</li>
+                                                                            <li>Free Updates</li>
+                                                                            <li>Advanced Options</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="pr_footer">
+                                                                        <a href="#" class="btn btn-dark rounded-0">Buy Now</a>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="pricing_box pricing_style1 animation" data-animation="fadeInUp"
-                                                                data-animation-delay="0.3s">
-                                                                <div class="pricing_ribbon">Popular</div>
-                                                                <div class="pr_title_wrap bg_default text_white">
-                                                                    <h4 class="pr_title">V.i.p Member</h4>
-                                                                    <div class="price_tage">
-                                                                        <h2>$99<span>/ Month</span></h2>
+                                                            <div class="col-lg-4">
+                                                                <div class="pricing_box pricing_style1 animation" data-animation="fadeInUp"
+                                                                    data-animation-delay="0.3s">
+                                                                    <div class="pricing_ribbon">Popular</div>
+                                                                    <div class="pr_title_wrap bg_default text_white">
+                                                                        <h4 class="pr_title">V.i.p Member</h4>
+                                                                        <div class="price_tage">
+                                                                            <h2>$99<span>/ Month</span></h2>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="pr_content pt-3">
-                                                                    <ul class="list_none pr_list">
-                                                                        <li>Standard Options</li>
-                                                                        <li>Full Access</li>
-                                                                        <li>Customers Support</li>
-                                                                        <li>Free Updates</li>
-                                                                        <li>Advanced Options</li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="pr_footer">
-                                                                    <a href="#" class="btn btn-default rounded-0">Buy Now</a>
+                                                                    <div class="pr_content pt-3">
+                                                                        <ul class="list_none pr_list">
+                                                                            <li>Standard Options</li>
+                                                                            <li>Full Access</li>
+                                                                            <li>Customers Support</li>
+                                                                            <li>Free Updates</li>
+                                                                            <li>Advanced Options</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="pr_footer">
+                                                                        <a href="#" class="btn btn-default rounded-0">Buy Now</a>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="pricing_box pricing_style1 animation" data-animation="fadeInUp"
-                                                                data-animation-delay="0.4s">
-                                                                <div class="pr_title_wrap border-bottom">
-                                                                    <h4 class="pr_title">Premium Member</h4>
-                                                                    <div class="price_tage">
-                                                                        <h2>$199<span>/ Month</span></h2>
+                                                            <div class="col-lg-4">
+                                                                <div class="pricing_box pricing_style1 animation" data-animation="fadeInUp"
+                                                                    data-animation-delay="0.4s">
+                                                                    <div class="pr_title_wrap border-bottom">
+                                                                        <h4 class="pr_title">Premium Member</h4>
+                                                                        <div class="price_tage">
+                                                                            <h2>$199<span>/ Month</span></h2>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="pr_content pt-3">
+                                                                        <ul class="list_none pr_list">
+                                                                            <li>Unlimited Options</li>
+                                                                            <li>Full Access</li>
+                                                                            <li>Customers Support</li>
+                                                                            <li>Free Updates</li>
+                                                                            <li>Advanced Options</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="pr_footer">
+                                                                        <a href="#" class="btn btn-dark rounded-0">Buy Now</a>
                                                                     </div>
                                                                 </div>
-                                                                <div class="pr_content pt-3">
-                                                                    <ul class="list_none pr_list">
-                                                                        <li>Unlimited Options</li>
-                                                                        <li>Full Access</li>
-                                                                        <li>Customers Support</li>
-                                                                        <li>Free Updates</li>
-                                                                        <li>Advanced Options</li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="pr_footer">
-                                                                    <a href="#" class="btn btn-dark rounded-0">Buy Now</a>
-                                                                </div>
+                                                            </div>
+                                                        </div> -->
+        </div>
+        <!-- <div class="shape_img">
+                                                        <div class="ol_shape8">
+                                                            <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                                                                <img src="{{ asset('assets/images/shape8.png') }}" alt="image" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="ol_shape9">
+                                                            <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
+                                                                <img src="{{ asset('assets/images/shape9.png') }}" alt="image" />
                                                             </div>
                                                         </div>
                                                     </div> -->
-        </div>
-        <!-- <div class="shape_img">
-                                                    <div class="ol_shape8">
-                                                        <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                                                            <img src="{{ asset('assets/images/shape8.png') }}" alt="image" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="ol_shape9">
-                                                        <div class="animation" data-animation="fadeInLeft" data-animation-delay="0.5s">
-                                                            <img src="{{ asset('assets/images/shape9.png') }}" alt="image" />
-                                                        </div>
-                                                    </div>
-                                                </div> -->
     </section>
     {{-- <!-- END SECTION PRICING TABLE --> --}}
 
     {{-- <!-- START SECTION TESTIMONIAL --> --}}
     <!-- <section>
-                                            <div class="container">
-                                                <div class="row justify-content-center">
-                                                    <div class="col-xl-6 col-lg-8 col-md-10 text-center animation" data-animation="fadeInUp"
-                                                        data-animation-delay="0.2s">
-                                                        <div class="heading_s1">
-                                                            <span class="sub_heading">Testimonial</span>
-                                                            <h2>Our Client Say!</h2>
-                                                        </div>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id
-                                                            varius nunc id varius nunc.</p>
-                                                        <div class="xs_divider clearfix d-none d-md-block"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-12 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
-                                                        <div class="testimonial_slider testimonial_style1 carousel_slider owl-carousel owl-theme"
-                                                            data-margin="15" data-loop="true" data-autoplay="true"
-                                                            data-responsive='{"0":{"items": "1"}, "768":{"items": "2"}, "1199":{"items": "3"}}'>
-                                                            <div class="testimonial_box">
-                                                                <div class="testi_meta">
-                                                                    <div class="testimonial_img">
-                                                                        <img src="{{ asset('assets/images/client_img1.jpg') }}" alt="client">
-                                                                    </div>
-                                                                    <div class="testi_user">
-                                                                        <h5>Merry Walter</h5>
-                                                                        <span>Web Designer</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="testi_desc">
-                                                                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Phasellus blandit massa enim
-                                                                        Nullam varius nunc.Lorem ipsum doloramet consectetur adipiscing</p>
-                                                                </div>
+                                                <div class="container">
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-xl-6 col-lg-8 col-md-10 text-center animation" data-animation="fadeInUp"
+                                                            data-animation-delay="0.2s">
+                                                            <div class="heading_s1">
+                                                                <span class="sub_heading">Testimonial</span>
+                                                                <h2>Our Client Say!</h2>
                                                             </div>
-                                                            <div class="testimonial_box">
-                                                                <div class="testi_meta">
-                                                                    <div class="testimonial_img">
-                                                                        <img src="{{ asset('assets/images/client_img2.jpg') }}" alt="client">
-                                                                    </div>
-                                                                    <div class="testi_user">
-                                                                        <h5>Elena Mark</h5>
-                                                                        <span>Web Designer</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="testi_desc">
-                                                                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Phasellus blandit massa enim
-                                                                        Nullam varius nunc.Lorem ipsum doloramet consectetur adipiscing</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="testimonial_box">
-                                                                <div class="testi_meta">
-                                                                    <div class="testimonial_img">
-                                                                        <img src="{{ asset('assets/images/client_img3.jpg') }}" alt="client">
-                                                                    </div>
-                                                                    <div class="testi_user">
-                                                                        <h5>Calvin William</h5>
-                                                                        <span>Web Designer</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="testi_desc">
-                                                                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Phasellus blandit massa enim
-                                                                        Nullam varius nunc.Lorem ipsum doloramet consectetur adipiscing</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="testimonial_box">
-                                                                <div class="testi_meta">
-                                                                    <div class="testimonial_img">
-                                                                        <img src="{{ asset('assets/images/client_img4.jpg') }}" alt="client">
-                                                                    </div>
-                                                                    <div class="testi_user">
-                                                                        <h5>Maria Wolter</h5>
-                                                                        <span>Web Designer</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="testi_desc">
-                                                                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Phasellus blandit massa enim
-                                                                        Nullam varius nunc.Lorem ipsum doloramet consectetur adipiscing</p>
-                                                                </div>
-                                                            </div>
+                                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id
+                                                                varius nunc id varius nunc.</p>
+                                                            <div class="xs_divider clearfix d-none d-md-block"></div>
                                                         </div>
                                                     </div>
+                                                    <div class="row">
+                                                        <div class="col-12 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
+                                                            <div class="testimonial_slider testimonial_style1 carousel_slider owl-carousel owl-theme"
+                                                                data-margin="15" data-loop="true" data-autoplay="true"
+                                                                data-responsive='{"0":{"items": "1"}, "768":{"items": "2"}, "1199":{"items": "3"}}'>
+                                                                <div class="testimonial_box">
+                                                                    <div class="testi_meta">
+                                                                        <div class="testimonial_img">
+                                                                            <img src="{{ asset('assets/images/client_img1.jpg') }}" alt="client">
+                                                                        </div>
+                                                                        <div class="testi_user">
+                                                                            <h5>Merry Walter</h5>
+                                                                            <span>Web Designer</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="testi_desc">
+                                                                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Phasellus blandit massa enim
+                                                                            Nullam varius nunc.Lorem ipsum doloramet consectetur adipiscing</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="testimonial_box">
+                                                                    <div class="testi_meta">
+                                                                        <div class="testimonial_img">
+                                                                            <img src="{{ asset('assets/images/client_img2.jpg') }}" alt="client">
+                                                                        </div>
+                                                                        <div class="testi_user">
+                                                                            <h5>Elena Mark</h5>
+                                                                            <span>Web Designer</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="testi_desc">
+                                                                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Phasellus blandit massa enim
+                                                                            Nullam varius nunc.Lorem ipsum doloramet consectetur adipiscing</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="testimonial_box">
+                                                                    <div class="testi_meta">
+                                                                        <div class="testimonial_img">
+                                                                            <img src="{{ asset('assets/images/client_img3.jpg') }}" alt="client">
+                                                                        </div>
+                                                                        <div class="testi_user">
+                                                                            <h5>Calvin William</h5>
+                                                                            <span>Web Designer</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="testi_desc">
+                                                                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Phasellus blandit massa enim
+                                                                            Nullam varius nunc.Lorem ipsum doloramet consectetur adipiscing</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="testimonial_box">
+                                                                    <div class="testi_meta">
+                                                                        <div class="testimonial_img">
+                                                                            <img src="{{ asset('assets/images/client_img4.jpg') }}" alt="client">
+                                                                        </div>
+                                                                        <div class="testi_user">
+                                                                            <h5>Maria Wolter</h5>
+                                                                            <span>Web Designer</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="testi_desc">
+                                                                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Phasellus blandit massa enim
+                                                                            Nullam varius nunc.Lorem ipsum doloramet consectetur adipiscing</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </section> -->
+                                            </section> -->
     {{-- <!-- END SECTION TESTIMONIAL --> --}}
 
     {{-- <!-- START SECTION TEACHER --> --}}
@@ -1284,7 +1285,7 @@
                 <div class="row justify-content-center">
                     <div class="col-12 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
                         <div class="testimonial_slider testimonial_style1 carousel_slider owl-carousel owl-theme d-flex 
-                                                                                                {{ $outTeams->count() <= 2 ? 'justify-content-center' : 'justify-content-start' }}"
+                                                                                                        {{ $outTeams->count() <= 2 ? 'justify-content-center' : 'justify-content-start' }}"
                             data-margin="15" data-loop="{{ $outTeams->count() > 1 ? 'true' : 'false' }}"
                             data-autoplay="{{ $outTeams->count() > 1 ? 'true' : 'false' }}"
                             data-responsive='{"0":{"items": "1"}, "768":{"items": "2"}, "1199":{"items": "3"}}'>
@@ -1301,7 +1302,7 @@
                                                     </li>
                                                 @endif
                                                 @if ($ourTeam->twitter_url)
-                                                    <li><a href="{{ $ourTeam->twitter_url }}"><i class="fab fa-twitter"></i></a></li>
+                                                    <li><a href="{{ $ourTeam->twitter_url }}"><i class="fab fa-x-twitter"></i></a></li>
                                                 @endif
                                                 @if ($ourTeam->google_url)
                                                     <li><a href="{{ $ourTeam->google_url }}"><i class="fab fa-google-plus-g"></i></a>

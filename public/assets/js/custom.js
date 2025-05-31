@@ -20,7 +20,7 @@ $(document).ready(function () {
         const cartList = $(".cart_list");
         cartList.empty();
         let totalAmount = 0;
-        let price = 0, discount = 0, symbol = "";
+        let prices = 0, price = 0, discount = 0, symbol = "";
         const selectedCountry = getCookie("selectedCountry") || "India";
 
         // id: productId,
@@ -44,34 +44,39 @@ $(document).ready(function () {
 
 
             if (selectedCountry === "India") {
-                price = item.inrprice * item.quantity;
+                price = item.inrprice - (item.inrprice * item.inrdiscount / 100);
+                prices = item.inrprice * item.quantity;
                 discount = (item.inrprice * item.inrdiscount / 100) * item.quantity;
                 symbol = item.inrsymbol;
             } else if (selectedCountry === "United States") {
-                price = item.usdprice * item.usddiscount;
+                price = item.usdprice - (item.usdprice * item.usddiscount / 100);
+
+                prices = item.usdprice * item.usddiscount;
                 discount = (item.usdprice * item.usddiscount / 100) * item.quantity;
                 symbol = item.usdsymbol;
             } else if (selectedCountry === "Canada") {
-                price = item.canadaprice * item.canadadiscount;
+                price = item.canadaprice - (item.canadaprice * item.canadadiscount / 100);
+                prices = item.canadaprice * item.canadadiscount;
                 discount = (item.canadaprice * item.canadadiscount / 100) * item.quantity;
                 symbol = item.canadasymbol;
             } else {
                 // Default case if no country matches
-                price = item.inrprice * item.quantity || 0;
+                price = item.inrprice - (item.inrprice * item.inrdiscount / 100);
+                prices = item.inrprice * item.quantity || 0;
                 discount = (item.inrprice * item.inrdiscount / 100) * item.quantity || 0;
                 symbol = item.inrsymbol || "₹";
             }
 
             // let discountPrice = price - (price * item.inrdiscount / 100);
 
-            let finalPrice = price - discount;
-            totalAmount += finalPrice * item.quantity;
+            let finalPrice = prices - discount;
+            totalAmount += finalPrice;
 
             cartList.append(`
                 <li data-id="${item.id}">
                     <a href="#" class="item_remove"><i class="fa fa-times"></i></a>
                     <a href="#"><img src="${item.thumb}" alt="cart_thumb"> ${item.name}</a>
-                    <span class="cart_quantity">${item.quantity} x <span class="cart_amount"> <span class="price_symbole">${symbol}</span>${finalPrice}</span></span>
+                    <span class="cart_quantity">${item.quantity} x <span class="cart_amount"> <span class="price_symbole">${symbol}</span>${price}</span></span>
                 </li>
             `);
         });
@@ -153,7 +158,7 @@ $(document).ready(function () {
     function renderCart() {
         let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
         let coupon = JSON.parse(localStorage.getItem("coupon")) || {};
-        
+
         $("#cart-items").empty();
         if (cartItems.length === 0) {
             $("#cart-items").append(
@@ -161,50 +166,79 @@ $(document).ready(function () {
             );
             return;
         }
-
-        let discount = 0;
+        let currencySymbol = "";
         let prices = 0;
+        let price = 0;
+        let discount = 0;
+        let totalDiscount = 0;
+        let totalPrice = 0;
         let couponDiscount = 0;
+        let deliveryCharge = 0;
+        let totalDeliveryCharge = 0;
+        let persionatageOff = 0;
+
+        const selectedCountry = getCookie("selectedCountry") || "India";
         cartItems.forEach((item, index) => {
 
-            const discountedPrice = item.price - item.discount;
-            prices += item.price * item.quantity;
-            discount += item.discount * item.quantity;
+            if (selectedCountry === "India") {
+                prices = item.inrprice * item.quantity;
+                discount = (item.inrprice * item.inrdiscount / 100) * item.quantity;
+                price = item.inrprice - (item.inrprice * item.inrdiscount / 100);
+                persionatageOff = item.inrdiscount;
+                currencySymbol = item.inrsymbol;
+                deliveryCharge = item.inrdelivery_charge * item.quantity;
+            } else if (selectedCountry === "United States") {
+                prices = item.usdprice * item.quantity;
+                discount = (item.usdprice * item.usddiscount / 100) * item.quantity;
+                persionatageOff = item.usddiscount;
+                currencySymbol = item.usdsymbol;
+                deliveryCharge = item.usddelivery_charge * item.quantity;
+            } else if (selectedCountry === "Canada") {
+
+                prices = item.canadaprice * item.quantity;
+                discount = (item.canadaprice * item.canadadiscount / 100) * item.quantity;
+                persionatageOff = item.canadadiscount;
+                currencySymbol = item.canadasymbol;
+                deliveryCharge = item.canadadelivery_charge * item.quantity;
+
+            } else {
+
+                prices = item.inrprice * item.quantity;
+                discount = (item.inrprice * item.inrdiscount / 100) * item.quantity;
+                persionatageOff = item.inrdiscount;
+                currencySymbol = item.inrsymbol;
+                deliveryCharge = item.inrdelivery_charge * item.quantity;
+
+            }
+
             $("#cart-items").append(`
                 <tr>
                     <td class="product-thumbnail"><img src="${item.thumb
                 }" alt="${item.name}" style="width:70px;height:70px;"></td>
                     <td class="product-name">${item.name}</td>
-                    <td class="product-price">$${discountedPrice.toFixed(
-                    2
-                )}</td>
+                    <td class="product-price">${currencySymbol}${price}</td>
                     <td class="product-quantity">
                         <button class="minus" data-index="${index}">-</button>
                         <input type="text" value="${item.quantity
                 }" class="qty w-25" min="1" readonly>
                         <button class="plus" data-index="${index}">+</button>
                     </td>
-                    <td class="product-subtotal">$${(
-                    discountedPrice * item.quantity
+                    <td class="product-subtotal">${currencySymbol}${(
+                    prices - discount
                 ).toFixed(2)}</td>
                     <td class="product-remove"><button class="remove" data-index="${index}">×</button></td>
                 </tr>
             `);
+
+
+            totalDiscount += discount;
+            totalPrice += prices;
+            totalDeliveryCharge += deliveryCharge;
+
         });
-        let finalTotal = prices - discount;
-        if (coupon?.id > 0) {
-            if (coupon?.type == "Percentage") {
-                couponDiscount += (finalTotal * coupon?.value) / 100;
-            } else {
-                couponDiscount += coupon?.value;
-            }
-            $("#apply_coupon").val(coupon?.coupon_code);
-        }
-        finalTotal -= couponDiscount;
-        discount += couponDiscount;
-        $(".cart_sub_total").text(`$${prices.toFixed(2)}`);
-        $(".cart_discount_total").text(`$${discount.toFixed(2)}`);
-        $(".cart_final_total").text(`$${finalTotal.toFixed(2)}`);
+        $(".cart_sub_total").text(`${(totalPrice - totalDiscount).toFixed(2)}`);
+        // $(".cart_discount_total").text(`$${totalDiscount.toFixed(2)}`);
+        // $(".cart_final_total").text(`$${finalTotal.toFixed(2)}`);
         navbarCartItems();
     }
 

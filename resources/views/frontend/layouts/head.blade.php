@@ -42,7 +42,9 @@
  <link rel="stylesheet" id="layoutstyle" href="{{ asset('assets/color/theme-default.css') }}">
 
  <!-- Font Awesome CSS -->
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
  {{-- <script>
      var sc_project = 11981757;
      var sc_invisible = 1;

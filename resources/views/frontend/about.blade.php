@@ -316,7 +316,7 @@
                                                 </li>
                                             @endif
                                             @if ($ourTeam->twitter_url)
-                                                <li><a href="{{ $ourTeam->twitter_url }}"><i class="fab fa-twitter"></i></a></li>
+                                                <li><a href="{{ $ourTeam->twitter_url }}"><i class="fab fa-x-twitter"></i></a></li>
                                             @endif
                                             @if ($ourTeam->google_url)
                                                 <li><a href="{{ $ourTeam->google_url }}"><i class="fab fa-google-plus-g"></i></a>

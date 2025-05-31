@@ -47,7 +47,7 @@
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-lg-4 col-md-6 mb-3 mb-md-0">
                                                 <div class="coupon field_form input-group">
-                                                    <input type="text" value="" class="form-control"
+                                                    <!-- <input type="text" value="" class="form-control"
                                                         placeholder="Enter Coupon Code.." name="apply_coupon"
                                                         id="apply_coupon">
                                                     <div class="input-group-append">
@@ -58,7 +58,7 @@
                                                     <div class="input-group-append mx-1">
                                                         <button
                                                             class="btn btn-default btn-sm clear_apply_coupon">Clear</button>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </div>
                                             <div class="col-lg-8 col-md-6 text-center text-md-right">
@@ -89,17 +89,17 @@
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <td class="cart_total_label">Total</td>
-                                        <td class="cart_total_amount cart_sub_total">$226.00</td>
+                                        <td class="cart_total_label"><strong>Total</strong></td>
+                                        <td class="cart_total_amount cart_sub_total"><strong>$00.00</strong></td>
                                     </tr>
-                                    <tr>
+                                    <!-- <tr>
                                         <td class="cart_total_label">Discount</td>
                                         <td class="cart_total_amount cart_discount_total">$226.00</td>
-                                    </tr>
-                                    <tr>
+                                    </tr> -->
+                                    <!-- <tr>
                                         <td class="cart_total_label">Grand Total</td>
-                                        <td class="cart_total_amount cart_final_total"><strong>$226.00</strong></td>
-                                    </tr>
+                                        <td class="cart_total_amount cart_final_total"><strong>$00.00</strong></td>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>

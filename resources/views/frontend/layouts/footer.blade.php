@@ -7,7 +7,7 @@
             gap: 20px;
             /* spacing between icons */
             justify-content: start;
-            margin-left: 30px;
+            margin-left: 49px;
             margin-top: 20px;
             /* center the icons horizontally */
             align-items: center;
@@ -19,7 +19,7 @@
         }
 
         .security i {
-            font-size: 32px;
+            font-size: 22px;
             /* increase icon size */
             color: #ffffff;
             /* change this color as needed */
@@ -107,8 +107,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ $settings['twitter_url'] ?? '' }}" class="sc_twitter" target="_blank">
-                                <i class="fab fa-twitter"></i>
+                            <a href="{{ $settings['twitter_url'] ?? '' }}" class="sc_twitter" target="_blank" >
+                                <i class="fab fa-x-twitter"></i>
                             </a>
                         </li>
                         <li>
@@ -160,7 +160,7 @@
     </div>
     <div class="shape_img">
         <div class="ol_shape10">
-            <img src="assets/images/shape7.png" alt="shape36" />
+            <img src="{{ env('APP_URL') }}/assets/images/shape7.png" alt="shape36" />
         </div>
     </div>
 </footer>
