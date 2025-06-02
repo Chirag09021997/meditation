@@ -143,7 +143,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             <p class="copyright m-md-0 text-center text-md-left">
-                                Copyright © <span id="currentYear"></span> - Made By codeshopstudio</p>
+                                Copyright © <span id="currentYear">2025</span> Tejas Aura All Rights Reserved.</p>
+
                         </div>
                         <div class="col-md-6">
                             <ul class="list_none footer_link text-center text-md-right">
