@@ -62,6 +62,12 @@ class HomeController extends Controller
         return view('frontend.life');
     }
 
+    public function delta()
+    {
+        return view('frontend.delta');
+    }
+
+
     public function eventsList()
     {
         $events = Event::where('status', 'Active')->select('id', 'name', 'thumb_image', 'starting_date', 'short_description', 'duration', 'language', 'location')->orderByDesc('created_at')->paginate(9);
