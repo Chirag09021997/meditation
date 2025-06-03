@@ -57,16 +57,16 @@
                     <div class="video_container top_video p-0" id="thumb_0"  style="border-radius: 16px; width:100%;height: 80%; cursor:pointer; text-align: center;">
                         <picture>
                             <source
-                                srcset="https://heal-satvicmovement-org.b-cdn.net/resources/img/Thumbnail/Thumbnail_3.webp"
+                                srcset="$event->thumb_image"
                                 style="border-radius: 30px;cursor:pointer; text-align: center;"
                                 onclick="youtubeVideoPlay(0, 'https://www.youtube.com/embed/_5kRwIQgMS4?si=Aj87YPtEJBFlBGEA')">
                             <source
-                                srcset="https://heal-satvicmovement-org.b-cdn.net/resources/img/Thumbnail/Thumbnail_3.webp"
-                                media="(max-width: 400px)"
+                                srcset="$event->thumb_image"
+                                media="(max-width: 550px)"
                                 style="border-radius: 30px; width:100%; cursor:pointer; text-align: center;"
                                 onclick="youtubeVideoPlay(0, 'https://www.youtube.com/embed/_5kRwIQgMS4?si=Aj87YPtEJBFlBGEA')">
                             <img loading="eager"
-                                src="https://heal-satvicmovement-org.b-cdn.net/resources/img/Thumbnail/Thumbnail_3.webp"
+                                src="$event->thumb_image"
                                 style="border-radius: 16px; width:100%; cursor:pointer; text-align: center;"
                                 onclick="youtubeVideoPlay(0, 'https://www.youtube.com/embed/_5kRwIQgMS4?si=Aj87YPtEJBFlBGEA')" />
                         </picture>
