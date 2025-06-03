@@ -70,7 +70,7 @@
                     <x-input-label for="duration" :value="__('Duration')" />
                     <span class="text-red-500">*</span>
                 </div>
-                                <x-text-input id="duration" class="block mt-1 w-full" type="text" name="duration"
+                                <x-text-input id="duration" class="block mt-1 w-full" type="number" name="duration"
                     :value="old('duration',$event->duration)" placeholder="Enter Duration" />
                 <x-input-error :messages="$errors->get('duration')" class="mt-2" />
             </div>
@@ -163,6 +163,15 @@
                     placeholder="Enter short description...">{{ old('short_description', $event->short_description) }}</textarea>
                 <x-input-error :messages="$errors->get('short_description')" class="mt-2" />
             </div>
+        </div>
+
+         <!-- youtube_video -->
+        <div class="mt-4">
+            <x-input-label for="youtube_video" :value="__(key: 'Youtube Link')" />
+            <textarea id="youtube_video" name="youtube_video" rows="4"
+                class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
+                placeholder="Enter youtube video...">{{ old('youtube_video',$event->youtube_video) }}</textarea>
+            <x-input-error :messages="$errors->get('youtube_video')" class="mt-2" />
         </div>
 
         <h2 class="mt-3">Include</h2>

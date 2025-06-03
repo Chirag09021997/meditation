@@ -54,21 +54,21 @@
                 </div>
 
                 <div class="col-lg-6 pt-4 mt-2 main_video pe-0 pe-sm-3">
-                    <div class="video_container top_video p-0" id="thumb_0"  style="border-radius: 16px; width:100%;height: 80%; cursor:pointer; text-align: center;">
+                    <div class="video_container top_video p-0" id="thumb_0"  style="border-radius: 16px; width:85%;height: 105%; cursor:pointer; text-align: center;">
                         <picture>
                             <source
-                                srcset="$event->thumb_image"
+                                srcset="{{ $event->thumb_image }}"
                                 style="border-radius: 30px;cursor:pointer; text-align: center;"
-                                onclick="youtubeVideoPlay(0, 'https://www.youtube.com/embed/_5kRwIQgMS4?si=Aj87YPtEJBFlBGEA')">
+                                onclick="youtubeVideoPlay(0, '{{ $event->youtube_video }}')">
                             <source
-                                srcset="$event->thumb_image"
+                                srcset="{{ $event->thumb_image }}"
                                 media="(max-width: 550px)"
                                 style="border-radius: 30px; width:100%; cursor:pointer; text-align: center;"
-                                onclick="youtubeVideoPlay(0, 'https://www.youtube.com/embed/_5kRwIQgMS4?si=Aj87YPtEJBFlBGEA')">
+                                onclick="youtubeVideoPlay(0, '{{ $event->youtube_video }}')">
                             <img loading="eager"
-                                src="$event->thumb_image"
+                                src="{{ $event->thumb_image }}"
                                 style="border-radius: 16px; width:100%; cursor:pointer; text-align: center;"
-                                onclick="youtubeVideoPlay(0, 'https://www.youtube.com/embed/_5kRwIQgMS4?si=Aj87YPtEJBFlBGEA')" />
+                                onclick="youtubeVideoPlay(0, '{{ $event->youtube_video }}')" />
                         </picture>
                     </div>
                 </div>
@@ -179,7 +179,7 @@
                                         alt="Date" width="100" height="100" />{{ $include['description'] ?? 'No Description' }}</span>
                                 @endforeach
 
-                               
+<!--                                
                                 <div class="people_joined_right">
                                     <img loading="lazy"
                                         src="{{ asset('assets/images/group.png') }}"
@@ -187,7 +187,7 @@
                                     <span >
                                         <strong>
                                         {{$event->total_joining}} </strong> people have already joined</span>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="register_mobile" style="display: none;">
                                 <div class="register_mobile_heading">

@@ -43,7 +43,8 @@ class UpdateEventRequest extends FormRequest
             'curriculum' => 'nullable',
             'fees' => 'required_if:is_paid,On|numeric|min:0',
             'total_joining' => 'required|integer|min:0',
-            'host_id' => 'nullable'
+            'host_id' => 'nullable',
+            'youtube_video' => 'nullable|string'
         ];
     }
 }

@@ -81,7 +81,7 @@ class HomeController extends Controller
 
     public function eventSingle(string $id)
     {
-        $event = Event::where('status', 'Active')->select('id', 'name', 'thumb_image', 'short_description', 'description', 'starting_date', 'location', 'total_joining', 'is_paid', 'fees', 'language', 'end_date', 'duration', 'question', 'event_image', 'include', 'teaching', 'curriculum')->findOrFail($id);
+        $event = Event::where('status', 'Active')->select('id', 'name', 'thumb_image', 'short_description', 'description', 'starting_date', 'location', 'total_joining', 'is_paid', 'fees', 'language', 'end_date', 'duration', 'question', 'event_image', 'include', 'teaching', 'curriculum','youtube_video')->findOrFail($id);
 
         // $event = Event::where('status', 'Active')->select(columns: 'id', 'name', 'thumb_image', 'short_description', 'description', 'starting_date', 'location', 'total_joining', 'is_paid', 'fees')->findOrFail($id);
         $event->formatted_date = Carbon::parse($event->starting_date)->format('M d, Y');

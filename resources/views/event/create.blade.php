@@ -50,11 +50,11 @@
             </div>
 
             <div class="mt-4">
-            <div class="flex items-center space-x-1">
+                <div class="flex items-center space-x-1">
                     <x-input-label for="duration" :value="__('Duration')" />
                     <span class="text-red-500">*</span>
                 </div>
-                <x-text-input id="duration" class="block mt-1 w-full" type="text" name="duration"
+                <x-text-input id="duration" class="block mt-1 w-full" type="number"  name="duration"
                     :value="old('duration')" placeholder="Enter Duration" />
                 <x-input-error :messages="$errors->get('duration')" class="mt-2" />
             </div>
@@ -127,7 +127,7 @@
 
             <!-- fees -->
             <div class="mt-4" id="fees-container">
-            <div class="flex items-center space-x-1">
+                <div class="flex items-center space-x-1">
                     <x-input-label for="fees" :value="__('Fees')" />
                     <span class="text-red-500">*</span>
                 </div>
@@ -137,13 +137,23 @@
             </div>
 
             <!-- short_description -->
-            <div class="mt-4">
+            <div class="mt-4">  
                 <x-input-label for="short_description" :value="__('Short Description')" />
                 <textarea id="short_description" name="short_description" rows="4"
                     class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
                     placeholder="Enter short description...">{{ old('short_description') }}</textarea>
                 <x-input-error :messages="$errors->get('short_description')" class="mt-2" />
             </div>
+        </div>
+
+
+        <!-- youtube_video -->
+        <div class="mt-4">  
+            <x-input-label for="youtube_video" :value="__(key: 'Youtube Link')" />
+            <textarea id="youtube_video" name="youtube_video" rows="4"
+                class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
+                placeholder="Enter youtube video...">{{ old('youtube_video') }}</textarea>
+            <x-input-error :messages="$errors->get('youtube_video')" class="mt-2" />
         </div>
 
         <h2 class="mt-3">Include</h2>
@@ -170,11 +180,12 @@
                 <x-input-error :messages="$errors->get('include_image')" class="mt-2" />
             </div>
         </div>
-<!-- Add Button -->
+        <!-- Add Button -->
         <button type="button" id="add-include"
             class="mt-3 text-white hover:text-blue-900 bg-blue-900 border border-blue-300 focus:outline-none hover:bg-blue-100 focus:ring-4 focus:ring-blue-100 font-medium rounded-full text-sm px-5 py-2.5">
             {{ __('Add') }}
-        </button>        <h2>Teaching</h2>
+        </button>
+        <h2>Teaching</h2>
 
         <div class="grid md:grid-cols-3 gap-4" id="teaching">
             <div class="mt-4" id="teaching_title">
@@ -266,21 +277,21 @@
 
             $('form').on('submit', function (e) {
                 e.preventDefault();
-              
-              var startingDateDisplay = $('input[name="starting_date"]').val();
-              var EndDateDisplay = $('input[name="end_date"]').val();
+
+                var startingDateDisplay = $('input[name="starting_date"]').val();
+                var EndDateDisplay = $('input[name="end_date"]').val();
 
 
-              var startingDate = moment(startingDateDisplay, 'DD-MM-YYYY HH:mm:ss').format(
-                  'YYYY-MM-DD HH:mm:ss');
+                var startingDate = moment(startingDateDisplay, 'DD-MM-YYYY HH:mm:ss').format(
+                    'YYYY-MM-DD HH:mm:ss');
 
-              var EndDate = moment(EndDateDisplay, 'DD-MM-YYYY HH:mm:ss').format(
-                      'YYYY-MM-DD HH:mm:ss');
+                var EndDate = moment(EndDateDisplay, 'DD-MM-YYYY HH:mm:ss').format(
+                    'YYYY-MM-DD HH:mm:ss');
 
-              $('input[name="starting_date"]').val(startingDate);
-              $('input[name="end_date"]').val(EndDate);
-  
-              this.submit();
+                $('input[name="starting_date"]').val(startingDate);
+                $('input[name="end_date"]').val(EndDate);
+
+                this.submit();
             });
         });
 
