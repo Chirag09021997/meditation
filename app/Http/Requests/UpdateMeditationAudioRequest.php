@@ -26,6 +26,7 @@ class UpdateMeditationAudioRequest extends FormRequest
             'short_description' => 'nullable|string',
             'description' => 'nullable|string',
             'audio_thumb' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'inner_thumb' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'audio_upload' => 'nullable|mimes:mp3,wav,ogg|max:204800',
             'total_view' => 'required|integer|min:0',
             'premium_type' => 'required|boolean',

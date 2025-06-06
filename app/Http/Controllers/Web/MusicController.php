@@ -41,6 +41,12 @@ class MusicController extends Controller
             $filePath = $image->storeAs('public/uploads/music', $fileName);
             $validated['audio_thumb'] = str_replace('public/', 'storage/', $filePath);
         }
+         if ($request->hasFile('inner_thumb')) {
+            $image = $request->file('inner_thumb');
+            $fileName = time() . '_' . str_replace(' ', '_', $image->getClientOriginalName());
+            $filePath = $image->storeAs('public/uploads/music', $fileName);
+            $validated['inner_thumb'] = str_replace('public/', 'storage/', $filePath);
+        }
         if ($request->hasFile('audio_upload')) {
             $image = $request->file('audio_upload');
             $fileName = time() . '_' . str_replace(' ', '_', $image->getClientOriginalName());
@@ -94,6 +100,21 @@ class MusicController extends Controller
             $filePath = $image->storeAs('public/uploads/music', $fileName);
             $validated['audio_thumb'] = str_replace('public/', 'storage/', $filePath);
         }
+
+        if ($request->hasFile('inner_thumb')) {
+            if ($music->audio_thumb != null) {
+                $imagePath = storage_path(str_replace(config('app.url') . '/storage', 'app/public', $music->inner_thumb));
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
+                }
+            }
+            $image = $request->file('inner_thumb');
+            $fileName = time() . '_' . str_replace(' ', '_', $image->getClientOriginalName());
+            $filePath = $image->storeAs('public/uploads/music', $fileName);
+            $validated['inner_thumb'] = str_replace('public/', 'storage/', $filePath);
+        }
+
+    
         if ($request->hasFile('audio_upload')) {
             if ($music->audio_upload != null) {
                 $imagePath = storage_path(str_replace(config('app.url') . '/storage', 'app/public', $music->audio_upload));

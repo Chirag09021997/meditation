@@ -73,7 +73,7 @@ class APIController extends Controller
         if ($id > 0) {
             MeditationAudio::where('id', $id)->increment('total_view', 1);
             $meditationAudio = MeditationAudio::with('premiumPlans:id,name')
-                ->select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view')
+                ->select('id', 'name', 'short_description', 'description', 'audio_thumb','inner_thumb', 'audio_upload', 'premium_type', 'total_view')
                 ->where('status', 'Active')
                 ->find($id);
             return $this->sendResponse($meditationAudio, "Get Meditation Audio Record Successfully.");
@@ -117,7 +117,7 @@ class APIController extends Controller
         $id = $request->input('id', 0);
         if ($id > 0) {
             Music::where('id', $id)->increment('total_view', 1);
-            $music =  Music::select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view')->where('status', 'Active')->find($id);
+            $music =  Music::select('id', 'name', 'short_description', 'description', 'audio_thumb','inner_thumb', 'audio_upload', 'premium_type', 'total_view')->where('status', 'Active')->find($id);
             return $this->sendResponse($music, "Get Music Record SuccessFully.");
         }
         $customerId = $request->input('customer_id');
@@ -231,6 +231,7 @@ class APIController extends Controller
                     'meditation_audio.short_description',
                     'meditation_audio.description',
                     'meditation_audio.audio_thumb',
+                    'meditation_audio.inner_thumb',
                     'meditation_audio.audio_upload',
                     'meditation_audio.premium_type',
                     'meditation_audio.total_view'
@@ -261,9 +262,9 @@ class APIController extends Controller
                 $meditationAudio = $meditationAudio->merge($additionalRecords);
             }
         } else {
-            $meditationAudio = MeditationAudio::with('premiumPlans:id,name')->select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view')->where('status', 'Active')->latest()->take(5)->get();
+            $meditationAudio = MeditationAudio::with('premiumPlans:id,name')->select('id', 'name', 'short_description', 'description', 'audio_thumb','inner_thumb', 'audio_upload', 'premium_type', 'total_view')->where('status', 'Active')->latest()->take(5)->get();
         }
-        $musicQuery = Music::select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view')->where('status', 'Active');
+        $musicQuery = Music::select('id', 'name', 'short_description', 'description', 'audio_thumb','inner_thumb', 'audio_upload', 'premium_type', 'total_view')->where('status', 'Active');
         if ($interestIds->isNotEmpty()) {
             $musicQuery->join('music_interest_type', 'music.id', '=', 'music_interest_type.music_id')
                 ->orderByRaw("FIELD(music_interest_type.interest_id, " . implode(',', $interestIds->toArray()) . ") DESC");

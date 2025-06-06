@@ -37,6 +37,18 @@
                 <x-input-error :messages="$errors->get('audio_thumb')" class="mt-2" />
             </div>
 
+            <!-- inner_thumb -->
+            <div class="mt-4">
+            <div class="flex items-center space-x-1">
+                    <x-input-label for="inner_thumb" :value="__('Inner Thumb')" />
+                    <span class="text-red-500">*</span>
+                </div>
+                <x-text-input id="inner_thumb"
+                    class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
+                    type="file" name="inner_thumb" accept="image/*" />
+                <x-input-error :messages="$errors->get('inner_thumb')" class="mt-2" />
+            </div>
+
             <!-- audio_upload -->
             <div class="mt-4">
             <div class="flex items-center space-x-1">

@@ -34,13 +34,13 @@ class FavoriteController extends Controller
         foreach ($customersFavorites as $key => $favorite) {
             switch ($key) {
                 case 'meditation_audio':
-                    $response[$key] = MeditationAudio::whereIn('id', $favorite)->select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view', 'status')->get();
+                    $response[$key] = MeditationAudio::whereIn('id', $favorite)->select('id', 'name', 'short_description', 'description', 'audio_thumb','inner_thumb', 'audio_upload', 'premium_type', 'total_view', 'status')->get();
                     break;
                 case 'music':
-                    $response[$key] = Music::whereIn('id', $favorite)->select('id', 'name', 'short_description', 'description', 'audio_thumb', 'audio_upload', 'premium_type', 'total_view', 'status')->get();
+                    $response[$key] = Music::whereIn('id', $favorite)->select('id', 'name', 'short_description', 'description', 'audio_thumb','inner_thumb', 'audio_upload', 'premium_type', 'total_view', 'status')->get();
                     break;
                 case 'work_shops':
-                    $response[$key] = WorkShop::whereIn('id', $favorite)->select('id', 'name', 'short_description', 'description', 'thumb_image',  'video_url', 'premium_type', 'second', 'total_view', 'status')->get();
+                    $response[$key] = WorkShop::whereIn('id', $favorite)->select('id', 'name', 'short_description', 'description', 'thumb_image',  'hi_video_url','en_video_url', 'premium_type', 'second', 'total_view', 'status')->get();
                     break;
                 default:
                     break;
