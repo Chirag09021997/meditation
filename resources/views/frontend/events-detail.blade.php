@@ -1,5 +1,5 @@
+<!-- <link rel="stylesheet" href="{{ asset('assets/css/detail.css') }}"> -->
 @extends('frontend.layouts.app')
-<link rel="stylesheet" href="{{ asset('assets/css/detail.css') }}">
 
 @section('content')
 
@@ -54,23 +54,23 @@
                 </div>
 
                 <div class="col-lg-6 pt-4 mt-2 main_video pe-0 pe-sm-3">
-                    <div class="video_container top_video p-0" id="thumb_0"  style="border-radius: 16px; width:85%;height: 105%; cursor:pointer; text-align: center;">
-                        <picture>
-                            <source
-                                srcset="{{ $event->thumb_image }}"
-                                style="border-radius: 30px;cursor:pointer; text-align: center;"
-                                onclick="youtubeVideoPlay(0, '{{ $event->youtube_video }}')">
-                            <source
-                                srcset="{{ $event->thumb_image }}"
-                                media="(max-width: 550px)"
-                                style="border-radius: 30px; width:100%; cursor:pointer; text-align: center;"
-                                onclick="youtubeVideoPlay(0, '{{ $event->youtube_video }}')">
-                            <img loading="eager"
-                                src="{{ $event->thumb_image }}"
-                                style="border-radius: 16px; width:100%; cursor:pointer; text-align: center;"
-                                onclick="youtubeVideoPlay(0, '{{ $event->youtube_video }}')" />
-                        </picture>
-                    </div>
+                   <div class="video_container top_video p-0" id="thumb_0"
+     style="border-radius: 16px; width: 80%; height: auto; cursor: pointer; text-align: center; background-color: white; overflow: hidden;">
+    <picture style="display: block; width: 100%; height: auto;">
+        <source srcset="{{ $event->thumb_image }}"
+                media="(max-width: 550px)"
+                onclick="youtubeVideoPlay(0, '{{ $event->youtube_video }}')"
+                style="width: 100%; height: auto; cursor: pointer; border-radius: 0;">
+        <source srcset="{{ $event->thumb_image }}"
+                onclick="youtubeVideoPlay(0, '{{ $event->youtube_video }}')"
+                style="width: 100%; height: auto; cursor: pointer; border-radius: 0;">
+        <img loading="eager"
+             src="{{ $event->thumb_image }}"
+             onclick="youtubeVideoPlay(0, '{{ $event->youtube_video }}')"
+             style="width: 100%; height: auto; display: block; cursor: pointer; border-radius: 0;" />
+    </picture>
+</div>
+
                 </div>
             </div>
         </div>
@@ -145,7 +145,7 @@
                     <div class="col-lg-3">
                         <div class="right_block_container">
                             <div class="right_block register_desktop mt-4" style="">
-                                <h2>{{$event->name}}</h2>
+                                <h2 class="event-title">{{ $event->name }}</h2>
                                 <span class="date-and-time">
                                     <img loading="lazy"
                                         src="{{ asset('assets/images/date.png') }}"
@@ -174,9 +174,9 @@
                                         @foreach ($event->include as $key => $include)
 
 
-                                        <span class="date-and-time gray mt-4"><img loading="lazy"
+                                        <!-- <span class="date-and-time gray mt-4"><img loading="lazy"
                                         src="{{ asset('assets/images/green-tick.png') }}"
-                                        alt="Date" width="100" height="100" />{{ $include['description'] ?? 'No Description' }}</span>
+                                        alt="Date" width="100" height="100" />{{ $include['description'] ?? 'No Description' }}</span> -->
                                 @endforeach
 
 <!--                                
