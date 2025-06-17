@@ -61,7 +61,7 @@
 
             <!-- thumb_image -->
             <div class="mt-4">
-                <x-input-label for="thumb_image" :value="__('Thumb Image')" />
+                <x-input-label for="thumb_image" :value="__('Thumb Image (1000*600)')" />
                 <x-text-input id="thumb_image"
                     class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
                     type="file" name="thumb_image" accept="image/*" />

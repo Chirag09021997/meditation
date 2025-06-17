@@ -42,10 +42,7 @@
   .show-read-more .more-text{
       display: none;
   }
-  .social_media a img {
-      width: 40px;
-      height: 40px;
-  }
+
   #hero h1 {
       font-size: 55px;
       line-height: 56px  !important;
@@ -282,25 +279,6 @@
       .footer_column_2 {
           height: 90px !important;
       }
-  }
-  @media (max-width: 768px){
-      .social_media {
-          margin-left: 38px !important;
-      }
-  }
-  @media (max-width: 768px){
-      .social_media {
-          margin-bottom: 20px;
-      }
-  }
-  
-  .social_media a img.yt {
-     top: 0px !important; 
-  }
-  
-  .social_media a img {
-     top: 0px !important; 
-     
   }
   div#success_msg {
       color: #fff;
@@ -1753,6 +1731,9 @@ a {
   }
 
 
+
+
+  /* start footer */
 
 
 

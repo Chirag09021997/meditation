@@ -1,5 +1,4 @@
-@extends('frontend.layouts.app')
-
+<!-- @extends('frontend.layouts.app') -->
 <link rel="stylesheet" href="{{ asset('assets/css/detail.css') }}">
 
 @section('content')

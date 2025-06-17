@@ -46,7 +46,7 @@
 
             <!-- profile -->
             <div class="mt-4">
-                <x-input-label for="profile" :value="__('Profile')" />
+                <x-input-label for="profile" :value="__('Profile (355x355)')" />
                 <x-text-input id="profile"
                     class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
                     type="file" name="profile" accept="image/*" />

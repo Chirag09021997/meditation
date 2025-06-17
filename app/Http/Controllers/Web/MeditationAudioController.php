@@ -112,7 +112,7 @@ class MeditationAudioController extends Controller
         }
         
         if ($request->hasFile('inner_thumb')) {
-            if ($meditationAudio->audio_thumb != null) {
+            if ($meditationAudio->inner_thumb != null) {
                 $imagePath = storage_path(str_replace(config('app.url') . '/storage', 'app/public', $meditationAudio->inner_thumb));
                 if (file_exists($imagePath)) {
                     unlink($imagePath);
@@ -173,6 +173,9 @@ class MeditationAudioController extends Controller
             })
             ->editColumn('audio_thumb', function ($data) {
                 return '<img src="' . $data->audio_thumb . '" alt="" class="w-8 mx-auto" />';
+            })
+            ->editColumn('inner_thumb', function ($data) {
+                return '<img src="' . $data->inner_thumb . '" alt="" class="w-8 mx-auto" />';
             })
             ->editColumn('premium_type', function ($data) {
                 return $data->premium_type == 0 ? false : true;

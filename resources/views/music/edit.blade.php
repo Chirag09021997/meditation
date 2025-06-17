@@ -31,7 +31,7 @@
             <!-- audio_thumb -->
             <div class="mt-4">
             <div class="flex items-center space-x-1">
-                    <x-input-label for="audio_thumb" :value="__('Audio Thumb')" />
+                    <x-input-label for="audio_thumb" :value="__('Audio Thumb (1600x1100 / 16:11)')" />
                     <span class="text-red-500">*</span>
                 </div>
                 <x-text-input id="audio_thumb"
@@ -44,7 +44,7 @@
             <!-- inner_thumb -->
             <div class="mt-4">
             <div class="flex items-center space-x-1">
-                    <x-input-label for="inner_thumb" :value="__('Inner Thumb')" />
+                    <x-input-label for="inner_thumb" :value="__('Inner Thumb (400x480)')" />
                     <span class="text-red-500">*</span>
                 </div>
                 <x-text-input id="inner_thumb"

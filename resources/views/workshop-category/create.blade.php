@@ -21,7 +21,7 @@
             <!-- thumb_image -->
             <div class="mt-4">
             <div class="flex items-center space-x-1">
-                    <x-input-label for="thumb_image" :value="__('Thumb Image')" />
+                    <x-input-label for="thumb_image" :value="__('Thumb Image (1600x1100 / 16:11)')" />
                     <span class="text-red-500">*</span>
                 </div>
                 <x-text-input id="thumb_image"
