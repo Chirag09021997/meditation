@@ -274,7 +274,7 @@
                     </p>
 
                     <div class="center">
-                        <a href="/delta" target="_blank" class="btn btn-default rounded-0">Read More</a>
+                        <a href="/delta" class="btn btn-default rounded-0">Read More</a>
                     </div>
 
                     <div class="mt-3">
@@ -1287,7 +1287,7 @@
                         <div class="testimonial_slider testimonial_style1 carousel_slider owl-carousel owl-theme
             {{ $outTeams->count() <= 2 ? 'justify-content-center' : 'justify-content-start' }}" data-margin="15"
                             data-loop="{{ $outTeams->count() >= 3 ? 'true' : 'false' }}"
-                            data-autoplay="{{ $outTeams->count() >= 3 ? 'true' : 'false' }}" data-autoplay-timeout="2500"
+                            data-autoplay="false" data-autoplay-timeout="2500"
                             data-autoplay-speed="800" data-smart-speed="600" data-autoplay-hover-pause="true"
                             data-center="false" data-responsive='{"0":{"items":1}, "768":{"items":2}, "1199":{"items":3}}'>
 
@@ -1319,12 +1319,12 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="team_info d-center">
-                                        <div class="team_title">
-                                            <h5><a href="{{ route('our-team-single', $ourTeam) }}">{{ $ourTeam->name }}</a></h5>
-                                            <span>{{ $ourTeam->post }}</span>
-                                        </div>
-                                    </div>
+                                    <div class="team_info flex items-center justify-center text-center">
+    <div class="team_title">
+        <h5><a href="{{ route('our-team-single', $ourTeam) }}">{{ $ourTeam->name }}</a></h5>
+        <span>{{ $ourTeam->post }}</span>
+    </div>
+</div>
                                 </div>
                             @endforeach
                         </div>

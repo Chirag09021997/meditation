@@ -29,30 +29,36 @@
             </div>
 
             <!-- audio_thumb -->
-            <div class="mt-4">
-            <div class="flex items-center space-x-1">
-                    <x-input-label for="audio_thumb" :value="__('Audio Thumb (1600x1100 / 16:11)')" />
-                    <span class="text-red-500">*</span>
-                </div>
-                <x-text-input id="audio_thumb"
-                    class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
-                    type="file" name="audio_thumb" accept="image/*" />
-                <x-input-error :messages="$errors->get('audio_thumb')" class="mt-2" />
-                <img src="{{ $music->audio_thumb }}" alt="thumb upload" class="w-16 my-2">
-            </div>
+<div class="mt-4">
+    <div class="flex items-center space-x-1">
+        <x-input-label for="audio_thumb" :value="__('Audio Thumb (1600x1100 / 16:11)')" />
+        <span class="text-red-500">*</span>
+    </div>
+
+    <x-text-input id="audio_thumb"
+        class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
+        type="file" name="audio_thumb" accept="image/*" />
+
+    <x-input-error :messages="$errors->get('audio_thumb')" class="mt-2" />
+
+    <!-- Preview image -->
+    <img id="thumb_preview" src="{{ $music->audio_thumb }}" alt="thumb upload" class="w-16 my-2">
+</div>
+
 
             <!-- inner_thumb -->
-            <div class="mt-4">
-            <div class="flex items-center space-x-1">
-                    <x-input-label for="inner_thumb" :value="__('Inner Thumb (400x480)')" />
-                    <span class="text-red-500">*</span>
-                </div>
-                <x-text-input id="inner_thumb"
-                    class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
-                    type="file" name="inner_thumb" accept="image/*" />
-                <x-input-error :messages="$errors->get('inner_thumb')" class="mt-2" />
-                <img src="{{ $music->inner_thumb }}" alt="thumb upload" class="w-16 my-2">
-            </div>
+<div class="mt-4">
+    <div class="flex items-center space-x-1">
+        <x-input-label for="inner_thumb" :value="__('Inner Thumb (400x480)')" />
+        <span class="text-red-500">*</span>
+    </div>
+    <x-text-input id="inner_thumb"
+        class="block mt-1 w-full cursor-pointer text-md p-2 text-gray-900 border border-gray-300 rounded-lg bg-white"
+        type="file" name="inner_thumb" accept="image/*" />
+    <x-input-error :messages="$errors->get('inner_thumb')" class="mt-2" />
+    <img id="inner_thumb_preview" src="{{ $music->inner_thumb }}" alt="thumb upload" class="w-16 my-2">
+</div>
+
 
             <!-- audio_upload -->
             <div class="mt-4">
@@ -123,4 +129,20 @@
                 class="text-white hover:text-blue-900 bg-blue-900 border border-blue-300 focus:outline-none hover:bg-blue-100 focus:ring-4 focus:ring-blue-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 ">{{ __('Update') }}</button>
         </div>
     </form>
+     <!-- ✅ Live image preview script -->
+    <script>
+        document.getElementById('audio_thumb').addEventListener('change', function (e) {
+            const [file] = e.target.files;
+            if (file) {
+                document.getElementById('thumb_preview').src = URL.createObjectURL(file);
+            }
+        });
+          // Inner Thumb Preview
+    document.getElementById('inner_thumb').addEventListener('change', function (e) {
+        const [file] = e.target.files;
+        if (file) {
+            document.getElementById('inner_thumb_preview').src = URL.createObjectURL(file);
+        }
+    });
+    </script>
 </x-app-layout>
