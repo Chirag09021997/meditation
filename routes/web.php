@@ -29,6 +29,8 @@ use App\Http\Controllers\Web\WorkshopCategoryController;
 use App\Http\Controllers\Web\WorkShopController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +44,48 @@ use Illuminate\Support\Facades\Route;
 */
 
 // fronted routes
+Route::get('/sitemap.xml', function () {
+    $sitemap = Sitemap::create()
+        ->add(Url::create(route('home')))
+        ->add(Url::create(route('about')))
+        ->add(Url::create(route('life')))
+        ->add(Url::create(route('delta')))
+        ->add(Url::create(route('events')))
+        ->add(Url::create(route('contact')))
+        ->add(Url::create(route('blogs')))
+        ->add(Url::create(route('stores')))
+        ->add(Url::create(route('cart')))
+        ->add(Url::create(route('term.condition')))
+        ->add(Url::create(route('faq')))
+        ->add(Url::create(route('privacy.policy')))
+        ->add(Url::create(route('refund.policy')))
+        ->add(Url::create(route('user.login')))
+        ->add(Url::create(route('checkout')))
+        ->add(Url::create(route('user.profile')))
+        ->add(Url::create(route('user.orders')));
+
+    // 📝 Add dynamic entries for blogs, events, stores, team, etc.
+    foreach (App\Models\Blog::all() as $blog) {
+        $sitemap->add(Url::create(route('blogs.single', $blog->id)));
+    }
+
+    foreach (App\Models\Event::all() as $event) {
+        $sitemap->add(Url::create(route('events.single', $event->id)));
+    }
+
+    foreach (App\Models\Store::all() as $store) {
+        $sitemap->add(Url::create(route('stores.single', $store->id)));
+    }
+
+    foreach (App\Models\OurTeam::all() as $member) {
+        $sitemap->add(Url::create(route('our-team-single', $member->id)));
+    }
+
+    return $sitemap->toResponse(request());
+});
+
+
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/slider-detail/{id}', [HomeController::class, 'sliderShow'])->name('slider-detail.show');
@@ -91,6 +135,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/customer/{id}', [CustomerController::class, 'info']);
+Route::get('/customer/{id}/tracking', [CustomerController::class, 'tracking']);
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
